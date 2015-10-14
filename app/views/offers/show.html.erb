@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h1>Offer</h1>
+</div>
+<dl class="dl-horizontal">
+  <dt><strong>Name:</strong></dt>
+  <dd><%= @offer.name %></dd>
+  <dt><strong>description:</strong></dt>
+  <dd><%= @offer.description %></dd>
+  <dt><strong>status:</strong></dt>
+  <dd><%= @offer.status %></dd>
+  <dt><strong>brand:</strong></dt>
+  <dd><%= @offer.brand %></dd>
+  <dt><strong>product:</strong></dt>
+  <dd><%= @offer.product %></dd>
+  <dt><strong>discount:</strong></dt>
+  <dd><%= @offer.discount %></dd>
+  <dt><strong>Shop:</strong></dt>
+  <dd><%= @offer.shop.name %></dd>
+    
+</dl>
+
+<div class="form-actions">
+  <%= link_to "back", offers_path, :class => 'btn'  %>
+  <%= link_to "Edit",
+              edit_offer_path(@offer), :class => 'btn' %>
+  <%= link_to "destroy",
+              offer_path(@offer),
+              :method => 'delete',
+              :confirm => 'Are you sure?' ,
+              :class => 'btn btn-danger' %>
+</div>

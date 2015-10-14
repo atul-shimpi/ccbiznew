@@ -1,0 +1,69 @@
+<!-- :name, :description, :start_date, :end_date, :brand, :product, :discount, :shop, :status) -->
+<%= form_for @offer, :html => { :class => 'form-horizontal' , multipart: true  } do |f| %>
+<div class="control-group">
+    <%= f.label :shop_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select(:shop_id, current_user.shops.all, :id, :name, :prompt => 'Select') %>
+    </div>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :start_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :start_date, :class => 'text_field date' %>
+    </div>
+  </div>
+    <div class="control-group">
+    <%= f.label :end_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :end_date, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :brand, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :brand, :class => 'text_field' %>
+    </div>
+  </div>
+    <div class="control-group">
+    <%= f.label :product, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :product, :class => 'text_field' %>
+    </div>
+  </div>
+  </div>
+    <div class="control-group">
+    <%= f.label :discount, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :discount, :class => 'text_field' %>
+    </div>
+  </div>
+    <div class="control-group">
+    <%= f.label :status, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select(:status, ["letest", "featured"].map { |value| [ value, value ] })%>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to "cancel", shops_path, :class => 'btn' %>
+  </div>
+<% end %>
+
+<% content_for :endjs do %>
+  <script type="text/javascript">
+    $(document).ready(function () {
+        cChakra.orders(<%= raw({:controller => params[:controller], :action => params[:action]}.to_json) %>);
+    });
+  </script>
+<% end %>

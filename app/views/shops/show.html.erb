@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h1>Shop</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Name:</strong></dt>
+  <dd><%= @shop.name %></dd>
+  <dt><strong>Phone:</strong></dt>
+  <dd><%= @shop.phone %></dd>
+  <dt><strong>Address:</strong></dt>
+  <dd><%= @shop.address %></dd>
+  <dt><strong>Info:</strong></dt>
+  <dd><%= @shop.info %></dd>
+    <dt><strong>Avatar:</strong></dt>
+  <dd><%= image_tag(@shop.avatar_url) if @shop.avatar? %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to "back", shops_path, :class => 'btn'  %>
+  <%= link_to "Edit",
+              edit_shop_path(@shop), :class => 'btn' %>
+  <%= link_to "destroy",
+              shop_path(@shop),
+              :method => 'delete',
+              :confirm => 'Are you sure?' ,
+              :class => 'btn btn-danger' %>
+</div>

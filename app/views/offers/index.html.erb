@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h1>Offers</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>status</th>
+      <th>discount</th>
+      <th>Shop</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% if !@offers.blank?%>
+    <% @offers.each do |offer| %>
+      <tr>
+        <td><%= link_to offer.name, offer_path(offer) %></td>
+        <td><%= offer.status %></td>
+        <td><%= offer.discount %></td>
+        <td><%= offer.shop.name if !offer.shop.blank?%></td>
+        <td>
+          <%= link_to "edit",
+                      edit_offer_path(offer), :class => 'btn btn-mini' %>
+          <%= link_to "delete",
+                      offer_path(offer),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New",
+            new_offer_path,
+            :class => 'btn btn-primary' %>
