@@ -19,6 +19,8 @@
 
 $(document).ready(function() {
   $('.dataTables-example').DataTable({
-          responsive: true
-  });
+          responsive: true,
+					columnDefs: [{ targets: -1, orderable: false }]
+					    
+	});
 });
