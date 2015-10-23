@@ -15,13 +15,12 @@
 //= require jquery.min
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require raphael-min
-//= require morris.min
-//= require morris-data
+
 //= require jquery.dataTables.min
 //= require dataTables.bootstrap.min
-//= require base
 //= require main
+//= require base
+
 //= require helper
 //= require_tree .
             
