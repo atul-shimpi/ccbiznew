@@ -11,6 +11,17 @@
 div.date {
 	position: relative;
 }
+.alert {
+	padding: 5px;
+  margin-bottom: 10px;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  strong {
+  	font-weight: normal;
+    font-size: 12px;
+    color: #b94a48;
+  }
+}
 .calendar {
 	position: absolute;
   top: 0;
