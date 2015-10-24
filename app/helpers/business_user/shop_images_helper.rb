@@ -1,0 +1,2 @@
+module BusinessUser::ShopImagesHelper
+end
