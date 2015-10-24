@@ -1,7 +1,6 @@
-class OffersController < ApplicationController
-	before_action :get_user
+class BusinessUser::OffersController < BusinessUser::BaseController
 
-   def index
+	 def index
     @offers = Offer.all
 
     respond_to do |format|
@@ -37,7 +36,7 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if @offer.save
-        format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
+        format.html { redirect_to business_user_offers_path, notice: 'Offer was successfully created.' }
         format.json { render json: @offer, status: :created, location: @offer }
       else
         format.html { render action: "new" }
@@ -51,7 +50,7 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if @offer.update_attributes(offer_params)
-        format.html { redirect_to @offer, notice: 'Shop was successfully updated.' }
+        format.html { redirect_to business_user_offers_path, notice: 'Shop was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -65,7 +64,7 @@ class OffersController < ApplicationController
     @offer.destroy
 
     respond_to do |format|
-      format.html { redirect_to shops_url }
+      format.html { redirect_to business_user_offers_path }
       format.json { head :no_content }
     end
   end

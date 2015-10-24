@@ -8,7 +8,7 @@
 </head>
 <body>
 <div id="wrapper">
-<% if user_signed_in?%>
+<% if business_user_signed_in? || admin_signed_in?%>
 	<!-- Navigation -->
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<div class="navbar-header">
@@ -32,7 +32,7 @@
 					</li>
 					<li class="divider"></li>
 					<li>
-					<%= link_to "#{"<i class='fa fa-sign-out fa-fw'></i> Sign Out"}".html_safe, destroy_user_session_path, :method=>'delete' %>
+					<%= link_to "#{"<i class='fa fa-sign-out fa-fw'></i> Sign Out"}".html_safe, destroy_business_user_session_path, :method=>'delete' %>
 					</li>
 				</ul>
 				<!-- /.dropdown-user -->
@@ -59,10 +59,10 @@
 						<a href="<%=  %>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
 					</li>
 					<li>
-						<a href="<%= shops_path %>"><i class="fa fa-bar-chart-o fa-fw"></i> Shop</a>
+						<a href="<%= nav_path_for_shop %>"><i class="fa fa-bar-chart-o fa-fw"></i> Shop</a>
 					</li>
 					<li>
-						<a href="<%= offers_path %>"><i class="fa fa-table fa-fw"></i> Offer</a>
+						<a href="<%= nav_path_for_offer %>"><i class="fa fa-table fa-fw"></i> Offer</a>
 					</li>
 				</ul>
 			</div>

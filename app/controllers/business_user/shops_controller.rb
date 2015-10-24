@@ -1,8 +1,7 @@
-class ShopsController < ApplicationController
-	before_action :get_user
+class BusinessUser::ShopsController < BusinessUser::BaseController
 
 	  def index
-    @shops = @user.shops.all
+    @shops = current_business_user.shops.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -20,7 +19,7 @@ class ShopsController < ApplicationController
   end
 
   def new
-    @shop = @user.shops.new
+    @shop = current_business_user.shops.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -33,11 +32,11 @@ class ShopsController < ApplicationController
   end
 
   def create
-    @shop = @user.shops.new(shop_params)
+    @shop = current_business_user.shops.new(shop_params)
 
     respond_to do |format|
       if @shop.save
-        format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
+        format.html { redirect_to business_user_shops_path, notice: 'Shop was successfully created.' }
         format.json { render json: @shop, status: :created, location: @shop }
       else
         format.html { render action: "new" }
@@ -47,11 +46,11 @@ class ShopsController < ApplicationController
   end
 
   def update
-    @shop = @user.shops.find(params[:id])
+    @shop = current_business_user.shops.find(params[:id])
 
     respond_to do |format|
       if @shop.update_attributes(shop_params)
-        format.html { redirect_to @shop, notice: 'Shop was successfully updated.' }
+        format.html { redirect_to business_user_shops_path, notice: 'Shop was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -65,7 +64,7 @@ class ShopsController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to shops_url }
+      format.html { redirect_to business_user_shops_url }
       format.json { head :no_content }
     end
   end
@@ -78,5 +77,4 @@ class ShopsController < ApplicationController
   end
 
 
-  
 end
