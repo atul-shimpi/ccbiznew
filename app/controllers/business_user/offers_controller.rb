@@ -73,6 +73,6 @@ class BusinessUser::OffersController < BusinessUser::BaseController
    private
 
   def offer_params
-    params.require(:offer).permit(:name, :description, :start_date, :end_date, :status, :brand, :product, :discount, :shop_id)
+    params.require(:offer).permit(:name, :description, :start_date, :end_date, :status, :brand, :product, :discount, :shop_id, :image)
   end
 end

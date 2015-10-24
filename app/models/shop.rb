@@ -1,5 +1,5 @@
 class Shop < ActiveRecord::Base
-	mount_uploader :image, AvatarUploader
+	mount_uploader :avatar, AvatarUploader
 	belongs_to :business_user
 	belongs_to :category
 	has_many :offers
