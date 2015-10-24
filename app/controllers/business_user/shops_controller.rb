@@ -73,7 +73,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
    private
 
   def shop_params
-    params.require(:shop).permit(:name, :phone, :address, :info, :user_id, :avatar)
+    params.require(:shop).permit(:name, :phone, :address, :info, :user_id, :avatar, :category_id)
   end
 
 
