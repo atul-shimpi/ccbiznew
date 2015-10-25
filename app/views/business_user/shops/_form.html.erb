@@ -2,8 +2,12 @@
 <%= form_for @shop, url: business_shop_action(@shop, params[:action]),  :html => { :class => '' , multipart: true  } do |f| %>
   <div class="form-group">
       <%= f.label :name, :class => 'control-label' %>
-      <%= f.text_field :name, :class => 'text_field form-control', :placeholder => 'Enter text' %>
-      <p class="help-block">Example block-level help text here.</p>
+      <%= f.text_field :name, :class => 'text_field form-control', :placeholder => 'Nname' %>
+  </div>
+    <div class="form-group">
+      <%= f.label :subdomain, :class => 'control-label' %>
+      <%= f.text_field :subdomain, :class => 'text_field form-control', :placeholder => 'Subdomain' %>
+      <p class="help-block">subdomain.cc.com</p>
   </div>
       <div class="form-group">
       <%= f.label :category_id %><br />

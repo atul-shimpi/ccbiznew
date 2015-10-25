@@ -19,8 +19,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'dashboard#index'
-
+   
+    match '/', to: 'home#index', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
+  root 'home#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

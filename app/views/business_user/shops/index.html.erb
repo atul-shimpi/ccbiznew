@@ -20,6 +20,7 @@
                 <tr>
                   <th>Name</th>
                   <th>Phone</th>
+                  <th>Public url</th>
                   <th>Address</th>
                   <th>Actions</th>
                 </tr>
@@ -29,9 +30,10 @@
                 <% if !@shops.blank?%>
                 <% @shops.each do |shop| %>
                 <tr>
-                  <td><%= link_to shop.name, business_user_shop_path(shop) %></td>
+                  <td><%= link_to shop.name, business_user_shop_path(subdomain: shop.subdomain, id: shop.id) %></td>
                   <td><%= shop.phone %></td>
                   <td><%= shop.address %></td>
+                  <td><a href=<%= "http://#{shop.subdomain}.lvh.me:3003"%> target="_blank"><%= "#{shop.subdomain}.lvh.me:3003" %></a></td>
                   <td>
                   <%= link_to "Shop Images",
                     business_user_shop_images_path(:shop_id => shop), :class => 'btn btn-primary btn-mini' %>
