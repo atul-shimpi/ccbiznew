@@ -1,8 +1,8 @@
-<%= form_for @offer, url: business_shop_offers_action(@offer, params[:action]),:html => { :class => '' , multipart: true  } do |f| %>
+<%= form_for @offer, url: business_shop_offers_action(@offer, params[:action]),:html => { :class => 'newform', :id => '', multipart: true, :novalidate => ''  } do |f| %>
   <fieldset>
     <div class="form-group">
-      <%= f.label :name, :class => 'control-label' %>
-      <%= f.text_field :name, :class => 'text_field form-control', :placeholder => 'Enter text' %>
+      <%= f.label :name, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.text_field :name, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
     </div>
     <div class="form-group">
       <%= f.label :shop_id %><br />
@@ -16,16 +16,16 @@
       <strong></strong>
     </div>
     <div class="form-group">
-      <%= f.label :start_date %><br />
-      <div class="date"><%= f.text_field :start_date, :class => 'text_field date form-control', :id => 'date-start-display' %>
+      <%= f.label :start_date %><span class="asterix">*</span><br />
+      <div class="date"><%= f.text_field :start_date, :class => 'text_field date form-control', :id => 'date-start-display', :required => '' %>
       <a href="#" class="btn small calendar" id="date-start" data-date-format="yyyy-mm-dd" data-date=""></a></div>
     </div>
     <div class="alert alert-error" id="end_alert" style="display:none">
       <strong></strong>
     </div>
     <div class="form-group">
-      <%= f.label :end_date %><br />
-      <div class="date"><%= f.text_field :end_date, :class => 'text_field form-control', :id => 'date-end-display' %>
+      <%= f.label :end_date %><span class="asterix">*</span><br />
+      <div class="date"><%= f.text_field :end_date, :class => 'text_field form-control', :id => 'date-end-display', :required => '' %>
       <a href="#" class="btn small calendar" id="date-end" data-date-format="yyyy-mm-dd" data-date=""></a></div>
     </div>
     <div class="form-group">
@@ -38,7 +38,7 @@
     </div>
     <div class="form-group">
       <%= f.label :discount %><br />
-      <%= f.text_field :discount, :class => 'text_field form-control' %>
+      <%= f.text_field :discount, :class => 'text_field form-control', :required => '' %>
     </div>
     <div class="form-group">
       <%= f.label :image, :class => 'control-label' %>
@@ -53,14 +53,3 @@
     <%= link_to "cancel", business_user_offers_path, :class => 'btn btn-default' %>
   </fieldset>
 <% end %>
-
-
-<!-- 
-<% content_for :endjs do %>
-  <script type="text/javascript">
-    $(document).ready(function () {
-        cChakra.orders(<%= raw({:controller => params[:controller], :action => params[:action]}.to_json) %>);
-    });
-  </script>
-<% end %>
- -->

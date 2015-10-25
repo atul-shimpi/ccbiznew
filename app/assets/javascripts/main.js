@@ -54,4 +54,6 @@ jQuery( document ).ready(function( $ ) {
 
 });
 
-//$("#newform").validate();
+jQuery( document ).ready(function( $ ) {
+$(".newform").validate();
+});
