@@ -53,3 +53,5 @@ jQuery( document ).ready(function( $ ) {
 	    });
 
 });
+
+//$("#newform").validate();

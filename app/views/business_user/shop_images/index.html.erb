@@ -15,7 +15,25 @@
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
-          <div class="dataTable_wrapper">
+          
+          <div class="row">
+            <% if !@shop_images.blank?%>
+            <% @shop_images.each do |shop_image| %>
+            <div class="col-lg-4">
+              <div class="image-wrapper clearfix">
+                <%= image_tag shop_image.image_url , :class => "img-responsive" if shop_image.image? %>
+                <%= link_to "Delete",
+                    business_user_shop_image_path(:id => shop_image.id, :shop_id => @shop.id),
+                    :method => :delete,
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                    :class => 'btn btn-mini btn-danger pull-right' %>
+              </div>
+            </div>
+            <% end %>
+          <% end %>
+          </div>
+          
+          <!-- <div class="dataTable_wrapper">
             <table class="table table-striped table-bordered table-hover dataTables-example" id="dataTables-example">
               <thead>
                 <tr>
@@ -30,7 +48,6 @@
                 <% @shop_images.each do |shop_image| %>
                 <tr>
                   <td><%= image_tag(shop_image.image_url) if shop_image.image? %></td>
->
                   <td>
                     <%= link_to "Delete",
                     business_user_shop_image_path(:id => shop_image.id, :shop_id => @shop.id),
@@ -43,7 +60,7 @@
                 <% end %>
               </tbody>
             </table>
-          </div>
+          </div> -->
           <!-- /.table-responsive -->
         </div>
         <!-- /.panel-body -->
