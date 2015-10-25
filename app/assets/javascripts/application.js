@@ -20,6 +20,7 @@
 //= require dataTables.bootstrap.min
 //= require base
 //= require bootstrap-datepicker
+//= require jquery.validate.min
 //= require main
 //= require helper
 //= require_tree .

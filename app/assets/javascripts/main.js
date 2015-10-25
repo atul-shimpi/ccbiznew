@@ -25,8 +25,8 @@ jQuery( document ).ready(function( $ ) {
 });
 
 jQuery( document ).ready(function( $ ) {
-	var startDate = new Date(2012,1,20);
-	var endDate = new Date(2012,1,25);
+	var startDate = new Date();
+	var endDate = new Date();
 	$('#date-start')
 	    .datepicker()
 	    .on('changeDate', function(ev){
@@ -53,3 +53,5 @@ jQuery( document ).ready(function( $ ) {
 	    });
 
 });
+
+//$("#newform").validate();
