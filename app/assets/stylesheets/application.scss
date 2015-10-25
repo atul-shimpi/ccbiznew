@@ -15,8 +15,8 @@
  @import "font-awesome-sprockets";
  @import "font-awesome";
  @import "bootstrap";
- /*@import "variables";*/
- /*@import "mixins";*/
+ @import "bootstrap/variables";
+ @import "bootstrap/mixins";
  @import "bootstrap.min";
  @import "dataTables.bootstrap";
  @import "sb-admin-2";
