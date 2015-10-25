@@ -58,5 +58,14 @@ div.date {
   padding: 5px;
   img {
     margin-bottom: 10px;
+    min-height: 188px;
+    max-height: 188px;
+  }
+}
+.text-center {
+  text-align: center;
+  img {
+    margin-top: 5px;
+    margin-bottom: 10px;
   }
 }
