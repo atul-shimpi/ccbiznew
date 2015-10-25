@@ -42,13 +42,14 @@
 		</nav>
 
 		<div class="banner">
-		<%= image_tag @shop.shop_images.first.image_url, :class=> "img-responsive" %>
+		<%= image_tag @shop.shop_images.first.image_url, :class=> "img-responsive" if  !@shop.shop_images.blank?%>
 			<!-- <img src="images/banner-img1.jpg" class="img-responsive" width="100%" /> -->
 		</div>
 
 		<div class="container main-content">
 			<div class="row latest_offers">
 				<div class="section_heading"><h3>Latest Offers</h3></div>
+				<% if !@shop.offers.latest.blank? %>
 				<% @shop.offers.latest.each do |offer|%>
 				<div class="col-lg-3">
 					<div class="offers_box">
@@ -62,12 +63,14 @@
 					</div>
 				</div>
 				<%end%>
+				<%end%>
 				
 				
 			</div>
 
 			<div class="row latest_offers">
 				<div class="section_heading"><h3>Featured Offers</h3></div>
+				<% if !@shop.offers.featured.blank? %>
 			<% @shop.offers.featured.each do |offer|%>
 				<div class="col-lg-3">
 					<div class="offers_box">
@@ -80,6 +83,7 @@
 						<p class="title"><%= offer.name%></p>
 					</div>
 				</div>
+				<%end%>				
 				<%end%>				
 				
 				

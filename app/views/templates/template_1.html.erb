@@ -39,7 +39,7 @@
 		</nav>
 
 		<div class="banner">
-		<%= image_tag @shop.shop_images.first.image_url, :class=> "img-responsive" %>
+		<%= image_tag @shop.shop_images.first.image_url, :class=> "img-responsive" if  !@shop.shop_images.blank?%>
 		</div>
 
 		<div class="container main-content">
@@ -47,7 +47,7 @@
 				<div class="section_heading"><h3>Latest Offers</h3></div>
 				
 				
-				
+				<% if !@shop.offers.latest.blank? %>
 	<% @shop.offers.latest.each do |offer|%>
 				<div class="col-lg-3">
 					<div class="offers_box">
@@ -61,10 +61,12 @@
 					</div>
 				</div>
 				<%end%>
+				<%end%>
 			</div>
 
 			<div class="row upcomin_off">
 				<div class="section_heading"><h3>Upcoming Offers</h3></div>
+				<% if !@shop.offers.featured.blank? %>
 				<% @shop.offers.featured.each do |offer|%>
 				<div class="col-lg-6">
 					<div class="upcoming_offers_container">
@@ -80,6 +82,7 @@
 						</div>
 					</div>
 				</div>
+				<%end%>
 				<%end%>
 			</div>
 		</div>
