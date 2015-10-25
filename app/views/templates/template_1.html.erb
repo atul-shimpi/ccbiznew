@@ -1,0 +1,104 @@
+<Doctype HTML>
+<HTML>
+	<HEAD>
+		<!-- Latest compiled and minified CSS -->
+		<%= stylesheet_link_tag    'bootstrap.min', media: 'all', 'data-turbolinks-track' => true %>
+		<%= stylesheet_link_tag    'bootstrap-theme.min'%>
+		<%= stylesheet_link_tag    'template_1'%>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+
+	</HEAD>
+	<body>
+		<nav class="navbar navbar-default">
+		  <div class="container">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+
+		      <a class="navbar-brand" href="">
+		      <%= image_tag @shop.avatar_url, :class=> "img-responsive" , :style => "width: 148px;height: 43px"%>
+		      </a>
+		    </div>
+
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li class="active"><a href="#">Home</a></li>
+		        <li><a href="#">About Us</a></li>
+		        <li><a href="#">Contact Us</a></li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+
+		<div class="banner">
+		<%= image_tag @shop.shop_images.first.image_url, :class=> "img-responsive" %>
+		</div>
+
+		<div class="container main-content">
+			<div class="row latest_offers">
+				<div class="section_heading"><h3>Latest Offers</h3></div>
+				
+				
+				
+	<% @shop.offers.latest.each do |offer|%>
+				<div class="col-lg-3">
+					<div class="offers_box">
+						<div class="offer_products">
+						<%= image_tag offer.image_url, :class=> "img-responsive" %>
+							<div class="offer_text">
+								<p><%= offer.discount%>% Discount</p>
+							</div>
+						</div>
+						<p class="title"><%= offer.name%></p>
+					</div>
+				</div>
+				<%end%>
+			</div>
+
+			<div class="row upcomin_off">
+				<div class="section_heading"><h3>Upcoming Offers</h3></div>
+				<% @shop.offers.featured.each do |offer|%>
+				<div class="col-lg-6">
+					<div class="upcoming_offers_container">
+						<div class="upcoming_offers clearfix">
+							<div class="col-lg-6">
+								<%= image_tag offer.image_url, :class=> "img-responsive" %>
+							</div>
+							<div class="col-lg-6">
+							<%= offer.name%><br>
+								<p><%= offer.description%></p>
+								<a class="offers_btn btn btn-lg btn-primary" href="#"><p> <%= offer.discount%>% Discount</p></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<%end%>
+			</div>
+		</div>
+
+		<footer class="clearfix">
+			<div class="container">
+				<div class="row">
+					<p class="pull-left col-lg-9 copyright">Copyright @ 2015</p>
+					<div class="pull-right col-lg-2 address">
+						<p>Contacts & info:</p>
+     				<span class="glyphicon glyphicon-envelope">:  +88-908-656-3460</span> <br/>
+     				<span class="glyphicon glyphicon-phone-alt">:   support@abcd.net</span>
+					</div>
+				</div>
+			</div>
+		</footer>
+				<script src="jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="bootstrap.min.js"></script>
+
+	</body>
+</HTML>

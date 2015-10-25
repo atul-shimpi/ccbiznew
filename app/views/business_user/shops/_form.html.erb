@@ -27,6 +27,13 @@
       <%= f.file_field :avatar %>
       <%= f.hidden_field :avatar_cache %>
   </div>
+  <div class="form-group">
+    <%= f.radio_button :template, 'template_1' %> <%= image_tag "footwear_thumbnail.jpg", :style => "width : 100px; height :100px"%>
+    <%= f.radio_button :template, 'template_2' %> <%= image_tag "clothes_thumbnail.jpg", :style => "width : 100px; height :100px"%>
+    <%= f.radio_button :template, 'template_3' %> <%= image_tag "food_thumbnail.jpg", :style => "width : 100px; height :100px"%>
+    <%= f.radio_button :template, 'template_4' %> <%= image_tag "sports_thumbnail.jpg", :style => "width : 100px; height :100px"%>
+</p>
+  </div>
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to "cancel", business_user_shops_path, :class => 'btn btn-default' %>
 <% end %>

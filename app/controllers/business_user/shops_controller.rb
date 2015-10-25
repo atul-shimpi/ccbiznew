@@ -12,10 +12,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
   def show
     @shop = Shop.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @shop }
-    end
+    render :template => "templates/#{@shop.template}", :layout => false
   end
 
   def new
@@ -36,7 +33,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
 
     respond_to do |format|
       if @shop.save
-        format.html { redirect_to business_user_shops_path, notice: 'Shop was successfully created.' }
+        format.html { redirect_to business_user_shop_path(@shop), notice: 'Shop was successfully created.' }
         format.json { render json: @shop, status: :created, location: @shop }
       else
         format.html { render action: "new" }
@@ -50,7 +47,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
 
     respond_to do |format|
       if @shop.update_attributes(shop_params)
-        format.html { redirect_to business_user_shops_path, notice: 'Shop was successfully updated.' }
+        format.html { redirect_to business_user_shop_path(@shop), notice: 'Shop was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -73,7 +70,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
    private
 
   def shop_params
-    params.require(:shop).permit(:name, :phone, :address, :info, :user_id, :avatar, :category_id)
+    params.require(:shop).permit(:name, :phone, :address, :info, :user_id, :avatar, :category_id, :template)
   end
 
 

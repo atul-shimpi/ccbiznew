@@ -29,7 +29,7 @@
                 <% if !@shops.blank?%>
                 <% @shops.each do |shop| %>
                 <tr>
-                  <td><%= link_to shop.name, shop_path(shop) %></td>
+                  <td><%= link_to shop.name, business_user_shop_path(shop) %></td>
                   <td><%= shop.phone %></td>
                   <td><%= shop.address %></td>
                   <td>
