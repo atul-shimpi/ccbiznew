@@ -1,0 +1,15 @@
+
+<%= form_for @shop_image, url: admin_shop_images_path(:shop_id => @shop.id),  :html => { :class => '' , multipart: true  } do |f| %>
+ 
+  <div class="form-group">
+      <%= f.label :image, :class => 'control-label' %>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
+      <%= f.hidden_field :shop_id, :value => @shop.id %>
+  </div>
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to "cancel", business_user_shops_path, :class => 'btn btn-default' %>
+<% end %>
+                                
+
+
