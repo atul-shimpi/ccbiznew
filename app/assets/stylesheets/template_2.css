@@ -125,3 +125,14 @@ footer {
 .copyright {
 	text-align: center;
 }
+
+
+
+
+/* Common */
+.section_heading.about_title {
+	text-align: left;
+}
+p.about_content {
+	text-align: left;
+}
