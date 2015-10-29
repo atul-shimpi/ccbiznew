@@ -70,46 +70,52 @@
     </div>
 
 		<div class="container main-content">
-			<div class="row latest_offers">
-				<div class="section_heading"><h3>Latest Offers</h3></div>
-				<% if !@shop.offers.latest.blank? %>
-				<% @shop.offers.latest.each do |offer|%>
-				<div class="col-lg-3">
-					<div class="offers_box">
-						<div class="offer_products">
-						<%= image_tag offer.image_url, :class=> "img-responsive" %>
-							<div class="offer_text">
-								<p><%= offer.discount%>% Discount</p>
+			<div class="latest_offers">
+				<div class="row">
+					<div class="section_heading"><h3>Latest Offers</h3></div>
+					<% if !@shop.offers.latest.blank? %>
+					<% @shop.offers.latest.each do |offer|%>
+					<div class="col-lg-3">
+						<div class="offers_box">
+							<div class="offer_products">
+							<%= image_tag offer.image_url, :class=> "img-responsive" %>
+								<div class="offer_text">
+									<p><%= offer.discount%>% Discount</p>
+								</div>
 							</div>
+							<p class="title"><a href="#"><%= offer.name%></a></p>
 						</div>
-						<p class="title"><%= offer.name%></p>
 					</div>
+					<%end%>
+					<%end%>
 				</div>
-				<%end%>
-				<%end%>
-				
-				
+				<div class="row">
+					<p class="pull-right"><a href="#">View more...</a></p>
+				</div>
 			</div>
 
-			<div class="row latest_offers">
-				<div class="section_heading"><h3>Featured Offers</h3></div>
-				<% if !@shop.offers.featured.blank? %>
-			<% @shop.offers.featured.each do |offer|%>
-				<div class="col-lg-3">
-					<div class="offers_box">
-						<div class="offer_products">
-						<%= image_tag offer.image_url, :class=> "img-responsive" %>
-							<div class="offer_text">
-								<p><%= offer.discount%>% Discount</p>
+			<div class="latest_offers">
+				<div class="row">
+					<div class="section_heading"><h3>Featured Offers</h3></div>
+					<% if !@shop.offers.featured.blank? %>
+					<% @shop.offers.featured.each do |offer|%>
+					<div class="col-lg-3">
+						<div class="offers_box">
+							<div class="offer_products">
+							<%= image_tag offer.image_url, :class=> "img-responsive" %>
+								<div class="offer_text">
+									<p><%= offer.discount%>% Discount</p>
+								</div>
 							</div>
+							<p class="title"><a href="#"><%= offer.name%></a></p>
 						</div>
-						<p class="title"><%= offer.name%></p>
 					</div>
+					<%end%>				
+					<%end%>				
 				</div>
-				<%end%>				
-				<%end%>				
-				
-				
+				<div class="row">
+					<p class="pull-right"><a href="#">View more...</a></p>
+				</div>
 			</div>
 
 		</div>
