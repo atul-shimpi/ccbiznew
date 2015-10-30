@@ -85,7 +85,7 @@ ul.nav.navbar-nav {
 .offers_box {
 	/*border-bottom: 1px solid #999898;*/
 }
-p.title {
+p.title a {
 	color: #000;
 	margin-bottom: 14px;
 }

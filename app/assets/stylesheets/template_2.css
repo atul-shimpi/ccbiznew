@@ -70,9 +70,10 @@ ul.nav.navbar-nav {
 .offers_box {
 	border-bottom: 1px solid #999898;
 }
-p.title {
+p.title a {
 	color: #000;
 	margin-bottom: 14px;
+	text-transform: capitalize;
 }
 .latest_offers, .upcomin_off {
 	margin: 60px auto;
@@ -123,4 +124,15 @@ footer {
 }
 .copyright {
 	text-align: center;
+}
+
+
+
+
+/* Common */
+.section_heading.about_title {
+	text-align: left;
+}
+p.about_content {
+	text-align: left;
 }
