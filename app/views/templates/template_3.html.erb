@@ -91,11 +91,14 @@
 				<div class="col-lg-12">
 					<div class="upcoming_offers_container">
 						<div class="upcoming_offers clearfix">
-				<% if !@shop.offers.latest.blank? %>
-					<% @shop.offers.latest.each do |offer|%>
+							<% if !@shop.offers.latest.blank? %>
+							<% @shop.offers.latest.each do |offer|%>
 							<div class="col-lg-3">
-								<a href=""><%= image_tag offer.image_url, :class=> "img-responsive" %></a>
-								<p><%= offer.discount%>% Discount</p>
+								<div class="offers_cont">
+									<a href=""><%= image_tag offer.image_url, :class=> "img-responsive" %>
+									</a>
+									<div class="discount"><p><a href=""><%= offer.discount%>% Discount</a></p></div>
+								</div>
 								<p class="title"><a href=""><%= offer.name%></a></p>
 							</div>
 							<%end%>
@@ -113,10 +116,13 @@
 					<div class="upcoming_offers_container">
 						<div class="upcoming_offers clearfix">
 							<% if !@shop.offers.featured.blank? %>
-					<% @shop.offers.featured.each do |offer|%>
+							<% @shop.offers.featured.each do |offer|%>
 							<div class="col-lg-3">
-								<a href=""><%= image_tag offer.image_url, :class=> "img-responsive" %></a>
-								<p><%= offer.discount%>% Discount</p>
+								<div class="offers_cont">
+									<a href=""><%= image_tag offer.image_url, :class=> "img-responsive" %>
+									</a>
+									<div class="discount"><p class="discount"><a href=""><%= offer.discount%>% Discount</a></p></div>
+								</div>	
 								<p class="title"><a href=""><%= offer.name%></a></p>
 							</div>
 							<%end%>
