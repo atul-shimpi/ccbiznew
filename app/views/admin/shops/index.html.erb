@@ -33,7 +33,7 @@
                   <td><%= link_to shop.name, admin_shop_path(subdomain: shop.subdomain, id: shop.id) %></td>
                   <td><%= shop.phone %></td>
                   <td><%= shop.address %></td>
-                  <td><a href=<%= "http://#{shop.subdomain}.lvh.me:3003"%> target="_blank"><%= "#{shop.subdomain}.lvh.me:3003" %></a></td>
+                  <td><a href=<%= "http://#{shop.subdomain}.#{request.domain}"%> target="_blank"><%= "#{shop.subdomain}.#{request.domain}" %></a></td>
                   <td>
                   <%= link_to "Shop Images",
                     admin_shop_images_path(:shop_id => shop), :class => 'btn btn-primary btn-mini' %>
