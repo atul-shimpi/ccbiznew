@@ -171,3 +171,8 @@ footer {
 .copyright {
 	text-align: left;
 }
+.tab_title {
+	font-weight: bold;
+	font-size: 20px;
+	text-decoration: underline;
+}
