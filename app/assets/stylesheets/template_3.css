@@ -45,6 +45,9 @@ ul.nav.navbar-nav {
 	background: none;
 	text-decoration: underline;
 }
+.carousel.slide img {
+	width: 100%;
+}
 .section_heading {
 	text-align: left;
 }
@@ -88,6 +91,7 @@ ul.nav.navbar-nav {
 p.title a {
 	color: #000;
 	margin-bottom: 14px;
+	text-transform: capitalize;
 }
 .latest_offers, .upcomin_off {
 	margin-top: 60px;
@@ -101,8 +105,32 @@ p.title a {
 	border: 1px solid rgb(255, 255, 255);
 	padding: 18px 5px;
 }
+.discount {
+	position: absolute;
+	bottom: 2%;
+	background: rgb(0, 0, 0) none repeat scroll 0% 0%;
+	width: 100%;
+	color: #fff;
+}
+.discount p {
+	margin: 0px;
+	padding: 5px 0px;
+	font-family: calisto MT;
+	font-size: 20px;
+	font-style: italic;
+}
+.discount p a {
+	color: #fff;
+}
+.discount p a:hover {
+	text-decoration: none;
+}
+.offers_cont {
+	position: relative;
+	margin-bottom: 20px;
+}
 .upcoming_offers p {
-	text-align: left;
+	text-align: center;
 }
 .upcoming_offers img {
 	width: auto;
@@ -142,4 +170,9 @@ footer {
 }
 .copyright {
 	text-align: left;
+}
+.tab_title {
+	font-weight: bold;
+	font-size: 20px;
+	text-decoration: underline;
 }
