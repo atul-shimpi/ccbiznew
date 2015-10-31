@@ -45,16 +45,13 @@
         <li data-target="#myCarousel" data-slide-to="1" class=""></li>
         <li data-target="#myCarousel" data-slide-to="2" class=""></li>
       </ol>
+      <% if !@shop.shop_images.blank?%>
       <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <%= image_tag @shop.shop_images.first.image_url, :class=> "img-responsive third-slide" if  !@shop.shop_images.blank?%>
+      <% @shop.shop_images.each_with_index do |shop_image, index|%>
+        <div class="item <% if index == 0%>active<%end%>">
+          <%= image_tag shop_image.image_url, :class=> "img-responsive third-slide" if  !shop_image.blank?%>
         </div>
-        <div class="item">
-          <%= image_tag @shop.shop_images.first.image_url, :class=> "img-responsive third-slide" if  !@shop.shop_images.blank?%>
-        </div>
-        <div class="item">
-        	<%= image_tag @shop.shop_images.first.image_url, :class=> "img-responsive third-slide" if  !@shop.shop_images.blank?%>
-        </div>
+        <%end%>
       </div>
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -64,6 +61,7 @@
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
+      <%end%>
     </div>
 
 		<div class="container main-content">
