@@ -1,0 +1,46 @@
+<!-- Page Content -->
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Offer</h1>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+      <div class="col-lg-12">
+        <dl class="dl-horizontal">
+          <dt><strong>Name:</strong></dt>
+          <dd><%= @offer.name %></dd>
+          <dt><strong>description:</strong></dt>
+          <dd><%= @offer.description %></dd>
+          <dt><strong>status:</strong></dt>
+          <dd><%= @offer.status %></dd>
+          <dt><strong>brand:</strong></dt>
+          <dd><%= @offer.brand %></dd>
+          <dt><strong>product:</strong></dt>
+          <dd><%= @offer.product %></dd>
+          <dt><strong>discount:</strong></dt>
+          <dd><%= @offer.discount %></dd>
+          <dt><strong>Shop:</strong></dt>
+          <dd><%= @offer.shop.name %></dd>
+        </dl>
+        <div class="form-actions">
+          <%= link_to "back", admin_offers_path, :class => 'btn btn-primary'  %>
+          <%= link_to "Edit",
+                       edit_admin_shop_path(@offer), :class => 'btn btn-primary' %>
+          <%= link_to "destroy",
+                      business_user_offer_path(@offer),
+                      :method => 'delete',
+                      :confirm => 'Are you sure?' ,
+                      :class => 'btn btn-danger' %>
+        </div>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->

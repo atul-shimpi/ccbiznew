@@ -10,7 +10,7 @@
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <%= link_to "Create a New Shop", new_business_user_shop_path, :class => 'btn btn-primary' %>
+          <%= link_to "Create a New Shop", new_admin_shop_path, :class => 'btn btn-primary' %>
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
@@ -30,18 +30,17 @@
                 <% if !@shops.blank?%>
                 <% @shops.each do |shop| %>
                 <tr>
-                  <td><%= link_to shop.name, business_user_shop_path(subdomain: shop.subdomain, id: shop.id) %></td>
+                  <td><%= link_to shop.name, admin_shop_path(subdomain: shop.subdomain, id: shop.id) %></td>
                   <td><%= shop.phone %></td>
                   <td><%= shop.address %></td>
-                  <%= %>
                   <td><a href=<%= "http://#{shop.subdomain}.#{request.domain}"%> target="_blank"><%= "#{shop.subdomain}.#{request.domain}" %></a></td>
                   <td>
                   <%= link_to "Shop Images",
-                    business_user_shop_images_path(:shop_id => shop), :class => 'btn btn-primary btn-mini' %>
+                    admin_shop_images_path(:shop_id => shop), :class => 'btn btn-primary btn-mini' %>
                     <%= link_to "Edit",
-                    edit_business_user_shop_path(shop), :class => 'btn btn-primary btn-mini' %>
+                    edit_admin_shop_path(shop), :class => 'btn btn-primary btn-mini' %>
                     <%= link_to "Delete",
-                    business_user_shop_path(shop),
+                    admin_shop_path(shop),
                     :method => :delete,
                     :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                     :class => 'btn btn-mini btn-danger' %>
