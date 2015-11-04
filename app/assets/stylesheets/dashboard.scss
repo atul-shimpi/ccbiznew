@@ -2,11 +2,49 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+body {
+  background-color: #333;
+}
+.btn-primary {
+  background-color: #ccc;
+  color: #000;
+  border-color: #999;
+}
+.navbar-default {
+  background-color: #333;
+}
+.nav > li > a {
+  color: #ffff00;
+  padding: 16px 15px;
+}
+.nav > li > a:hover {
+  color: #000;
+  background: #ffff00;
+}
+.sidebar {
+  margin-top: 69px;
+}
+.page-header {
+  color: #ffff00;
+  border-bottom: none;
+}
 #page-wrapper {
-  min-height: auto;
+  background-image: url("money3.jpg");
+  background-size: cover;
+  min-height: 594px;
+}
+.panel {
+  background: none;
+}
+.panel-default > .panel-heading {
+  background: rgba(255, 255, 0, 0.9);
+  border-radius: 15px;
+  border-bottom: 1px solid #000;
 }
 .panel-default {
   margin-top: 25px;
+  border: none;
 }
 .prof_icon {
   background: #fff;
@@ -85,4 +123,34 @@ div.date {
   color: #ff0000;
   font-size: 16px;
   margin-left: 1px;
+}
+.table-bordered {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-collapse: collapse;
+  border-radius: 15px;
+  border: none;
+}
+.table-bordered thead tr th, .table-bordered thead tr th.sorting, .table-bordered thead tr th.sorting_asc, .table-bordered thead tr th.sorting_desc {
+  border: none;
+  background-color: #333;
+  color: #FF0;
+  border-radius: 15px;
+  text-align: center;
+}
+.table-bordered > tbody > tr > td {
+  border: none;
+  color: #000;
+  text-shadow: 0px 1px #FFF;
+}
+.table-striped > tbody > tr:nth-of-type(2n+1), .table-hover > tbody > tr:hover {
+  background: none;
+}
+table.dataTable thead .sorting::after {
+  color: #FF0;
+}
+.panel-body.col-lg-6 {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-collapse: collapse;
+  border-radius: 15px;
+  margin-top: 30px;
 }
