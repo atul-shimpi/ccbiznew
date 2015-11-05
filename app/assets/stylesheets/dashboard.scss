@@ -34,6 +34,16 @@ body {
   background-size: cover;
   min-height: 594px;
 }
+.login-panel.panel {
+  background: #fff;
+  .panel-heading {
+    background: none;
+    border: none;
+  }
+  .submit_btn {
+    margin-bottom: 10px;
+  }
+}
 .panel {
   background: none;
 }
