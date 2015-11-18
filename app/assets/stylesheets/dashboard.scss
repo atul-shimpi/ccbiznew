@@ -11,6 +11,9 @@ body {
   color: #000;
   border-color: #999;
 }
+.sidebar ul li a.active {
+  background: none;
+}
 .navbar-default {
   background-color: #333;
 }
@@ -18,7 +21,7 @@ body {
   color: #ffff00;
   padding: 16px 15px;
 }
-.nav > li > a:hover {
+.nav > li > a:hover, .sidebar ul li a.active:hover {
   color: #000;
   background: #ffff00;
 }
