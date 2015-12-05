@@ -13,7 +13,15 @@ ul.nav.navbar-nav {
 .navbar.navbar-default {
 	background-color: #1191cb;
 	background-image: none;
-	box-shadow: none;
+  box-shadow: none;
+  border: 0px none;
+  border-radius: 0px;
+}
+.navbar-brand {
+  height: 77px;
+}
+.navbar-brand img {
+	height: 46px;
 }
 .navbar-default .navbar-nav > .active > a {
 	background: none;
@@ -31,6 +39,11 @@ ul.nav.navbar-nav {
 	color: #fff;
 	background: none;
 	text-decoration: underline;
+}
+.carousel.slide img{
+	width: 100%;
+	height: 456px;
+	max-width: 100%;
 }
 .section_heading {
 	text-align: center;
