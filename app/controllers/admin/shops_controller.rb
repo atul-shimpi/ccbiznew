@@ -1,7 +1,7 @@
 class Admin::ShopsController < Admin::BaseController
 
   def index
-    @shops = current_admin.shops.all
+    @shops = Shop.all
 
     respond_to do |format|
       format.html # index.html.erb
