@@ -1,17 +1,12 @@
-<Doctype HTML>
+<!Doctype HTML>
 <HTML>
 	<HEAD>
 		<!-- Latest compiled and minified CSS -->
-		<%= stylesheet_link_tag    'bootstrap.min', media: 'all', 'data-turbolinks-track' => true %>
+				<%= stylesheet_link_tag    'bootstrap.min', media: 'all', 'data-turbolinks-track' => true %>
 		<%= stylesheet_link_tag    'bootstrap-theme.min'%>
-		<%= stylesheet_link_tag    'template_2'%>
+		<%= stylesheet_link_tag    'template_3'%>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-		<!-- <link rel="stylesheet" href="bootstrap.min.css">
 
-		<!-- Optional theme -->
-<!-- 		<link rel="stylesheet" href="bootstrap-theme.min.css">
-		<link rel="stylesheet" type="text/css" href="common.css"> -->
- 
 	</HEAD>
 	<body>
 		<nav class="navbar navbar-default">
@@ -33,9 +28,8 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
-		        <li class="active"><a href="#">Home</a></li>
-		        <li><a href="">About Us</a></li>
-		        <li><a href="#">Contact Us</a></li>
+		        <li class="active"><a href="#"><span>Home</span></a></li>
+		        <li><a href="/contact_us"><span>Contact Us</span></a></li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
@@ -48,16 +42,13 @@
         <li data-target="#myCarousel" data-slide-to="1" class=""></li>
         <li data-target="#myCarousel" data-slide-to="2" class=""></li>
       </ol>
+            <% if !@shop.shop_images.blank?%>
       <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <%= image_tag @shop.shop_images.first.image_url, :class=> "img-responsive third-slide" if  !@shop.shop_images.blank?%>
+      <% @shop.shop_images.each_with_index do |shop_image, index|%>
+        <div class="item <% if index == 0%>active<%end%>">
+          <%= image_tag shop_image.image_url, :class=> "img-responsive third-slide" if  !shop_image.blank?%>
         </div>
-        <div class="item">
-          <%= image_tag @shop.shop_images.first.image_url, :class=> "img-responsive third-slide" if  !@shop.shop_images.blank?%>
-        </div>
-        <div class="item">
-        	<%= image_tag @shop.shop_images.first.image_url, :class=> "img-responsive third-slide" if  !@shop.shop_images.blank?%>
-        </div>
+        <%end%>
       </div>
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -67,22 +58,22 @@
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
+      <%end%>
     </div>
 
-		<div class="container main-content">
-			<div class="latest_offers">
-				<div class="row">
-					<div class="section_heading about_title"><h3>About Us</h3></div>
-					<p class="about_content">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-				</div>
-			</div>
+<%= yield %>
 
-		</div>
-
-		<footer class="clearfix">
+	<footer class="clearfix">
 			<div class="container">
 				<div class="row">
-					<p class="col-lg-12 copyright">Copyright @ 2015</p>
+					<div class="pull-right col-lg-3 address">
+						<p>Way To Restaurant</p>
+     				<span><%= @shop.address%></span>
+					</div>
+					<div class="pull-right col-lg-3 timings">
+					
+					</div>
+					<p class="pull-left col-lg-6 copyright">Copyright @ 2015</p>
 				</div>
 			</div>
 		</footer>

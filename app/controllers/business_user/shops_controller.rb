@@ -12,7 +12,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
   def show
     @shop = Shop.find(params[:id])
 
-    render :template => "templates/#{@shop.template}", :layout => false
+    render :template => "templates/#{@shop.template}", :layout => "#{@shop.template}"
   end
 
   def new
