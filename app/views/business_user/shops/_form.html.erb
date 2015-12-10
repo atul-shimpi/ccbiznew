@@ -1,4 +1,4 @@
-
+<%= tinymce_assets %>
 <%= form_for @shop, url: business_shop_action(@shop, params[:action]),  :html => { :class => 'newform' , multipart: true  } do |f| %>
   <div class="form-group">
       <%= f.label :name, :class => 'control-label' %><span class="asterix">*</span>
@@ -24,7 +24,7 @@
   </div>
   <div class="form-group">
       <%= f.label :info, :class => 'control-label' %>
-      <%= f.text_area :info, :class => 'text_field form-control', :rows => '3' %>
+      <%= f.text_area :info, :class => 'text_field form-control tinymce', :rows => 40, :cols => 120  %>
   </div>
   <div class="form-group">
       <%= f.label :avatar, :class => 'control-label' %>
@@ -53,6 +53,6 @@
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to "cancel", business_user_shops_path, :class => 'btn btn-default' %>
 <% end %>
-                                
+<%= tinymce %>       
 
 
