@@ -24,6 +24,7 @@
 //= require bootstrap-datepicker
 //= require jquery.validate.min
 //= require main
+//= require tinymce-jquery
 //= require helper
 //= require_tree .
             
