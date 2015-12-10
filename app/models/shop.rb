@@ -1,4 +1,6 @@
 class Shop < ActiveRecord::Base
+	geocoded_by :address   # can also be an IP address
+	after_validation :geocode          # auto-fetch coordinates
 	mount_uploader :avatar, AvatarUploader
 	belongs_to :business_user
 	belongs_to :admin

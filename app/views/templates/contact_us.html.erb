@@ -32,12 +32,14 @@
 						Telephone: <%= @shop.phone%><br>
 						E-mail: <%= @shop.business_user.email%>
 					</div>
-					<div id="googleMap" style="height:270px;margin-top:60px;border-radius: 3px;"></div>
+					<div id="googleMap" style="height:270px;margin-top:60px;border-radius: 3px;">
+						<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@shop.latitude}%2C#{@shop.longitude}" %>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<!-- <footer class="clearfix">
+		<footer class="clearfix">
 			<div class="container">
 				<div class="row">
 					<div class="pull-right col-lg-3 address">
@@ -50,10 +52,10 @@
 					<p class="pull-left col-lg-6 copyright">Copyright @ 2015</p>
 				</div>
 			</div>
-		</footer>
-				<script src="jquery.min.js"></script>
-		<!-- Latest compiled and minified JavaScript -->
-	<!--	<script src="bootstrap.min.js"></script>
+
+
+		<!-- Latest compiled and minified JavaScript
+	<script src="bootstrap.min.js"></script>
 <script>
 function initialize() {
   var mapProp = {
