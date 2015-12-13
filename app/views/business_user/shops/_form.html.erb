@@ -23,6 +23,24 @@
       <%= f.text_area :address, :class => 'text_field form-control', :rows => '3' %>
   </div>
   <div class="form-group">
+      <%= f.label :city, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.text_field :city, :class => 'text_field form-control', :placeholder => 'City', :required => '' %>
+  </div>
+  <div class="form-group">
+      <%= f.label :state, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.text_field :state, :class => 'text_field form-control', :placeholder => 'State', :required => '' %>
+  </div>
+  <div class="form-group">
+      <%= f.label :country, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.text_field :country, :class => 'text_field form-control', :placeholder => 'Country', :required => '' %>
+  </div>
+  <div class="form-group">
+      <%= f.label :zip, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.text_field :zip, :class => 'text_field form-control', :placeholder => 'Zip', :required => '' %>
+  </div>
+
+
+  <div class="form-group">
       <%= f.label :info, :class => 'control-label' %>
       <%= f.text_area :info, :class => 'text_field form-control tinymce', :rows => 40, :cols => 120  %>
   </div>
@@ -31,6 +49,24 @@
       <%= f.file_field :avatar %>
       <%= f.hidden_field :avatar_cache %>
   </div>
+  <div class="form-group">
+      <%= f.label :facebook, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.text_field :facebook, :class => 'text_field form-control', :placeholder => 'Facebook', :required => '' %>
+  </div>
+  <div class="form-group">
+      <%= f.label :linkedin, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.text_field :linkedin, :class => 'text_field form-control', :placeholder => 'Linkedin', :required => '' %>
+  </div>
+<div class="form-group">
+      <%= f.label :google, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.text_field :google, :class => 'text_field form-control', :placeholder => 'Ggoogle+', :required => '' %>
+  </div>
+<div class="form-group">
+      <%= f.label :twitter, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.text_field :twitter, :class => 'text_field form-control', :placeholder => 'Twitter', :required => '' %>
+  </div>
+
+
   <div class="form-group clearfix">
     <div class="col-lg-3 col-xs-3 text-center">
       <%= f.radio_button :template, 'template_1' %><br> 
@@ -53,6 +89,6 @@
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to "cancel", business_user_shops_path, :class => 'btn btn-default' %>
 <% end %>
-<%= tinymce %>       
+<%= tinymce plugins: ["uploadimage"] %>
 
 

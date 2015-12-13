@@ -15,6 +15,8 @@ class HomeController < ApplicationController
 
 	def contact_us
 		@shop = Shop.find_by_subdomain(request.subdomain)
+		@location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
+		binding.pry
 		render :template => "templates/contact_us", :layout => "#{@shop.template}"
 	end
 end

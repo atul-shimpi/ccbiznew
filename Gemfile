@@ -33,6 +33,8 @@ gem 'carrierwave'
 gem 'geocoder'
 gem 'tinymce-rails'
 gem "font-awesome-rails"
+gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
+
 # gem 'subdomain-fu', :git => "git://github.com/mbleigh/subdomain-fu.git"
 # gem 'sass-rails', '~> 5.0'
 

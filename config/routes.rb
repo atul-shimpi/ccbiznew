@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :offers    
     resources :shop_images    
   end
+  post '/tinymce_assets' => 'tinymce_assets#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
