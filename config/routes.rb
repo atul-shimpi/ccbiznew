@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :shops
     resources :offers    
     resources :shop_images    
+    resources :business_users    
   end
   namespace :admin do 
     resources :base
