@@ -14,12 +14,12 @@
           <%= link_to "Back", admin_shops_path, :class => 'btn btn-primary' %>
         </div>
         <!-- /.panel-heading -->
-        <div class="panel-body">
+        <div class="panel-body" id="container1">
           
-          <div class="row">
+          <div class="row" id="items1">
             <% if !@shop_images.blank?%>
             <% @shop_images.each do |shop_image| %>
-            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 list">
               <div class="image-wrapper clearfix">
                 <%= image_tag shop_image.image_url , :class => "img-responsive" if shop_image.image? %>
                 <%= link_to "Delete",

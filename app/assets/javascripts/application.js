@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.min
+//= require 1.9.2-jquery-ui
 //= require bootstrap-sprockets
 //= require raphael-min
 //= require morris.min

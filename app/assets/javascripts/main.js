@@ -54,6 +54,21 @@ jQuery( document ).ready(function( $ ) {
 
 });
 
-jQuery( document ).ready(function( $ ) {
-$(".newform").validate();
+$(function () {
+        $("#items1").sortable({
+                containment: "#container1"
+        });
+        
+        $("#items1").disableSelection();
 });
+
+// jQuery( document ).ready(function( $ ) {
+// $(".newform").validate({
+// 	rules: {
+
+// 	},
+// 	messages: {
+		
+// 	}
+// });
+// });
