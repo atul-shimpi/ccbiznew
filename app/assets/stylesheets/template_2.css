@@ -125,15 +125,13 @@ footer {
 	padding: 10px 0px;
 	color: rgb(255, 255, 255);
 }
-.address {
-	text-align: right;
-}
 .address p {
 	line-height: 1;
 	text-align: left;
 }
 .address span {
 	line-height: 1.8;
+	margin-left: 20px;
 }
 .copyright {
 	text-align: center;

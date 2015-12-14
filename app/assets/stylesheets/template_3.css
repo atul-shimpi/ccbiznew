@@ -176,6 +176,7 @@ footer {
 }
 .address span {
 	line-height: 1.8;
+	margin-left: 20px;
 }
 .copyright {
 	text-align: left;
