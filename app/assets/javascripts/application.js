@@ -25,6 +25,7 @@
 //= require jquery.validate.min
 //= require main
 //= require tinymce-jquery
+//= require countries
 //= require helper
 //= require_tree .
             
