@@ -166,6 +166,13 @@ footer {
 	padding: 10px 0px;
 	color: rgb(255, 255, 255);
 }
+.panel-body {
+	padding-left: 0;
+	padding-top: 7px;
+}
+footer .panel-body a {
+	margin-right: 10px;
+}
 .copyright {
 	text-align: center;
 }

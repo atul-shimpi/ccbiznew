@@ -7,8 +7,6 @@
     <div class="form-group">
       <%= f.label :subdomain, :class => 'control-label' %><span class="asterix">*</span>
       <%= f.text_field :subdomain, :class => 'text_field form-control', :placeholder => 'Subdomain', :required => '' %>
-      <p class="help-block">Ex: subdomain.cc.com</p>
-
   </div>
   <div class="form-group">
     <%= f.label :category_id %><br />
@@ -22,15 +20,13 @@
       <%= f.label :address, :class => 'control-label' %>
       <%= f.text_area :address, :class => 'text_field form-control', :rows => '3' %>
   </div>
-  
-  
   <div class="form-group">
       <%= f.label :country, :class => 'control-label' %><span class="asterix">*</span>
-      <select onchange="print_state('state',this.selectedIndex);" id="country" name ="shop[country]" selected="<%= @shop.country%>"></select>
+      <select onchange="print_state('state',this.selectedIndex);" id="country" name ="shop[country]" selected="<%= @shop.country%>" class="form-control"></select>
   </div>
   <div class="form-group">
       <%= f.label :state, :class => 'control-label' %><span class="asterix">*</span>
-      <select name ="shop[state]" id ="state"></select>
+      <select name ="shop[state]" id ="state" class="form-control"></select>
   </div>
   <div class="form-group">
       <%= f.label :city, :class => 'control-label' %><span class="asterix">*</span>
@@ -40,11 +36,9 @@
       <%= f.label :zip, :class => 'control-label' %><span class="asterix">*</span>
       <%= f.text_field :zip, :class => 'text_field form-control', :placeholder => 'Zip', :required => '' %>
   </div>
-
-
   <div class="form-group">
       <%= f.label :info, :class => 'control-label' %>
-      <%= f.text_area :info, :class => 'text_field form-control tinymce', :rows => 40, :cols => 120  %>
+      <%= f.text_area :info, :class => 'text_field form-control tinymce', :rows => 10 %>
   </div>
   <div class="form-group">
       <%= f.label :avatar, :class => 'control-label' %>
@@ -59,16 +53,14 @@
       <%= f.label :linkedin, :class => 'control-label' %><span class="asterix">*</span>
       <%= f.text_field :linkedin, :class => 'text_field form-control', :placeholder => 'Linkedin' %>
   </div>
-<div class="form-group">
+  <div class="form-group">
       <%= f.label :google, :class => 'control-label' %><span class="asterix">*</span>
       <%= f.text_field :google, :class => 'text_field form-control', :placeholder => 'Ggoogle+' %>
   </div>
-<div class="form-group">
+  <div class="form-group">
       <%= f.label :twitter, :class => 'control-label' %><span class="asterix">*</span>
       <%= f.text_field :twitter, :class => 'text_field form-control', :placeholder => 'Twitter' %>
   </div>
-
-
   <div class="form-group clearfix">
     <div class="col-lg-3 col-xs-3 text-center">
       <%= f.radio_button :template, 'template_1' %><br> 

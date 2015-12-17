@@ -121,6 +121,13 @@ footer {
 	padding: 10px 0px;
 	color: rgb(255, 255, 255);
 }
+.panel-body {
+	padding-left: 0;
+	padding-top: 7px;
+}
+footer .panel-body a {
+	margin-right: 10px;
+}
 .address p {
 	line-height: 1;
 	text-align: left;
