@@ -188,8 +188,17 @@ footer .panel-body a {
 .copyright {
 	text-align: left;
 }
-.tab_title {
+
+/* Contact us */
+#googleMap img {
+	height: 100%;
+}
+.enquiry_form {
+	margin-bottom: 50px;
+}
+.main-content p.tab_title {
 	font-weight: bold;
 	font-size: 20px;
 	text-decoration: underline;
+	text-align: left;
 }

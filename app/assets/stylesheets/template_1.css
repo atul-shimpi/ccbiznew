@@ -137,6 +137,19 @@ footer .panel-body a {
 	margin-left: 20px;
 }
 .copyright {
-	text-align: right;
-	padding-right: 236px;
+	text-align: left;
+}
+
+/* Contact us */
+#googleMap img {
+	height: 100%;
+}
+.enquiry_form {
+	margin-bottom: 50px;
+}
+.main-content p.tab_title {
+	font-weight: bold;
+	font-size: 20px;
+	text-decoration: underline;
+	text-align: left;
 }

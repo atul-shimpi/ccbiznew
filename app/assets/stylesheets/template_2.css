@@ -145,12 +145,24 @@ footer .panel-body a {
 }
 
 
-
-
 /* Common */
 .section_heading.about_title {
 	text-align: left;
 }
 p.about_content {
 	text-align: left;
+}
+
+/* Contact us */
+.main-content p.tab_title {
+	font-weight: bold;
+	font-size: 20px;
+	text-decoration: underline;
+	text-align: left;
+}
+.enquiry_form {
+	margin-bottom: 50px;
+}
+#googleMap img {
+	height: 100%;
 }
