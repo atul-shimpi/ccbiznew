@@ -140,10 +140,6 @@ footer .panel-body a {
 	line-height: 1.8;
 	margin-left: 20px;
 }
-.copyright {
-	text-align: center;
-}
-
 
 /* Common */
 .section_heading.about_title {
@@ -154,6 +150,9 @@ p.about_content {
 }
 
 /* Contact us */
+.contact_page {
+	margin: 60px -15px;
+}
 .main-content p.tab_title {
 	font-weight: bold;
 	font-size: 20px;

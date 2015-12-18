@@ -189,7 +189,18 @@ footer .panel-body a {
 	text-align: left;
 }
 
+/* Common */
+.section_heading.about_title {
+	text-align: left;
+}
+p.about_content {
+	text-align: left;
+}
+
 /* Contact us */
+.contact_page {
+	margin: 60px -15px;
+}
 #googleMap img {
 	height: 100%;
 }
