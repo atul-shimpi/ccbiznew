@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 	def index
-		@shop = Shop.find_by_subdomain(request.subdomain)
+		subdomain = request.subdomain.split(".").last
+		@shop = Shop.find_by_subdomain(subdomain)
 		if !@shop.blank?
     		render :template => "templates/#{@shop.template}", :layout => "#{@shop.template}"
 		else
