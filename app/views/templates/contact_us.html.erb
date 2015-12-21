@@ -33,25 +33,32 @@
 						E-mail: <%= @shop.business_user.email%>
 					</div>
 					<div id="googleMap" style="height:270px;margin-top:60px;border-radius: 3px;">
-						<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.first}%2C#{@location.last}" %>
+						<%#= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.first}%2C#{@location.last}" %>
 					</div>
 				</div>
 			</div>
 		</div>
 
 
-		<!-- Latest compiled and minified JavaScript
+	 <script src="http://maps.googleapis.com/maps/api/js"></script>
 	<script src="bootstrap.min.js"></script>
 <script>
 function initialize() {
+var myCenter = new google.maps.LatLng(<%= @location.first%>,<%= @location.last%>);
   var mapProp = {
-    center:new google.maps.LatLng(51.508742,-0.120850),
-    zoom:5,
+    center:new google.maps.LatLng(<%= @location.first%>,<%= @location.last%>),
+    zoom:15,
     mapTypeId:google.maps.MapTypeId.ROADMAP
   };
   var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  var marker=new google.maps.Marker({
+  position:myCenter,
+  });
+
+marker.setMap(map);
 }
 google.maps.event.addDomListener(window, 'load', initialize);
+
+
 </script>
-	</body>
-</HTML>-->
+
