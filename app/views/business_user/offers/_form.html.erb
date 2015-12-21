@@ -1,4 +1,4 @@
-<%= form_for @offer, url: business_shop_offers_action(@offer, params[:action]),:html => { :class => 'newform', :id => '', multipart: true, :novalidate => ''  } do |f| %>
+<%= form_for @offer, :html => { :class => 'newform', :id => '', multipart: true, :novalidate => ''  } do |f| %>
   <fieldset>
     <div class="form-group">
       <%= f.label :name, :class => 'control-label' %><span class="asterix">*</span>
@@ -12,7 +12,7 @@
       <%= f.label :description %><br />
       <%= f.text_area :description, :class => 'text_field form-control' %>
     </div>
-    <div class="alert alert-error" id="start_alert" style="display:none">
+    <div class="alert alert-error" id="start_alertew" style="display:none">
       <strong></strong>
     </div>
     <div class="form-group">
