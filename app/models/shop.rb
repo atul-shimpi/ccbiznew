@@ -1,6 +1,14 @@
 class Shop < ActiveRecord::Base
+	reverse_geocoded_by :latitude, :longitude do |obj,results|
+  if geo = results.first
+    obj.city    = geo.city
+    obj.zip = geo.postal_code
+    obj.country = geo.country_code
+  end
+end
+after_validation :reverse_geocode
 	geocoded_by :address   # can also be an IP address
-	after_validation :geocode          # auto-fetch coordinates
+	before_validation :geocode          # auto-fetch coordinates
 	mount_uploader :avatar, AvatarUploader
 	belongs_to :business_user
 	belongs_to :admin

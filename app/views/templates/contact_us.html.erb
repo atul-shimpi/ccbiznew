@@ -39,14 +39,14 @@
 			</div>
 		</div>
 
-
+<% if !@shop.latitude.blank? || !@shop.longitude.blank? %>
 	 <script src="http://maps.googleapis.com/maps/api/js"></script>
 	<script src="bootstrap.min.js"></script>
 <script>
 function initialize() {
-var myCenter = new google.maps.LatLng(<%= @location.first%>,<%= @location.last%>);
+var myCenter = new google.maps.LatLng(<%= @shop.latitude%>,<%= @shop.longitude%>);
   var mapProp = {
-    center:new google.maps.LatLng(<%= @location.first%>,<%= @location.last%>),
+    center:new google.maps.LatLng(<%= @shop.latitude%>,<%= @shop.longitude%>),
     zoom:15,
     mapTypeId:google.maps.MapTypeId.ROADMAP
   };
@@ -61,4 +61,5 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 
 </script>
+<%end%>
 
