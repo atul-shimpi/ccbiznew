@@ -1,1 +1,55 @@
-show_single
+<!-- Page Content -->
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Shop</h1>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+    	<div class="col-lg-2">
+    		<img src="assets/images/aboutus.jpg">
+    	</div>
+      <div class="col-lg-10">
+        <dl class="dl-horizontal">
+          <dt><strong>Name:</strong></dt>
+          <dd></dd>
+          <dt><strong>Phone:</strong></dt>
+          <dd></dd>
+          <dt><strong>Pan number:</strong></dt>
+          <dd></dd>
+          <dt><strong>Voting number:</strong></dt>
+          <dd></dd>
+          <dt><strong>UID number:</strong></dt>
+          <dd></dd>
+          <dt><strong>Skills:</strong></dt>
+          <dd></dd>
+          <dt><strong>Address:</strong></dt>
+          <dd></dd>
+          <dt><strong>City:</strong></dt>
+          <dd></dd>
+          <dt><strong>State:</strong></dt>
+          <dd></dd>
+          <dt><strong>Country:</strong></dt>
+          <dd></dd>
+          <dt><strong>Zip:</strong></dt>
+          <dd></dd>
+        </dl>
+        <div class="form-actions">
+          <%= link_to "Back", shops_path, :class => 'btn btn-primary'  %>
+          <%= link_to "Edit", shops_path, :class => 'btn btn-primary' %>
+          <%= link_to "Destroy", shops_path,
+          :method => 'delete',
+          :confirm => 'Are you sure?' ,
+          :class => 'btn btn-danger' %>
+        </div>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
