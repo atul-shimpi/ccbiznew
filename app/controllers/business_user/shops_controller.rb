@@ -44,7 +44,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
 
   def update
     @shop = current_business_user.shops.find(params[:id])
-
+    
     respond_to do |format|
       if @shop.update_attributes(shop_params)
         format.html { redirect_to business_user_shops_path, notice: 'Shop was successfully updated.' }
@@ -72,7 +72,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
    private
 
   def shop_params
-    params.require(:shop).permit(:name, :phone, :address, :info, :user_id, :avatar, :category_id, :template, :subdomain, :city, :state, :country, :zip, :facebook, :linkedin, :google, :twitter)
+    params.require(:shop).permit(:name, :phone, :address, :info, :user_id, :avatar, :category_id, :template, :subdomain, :city, :state, :country, :zip, :facebook, :linkedin, :google, :twitter, :shoptype)
   end
 
 
