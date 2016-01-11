@@ -6,6 +6,9 @@
 body {
   background-color: #333;
 }
+img {
+  width: 100%;
+}
 .btn-primary {
   background-color: #ccc;
   color: #000;
@@ -182,4 +185,34 @@ table.dataTable thead .sorting::after {
 }
 .dataTables_wrapper .col-sm-12 {
   overflow-y: scroll;
+}
+.person_details {
+  margin-bottom: 40px;
+  padding: 25px 10px;
+  border: 1px solid #000;
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
+.bg_wrapper{
+  background-color: rgba(255, 255, 255, 0.5);
+  border-collapse: collapse;
+  border-radius: 15px;
+  margin-top: 30px;
+  padding: 25px 15px;
+  span {
+    display: block;
+    h4 {
+      display: inline-block;
+    }
+    &:first-child h4 {
+      margin-top: 0;
+    }
+    &:last-child h4 {
+      display: block;
+    }
+  }
+  .more_link {
+    margin: 10px 0;
+  }
 }
