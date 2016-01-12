@@ -7,6 +7,7 @@
         </div>
         <div class="panel-body">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "newform"}) do |f| %>
+          <%= devise_error_messages! %>
           <fieldset>
             <div class="form-group">
               <%= f.email_field :email, :class => 'form-control', autofocus: true, :placeholder => 'E-mail' %>

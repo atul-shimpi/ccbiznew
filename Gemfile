@@ -46,7 +46,8 @@ gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+#sendgrid integration
+gem 'sendgrid'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
