@@ -33,7 +33,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
 
     respond_to do |format|
       if @shop.save
-        format.html { redirect_to business_user_shop_path, notice: 'Shop was successfully created.' }
+        format.html { redirect_to business_user_shops_path, notice: 'Shop was successfully created.' }
         format.json { render json: @shop, status: :created, location: @shop }
       else
         format.html { render action: "new" }
