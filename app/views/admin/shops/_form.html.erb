@@ -42,7 +42,7 @@
 
   <div class="form-group">
       <%= f.label :info, :class => 'control-label' %>
-      <%= f.text_area :info, :class => 'text_field form-control tinymce', :rows => 40, :cols => 120  %>
+      <%= f.text_area :info, :class => 'text_field form-control tinymce', :rows => 10  %>
   </div>
   <div class="form-group">
       <%= f.label :avatar, :class => 'control-label' %>
@@ -50,20 +50,20 @@
       <%= f.hidden_field :avatar_cache %>
   </div>
   <div class="form-group">
-      <%= f.label :facebook, :class => 'control-label' %><span class="asterix">*</span>
-      <%= f.text_field :facebook, :class => 'text_field form-control', :placeholder => 'Facebook' %>
+      <%= f.label :facebook, :class => 'control-label' %>
+      <%= f.text_field :facebook, :class => 'text_field form-control', :type => 'url', :pattern => 'https?://.+', :placeholder => 'http://www.example.com' %>
   </div>
   <div class="form-group">
-      <%= f.label :linkedin, :class => 'control-label' %><span class="asterix">*</span>
-      <%= f.text_field :linkedin, :class => 'text_field form-control', :placeholder => 'Linkedin' %>
+      <%= f.label :linkedin, :class => 'control-label' %>
+      <%= f.text_field :linkedin, :class => 'text_field form-control', :type => 'url', :pattern => 'https?://.+', :placeholder => 'http://www.example.com' %>
   </div>
 <div class="form-group">
-      <%= f.label :google, :class => 'control-label' %><span class="asterix">*</span>
-      <%= f.text_field :google, :class => 'text_field form-control', :placeholder => 'Ggoogle+' %>
+      <%= f.label :google, :class => 'control-label' %>
+      <%= f.text_field :google, :class => 'text_field form-control', :type => 'url', :pattern => 'https?://.+', :placeholder => 'http://www.example.com' %>
   </div>
 <div class="form-group">
-      <%= f.label :twitter, :class => 'control-label' %><span class="asterix">*</span>
-      <%= f.text_field :twitter, :class => 'text_field form-control', :placeholder => 'Twitter' %>
+      <%= f.label :twitter, :class => 'control-label' %>
+      <%= f.text_field :twitter, :class => 'text_field form-control', :type => 'url', :pattern => 'https?://.+', :placeholder => 'http://www.example.com' %>
   </div>
 
 
