@@ -216,3 +216,18 @@ table.dataTable thead .sorting::after {
     margin: 10px 0;
   }
 }
+#error_explanation {
+  margin-bottom: 25px;
+  h2 {
+    font-size: 16px;
+    color: rgb(255, 0, 0);
+    margin-top: 0;
+  }
+  ul {
+    padding-left: 0px;
+    li {
+      color: rgb(255, 0, 0);
+      list-style-type: none;
+    }
+  }
+}
