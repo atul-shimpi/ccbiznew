@@ -52,6 +52,16 @@ jQuery( document ).ready(function( $ ) {
 	        $('#date-end').datepicker('hide');
 	    });
 
+	$('#event-date')
+	    .datepicker()
+	    .on('changeDate', function(ev){	        
+	            
+	            endDate = new Date(ev.date);
+	            $('#event-date-display').val($('#event-date').data('date'));
+	        
+	        $('#event-date').datepicker('hide');
+	    });
+
 });
 
 $(function () {

@@ -13,4 +13,11 @@ module ApplicationHelper
       admin_offers_path
     end
 	end
+  def nav_path_for_event
+  if business_user_signed_in?
+       business_user_events_path
+    elsif admin_signed_in?
+      admin_events_path
+    end
+  end
 end

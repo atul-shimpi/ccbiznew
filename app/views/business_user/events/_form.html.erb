@@ -1,0 +1,39 @@
+<%= form_for @event, url: business_shop_events_action(@event, params[:action]),:html => { :class => '' , multipart: true  } do |f| %>
+  <fieldset>
+    <div class="form-group">
+      <%= f.label :name, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.text_field :name, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :shop_id %><br />
+      <%= f.collection_select(:shop_id, current_business_user.shops.all, :id, :name, {:prompt => 'Select'}, {:class => 'form-control'}) %>
+    </div>
+    <div class="form-group">
+      <%= f.label :discription %><br />
+      <%= f.text_area :discription, :class => 'text_field form-control' %>
+    </div>
+    <div class="alert alert-error" id="start_alertew" style="display:none">
+      <strong></strong>
+    </div>
+    <div class="form-group">
+      <%= f.label :event_date %><span class="asterix">*</span><br />
+      <div class="date"><%= f.text_field :event_date, :class => 'text_field date form-control', :id => 'event-date-display', :required => '' %>
+      <a href="#" class="btn small calendar" id="event-date" data-date-format="yyyy-mm-dd" data-date=""></a></div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :venue %>
+      <br />
+      <input type="checkbox" name="isdiff_venue" id="isdiff_venue" > Venue Other Shop Address
+      <br />
+      <%= f.text_area :venue, :class => 'text_field form-control',:id => "event_venue" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :photo, :class => 'control-label' %>
+      <%= f.file_field :photo %>
+      <%= f.hidden_field :photo_cache %>
+  </div>    
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to "cancel", business_user_offers_path, :class => 'btn btn-default' %>
+  </fieldset>
+<% end %>

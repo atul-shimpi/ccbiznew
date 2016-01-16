@@ -7,12 +7,13 @@ Rails.application.routes.draw do
   resources :dashboard
   resources :shops
   resources :offers
-
+  resources :events
 
   namespace :business_user do 
     resources :base
     resources :shops
-    resources :offers    
+    resources :offers
+    resources :events    
     resources :shop_images    
     resources :business_users    
   end
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
     resources :base
     resources :shops
     resources :offers    
+    resources :events
     resources :shop_images 
     resources :single_business_users   
   end
