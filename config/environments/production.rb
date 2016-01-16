@@ -38,6 +38,7 @@ Rails.application.configure do
   config.serve_static_files = false
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+  config.assets.precompile = ['*.js', '*.scss', '*.css.erb']
 
 
   # Specifies the header that your server uses for sending files.
