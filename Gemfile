@@ -34,6 +34,8 @@ gem 'geocoder'
 gem 'tinymce-rails'
 gem "font-awesome-rails"
 gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
+gem 'ratyrate'
+
 
 # gem 'subdomain-fu', :git => "git://github.com/mbleigh/subdomain-fu.git"
 # gem 'sass-rails', '~> 5.0'
@@ -48,6 +50,9 @@ gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 # gem 'capistrano-rails', group: :development
 #sendgrid integration
 gem 'sendgrid'
+group :production do
+  gem 'rails_12factor'
+end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
