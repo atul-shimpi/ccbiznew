@@ -1,0 +1,38 @@
+<!-- Page Content -->
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Offer</h1>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+      <div class="col-lg-12">
+        <dl class="dl-horizontal">
+          <dt><strong>Name:</strong></dt>
+          <dd><%= @event.name %></dd>
+          <dt><strong>description:</strong></dt>
+          <dd><%= @event.discription %></dd>
+          <dt><strong>Shop:</strong></dt>
+          <dd><%= @event.shop.name %></dd>
+        </dl>
+        <div class="form-actions">
+          <%= link_to "back", business_user_events_path, :class => 'btn btn-primary'  %>
+          <%= link_to "Edit",
+                       edit_business_user_event_path(@event), :class => 'btn btn-primary' %>
+          <%= link_to "destroy",
+                      business_user_offer_path(@event),
+                      :method => 'delete',
+                      :confirm => 'Are you sure?' ,
+                      :class => 'btn btn-danger' %>
+        </div>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->

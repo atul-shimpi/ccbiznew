@@ -36,7 +36,7 @@ img {
   border-bottom: none;
 }
 #page-wrapper {
-  background-image: url("money3.jpg");
+  background: asset_url('money3.jpg');
   background-size: cover;
   min-height: 594px;
 }

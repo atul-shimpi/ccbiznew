@@ -28,5 +28,7 @@
 //= require tinymce-jquery
 //= require countries
 //= require helper
+//= require jquery.raty
+//= require ratyrate
 //= require_tree .
             
