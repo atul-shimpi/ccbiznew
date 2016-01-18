@@ -1,0 +1,49 @@
+<!-- <link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700"> -->
+<!-- <link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700"> -->
+    <%= stylesheet_link_tag    'bootstrap.min', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'bootstrap-theme.min'%>
+    <%= stylesheet_link_tag    'font-awesome.min'%>
+    <%= stylesheet_link_tag    'mandir'%>
+    <%= stylesheet_link_tag    'event'%>
+    <%= stylesheet_link_tag    'lightbox'%>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+</head>
+<body>
+<header>
+  <div class="logo-container">
+      <div class="container"> 
+        <p class="text-center">Shree Jalaram Mandir Trust Durg</p>
+      </div>
+  </div>
+  <div class="navbar">
+    <div>
+     <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="http://<%= @shop.subdomain%>.<%= request.domain%>">Home</a></li>
+          <li><a href="/about_us">About US</a></li>
+          <li><a href="#">About Trust</a></li>
+          <li><a href="#">Temple</a></li>
+          <li><a href="#">Annkshetra</a></li>
+          <li><a href="#">Life story of Bapa</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/shop_events">Events</a></li>
+          <li><a href="/donation">Donation</a></li>
+          <li><a href="/contact_us">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+<%= yield %>
+<footer id="footer" class="top-space">
+  <div class="footer1 clearfix">
+    <ul class="nav navbar-nav text-center">
+      <li class="active"><a href="#">Standing Commitees</a></li>
+      <li><a href="#">Upcoming Events</a></li>
+      <li><a href="#">Matrimonial</a></li>
+      <li><a href="#">Upcoming Projects</a></li>
+    </ul>
+  </div>
+</footer

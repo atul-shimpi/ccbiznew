@@ -1,0 +1,31 @@
+<main class="home-section">
+  <section class="container">
+    <p class="text-center">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+  </section>
+
+  <section>
+    <div class="container sectionBox">
+      <div class="upcoming-proj content-center sidebars">
+        <h4>Upcoming Projects</h4>
+     <% @shop.events.each do |event|%>
+        <div class="upcomng-proj-container">
+          <img src="<%= event.photo_url%>" class="flex-basis50" width="20px" height="100px">
+          <p class="flex-basis50"><%= event.discription%>.</p>
+        </div>
+        <%end%>
+      </div>
+      <div class="upcoming-proj content-center">
+        <img class="img-responsive" src="/assets/bapa1.jpg" title="" alt="">
+      </div>
+      <div class="upcoming-proj content-center sidebars">
+        <h4>Upcoming Events</h4>
+        <% @shop.events.each do |event|%>
+        <div class="upcomng-proj-container">
+          <img src="<%= event.photo_url%>" class="flex-basis50" width="20px" height="100px">
+          <p class="flex-basis50"><%= event.discription%>.</p>
+        </div>
+        <%end%>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,141 @@
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Open sans", Helvetica, Arial;
+}
+p {
+	font-size: 15px;
+}
+main {
+	margin: 40px 0;
+}
+header {
+	background: url("/assets/bg.jpg");
+	width: auto;
+	height: 100%;
+	min-height: 121px;
+	max-height: 121px;
+}
+.logo-container {
+	/*background: #CAC8FF;*/
+	padding: 20px 0;
+}
+.navbar {
+	/*background: #3A35AF;*/
+  background: rgba(255, 255, 255, 0.6) none repeat scroll 0% 0%;
+	width: 74%;
+	text-align: center;
+	border-radius: 4px;
+	min-height: auto;
+	margin: 0px auto 20px;
+}
+.navbar-nav {
+	/*padding-left: 90px;*/
+}
+.navbar-inverse {
+	background:transparent;
+}
+.navbar-nav>li>a {
+	font-size: 14px;
+	color: rgb(0, 0, 0);
+	padding-top: 8px;
+	padding-bottom: 8px;
+	line-height: 20px;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+  background: none;
+  outline: none;
+}
+.navbar-nav>li>a:hover {
+	background: none;
+	text-decoration: underline;
+}
+.navbar-inverse{
+	border:none !important;	
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-nav>li:hover { 
+	background: none;
+}
+.container.sectionBox {
+	display: flex;
+}
+.content-center {
+	flex-basis: 33.33%;
+	margin: 0 2rem;
+	background: #F7F7F7;
+}
+.content-center img {
+		max-width: 340px;
+}
+.upcomng-proj-container {
+	display: flex;
+	padding: 10px;
+}
+.upcomng-proj-container img {
+	margin-right: 5px;
+}
+.sidebars h4 {
+	padding: 10px;
+  background: #ccc;
+  border-radius: 4px 4px 0 0;
+  margin-top: 0;
+}
+.flex-basis50 {
+	flex-basis: 50%;
+}
+
+img {
+	max-width: 100%;
+}
+img.pull-right {
+	margin-left: 10px;
+}
+img.pull-left {
+	margin-right: 10px;
+}
+.footer1 {
+	background: transparent url("/assets/bg.jpg") repeat scroll 0% 0%;
+	font-size: 12px;
+	color: #999;
+	width: auto;
+	/*height: 100%;*/
+	min-height: 44px;
+}
+.footer1 a {
+	color: #ccc;
+}
+footer ul li {
+	list-style: none;
+}
+.footer1 .navbar-nav {
+  padding-left: 358px;
+}
+.footer1 li a {
+    line-height: 46px;
+}
+.align-left {
+	text-align: left;
+}
+
+/*About Page Styling*/
+.about-section p {
+	margin: 20px 0;
+	text-align: justify;	
+}
+
+/*Donation Page Styling*/
+.donation-section {
+	height: 386px;
+}
+
+/*Gallery Page Styling*/
+.gallery_images {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.gallery_images img {
+	border: 1px solid #5CB1E7;
+  padding: 2px;
+}
+.gallery_images img:hover {
+  border: 1px solid #5bc0de;
+  opacity: 0.8;
+}

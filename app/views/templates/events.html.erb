@@ -1,0 +1,102 @@
+<div class="container main-content events_page">
+	<div class="row">
+    <div class="events_container col-lg-8">
+      <h3>Events</h3>
+      <% @shop.events.each do |event|%>
+      <div class="events_details clearfix">
+        <div class="col-lg-2 col-sm-2">
+          <img src="<%= event.photo_url%>" alt="">
+        </div>
+    		<div class="col-lg-10 col-sm-10">
+          <span><h4>Date:&nbsp;</h4><%= event.event_date%></span>
+          <span><h4>Venue:&nbsp;</h4><% event.venue.strip.blank? ? event.shop.address : event.venue%></span>
+          <span><h4>Description</h4> <%= event.discription%> </span>
+    		</div>
+      </div>
+      <%end%>
+    </div>
+
+    <div class="events-dates_container col-lg-4">
+      <h3>Events Calendar</h3>
+      <div class="">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  2016
+                </a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <a href="#"><span>January</span></a>
+                <a href="#"><span>February</span></a>
+                <a href="#"><span>March</span></a>
+                <a href="#"><span>April</span></a>
+                <a href="#"><span>May</span></a>
+                <a href="#"><span>June</span></a>
+                <a href="#"><span>July</span></a>
+                <a href="#"><span>August</span></a>
+                <a href="#"><span>September</span></a>
+                <a href="#"><span>October</span></a>
+                <a href="#"><span>November</span></a>
+                <a href="#"><span>December</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  2015
+                </a>
+              </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+              <div class="panel-body">
+                <a href="#"><span>January</span></a>
+                <a href="#"><span>February</span></a>
+                <a href="#"><span>March</span></a>
+                <a href="#"><span>April</span></a>
+                <a href="#"><span>May</span></a>
+                <a href="#"><span>June</span></a>
+                <a href="#"><span>July</span></a>
+                <a href="#"><span>August</span></a>
+                <a href="#"><span>September</span></a>
+                <a href="#"><span>October</span></a>
+                <a href="#"><span>November</span></a>
+                <a href="#"><span>December</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  2014
+                </a>
+              </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+              <div class="panel-body">
+                <a href="#"><span>January</span></a>
+                <a href="#"><span>February</span></a>
+                <a href="#"><span>March</span></a>
+                <a href="#"><span>April</span></a>
+                <a href="#"><span>May</span></a>
+                <a href="#"><span>June</span></a>
+                <a href="#"><span>July</span></a>
+                <a href="#"><span>August</span></a>
+                <a href="#"><span>September</span></a>
+                <a href="#"><span>October</span></a>
+                <a href="#"><span>November</span></a>
+                <a href="#"><span>December</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

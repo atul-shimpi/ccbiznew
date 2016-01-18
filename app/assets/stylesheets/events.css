@@ -1,0 +1,49 @@
+/*------ Events page --------------------------------------------------------*/
+.events_page .row h3 {
+	margin-top: 0;
+}
+.events_details {
+	background: #F5F5F5;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+.events-dates_container {
+	margin: 40px 0px;
+}
+.events_container {
+	border-right: 1px dashed rgb(78, 78, 78);
+	margin: 40px 0px;
+}
+.events_container span {
+	margin: 10px 0;
+	display: inherit;
+}
+.events_container span h4{
+	margin-top: 0;
+	margin-bottom: 0px;
+	font-size: 16px;
+	display: inline;
+}
+.events_container span:last-child h4{
+	display: block;
+}
+.panel-collapse .panel-body {
+  padding: 15px;
+}
+.panel-default, .panel-default > .panel-heading {
+  color: #333;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+.panel-default > .panel-heading {
+	border-bottom: 1px solid #ddd; 
+}
+.panel-collapse .panel-body a {
+	display: block;
+	line-height: 28px;
+}
+.panel-default > .panel-heading + .panel-collapse > .panel-body {
+  border-top: none;
+  border-bottom: 2px solid #ddd;
+}
