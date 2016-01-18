@@ -5,7 +5,7 @@
 		<%= stylesheet_link_tag    'bootstrap-theme.min'%>
 		<%= stylesheet_link_tag    'font-awesome.min'%>
 		<%= stylesheet_link_tag    'template_4'%>
-		<%= stylesheet_link_tag    'event'%>
+		<%= stylesheet_link_tag    'events'%>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 	</HEAD>
@@ -30,7 +30,7 @@
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
 		        <li class="active"><a href="http://<%= @shop.subdomain%>.<%= request.domain%>"><span>Home</span></a></li>
-		        <li><a href="/events"><span>Events</span></a></li>
+		        <li><a href="/shop_events"><span>Events</span></a></li>
 		        <li><a href="/contact_us"><span>Contact Us</span></a></li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->

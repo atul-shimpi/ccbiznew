@@ -20,6 +20,7 @@
 //= require metisMenu.min
 //= require sb-admin-2
 //= require jquery.dataTables.min
+//= require bootstrap.min
 //= require dataTables.bootstrap.min
 //= require base
 //= require bootstrap-datepicker
