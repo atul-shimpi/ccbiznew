@@ -39,12 +39,13 @@
 
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
+      <% if !@shop.shop_images.blank?%>
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1" class=""></li>
         <li data-target="#myCarousel" data-slide-to="2" class=""></li>
       </ol>
-            <% if !@shop.shop_images.blank?%>
+            
       <div class="carousel-inner" role="listbox">
       <% @shop.shop_images.each_with_index do |shop_image, index|%>
         <div class="item <% if index == 0%>active<%end%>">
