@@ -29,7 +29,6 @@
 //= require countries
 //= require helper
 //= require jquery.raty
-//= require ratyrate
 //= require lightbox
 //= require_tree .
             
