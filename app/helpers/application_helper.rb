@@ -20,4 +20,10 @@ module ApplicationHelper
       admin_events_path
     end
   end
+  def nav_path_for_single_shop  
+    if admin_signed_in?
+      admin_single_business_users_path
+    end
+  end
+
 end
