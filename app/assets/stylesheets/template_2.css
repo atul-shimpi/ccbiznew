@@ -181,6 +181,10 @@ p.about_content {
 	padding: 20px;
 	margin-bottom: 20px;
 }
+.events_details img {
+	height: 90px;
+	border-radius: 50%;
+}
 .events-dates_container {
 	margin: 40px 0px;
 }
