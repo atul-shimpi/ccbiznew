@@ -30,7 +30,11 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
+  #Business User Search for Single shop
+  post '/business_user/search' => "business_user/business_users#search"
+  get '/business_user/userdetails/:id' => "business_user/business_users#userdetails"
+
+  # You can have the root of your site routed with "root"  
   get 'about_us' => "home#about_us"
   get 'contact_us' => "home#contact_us"
   get 'gallery' => "home#gallery"
