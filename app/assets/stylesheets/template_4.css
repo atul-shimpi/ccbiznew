@@ -58,7 +58,7 @@ ul.nav.navbar-nav {
 }
 .carousel.slide img{
 	width: 100%;
-	height: 456px;
+	max-height: 456px;
 	max-width: 100%;
 }
 .section_heading.latest-offers {
