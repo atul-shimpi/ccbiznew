@@ -26,6 +26,20 @@ class Admin::SingleBusinessUsersController <  Admin::BaseController
 	      format.json { head :no_content }
 	    end
 	  end
+
+	def update
+	    @singlebusinessuser = SingleBusinessUser.find(params[:id])
+
+	    respond_to do |format|
+	      if @singlebusinessuser.update_attributes(user_params)
+	        format.html { redirect_to admin_single_business_users_path, notice: 'User was successfully updated.' }
+	        format.json { head :no_content }
+	      else
+	        format.html { render action: "edit" }
+	        format.json { render json: @singlebusinessuser.errors, status: :unprocessable_entity }
+	      end
+	    end
+	end  
 	def create    
 	    @user = SingleBusinessUser.new(user_params)
 
@@ -40,6 +54,6 @@ class Admin::SingleBusinessUsersController <  Admin::BaseController
 	    end
 	end
 	def user_params
-	    params.require(:single_business_user).permit(:name, :phone, :votingid, :adharid, :skills, :address, :city, :state, :country, :zip, :pannumber)
+	    params.require(:single_business_user).permit(:first_name,:middle_name, :last_name,:phone, :votingid, :adharid, :skills, :address, :city, :state, :country, :zip, :pannumber,:avatar)
 	end
 end

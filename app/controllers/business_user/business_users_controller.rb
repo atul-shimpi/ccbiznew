@@ -17,8 +17,21 @@ class BusinessUser::BusinessUsersController < BusinessUser::BaseController
       end
     end
   end
-
-
+  def search
+    if params[:searchkey]
+      @singleshops = SingleBusinessUser.search(params[:searchkey])
+    else
+      @singleshops = SingleBusinessUser
+    end
+    render template: "business_user/search/show"
+    
+  end
+  def userdetails
+    if params[:id]
+      @userdetails = SingleBusinessUser.find(params[:id])
+      render template: "business_user/search/single"
+    end
+  end
  private
 
   def user_params

@@ -2,15 +2,15 @@
 <%= tinymce_assets %>
   <div class="form-group">    
     <%= f.label :first_name, :class => 'control-label' %><span class="asterix">*</span>
-    <%= f.text_field :name, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
+    <%= f.text_field :first_name, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
   </div>
   <div class="form-group">
-    <label class = 'control-label'>Middle Name<span class="asterix">*</span></label>
-    <input type="text" class = 'text_field form-control' placeholder = 'Middle Name' required = '' />
+    <%= f.label :middle_name, :class => 'control-label' %><span class="asterix">*</span>
+    <%= f.text_field :middle_name, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
   </div>
   <div class="form-group">
-    <label class = 'control-label'>Last Name<span class="asterix">*</span></label>
-    <input type="text" class = 'text_field form-control' placeholder ='Last Name' required = '' />
+    <%= f.label :last_name, :class => 'control-label' %><span class="asterix">*</span>
+    <%= f.text_field :last_name, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
   </div>
   <div class="form-group">
     <%= f.label :phone, :class => 'control-label' %>
@@ -48,6 +48,11 @@
       <%= f.label :zip, :class => 'control-label' %><span class="asterix">*</span>
     <%= f.text_field :zip, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
   </div>
+  <div class="form-group">
+      <%= f.label :avatar, :class => 'control-label' %>
+      <%= f.file_field :avatar %>
+      <%= f.hidden_field :avatar_cache %>
+  </div> 
   
   <input type="submit" class = 'btn btn-primary' value="Submit">
   <input type="submit" class = 'btn btn-default' value="Cancel">
