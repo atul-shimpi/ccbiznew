@@ -9,44 +9,46 @@
     </div>
     <!-- /.row -->
     <div class="row">
-      <div class="col-lg-2">
-        <img src="assets/images/aboutus.jpg">
-      </div>
-      <div class="col-lg-10">
-        <dl class="dl-horizontal">
-          <dt><strong>Name:</strong></dt>
-          <dd></dd>
-          <dt><strong>Phone:</strong></dt>
-          <dd></dd>
-          <dt><strong>Pan number:</strong></dt>
-          <dd></dd>
-          <dt><strong>Voting number:</strong></dt>
-          <dd></dd>
-          <dt><strong>UID number:</strong></dt>
-          <dd></dd>
-          <dt><strong>Skills:</strong></dt>
-          <dd></dd>
-          <dt><strong>Address:</strong></dt>
-          <dd></dd>
-          <dt><strong>City:</strong></dt>
-          <dd></dd>
-          <dt><strong>State:</strong></dt>
-          <dd></dd>
-          <dt><strong>Country:</strong></dt>
-          <dd></dd>
-          <dt><strong>Zip:</strong></dt>
-          <dd></dd>
-        </dl>
-        <div class="form-actions">
-          <%= link_to "Back", shops_path, :class => 'btn btn-primary'  %>
-          <%= link_to "Edit", shops_path, :class => 'btn btn-primary' %>
-          <%= link_to "Destroy", shops_path,
-          :method => 'delete',
-          :confirm => 'Are you sure?' ,
-          :class => 'btn btn-danger' %>
+      <div class="col-lg-12 bg_wrapper single_user_info">
+        <div class="col-lg-2">
+          <img class="user_photo" src="assets/images/aboutus.jpg">
         </div>
+        <div class="col-lg-10">
+          <dl class="dl-horizontal">
+            <dt><strong>Name:</strong></dt>
+            <dd></dd>
+            <dt><strong>Phone:</strong></dt>
+            <dd></dd>
+            <dt><strong>Pan number:</strong></dt>
+            <dd></dd>
+            <dt><strong>Voting number:</strong></dt>
+            <dd></dd>
+            <dt><strong>UID number:</strong></dt>
+            <dd></dd>
+            <dt><strong>Skills:</strong></dt>
+            <dd></dd>
+            <dt><strong>Address:</strong></dt>
+            <dd></dd>
+            <dt><strong>City:</strong></dt>
+            <dd></dd>
+            <dt><strong>State:</strong></dt>
+            <dd></dd>
+            <dt><strong>Country:</strong></dt>
+            <dd></dd>
+            <dt><strong>Zip:</strong></dt>
+            <dd></dd>
+          </dl>
+          <div class="form-actions">
+            <%= link_to "Back", shops_path, :class => 'btn btn-primary'  %>
+            <%= link_to "Edit", shops_path, :class => 'btn btn-primary' %>
+            <%= link_to "Destroy", shops_path,
+            :method => 'delete',
+            :confirm => 'Are you sure?' ,
+            :class => 'btn btn-danger' %>
+          </div>
+        </div>
+        <!-- /.col-lg-10 -->
       </div>
-      <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
   </div>
@@ -75,7 +77,7 @@
 
         <div class="person_details clearfix">
           <div class="col-lg-2 col-sm-2">
-            <img src="../../assets/no-image.jpg" alt="">
+            <img class="user_photo" src="../../assets/no-image.jpg" alt="">
           </div>
           <div class="col-lg-10 col-sm-10">
             <span><h4>Name:&nbsp;</h4>Dummy Name</span>
@@ -86,7 +88,7 @@
         </div>
         <div class="person_details clearfix">
           <div class="col-lg-2 col-sm-2">
-            <img src="../../assets/no-image.jpg" alt="">
+            <img class="user_photo" src="../../assets/no-image.jpg" alt="">
           </div>
           <div class="col-lg-10 col-sm-10">
             <span><h4>Name:&nbsp;</h4>Dummy Name</span>
