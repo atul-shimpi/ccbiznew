@@ -7,36 +7,38 @@
   </div>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-2">
-        <%= image_tag(@userdetails.avatar_url) if @userdetails.avatar? %>    
+      <div class="col-lg-12 bg_wrapper single_user_info">
+        <div class="col-lg-2">
+          <%= image_tag(@userdetails.avatar_url) :class => "user_photo" if @userdetails.avatar? %>    
+        </div>
+        <div class="col-lg-10">
+          <dl class="dl-horizontal">
+            <dt><strong>Name:<%= @userdetails.name %> </strong></dt>
+            <dd></dd>
+            <dt><strong>Phone:<%= @userdetails.phone %> </strong></dt>
+            <dd></dd>
+            <dt><strong>Pan number:<%= @userdetails.pannumber %> </strong></dt>
+            <dd></dd>
+            <dt><strong>Voting number:<%= @userdetails.votingid %> </strong></dt>
+            <dd></dd>
+            <dt><strong>UID number:<%= @userdetails.adharid %> </strong></dt>
+            <dd></dd>
+            <dt><strong>Skills:<%= @userdetails.skills %> </strong></dt>
+            <dd></dd>
+            <dt><strong>Address:<%= @userdetails.address %> </strong></dt>
+            <dd></dd>
+            <dt><strong>City:<%= @userdetails.city %> </strong> </dt>
+            <dd></dd>
+            <dt><strong>State:<%= @userdetails.state %> </strong></dt>
+            <dd></dd>
+            <dt><strong>Country:<%= @userdetails.country %> </strong></dt>
+            <dd></dd>
+            <dt><strong>Zip:<%= @userdetails.zip %></strong></dt>
+            <dd></dd>
+          </dl>        
+        </div>
+        <!-- /.col-lg-10 -->
       </div>
-      <div class="col-lg-10">
-        <dl class="dl-horizontal">
-          <dt><strong>Name:<%= @userdetails.name %> </strong></dt>
-          <dd></dd>
-          <dt><strong>Phone:<%= @userdetails.phone %> </strong></dt>
-          <dd></dd>
-          <dt><strong>Pan number:<%= @userdetails.pannumber %> </strong></dt>
-          <dd></dd>
-          <dt><strong>Voting number:<%= @userdetails.votingid %> </strong></dt>
-          <dd></dd>
-          <dt><strong>UID number:<%= @userdetails.adharid %> </strong></dt>
-          <dd></dd>
-          <dt><strong>Skills:<%= @userdetails.skills %> </strong></dt>
-          <dd></dd>
-          <dt><strong>Address:<%= @userdetails.address %> </strong></dt>
-          <dd></dd>
-          <dt><strong>City:<%= @userdetails.city %> </strong> </dt>
-          <dd></dd>
-          <dt><strong>State:<%= @userdetails.state %> </strong></dt>
-          <dd></dd>
-          <dt><strong>Country:<%= @userdetails.country %> </strong></dt>
-          <dd></dd>
-          <dt><strong>Zip:<%= @userdetails.zip %></strong></dt>
-          <dd></dd>
-        </dl>        
-      </div>
-      <!-- /.col-lg-12 -->
     </div>
   </div>
 </div>
