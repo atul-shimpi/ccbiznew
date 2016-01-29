@@ -43,11 +43,12 @@ class Admin::ShopsController < Admin::BaseController
   end
 
   def update
-    @shop = current_admin.shops.find(params[:id])
+    #@shop = current_admin.shops.find(params[:id])
+    @shop = Shop.find(params[:id])
 
     respond_to do |format|
       if @shop.update_attributes(shop_params)
-        format.html { redirect_to admin_shop_path(@shop), notice: 'Shop was successfully updated.' }
+        format.html { redirect_to admin_shops_url(), notice: 'Shop was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -72,6 +73,6 @@ class Admin::ShopsController < Admin::BaseController
    private
 
   def shop_params
-    params.require(:shop).permit(:name, :phone, :address, :info, :user_id, :avatar, :category_id, :template, :subdomain)
+    params.require(:shop).permit(:name, :phone, :address, :info, :user_id, :avatar, :category_id, :template, :subdomain, :metakeywords, :metadescription, :googleanalytics, :isactive)
   end
 end

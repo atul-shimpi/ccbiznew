@@ -8,7 +8,8 @@
 		<%= stylesheet_link_tag    'template_3'%>
 		<%= stylesheet_link_tag    'events'%>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
+    <meta name="description" content="<%= !@shop.metadescription.blank? ? @shop.metadescription : '' %>">
+    <meta name="keywords" content="<%= !@shop.metakeywords.blank? ? @shop.metakeywords : '' %>">
 	</HEAD>
 	<body>
 		<nav class="navbar navbar-default">
@@ -82,7 +83,7 @@
 				</div>
 			</div>
 		</footer>
-
+<%= @shop.googleanalytics %>
 
 	</body>
 </HTML>

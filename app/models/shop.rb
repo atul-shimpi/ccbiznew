@@ -1,4 +1,5 @@
 class Shop < ActiveRecord::Base
+  after_create :admin_notification_init
 	reverse_geocoded_by :latitude, :longitude do |obj,results|
 
   if geo = results.first
@@ -19,4 +20,11 @@ after_validation :reverse_geocode
 	has_many :events
 
 	DESIGN_TEMPLATE = { "template_1" => "theme_1", "template_2" => "theme_2", "template_3" => "theme_3", "template_4" => "theme_4", "mandir" => "mandir"}
+
+  protected
+  def admin_notification_init
+
+    # send notification to admin, once shop is created
+    AdminMailer.delay.shopcreation_admin_notification_email(self)
+  end
 end
