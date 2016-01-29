@@ -7,8 +7,7 @@
 		<%= stylesheet_link_tag    'template_4'%>
 		<%= stylesheet_link_tag    'events'%>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <meta name="description" content="<%= !@shop.metadescription.blank? ? @shop.metadescription : '' %>">
-    <meta name="keywords" content="<%= !@shop.metakeywords.blank? ? @shop.metakeywords : '' %>">
+    <%= render :partial => "layouts/metatags"%>
 	</HEAD>
 	<body>
     
@@ -80,6 +79,6 @@
 			</div>
 		</footer>
 		
-<%= @shop.googleanalytics %>
+<%= render :partial => "layouts/googleanalytics"%>
 	</body>
 </HTML>

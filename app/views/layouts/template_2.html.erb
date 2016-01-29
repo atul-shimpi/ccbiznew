@@ -13,8 +13,7 @@
 		<!-- Optional theme -->
 <!-- 		<link rel="stylesheet" href="bootstrap-theme.min.css">
 		<link rel="stylesheet" type="text/css" href="common.css"> -->
-    <meta name="description" content="<%= !@shop.metadescription.blank? ? @shop.metadescription : '' %>">
-    <meta name="keywords" content="<%= !@shop.metakeywords.blank? ? @shop.metakeywords : '' %>">
+    <%= render :partial => "layouts/metatags"%>
 	</HEAD>
 	<body>
     
@@ -85,7 +84,6 @@
 				</div>
 			</div>
 		</footer>
-				
-<%= @shop.googleanalytics %>
+		<%= render :partial => "layouts/googleanalytics"%> 		
 	</body>
 </HTML>

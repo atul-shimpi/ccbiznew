@@ -6,7 +6,7 @@
     <%= stylesheet_link_tag    'mandir'%>
     <%= stylesheet_link_tag    'events'%>
     <%= stylesheet_link_tag    'lightbox'%>
-
+    <%= render :partial => "layouts/metatags"%>
     
 
 </head>
@@ -48,3 +48,4 @@
   </div>
 </footer
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= render :partial => "layouts/googleanalytics"%>
