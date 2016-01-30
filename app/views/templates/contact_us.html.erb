@@ -1,3 +1,4 @@
+<%= form_for @contact, url: '/contact_us',:html => { :class => '' , multipart: true  } do |f| %>
 <div class="container main-content">
   <div class="row contact_page">
     <div class="col-lg-5 col-sm-5">
@@ -6,45 +7,46 @@
         <p class="tab_title">Enquiry Form</p>
           <div class="form-group">
               <label>Name</label>
-              <input class="form-control" placeholder="Enter text" required="">
+              <%= f.text_field :contactname, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
           </div>
           <div class="form-group">
               <label>Email</label>
-              <input class="form-control" placeholder="Enter text">
+              <%= f.text_field :contactemail, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
           </div>
           <div class="form-group">
               <label>Contact No</label>
-              <input class="form-control" placeholder="Enter text">
+              <%= f.text_field :contactnumber, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
           </div>
           <div class="form-group">
               <label>Description</label>
-              <textarea class="form-control" rows="3"></textarea>
+              <%= f.text_area :contactinfo, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
+          <%= f.hidden_field :shop_id, :value=>@shop.id %>
         </form>
       </div>
       <div class="star_ratings">
         <h4>Customer Ratings</h4>
-        <fieldset class="rating">
-          <input type="radio" id="star5" name="rating" value="5" />
-          <label class = "full" for="star5" title="Awesome - 5 stars"></label>
-          <input type="radio" id="star4half" name="rating" value="4 and a half" />
+        <fieldset class="rating">          
+          <%= f.radio_button :shoprating, '5', :id=>"star5" %>
+          <label class = "full" for="star5" title="Awesome - 5 stars"></label>          
+          <%= f.radio_button :shoprating, '4.5', :id=>"star4half" %>
           <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-          <input type="radio" id="star4" name="rating" value="4" />
+          <%= f.radio_button :shoprating, '4', :id=>"star4" %>
           <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-          <input type="radio" id="star3half" name="rating" value="3 and a half" />
+          <%= f.radio_button :shoprating, '3.5', :id=>"star3half" %>
           <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-          <input type="radio" id="star3" name="rating" value="3" />
+          <%= f.radio_button :shoprating, '3' , :id=>"star3" %>
           <label class = "full" for="star3" title="Meh - 3 stars"></label>
-          <input type="radio" id="star2half" name="rating" value="2 and a half" />
+          <%= f.radio_button :shoprating, '2.5', :id=>"star2half" %>
           <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-          <input type="radio" id="star2" name="rating" value="2" />
+          <%= f.radio_button :shoprating, '2', :id=>"star2" %>
           <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-          <input type="radio" id="star1half" name="rating" value="1 and a half" />
+          <%= f.radio_button :shoprating, '1.5' , :id=>"star1half" %>
           <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-          <input type="radio" id="star1" name="rating" value="1" />
+          <%= f.radio_button :shoprating, '1', :id=>"star1" %>          
           <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-          <input type="radio" id="starhalf" name="rating" value="half" />
+          <%= f.radio_button :shoprating, '0.5', :id=>"starhalf" %>          
           <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
       </fieldset>
       </div>
@@ -62,7 +64,7 @@
     </div>
   </div>
 </div>
-
+<% end %>
 <% if !@shop.latitude.blank? || !@shop.longitude.blank? %>
    <script src="http://maps.googleapis.com/maps/api/js"></script>
   <script src="bootstrap.min.js"></script>

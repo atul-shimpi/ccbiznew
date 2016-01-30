@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"  
   get 'about_us' => "home#about_us"
   get 'contact_us' => "home#contact_us"
+  post 'contact_us' => "home#update_contact_us"
   get 'gallery' => "home#gallery"
   get 'donation' => "home#donation"
   get 'shop_events' => "home#shop_events"
