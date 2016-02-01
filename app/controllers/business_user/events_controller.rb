@@ -1,7 +1,11 @@
 class BusinessUser::EventsController < BusinessUser::BaseController
 
   def index
-    @events = Event.all
+    @shops_ids = current_business_user.shops.all.map{ |shop|
+      [shop.id]
+    }
+    
+    @events = Event.where(shop_id:@shops_ids)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }

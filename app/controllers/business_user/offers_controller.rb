@@ -1,7 +1,10 @@
 class BusinessUser::OffersController < BusinessUser::BaseController
 
 	 def index
-    @offers = Offer.all
+    @shops_ids = current_business_user.shops.all.map{ |shop|
+      [shop.id]
+    }
+    @offers = Offer.where(shop_id:@shops_ids)
 
     respond_to do |format|
       format.html # index.html.erb
