@@ -35,12 +35,12 @@ Rails.application.routes.draw do
   get '/business_user/userdetails/:id' => "business_user/business_users#userdetails"
 
   # You can have the root of your site routed with "root"  
-  get 'about_us' => "home#about_us"
-  get 'contact_us' => "home#contact_us"
+  get 'aboutus' => "home#about_us"
+  get 'contactus' => "home#contact_us"
   post 'contact_us' => "home#update_contact_us"
   get 'gallery' => "home#gallery"
   get 'donation' => "home#donation"
-  get 'shop_events' => "home#shop_events"
+  get 'shopevents' => "home#shop_events"
    
     match '/', to: 'home#index', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
   root 'home#index'
