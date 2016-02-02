@@ -13,7 +13,7 @@ class Shop < ActiveRecord::Base
       obj.latitude  = nil    
     end
   end
-validates :latitude, presence: {message: "Not a valid location, please check name address & country fields" }
+# validates :latitude, presence: {message: "Not a valid location, please check name address & country fields" }
 geocoded_by :address
 #geocoded_by :full_address
 before_validation :geocode
