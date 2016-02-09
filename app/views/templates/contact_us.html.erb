@@ -67,7 +67,6 @@
 <% end %>
 <% if !@shop.latitude.blank? || !@shop.longitude.blank? %>
    <script src="http://maps.googleapis.com/maps/api/js"></script>
-  <script src="bootstrap.min.js"></script>
 <script>
 function initialize() {
 var myCenter = new google.maps.LatLng(<%= @shop.latitude%>,<%= @shop.longitude%>);
