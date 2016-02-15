@@ -302,3 +302,20 @@ function print_state(state_id, state_index){
 		option_str.options[option_str.length] = new Option(state_arr[i],state_arr[i]);
 	}
 }
+
+function populateStates( countryElementId, stateElementId ){
+	
+	var selectedCountryIndex = document.getElementById( countryElementId ).selectedIndex;
+
+	var stateElement = document.getElementById( stateElementId );
+	
+	stateElement.length=0;	// Fixed by Julian Woods
+	stateElement.options[0] = new Option('Select State','');
+	stateElement.selectedIndex = 0;
+	
+	var state_arr = s_a[selectedCountryIndex].split("|");
+	
+	for (var i=0; i<state_arr.length; i++) {
+		stateElement.options[stateElement.length] = new Option(state_arr[i],state_arr[i]);
+	}
+}

@@ -75,7 +75,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
    private
 
   def shop_params
-    params.require(:shop).permit(:name, :phone, :address, :info, :user_id, :avatar, :category_id, :template, :subdomain, :city, :state, :country, :zip, :facebook, :linkedin, :google, :twitter, :shoptype)
+    params.require(:shop).permit(:name, :phone, :address, :info, :user_id, :avatar,:backgroundimage, :category_id, :template, :subdomain, :city, :state, :country, :zip, :facebook, :linkedin, :google, :twitter, :shoptype)
   end
 
 

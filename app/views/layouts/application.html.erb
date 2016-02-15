@@ -26,10 +26,10 @@
 		<ul class="nav navbar-top-links navbar-right">
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-					<!-- <img src="" class="prof_icon"> --> <i class="fa fa-user fa-fw prof_icon"></i> <i class="fa fa-caret-down"></i>
+					<%= image_tag current_business_user.avatar_url, :class=> "img-responsive prof_icon"%><i class="fa fa-caret-down"></i>
 				</a>
 				<ul class="dropdown-menu dropdown-user">
-					<li><a href=""><i class="fa fa-user fa-fw"></i> User Profile</a>
+					<li><a href="<%= nav_path_for_profile %>"><i class="fa fa-user fa-fw"></i> User Profile</a>
 					</li>
 					<li class="divider"></li>
 					<li>

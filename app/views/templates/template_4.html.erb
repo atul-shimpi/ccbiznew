@@ -11,7 +11,7 @@
 						<div class="clearfix">
 						<a href=""><%= image_tag offer.image_url, :class=> "pull-left img-responsive", :style => "width : 91px; height : 64px;" %></a>
 							<p class=""><a href=""><%= offer.name%></a></p>
-							<p class=""><%= offer.discount%>% Discount</p>
+							<p class=""><%= offer.discount%> Discount</p>
 							<p class=""><a href=""><%= offer.description%></a></p>
 						</div>
 						<%end%>
@@ -43,7 +43,7 @@
 								</div>
 								<div class="col-lg-6">
 									<p><%= offer.description%></p>
-									<a class="offers_btn btn btn-lg btn-primary" href="#">Sale <%= offer.discount%>% Off</a>
+									<a class="offers_btn btn btn-lg btn-primary" href="#">Sale <%= offer.discount%> Off</a>
 								</div>
 							</div>
 						</div>

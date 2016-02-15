@@ -5,8 +5,7 @@ class BusinessUser::BusinessUsersController < BusinessUser::BaseController
   end
 
   def update
-    @user = current_business_user
-
+    @user = current_business_user    
     respond_to do |format|
       if @user.update_attributes(user_params)
         format.html { redirect_to :back, notice: 'User was successfully updated.' }
@@ -35,6 +34,6 @@ class BusinessUser::BusinessUsersController < BusinessUser::BaseController
  private
 
   def user_params
-    params.require(:business_user).permit(:email, :first_name, :last_name, :phone)
+    params.require(:business_user).permit(:email, :first_name, :last_name, :phone, :avatar)
   end
 end
