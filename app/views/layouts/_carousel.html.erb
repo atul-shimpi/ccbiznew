@@ -11,8 +11,12 @@
   
   <div class="carousel-inner" role="listbox">
   <% @shop.shop_images.each_with_index do |shop_image, index|%>
-    <div class="item <% if index == 0%>active<%end%>">
-      <%= image_tag shop_image.image_url(:banner), :class=> "img-responsive third-slide" if  !shop_image.blank?%>
+    <div class="item <% if index == 0%>active<%end%>">       
+      <% if FileTest.exist?(shop_image.image.versions[:banner].file.path) %>      
+        <%= image_tag shop_image.image_url(:banner), :class=> "img-responsive third-slide" if  !shop_image.blank?%>
+      <%else%>
+        <%= image_tag shop_image.image_url, :class=> "img-responsive third-slide" if  !shop_image.blank?%>
+      <%end%>
     </div>
     <%end%>
   </div>
