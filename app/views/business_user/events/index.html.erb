@@ -31,7 +31,7 @@
                     <tr>
                       <td><%= link_to event.name, business_user_event_path(event) %></td>
                       <td><%= event.venue.blank? ? event.shop.address : event.venue %></td>
-                      <td><%= event.event_date %></td>
+                      <td><%= event.event_date.strftime("%d/%m/%Y") %></td>
                       <td><%= event.shop.name if !event.shop.blank?%></td>
                       <td>
                         <%= link_to "Edit",
