@@ -5,10 +5,12 @@
       <% @shop.events.each do |event|%>
       <div class="events_details clearfix">
         <div class="col-lg-2 col-sm-2">
-          <% if FileTest.exist?(event.photo.versions[:thumb].file.path) %>          
-            <img src="<%= event.photo_url(:thumb)%>" alt="">
-          <% else %>
-            <img src="<%= event.photo_url%>" alt="">
+          <% if event.photo_url %>
+            <% if FileTest.exist?(event.photo.versions[:thumb].file.path) %>          
+              <img src="<%= event.photo_url(:thumb)%>" alt="">
+            <% else %>
+              <img src="<%= event.photo_url%>" alt="">
+            <% end %>
           <% end %>
         </div>
     		<div class="col-lg-9 col-sm-9 col-lg-offset-1 col-sm-offset-1">

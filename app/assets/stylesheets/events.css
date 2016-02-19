@@ -9,6 +9,7 @@
 }
 .events_details img {
 	height: 90px;
+  max-width: 100%;
 	border-radius: 50%;
 }
 .events-dates_container {
