@@ -1,18 +1,32 @@
+.container .navbar-header {
+	float: none;
+}
+.navbar-brand {
+	float: none;
+	display: block;
+}
+.navbar-header {
+	text-align: center;
+}
+.menu_container {
+	background: #2d281d;
+}
 .nav_container {
 	padding: 10px 0px;
 }
 #bs-example-navbar-collapse-1 {
-	float: left;
 	margin-left: 50px;
+	text-align: center;
 }
 .navbar.navbar-default {
-	background-color: #202020;
+	background-color: #272219;
 	border: none;
 	border-radius: 0;
 	margin-bottom: 0;
 }
 .nav.navbar-nav { 
 	margin: 0.75em 0px;
+	width: 95%;
 }
 .navbar-default .nav.navbar-nav a {
 	padding: 0.5em 1em;
@@ -20,7 +34,7 @@
 	color: rgb(255, 255, 255);
 	background: none;
 	font-size: 0.96em;
-	font-weight: 300;
+	font-weight: bold;
 	text-align: center;
 	text-transform: uppercase;
 	margin: 0 0 0 0.5em;
@@ -28,50 +42,58 @@
 .navbar-default .nav.navbar-nav a:hover {
 	color: #fff;
 }
+.navbar-default .nav.navbar-nav li {
+	float: none;
+	display: inline-block;
+}
 .navbar-default .nav.navbar-nav li.active a {
-	background: rgb(226, 80, 80) none repeat scroll 0% 0%;
+	background: #fff;
+	color: rgb(0, 0, 0);
+}
+.content_wrapper {
+	background: #4E4134;
+	padding-bottom: 3em;
 }
 .section_heading {
 	padding: 3em 0;
 }
 .section_heading h3 {
-	color: rgb(32, 32, 32);
+	color: #fff;
 	font-size: 2.1em;
-	font-weight: 700;
-	text-transform: uppercase;
 	margin: 0px auto;
-	font-family: "Oswald",sans-serif;
+	font-family: 'Sofia', cursive;
 	text-align: center;
+	font-weight: bold;
 }
 .aboutus {
-	color: #777;
+	color: #a59484;
+	text-align: center;
 }
 .offers_containers {
-	background: url(../assets/team-bg.jpg) no-repeat 0px 0px;
-	background-size: cover;
+	background: #f7f3e2;
 	padding: 0 0 3em;
 }
 .offers_box {
 	padding: 0 0 3em;
 }
 .offers_containers h3 {
-	color: #fff;
+	color: #000;
 }
 .offers_containers .section_heading span {
 	height: 1px;
 	width: 8%;
-	background: #FFF;
+	background: #000;
 	display: block;
 	margin: 10px auto 0; 
 }
 .offer_text {
 	color: #000;
-	background: #FFF;
+	background: #C9B78A;
 	padding: 0.8em;
 	text-align: center;
 }
 footer {
-	background: rgb(226, 80, 80) none repeat scroll 0% 0%;
+	background: #867444;
 	padding: 1em 0px;
 }
 footer p {

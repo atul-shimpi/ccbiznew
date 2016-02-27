@@ -7,7 +7,7 @@
 		<%= stylesheet_link_tag    'bootstrap-theme'%>
 		<%= stylesheet_link_tag    'font-awesome.min'%>
 		<%= stylesheet_link_tag    'events'%>
-		<%= stylesheet_link_tag    'sports_1'%>
+		<%= stylesheet_link_tag    'sports_2'%>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     
 
@@ -15,30 +15,36 @@
 	<body>
     
 		<nav class="navbar navbar-default">
-		  <div class="container nav_container">
+		  <div class="nav_container">
 		    <!-- Brand and toggle get grouped for better mobile display -->
-		    <div class="navbar-header">
-		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		      </button>
+		    <div class="container">
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
 
-		      <a class="navbar-brand" href="">Sports</a>
-		    </div>
+			      <a class="navbar-brand" href="">Sports</a>
+			    </div>
+			  </div>
 
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		      <ul class="nav navbar-nav">
-		        <li class="active"><a href="#">Home</a></li>
-		        <li class=""><a href="/aboutus"><span>About Us</span></a></li>
-		        <li><a href="/shopevents"><span>Events</span></a></li>
-		        <li><a href="/contactus">Contact Us</a></li>
-		      </ul>
-		    </div><!-- /.navbar-collapse -->
-		  </div><!-- /.container-fluid -->
+		    <div class="menu_container">
+			    <div class="container">
+				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				      <ul class="nav navbar-nav">
+				        <li class="active"><a href="#">Home</a></li>
+				        <li class=""><a href="/aboutus"><span>About Us</span></a></li>
+				        <li><a href="/shopevents"><span>Events</span></a></li>
+				        <li><a href="/contactus">Contact Us</a></li>
+				      </ul>
+				    </div><!-- /.navbar-collapse -->
+				  </div>
+				</div>
+		  </div><!-- /.nav_container -->
 		</nav>
     
 	  <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -70,20 +76,22 @@
     </div>
 
     <div class="main-content">
-    	<div class="container">
-	    	<div class="row">
-	    		<div class="col-lg-12">
-						<div class="section_heading clearfix">
-							<h3>Welcome To Our World</h3>
-						</div>
-						<div class="offers_box">
-							<div class="aboutus">
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    	<div class="content_wrapper">
+	    	<div class="container">
+		    	<div class="row">
+		    		<div class="col-lg-12">
+							<div class="section_heading clearfix">
+								<h3>Welcome To Our World</h3>
+							</div>
+							<div class="offers_box">
+								<div class="aboutus">
+									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+								</div>
 							</div>
 						</div>
-					</div>
-	    	</div>
-	    </div>
+		    	</div>
+		    </div>
+		  </div>
     	<div class="offers_containers">
     		<div class="container">
 					<div class="row latest_offers">
@@ -94,9 +102,7 @@
 						<div class="col-lg-3">
 							<div class="offers_box">
 								<div class="offer_products">
-									<a href="#">
-										<img src="../assets/sports_1.jpg" class="img-responsive" />
-									</a>
+									<img src="../assets/sports_1.jpg" class="img-responsive" />
 									<div class="offer_text">
 										<p>Neque porro quisquam est qui dolorem</p>
 									</div>
@@ -107,9 +113,7 @@
 						<div class="col-lg-3">
 							<div class="offers_box">
 								<div class="offer_products">
-									<a href="#">
-										<img src="../assets/sports_1.jpg" class="img-responsive" />
-									</a>
+									<img src="../assets/sports_1.jpg" class="img-responsive" />
 									<div class="offer_text">
 										<p>Neque porro quisquam est qui dolorem</p>
 									</div>
@@ -120,9 +124,7 @@
 						<div class="col-lg-3">
 							<div class="offers_box">
 								<div class="offer_products">
-									<a href="#">
-										<img src="../assets/sports_1.jpg" class="img-responsive" />
-									</a>
+									<img src="../assets/sports_1.jpg" class="img-responsive" />
 									<div class="offer_text">
 										<p>Neque porro quisquam est qui dolorem</p>
 									</div>
@@ -133,9 +135,51 @@
 						<div class="col-lg-3">
 							<div class="offers_box">
 								<div class="offer_products">
-									<a href="#">
-										<img src="../assets/sports_1.jpg" class="img-responsive" />
-									</a>
+									<img src="../assets/sports_1.jpg" class="img-responsive" />
+									<div class="offer_text">
+										<p>Neque porro quisquam est qui dolorem</p>
+									</div>
+								</div>
+								<p class="title"></p>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="offers_box">
+								<div class="offer_products">
+									<img src="../assets/sports_1.jpg" class="img-responsive" />
+									<div class="offer_text">
+										<p>Neque porro quisquam est qui dolorem</p>
+									</div>
+								</div>
+								<p class="title"></p>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="offers_box">
+								<div class="offer_products">
+									<img src="../assets/sports_1.jpg" class="img-responsive" />
+									<div class="offer_text">
+										<p>Neque porro quisquam est qui dolorem</p>
+									</div>
+								</div>
+								<p class="title"></p>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="offers_box">
+								<div class="offer_products">
+									<img src="../assets/sports_1.jpg" class="img-responsive" />
+									<div class="offer_text">
+										<p>Neque porro quisquam est qui dolorem</p>
+									</div>
+								</div>
+								<p class="title"></p>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="offers_box">
+								<div class="offer_products">
+									<img src="../assets/sports_1.jpg" class="img-responsive" />
 									<div class="offer_text">
 										<p>Neque porro quisquam est qui dolorem</p>
 									</div>
