@@ -1,0 +1,87 @@
+.nav_container {
+	padding: 10px 0px;
+}
+#bs-example-navbar-collapse-1 {
+	float: left;
+	margin-left: 50px;
+}
+.navbar.navbar-default {
+	background-color: #202020;
+	border: none;
+	border-radius: 0;
+	margin-bottom: 0;
+}
+.nav.navbar-nav { 
+	margin: 0.75em 0px;
+}
+.navbar-default .nav.navbar-nav a {
+	padding: 0.5em 1em;
+	font-size: 0.96em;
+	color: rgb(255, 255, 255);
+	background: none;
+	font-size: 0.96em;
+	font-weight: 300;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 0 0 0 0.5em;
+}
+.navbar-default .nav.navbar-nav a:hover {
+	color: #fff;
+}
+.navbar-default .nav.navbar-nav li.active a {
+	background: rgb(226, 80, 80) none repeat scroll 0% 0%;
+}
+.section_heading {
+	padding: 3em 0;
+}
+.section_heading h3 {
+	color: rgb(32, 32, 32);
+	font-size: 2.1em;
+	font-weight: 700;
+	text-transform: uppercase;
+	margin: 0px auto;
+	font-family: "Oswald",sans-serif;
+	text-align: center;
+}
+.aboutus {
+	color: #777;
+}
+.offers_containers {
+	background: url(../assets/team-bg.jpg) no-repeat 0px 0px;
+	background-size: cover;
+	padding: 0 0 3em;
+}
+.offers_box {
+	padding: 0 0 3em;
+}
+.offers_containers h3 {
+	color: #fff;
+}
+.offers_containers .section_heading span {
+	height: 1px;
+	width: 8%;
+	background: #FFF;
+	display: block;
+	margin: 10px auto 0; 
+}
+.offer_text {
+	color: #000;
+	background: #FFF;
+	padding: 0.8em;
+	text-align: center;
+}
+footer {
+	background: rgb(226, 80, 80) none repeat scroll 0% 0%;
+	padding: 1em 0px;
+}
+footer p {
+	margin: 0px;
+	line-height: 2em;
+	color: #fff;
+}
+footer p a, footer span.glyphicon, footer a  {
+	color: #fff;
+}
+footer a:hover {
+	color: #ccc;
+}

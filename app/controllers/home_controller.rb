@@ -74,4 +74,12 @@ class HomeController < ApplicationController
 	def contact_params
 	    params.require(:contact).permit(:contactname, :contactemail, :contactnumber, :contactinfo, :shoprating, :shop_id)
 	end
+
+	def sports_1
+		render :layout => false
+
+	end
+	def sports_2
+		render :layout => false
+	end
 end
