@@ -33,7 +33,7 @@ class Admin::ShopsController < Admin::BaseController
 
     respond_to do |format|
       if @shop.save
-        format.html { redirect_to admin_shop_path(@shop), notice: 'Shop was successfully created.' }
+        format.html { redirect_to admin_shop_path(@shop), notice: 'Business website was successfully created.' }
         format.json { render json: @shop, status: :created, location: @shop }
       else
         format.html { render action: "new" }
@@ -41,14 +41,14 @@ class Admin::ShopsController < Admin::BaseController
       end
     end
   end
-
+  
   def update
     #@shop = current_admin.shops.find(params[:id])
     @shop = Shop.find(params[:id])
 
     respond_to do |format|
       if @shop.update_attributes(shop_params)
-        format.html { redirect_to admin_shops_url(), notice: 'Shop was successfully updated.' }
+        format.html { redirect_to admin_shops_url(), notice: 'Business website was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -58,6 +58,7 @@ class Admin::ShopsController < Admin::BaseController
   end
 
   def destroy
+
     @shop = Shop.find(params[:id])
     @shop.destroy
 
@@ -68,11 +69,15 @@ class Admin::ShopsController < Admin::BaseController
   end
 
 
+  def activate
+    @shop = Shop.find(params[:id])
+    @shop.update_attributes(:isactive => params[:isactive])
+    render :nothing => true
+  end
 
-
-   private
+  private
 
   def shop_params
-    params.require(:shop).permit(:name, :phone, :address, :info, :user_id, :avatar,:backgroundimage, :category_id, :template, :subdomain, :metakeywords, :metadescription, :googleanalytics, :isactive)
+    params.require(:shop).permit(:name, :phone, :address, :info, :user_id, :avatar,:backgroundimage, :category_id, :template, :subdomain, :metakeywords, :metadescription,:pagetitle, :googleanalytics, :isactive)
   end
 end

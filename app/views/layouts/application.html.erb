@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Conectc</title>
+  <title>CCbizon</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -19,7 +19,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.html">Connect Chakra</a>
+			<a class="navbar-brand" href="/">CCbizon</a>
 		</div>
 		<!-- /.navbar-header -->
 
@@ -64,7 +64,7 @@
 						<a href="<%=  %>">Dashboard</a>
 					</li>
 					<li>
-						<a href="<%= nav_path_for_shop %>">Shop</a>
+						<a href="<%= nav_path_for_shop %>">Business website</a>
 					</li>
 					<li>
 						<a href="<%= nav_path_for_offer %>">Offer</a>
@@ -74,7 +74,7 @@
 					</li>
 					<% if admin_signed_in? %>
 					<li>
-						<a href="<%= nav_path_for_single_shop %>">Single Shop</a>
+						<a href="<%= nav_path_for_single_shop %>">Single Business website</a>
 					</li>					
 					<% end %>
 				</ul>

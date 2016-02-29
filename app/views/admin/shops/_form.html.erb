@@ -7,8 +7,10 @@
     <div class="form-group">
       <%= f.label :subdomain, :class => 'control-label' %><span class="asterix">*</span>
       <%= f.text_field :subdomain, :class => 'text_field form-control', :placeholder => 'Subdomain', :required => '' %>
-      <p class="help-block">Ex: subdomain.cc.com</p>
-
+      <p class="help-block">Ex: subdomain.ccbizon.com</p>
+      <input <%= !@shop.domain.blank? ? "checked" : '' %> type="checkbox" name="isowndomain" id="isowndomain" > Setup on own domain
+      <br />
+      <%= f.text_field :domain, :class => 'text_field form-control', :placeholder =>"www.example.com", :id => "shop_domain" %>
   </div>
   <div class="form-group">
     <%= f.label :category_id %><br />
@@ -44,6 +46,10 @@
   <div class="form-group">
       <%= f.label :info, :class => 'control-label' %>
       <%= f.text_area :info, :class => 'text_field form-control tinymce', :rows => 10  %>
+  </div>
+  <div class="form-group">
+      <%= f.label :page_title, :class => 'control-label' %>
+      <%= f.text_area :pagetitle, :class => 'text_field form-control', :rows => '3' %>
   </div>
   <div class="form-group">
       <%= f.label :metakey_words, :class => 'control-label' %>

@@ -30,7 +30,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'carrierwave'
+gem 'carrierwave-crop'
 gem 'rmagick', '~> 2.15', '>= 2.15.2'
+#gem 'jcrop-rails-v2'
 gem 'geocoder'
 gem 'tinymce-rails'
 gem "font-awesome-rails"

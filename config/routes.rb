@@ -33,6 +33,10 @@ Rails.application.routes.draw do
   #Business User Search for Single shop
   post '/business_user/search' => "business_user/business_users#search"
   get '/business_user/userdetails/:id' => "business_user/business_users#userdetails"
+  post '/business_user/dashboard' => "business_user/business_users#show"
+
+  post '/business_user/cropimage' => "business_user/shop_images#crop"
+  get '/admin/shops/activate/:id/:isactive' => "admin/shops#activate"
 
   # You can have the root of your site routed with "root"  
   get 'aboutus' => "home#about_us"

@@ -1,12 +1,13 @@
 
 		<div class="container main-content">
 			<div class="row latest_offers">
+				<% if !@shop.offers.latest.blank? %>
 				<div class="col-lg-4">
 					<div class="section_heading latest-offers clearfix">
 						<h3 class="">Latest Offers</h3>
 					</div>
 					<div class="latest-offers_box">
-					<% if !@shop.offers.latest.blank? %>
+					
 					<% @shop.offers.latest.each do |offer|%>
 						<div class="clearfix">
 						<a href=""><%= image_tag offer.image_url, :class=> "pull-left img-responsive", :style => "width : 91px; height : 64px;" %></a>
@@ -14,11 +15,13 @@
 							<p class=""><%= offer.discount%> Discount</p>
 							<p class=""><a href=""><%= offer.description%></a></p>
 						</div>
-						<%end%>
 					<%end%>
+					
 						
 					</div>
 				</div>
+				<%end%>
+				<% if !@shop.info.blank? %>
 				<div class="col-lg-8">
 					<div class="section_heading clearfix">
 						<h3 class="pull-left">Welcome To Our World</h3>
@@ -29,11 +32,12 @@
 						</div>
 					</div>
 				</div>
+				<% end %>
 			</div>
-
+			<% if !@shop.offers.featured.blank? %>
 			<div class="row upcomin_off">
 				<div class="section_heading col-lg-12"><h3>Upcoming Offers</h3></div>
-			<% if !@shop.offers.featured.blank? %>
+			
 				<% @shop.offers.featured.each do |offer|%>	
 					<div class="col-lg-6">
 						<div class="upcoming_offers_container">
@@ -50,10 +54,11 @@
 					</div>
 				
 				<%end%>
-			<%end%>
+			
 
 
 			</div>
+			<%end%>
 		</div>
 
 		

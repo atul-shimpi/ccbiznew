@@ -1,9 +1,10 @@
 
 		<div class="container main-content">
+			<% if !@shop.offers.latest.blank? %>
 			<div class="latest_offers">
 				<div class="row">
 					<div class="section_heading"><h3>Latest Offers</h3></div>
-					<% if !@shop.offers.latest.blank? %>
+					
 					<% @shop.offers.latest.each do |offer|%>
 					<div class="col-lg-3">
 						<div class="offers_box">
@@ -17,17 +18,18 @@
 						</div>
 					</div>
 					<%end%>
-					<%end%>
+					
 				</div>
 				<div class="row">
 					<p class="pull-right"><a href="#">View more...</a></p>
 				</div>
 			</div>
-
+			<%end%>
+			<% if !@shop.offers.featured.blank? %>
 			<div class="latest_offers">
 				<div class="row">
 					<div class="section_heading"><h3>Featured Offers</h3></div>
-					<% if !@shop.offers.featured.blank? %>
+					
 					<% @shop.offers.featured.each do |offer|%>
 					<div class="col-lg-3">
 						<div class="offers_box">
@@ -41,13 +43,13 @@
 						</div>
 					</div>
 					<%end%>				
-					<%end%>				
+								
 				</div>
 				<div class="row">
 					<p class="pull-right"><a href="#">View more...</a></p>
 				</div>
 			</div>
-
+			<%end%>	
 		</div>
 
 		

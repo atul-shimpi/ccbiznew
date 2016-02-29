@@ -1,12 +1,14 @@
 class Shop < ActiveRecord::Base
   after_create :admin_notification_init
+  after_create :business_user_domain_info, :unless => :domain
   validates :name, presence: true
   validates :subdomain, uniqueness: {message: "Please choose another subdomain" }
+
 
 	reverse_geocoded_by :latitude, :longitude do |obj,results|         
     if geo = results.first              
       #binding.pry
-      if obj.city == geo.city && obj.zip == geo.postal_code && obj.country == geo.country
+      if obj.city.downcase == geo.city.downcase && obj.zip.downcase == geo.postal_code.downcase && obj.country.downcase == geo.country.downcase
        obj.latitude = geo.latitude    
       else  
        obj.latitude = nil    
@@ -43,8 +45,11 @@ end
   
   protected
   def admin_notification_init
-
     # send notification to admin, once shop is created
     AdminMailer.shopcreation_admin_notification_email(self)
+  end
+  def business_user_domain_info
+    # send information to business user if his own domain
+    BusinessUserMailer.business_user_domain_info_email(self)
   end
 end
