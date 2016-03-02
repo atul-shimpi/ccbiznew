@@ -73,6 +73,13 @@
 	background: #f7f3e2;
 	padding: 0 0 3em;
 }
+.offers_set {
+	border-right: 1px dashed rgb(0, 0, 0);
+	padding-right: 15px;
+}
+.latest_set {
+	padding-right: 0;
+}
 .offers_box {
 	padding: 0 0 3em;
 }
@@ -106,4 +113,8 @@ footer p a, footer span.glyphicon, footer a  {
 }
 footer a:hover {
 	color: #ccc;
+}
+.carousel-inner > .item > img {
+	max-height: 500px;
+	height: 500px;
 }
