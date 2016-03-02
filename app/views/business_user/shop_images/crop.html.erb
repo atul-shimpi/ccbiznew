@@ -1,7 +1,7 @@
 <div id="page-wrapper">
 	<!-- <div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Edit Shop</h1>
+			<h1 class="page-header">New Shop</h1>
 		</div> -->
 		<!-- /.col-lg-12 -->
 	<!-- </div> -->
@@ -10,12 +10,18 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<strong style="font-size:16px">Edit Business website</strong>
+					<strong style="font-size:16px">Crop Image</strong>
 				</div>
-				<div class="panel-body col-lg-6">
+				<div class="panel-body col-lg-12">
 					<div class="row">
 						<div class="col-lg-12">
-							<%= render :partial => 'form' %>
+							<%= form_for @shop_image, url:"/business_user/cropimage",:html => { :class => ''}, :method => :POST do |f| %>
+							  <%= f.cropbox :image %>
+							  <%= f.previewbox :image %>
+							  <input type="hidden" value="<%= @shop.id%>" name="shop_id" id="shop_id">
+							  
+							  <%= f.submit 'Crop', :class => 'btn btn-primary' %>
+							<% end %>
 						</div>
 					</div>
 					<!-- /.row (nested) -->

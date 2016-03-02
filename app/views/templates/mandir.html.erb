@@ -4,10 +4,12 @@
   </section>
 
   <section>
+    <% if !@shop.events.blank? %>           
+            
     <div class="container sectionBox">
       <div class="upcoming-proj content-center sidebars">
         <h4>Upcoming Projects</h4>
-     <% @shop.events.each do |event|%>
+        <% @shop.events.each do |event|%>
         <div class="upcomng-proj-container">
           <img src="<%= event.photo_url%>" class="flex-basis50" width="20px" height="100px">
           <p class="flex-basis50"><%= event.discription%>.</p>
@@ -27,5 +29,6 @@
         <%end%>
       </div>
     </div>
+    <%end%>
   </section>
 </main>

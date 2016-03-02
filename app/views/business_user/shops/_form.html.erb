@@ -12,6 +12,9 @@
   <div class="form-group">
       <%= f.label :subdomain, :class => 'control-label' %><span class="asterix">*</span>
       <%= f.text_field :subdomain, :class => 'text_field form-control', :placeholder => 'Subdomain', :required => '' %>
+      <input <%= !@shop.domain.blank? ? "checked" : '' %> type="checkbox" name="isowndomain" id="isowndomain" > Setup on own domain
+      <br />
+      <%= f.text_field :domain, :class => 'text_field form-control', :placeholder =>"www.example.com", :id => "shop_domain" %>
   </div>
   <div class="form-group">
     <%= f.label :category_id %><br />
@@ -103,7 +106,7 @@
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to "cancel", business_user_shops_path, :class => 'btn btn-default' %>
 <% end %>
-<%= tinymce plugins: ["uploadimage"] %>
+<%= tinymce :alternate %>
 
 <script language="javascript">
   print_country("country");

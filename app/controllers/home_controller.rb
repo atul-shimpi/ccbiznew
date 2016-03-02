@@ -12,8 +12,11 @@ class HomeController < ApplicationController
 	def about_us
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
-
-		render :template => "templates/about_us", :layout => "#{@shop.template}"
+		if !@shop.info.blank?
+			render :template => "templates/about_us", :layout => "#{@shop.template}"
+		else
+			redirect_to root_path			
+		end
 	end
 
 	def contact_us
@@ -62,7 +65,11 @@ class HomeController < ApplicationController
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
-		render :template => "templates/events", :layout => "#{@shop.template}"
+		if !@shop.events.blank?
+			render :template => "templates/events", :layout => "#{@shop.template}"
+		else
+			redirect_to root_path
+		end
 	end
 	def contact_params
 	    params.require(:contact).permit(:contactname, :contactemail, :contactnumber, :contactinfo, :shoprating, :shop_id)

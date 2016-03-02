@@ -31,11 +31,18 @@ class BusinessUser::ShopImagesController < BusinessUser::BaseController
   end
 
   def create
+    binding.pry
     @shop_image = @shop.shop_images.new(shop_image_params)
-
+    
     respond_to do |format|
       if @shop_image.save
-        format.html { redirect_to business_user_shop_images_path(:shop_id => @shop.id), notice: 'Shop was successfully created.' }
+        format.html { 
+          if params[:shop_image][:image].present?
+            render :crop  ## Render the view for cropping
+          else                  
+            redirect_to business_user_shop_images_path(:shop_id => @shop.id), notice: 'Business website was successfully created.' 
+          end
+        }
         format.json { render json: @shop_image, status: :created, location: @shop_image }
       else
         format.html { render action: "new" }
@@ -43,13 +50,18 @@ class BusinessUser::ShopImagesController < BusinessUser::BaseController
       end
     end
   end
-
+  def crop
+    @shop_image = @shop.shop_images.new(shop_image_params)    
+    respond_to do |format|      
+      format.html { redirect_to business_user_shop_images_path(:shop_id => @shop.id), notice: 'Business website was successfully created.'}          
+    end
+  end
   def update
     @shop_image = @shop.shop_image.find(params[:id])
 
     respond_to do |format|
       if @shop.update_attributes(shop_params)
-        format.html { redirect_to business_user_shops_path, notice: 'Shop was successfully updated.' }
+        format.html { redirect_to business_user_shops_path, notice: 'Business website was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -57,6 +69,7 @@ class BusinessUser::ShopImagesController < BusinessUser::BaseController
       end
     end
   end
+
 
   def destroy
     @shop_image = ShopImage.find(params[:id])
@@ -72,10 +85,10 @@ class BusinessUser::ShopImagesController < BusinessUser::BaseController
    private
 
   def shop_image_params
-    params.require(:shop_image).permit(:shop_id,  :image)
+    params.require(:shop_image).permit(:shop_id, :image_cache,  :image, :image_crop_x, :image_crop_y, :image_crop_w, :image_crop_h)
   end
 
-  def get_shop
+  def get_shop    
   	@shop = Shop.find(params[:shop_id])
   end
 

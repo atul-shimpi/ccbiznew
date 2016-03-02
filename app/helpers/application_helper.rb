@@ -27,7 +27,7 @@ module ApplicationHelper
   end
   def nav_path_for_profile
   if business_user_signed_in?
-      edit_business_user_business_user_path(current_business_user)
+      business_user_business_user_path(current_business_user)
     elsif admin_signed_in?
       
     end

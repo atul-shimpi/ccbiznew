@@ -32,7 +32,7 @@ class DashboardController < ApplicationController
 
     respond_to do |format|
       if @shop.save
-        format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
+        format.html { redirect_to @shop, notice: 'Business website was successfully created.' }
         format.json { render json: @shop, status: :created, location: @shop }
       else
         format.html { render action: "new" }
@@ -46,7 +46,7 @@ class DashboardController < ApplicationController
 
     respond_to do |format|
       if @shop.update_attributes(shop_params)
-        format.html { redirect_to @shop, notice: 'Shop was successfully updated.' }
+        format.html { redirect_to @shop, notice: 'Business website was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

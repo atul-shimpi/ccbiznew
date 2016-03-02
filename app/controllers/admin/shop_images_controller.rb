@@ -35,7 +35,7 @@ before_action :get_shop
 
     respond_to do |format|
       if @shop_image.save
-        format.html { redirect_to admin_shop_images_path(:shop_id => @shop.id), notice: 'Shop was successfully created.' }
+        format.html { redirect_to admin_shop_images_path(:shop_id => @shop.id), notice: 'Business website was successfully created.' }
         format.json { render json: @shop_image, status: :created, location: @shop_image }
       else
         format.html { render action: "new" }
@@ -49,7 +49,7 @@ before_action :get_shop
 
     respond_to do |format|
       if @shop.update_attributes(shop_params)
-        format.html { redirect_to admin_shops_path, notice: 'Shop was successfully updated.' }
+        format.html { redirect_to admin_shops_path, notice: 'Business website was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

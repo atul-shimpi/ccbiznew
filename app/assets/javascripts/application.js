@@ -31,5 +31,7 @@
 //= require helper
 //= require jquery.raty
 //= require lightbox
+//= require jquery.jcrop
 //= require_tree .
-            
+
+       

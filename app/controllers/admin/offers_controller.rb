@@ -50,7 +50,7 @@ class Admin::OffersController < Admin::BaseController
 
     respond_to do |format|
       if @offer.update_attributes(offer_params)
-        format.html { redirect_to admin_offers_path, notice: 'Shop was successfully updated.' }
+        format.html { redirect_to admin_offers_path, notice: 'Business website was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

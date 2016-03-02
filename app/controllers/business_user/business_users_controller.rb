@@ -3,7 +3,10 @@ class BusinessUser::BusinessUsersController < BusinessUser::BaseController
   def edit
     @user = current_business_user
   end
-
+  def show
+    @shops = current_business_user.shops.limit(5)
+    @user = current_business_user
+  end
   def update
     @user = current_business_user    
     respond_to do |format|
