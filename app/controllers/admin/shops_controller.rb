@@ -68,13 +68,6 @@ class Admin::ShopsController < Admin::BaseController
     end
   end
 
-
-  def activate
-    @shop = Shop.find(params[:id])
-    @shop.update_attributes(:isactive => params[:isactive])
-    render :nothing => true
-  end
-
   private
 
   def shop_params

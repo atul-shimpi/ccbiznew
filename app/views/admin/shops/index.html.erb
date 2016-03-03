@@ -44,10 +44,12 @@
                     :method => :delete,
                     :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                     :class => 'btn btn-mini btn-danger' %>
-                    <%= link_to !shop.isactive? ? "Activate" : 'Deactivate',
-                    "javacript://", :id=>"activateshop", :data_id=>shop.id, :data_value=>shop.isactive,
-                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                    :class => 'btn btn-mini btn-info' %>
+
+                    <%= form_for shop, url: admin_shop_action(shop, params[:action]),  :html => { :class => 'shop_act_deact' , multipart: true  } do |f| %>
+                      <%= f.hidden_field :isactive, :value =>!shop.isactive? ? 1 : 0  %>
+                      <%= f.submit !shop.isactive? ? "Activate" : 'Deactivate', :class => 'btn btn-mini btn-info' %>
+                    <% end %>
+                    
                   </td>
                 </tr>
                 <% end %>
