@@ -179,7 +179,7 @@ div.date {
 table.dataTable thead .sorting::after {
   color: #FF0;
 }
-.panel-body.col-lg-6 {
+.panel-body.col-lg-6, .panel-body.col-lg-5 {
   background-color: rgba(255, 255, 255, 0.5);
   border-collapse: collapse;
   border-radius: 15px;
@@ -245,4 +245,7 @@ table.dataTable thead .sorting::after {
       list-style-type: none;
     }
   }
+}
+.shop_act_deact{
+  display:inline;
 }

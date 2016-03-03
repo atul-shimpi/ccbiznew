@@ -14,20 +14,20 @@
         </div>
         <div class="panel-body col-lg-6">
           <h3>Sites</h3>
-          <div class="row">
+          <div class="row header">
             <div class="col-lg-6">Site</div>
-            <div class="col-lg-6">Time Remain</div>
+            <div class="col-lg-6">Days Remain</div>
           </div>
-          <% if !@shops.blank?%>
-            <% @shops.each do |shop| %>
+          <% if !@shops.blank?%>            
+            <% @shops.each do |shop| %>            
               <div class="row">
                 <div class="col-lg-6"><%= shop.name %></div>
-                <div class="col-lg-6">Time Remain</div>
+                <div class="col-lg-6"><%= 365 - (Time.zone.now - shop.created_at).to_i / 1.day%></div>
               </div>
             <% end %>
           <% end %>
         </div>
-        <div class="panel-body col-lg-6">
+        <div class="panel-body col-lg-5 col-lg-offset-1">
           <div class="row">
 
             <div class="col-lg-12">              
