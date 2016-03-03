@@ -85,4 +85,7 @@ class HomeController < ApplicationController
 	def education_1
 		render :layout => false
 	end
+	def health_1
+		render :layout => false
+	end
 end
