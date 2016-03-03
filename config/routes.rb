@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   get 'shopevents' => "home#shop_events"
   get 'sports_1' => "home#sports_1"
   get 'sports_2' => "home#sports_2"
+  get 'education_1' => "home#education_1"
    
     match '/', to: 'home#index', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
   root 'home#index'

@@ -82,4 +82,7 @@ class HomeController < ApplicationController
 	def sports_2
 		render :layout => false
 	end
+	def education_1
+		render :layout => false
+	end
 end
