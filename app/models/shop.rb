@@ -1,28 +1,29 @@
 class Shop < ActiveRecord::Base
   after_create :admin_notification_init
-  after_create :business_user_domain_info, :unless => :domain
+
+  after_create :business_user_domain_info
   validates :name, presence: true
   validates :subdomain, uniqueness: {message: "Please choose another subdomain" }
 
 
-	reverse_geocoded_by :latitude, :longitude do |obj,results|         
-    if geo = results.first              
+	#reverse_geocoded_by :latitude, :longitude do |obj,results|         
+   # if geo = results.first              
       #binding.pry
-      if obj.city.downcase == geo.city.downcase && obj.zip.downcase == geo.postal_code.downcase && obj.country.downcase == geo.country.downcase
-       obj.latitude = geo.latitude    
-      else  
-       obj.latitude = nil    
-      end
-    else  
-       obj.latitude  = nil    
-    end
-  end
+   #   if obj.city.downcase == geo.city.downcase && obj.zip.downcase == geo.postal_code.downcase && obj.country.downcase == geo.country.downcase
+   #    obj.latitude = geo.latitude    
+   #   else  
+   #    obj.latitude = nil    
+    #  end
+   # else  
+   #   obj.latitude  = nil    
+   # end
+  #end
 validates :latitude, presence: {message: "Not a valid location, please check name address & country fields" }
-geocoded_by :address
-before_validation :geocode, :if => :address_changed?
+#geocoded_by :address
+#before_validation :geocode, :if => :address_changed?
 #geocoded_by :full_address
 #before_validation :geocode
-before_validation :reverse_geocode
+#before_validation :reverse_geocode
 
 
 def full_address
@@ -45,11 +46,11 @@ end
   
   protected
   def admin_notification_init
-    # send notification to admin, once shop is created
-    AdminMailer.shopcreation_admin_notification_email(self)
+    # send notification to admin, once shop is created    
+    AdminMailer.shopcreation_admin_notification_email(self).deliver_now 
   end
   def business_user_domain_info
-    # send information to business user if his own domain
-    BusinessUserMailer.business_user_domain_info_email(self)
+    # send information to business user if his own domain    
+    BusinessUserMailer.business_user_domain_info_email(self).deliver_now 
   end
 end

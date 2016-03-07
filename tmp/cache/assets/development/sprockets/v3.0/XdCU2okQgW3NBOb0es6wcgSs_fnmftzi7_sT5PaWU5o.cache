@@ -1,0 +1,16 @@
+I"r(function() {
+  $(document).ready(function() {
+    return $("#activateshop").click(function(event) {
+      event.preventDefault();
+      return $.ajax({
+        url: "/admin/shops/activate/" + $(this).attr("data_id"),
+        type: "get",
+        success: function(data) {
+          return $("page_element").html(data);
+        }
+      });
+    });
+  });
+
+}).call(this);
+:ET

@@ -34,6 +34,7 @@ gem 'carrierwave-crop'
 gem 'rmagick', '~> 2.15', '>= 2.15.2'
 #gem 'jcrop-rails-v2'
 gem 'geocoder'
+gem 'geocomplete_rails'
 gem 'tinymce-rails'
 gem "font-awesome-rails"
 gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'

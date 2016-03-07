@@ -22,6 +22,16 @@ jQuery( document ).ready(function( $ ) {
 					columnDefs: [{ targets: -1, orderable: false }]
 					    
 	});
+
+  
+  	$("#my_input").bind("geocode:dragged", function(event, latLng){
+      $("#shop_latitude").val(latLng.lat());
+      $("#shop_longitude").val(latLng.lng());
+      
+    });
+    $("#find").click(function(){
+      $("#my_input").trigger("geocode");
+    }).click();
 });
 
 jQuery( document ).ready(function( $ ) {

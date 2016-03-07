@@ -1,5 +1,6 @@
 class BusinessUser::ShopImagesController < BusinessUser::BaseController
 	before_action :get_shop
+
 	def index
     @shop_images = @shop.shop_images.all
     respond_to do |format|
@@ -31,7 +32,7 @@ class BusinessUser::ShopImagesController < BusinessUser::BaseController
   end
 
   def create
-    binding.pry
+    
     @shop_image = @shop.shop_images.new(shop_image_params)
     
     respond_to do |format|
@@ -51,7 +52,12 @@ class BusinessUser::ShopImagesController < BusinessUser::BaseController
     end
   end
   def crop
-    @shop_image = @shop.shop_images.new(shop_image_params)    
+    @shop_image = @shop.shop_images.new(shop_image_params) 
+    @current_image = ShopImage.find(params[:shop_image_id])
+    ShopImage.crop(@current_image, params[:image_crop_x], params[:image_crop_y], params[:image_crop_w], params[:image_crop_h])
+    #@img = Magick::Image.read("/uploads/shop_image/image/76/IMG_1189.JPG")
+    #@img.crop!(params[:image_crop_x], params[:image_crop_y], params[:image_crop_w], params[:image_crop_h])
+    
     respond_to do |format|      
       format.html { redirect_to business_user_shop_images_path(:shop_id => @shop.id), notice: 'Business website was successfully created.'}          
     end
@@ -85,7 +91,7 @@ class BusinessUser::ShopImagesController < BusinessUser::BaseController
    private
 
   def shop_image_params
-    params.require(:shop_image).permit(:shop_id, :image_cache,  :image, :image_crop_x, :image_crop_y, :image_crop_w, :image_crop_h)
+    params.require(:shop_image).permit(:shop_id, :shop_image_id, :image_cache,  :image, :image_crop_x, :image_crop_y, :image_crop_w, :image_crop_h)
   end
 
   def get_shop    

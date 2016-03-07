@@ -6,6 +6,6 @@ class Contact < ActiveRecord::Base
 	def contactus_shopowner_notification_init
 	    # send notification to shopowner, once contact is created
 	    @shop = Shop.find(self.shop_id)
-		BusinessUserMailer.delay.contactus_shopowner_notification_email(self, @shop)
+		BusinessUserMailer.contactus_shopowner_notification_email(self, @shop).deliver_now 
 	end
 end

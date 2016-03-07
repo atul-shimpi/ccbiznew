@@ -19,7 +19,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [1280, 456]    
   end
   version :cropbanner do    
-    process crop: :image  
+    
   end
   version :thumb do
     process :resize_to_fit => [100, 100]    
@@ -57,5 +57,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  
 
 end

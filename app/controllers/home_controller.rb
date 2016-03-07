@@ -31,8 +31,6 @@ class HomeController < ApplicationController
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
 		@contact = Contact.new(contact_params)
-		
-		binding.pry
 	    respond_to do |format|
 	      if @contact.save
 	        format.html { redirect_to contact_us_path, notice: 'Contact info was posted successfully.'}

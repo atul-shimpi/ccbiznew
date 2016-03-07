@@ -1,0 +1,18 @@
+I"y(function() {
+  $(document).ready(function() {
+    return $("#activateshop").click(e)(function() {
+      return $.ajax({
+        url: "/admin/shops/activate",
+        type: "POST",
+        data: {
+          id: $(this).attr("data_id")
+        },
+        success: function(data) {
+          return $("page_element").html(data);
+        }
+      });
+    });
+  });
+
+}).call(this);
+:ET

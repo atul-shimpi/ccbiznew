@@ -1,0 +1,27 @@
+I"±(function() {
+  $(document).ready(function() {
+    return $("#activateshop").click(function(event) {
+      var activate, btntext;
+      event.preventDefault();
+      activate = parseInt($(this).attr("data_value"));
+      btntext = "";
+      if (activate === 1) {
+        activate = 0;
+        btntext = "Activate";
+      } else {
+        activate = 1;
+        btntext = "Deactivate";
+      }
+      return $.ajax({
+        url: "/admin/shops/activate/" + $(this).attr("data_id") + "/" + activate,
+        type: "get",
+        success: function(data) {
+          $(this).text(btntext);
+          return $(this).attr("data-value", activate);
+        }
+      });
+    });
+  });
+
+}).call(this);
+:ET
