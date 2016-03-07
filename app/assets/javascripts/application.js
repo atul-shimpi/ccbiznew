@@ -32,6 +32,7 @@
 //= require jquery.raty
 //= require lightbox
 //= require jquery.jcrop
+//= require geocomplete
 //= require_tree .
 
        

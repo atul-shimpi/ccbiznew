@@ -20,9 +20,14 @@
       <%= f.label :phone, :class => 'control-label' %>
       <%= f.text_field :phone, :class => 'text_field form-control', :placeholder => 'Enter text' %>
   </div>
-  <div class="form-group">
+  <div class="form-group details">
       <%= f.label :address, :class => 'control-label' %>
-      <%= f.text_area :address, :class => 'text_field form-control', :rows => '3' %>
+      <%= f.text_area :address, :class => 'text_field form-control', :rows => '3', :placeholder => 'Type in an address', :id=>"my_input", :"data-geo"=>"formatted_address" %>
+  
+      <input id="find" type="button" value="find" class="btn btn-default">
+      <div id="my_map"></div>
+      <%= f.hidden_field :latitude, :id=>"shop_latitude", :"data-geo"=>"lat"  %>
+      <%= f.hidden_field :latitude, :id=>"shop_longitude", :"data-geo"=>"lng"  %> 
   </div>
   <div class="form-group">
       <%= f.label :country, :class => 'control-label' %><span class="asterix">*</span>
@@ -125,5 +130,30 @@
     $("#country option[value='<%= @shop.country%>']").prop('selected', true);
     populateStates("country","state")
     $("#state").val('<%= @shop.state%>');
+
+    $("#my_input").geocomplete({
+      map: "#my_map",
+      details: ".details",
+      detailsAttribute: "data-geo",
+      <% if @shop.latitude.blank? %>
+      location:"Pune, Maharashtra, India",
+      <% end %>
+      
+      type: ['store','geocode','locality','establishment'],
+      mapOptions: {
+        zoom: 15,
+        scrollwheel: true,
+        mapTypeId: "hybrid",
+        <% if !@shop.latitude.blank? %>
+        center:{lat: <%= @shop.latitude%>, lng: <%= @shop.longitude%>}
+        <% end %>
+      },
+      markerOptions: {
+        draggable: true,
+        <% if !@shop.latitude.blank? %>
+        position:{lat: <%= @shop.latitude%>, lng: <%= @shop.longitude%>}
+        <% end %>
+      }
+    }); 
   });
 </script>  

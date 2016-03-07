@@ -5,7 +5,6 @@ class TinymceAssetsController < ApplicationController
     uploader = StaticImagesUploader.new
 
     image = uploader.store!(params[:file])
-    binding.pry
     render json: {
       image: {
         url: uploader.url
