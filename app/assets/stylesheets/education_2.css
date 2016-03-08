@@ -49,6 +49,9 @@ ul.nav.navbar-nav {
 	background: none;
 	text-decoration: underline;
 }
+#myCarousel img {
+	width: 100%;
+}
 .section_heading {
 	text-align: center;
 }
