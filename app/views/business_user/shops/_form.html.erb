@@ -36,19 +36,19 @@
 
   <div class="form-group details">
       <%= f.label :country, :class => 'control-label' %><span class="asterix">*</span>
-      <select onchange="print_state('state', this.selectedIndex);" id="country" name ="shop[country]" selected="<%= @shop.country%>" class="form-control" ,  data-geo="country"></select>
+      <select onchange="print_state('state', this.selectedIndex);" id="country" name ="shop[country]" selected="<%= @shop.country%>" class="form-control" data-geo="country" required></select>
   </div>
   <div class="form-group details">
       <%= f.label :state, :class => 'control-label' %><span class="asterix">*</span>
-      <select name ="shop[state]" id ="state" selected="<%= @shop.state%>" class="form-control", data-geo="administrative_area_level_1"></select>
+      <select name ="shop[state]" id ="state" selected="<%= @shop.state%>" class="form-control", data-geo="administrative_area_level_1" required></select>
   </div>
   <div class="form-group details">
       <%= f.label :city, :class => 'control-label' %><span class="asterix">*</span>
-      <%= f.text_field :city, :class => 'text_field form-control', :placeholder => 'City', :required => '',  :"data-geo"=>"locality" %>
+      <%= f.text_field :city, :class => 'text_field form-control', :placeholder => 'City', :required => '',  :"data-geo"=>"locality" , :required => '' %>
   </div>
   <div class="form-group details">
       <%= f.label :zip, :class => 'control-label' %><span class="asterix">*</span>
-      <%= f.text_field :zip, :class => 'text_field form-control', :type => 'number', :required => '',  :"data-geo"=>"postal_code" %>
+      <%= f.text_field :zip, :class => 'text_field form-control', :type => 'number', :required => '',  :"data-geo"=>"postal_code" , :required => '' %>
   </div>
   <div class="form-group">
       <%= f.label :info, :class => 'control-label' %>

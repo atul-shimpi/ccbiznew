@@ -1,0 +1,35 @@
+<%= form_for @shop_seo, url: admin_seodetail_path(:shop_id => @shop.id),  :html => { :class => '' , multipart: true  } do |f| %> 
+	<% if @shop_seo.errors.full_messages.any? %>
+	<% @shop_seo.errors.full_messages.each do |error_message| %>
+	<%= error_message if @shop_seo.errors.full_messages.first == error_message %> <br />
+	<% end %>
+	<% end %>
+  <div class="form-group">
+      <fieldset>
+	    <div class="form-group">
+	      <%= f.label :title, :class => 'control-label' %>
+	      <%= f.text_field :title, :class => 'text_field form-control', :placeholder => 'Enter text' %>
+	    </div>
+	    
+	    <div class="form-group">
+	      <%= f.label :metakeywords %><br />
+	      <%= f.text_area :metakeywords, :class => 'text_field form-control' %>
+	    </div>
+	    <div class="form-group">
+	      <%= f.label :metadescription %><br />
+	      <%= f.text_area :metadescription, :class => 'text_field form-control' %>
+	    </div>
+	    <div class="form-group">
+	      <%= f.label :pagename %><br />
+	      <%= f.select :pagename, [['Home', "home"], ['About Us', "about"], ['Contact Us', "contact"], ['Events', "events"], ['gallery', "gallery"]] %>
+	      
+	    </div>
+	    <%= f.hidden_field :shop_id, :value => @shop.id %>
+	    <%= f.submit "Add", :class => 'btn btn-primary' %>
+	    
+	  </fieldset>
+  </div>  
+<% end %>
+                                
+
+

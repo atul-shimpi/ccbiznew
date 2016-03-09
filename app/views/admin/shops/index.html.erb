@@ -37,6 +37,8 @@
                   <td>
                   <%= link_to "Images",
                     admin_shop_images_path(:shop_id => shop), :class => 'btn btn-primary btn-mini' %>
+                    <%= link_to "SEO",
+                    admin_seodetails_path(:shop_id => shop), :class => 'btn btn-primary btn-mini' %>
                     <%= link_to "Edit",
                     edit_admin_shop_path(shop), :class => 'btn btn-primary btn-mini' %>
                     <%= link_to "Delete",

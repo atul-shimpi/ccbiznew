@@ -40,6 +40,7 @@ end
 	belongs_to :category
 	has_many :offers
 	has_many :shop_images
+  has_many :seodetails
 	has_many :events
 
 	DESIGN_TEMPLATE = { "template_1" => "theme_1", "template_2" => "theme_2", "template_3" => "theme_3", "template_4" => "theme_4", "mandir" => "mandir"}

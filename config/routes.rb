@@ -23,7 +23,8 @@ Rails.application.routes.draw do
     resources :offers    
     resources :events
     resources :shop_images 
-    resources :single_business_users   
+    resources :single_business_users
+    resources :seodetails   
   end
 
   post '/tinymce_assets' => 'tinymce_assets#create'

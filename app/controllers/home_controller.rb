@@ -2,6 +2,7 @@ class HomeController < ApplicationController
 	def index
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
+
 		if !@shop.blank?
     		render :template => "templates/#{@shop.template}", :layout => "#{@shop.template}"
 		else
@@ -12,6 +13,7 @@ class HomeController < ApplicationController
 	def about_us
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
+		@seodetails = @shop.seodetails.where("pagename = 'about'")
 		if !@shop.info.blank?
 			render :template => "templates/about_us", :layout => "#{@shop.template}"
 		else
@@ -22,6 +24,7 @@ class HomeController < ApplicationController
 	def contact_us
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
+		@seodetails = @shop.seodetails.where("pagename = 'contact'")
 		@contact = Contact.new  
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		render :template => "templates/contact_us", :layout => "#{@shop.template}"
@@ -31,6 +34,7 @@ class HomeController < ApplicationController
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
 		@contact = Contact.new(contact_params)
+
 	    respond_to do |format|
 	      if @contact.save
 	        format.html { redirect_to contact_us_path, notice: 'Contact info was posted successfully.'}
@@ -49,6 +53,7 @@ class HomeController < ApplicationController
 	def gallery
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
+		@seodetails = @shop.seodetails.where("pagename = 'gallery'")
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		render :template => "templates/gallery", :layout => "#{@shop.template}"
 	end
@@ -62,6 +67,7 @@ class HomeController < ApplicationController
 	def shop_events
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
+		@seodetails = @shop.seodetails.where("pagename = 'events'")
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.events.blank?
 			render :template => "templates/events", :layout => "#{@shop.template}"

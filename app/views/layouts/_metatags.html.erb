@@ -1,2 +1,9 @@
+<% if !@seodetails.blank? %>
+<title><%= !@seodetails[0].title.blank? ? @seodetails[0].title : 'CCbizon '+@shop.name %></title>
+<meta name="description" content="<%= !@seodetails[0].metadescription.blank? ? @seodetails[0].metadescription : '' %>">
+<meta name="keywords" content="<%= !@seodetails[0].metakeywords.blank? ? @seodetails[0].metakeywords : '' %>">
+<% else %>
+<title><%= !@shop.pagetitle.blank? ? @shop.pagetitle : 'CCbizon '+@shop.name %></title>
 <meta name="description" content="<%= !@shop.metadescription.blank? ? @shop.metadescription : '' %>">
 <meta name="keywords" content="<%= !@shop.metakeywords.blank? ? @shop.metakeywords : '' %>">
+<%end%>
