@@ -69,7 +69,7 @@ before_action :get_shop
   end
 
 
-   private
+  private
 
   def shop_image_params
     params.require(:shop_image).permit(:shop_id,  :image)

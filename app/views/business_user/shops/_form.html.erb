@@ -31,9 +31,9 @@
       <input id="find" type="button" value="find" class="btn btn-default">
       <div id="my_map"></div>
       <%= f.hidden_field :latitude, :id=>"shop_latitude", :"data-geo"=>"lat"  %>
-      <%= f.hidden_field :latitude, :id=>"shop_longitude", :"data-geo"=>"lng"  %>      
+      <%= f.hidden_field :longitude, :id=>"shop_longitude", :"data-geo"=>"lng"  %>      
   </div>
-
+  <!--
   <div class="form-group details">
       <%= f.label :country, :class => 'control-label' %><span class="asterix">*</span>
       <select onchange="print_state('state', this.selectedIndex);" id="country" name ="shop[country]" selected="<%= @shop.country%>" class="form-control" data-geo="country" required></select>
@@ -49,7 +49,7 @@
   <div class="form-group details">
       <%= f.label :zip, :class => 'control-label' %><span class="asterix">*</span>
       <%= f.text_field :zip, :class => 'text_field form-control', :type => 'number', :required => '',  :"data-geo"=>"postal_code" , :required => '' %>
-  </div>
+  </div> -->
   <div class="form-group">
       <%= f.label :info, :class => 'control-label' %>
       <%= f.text_area :info, :class => 'text_field form-control tinymce', :rows => 10 %>
@@ -115,18 +115,18 @@
 <%= tinymce :alternate %>
 
 <script language="javascript">
-  print_country("country");
+  //print_country("country");
   $(function() {
     //$("#country").val('<%= @shop.country%>');
-    $("#country option[value='<%= @shop.country%>']").prop('selected', true);
-    populateStates("country","state")
-    $("#state").val('<%= @shop.state%>');
+    //$("#country option[value='<%= @shop.country%>']").prop('selected', true);
+   // populateStates("country","state")
+   // $("#state").val('<%= @shop.state%>');
 
      $("#my_input").geocomplete({
       map: "#my_map",
       details: ".details",
       detailsAttribute: "data-geo",      
-      <% if @shop.latitude.blank? %>
+      <% if @shop.latitude.blank? || @shop.longitude.blank? %>
       location:"Pune, Maharashtra, India",
       <% end %>      
       type: ['store','geocode','locality','establishment'],
@@ -134,13 +134,13 @@
         zoom: 15,
         scrollwheel: true,
         mapTypeId: "hybrid",
-        <% if !@shop.latitude.blank? %>
+        <% if !@shop.latitude.blank? && !@shop.longitude.blank? %>
         center:{lat: <%= @shop.latitude%>, lng: <%= @shop.longitude%>}
         <% end %>
       },
       markerOptions: {
         draggable: true,
-        <% if !@shop.latitude.blank? %>
+        <% if !@shop.latitude.blank? && !@shop.longitude.blank? %>
         position:{lat: <%= @shop.latitude%>, lng: <%= @shop.longitude%>}
         <% end %>
       }

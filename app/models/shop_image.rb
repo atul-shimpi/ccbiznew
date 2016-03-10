@@ -4,10 +4,8 @@ class ShopImage < ActiveRecord::Base
 	crop_uploaded :image
 
 	belongs_to :shop
-	def self.crop(current_image, crop_x, crop_y, crop_w, crop_h)
-		binding.pry 
-		@img = Magick::Image.read(current_image.image_url)
-		binding.pry
+	def self.crop(current_image, crop_x, crop_y, crop_w, crop_h)		
+		@img = Magick::Image.read(current_image.image_url)		
     	@img.crop!(crop_x, crop_y, crop_w, crop_h)
 	end
 end

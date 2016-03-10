@@ -1,29 +1,26 @@
 class Shop < ActiveRecord::Base
   after_create :admin_notification_init
 
-  after_create :business_user_domain_info
+  after_create :business_user_domain_info, unless: :domain?
   validates :name, presence: true
   validates :subdomain, uniqueness: {message: "Please choose another subdomain" }
 
 
-	#reverse_geocoded_by :latitude, :longitude do |obj,results|         
-   # if geo = results.first              
-      #binding.pry
-   #   if obj.city.downcase == geo.city.downcase && obj.zip.downcase == geo.postal_code.downcase && obj.country.downcase == geo.country.downcase
-   #    obj.latitude = geo.latitude    
-   #   else  
-   #    obj.latitude = nil    
-    #  end
-   # else  
-   #   obj.latitude  = nil    
-   # end
-  #end
-validates :latitude, presence: {message: "Not a valid location, please check name address & country fields" }
+	reverse_geocoded_by :latitude, :longitude do |obj,results|         
+   if geo = results.first                    
+      obj.address = geo.formatted_address
+      obj.zip = geo.postal_code
+      obj.city = geo.city
+      obj.state = geo.state
+      obj.country = geo.country      
+    end
+  end
+validates :latitude, :longitude, presence: {message: "Not a valid location, please check name address & country fields" }
 #geocoded_by :address
 #before_validation :geocode, :if => :address_changed?
 #geocoded_by :full_address
 #before_validation :geocode
-#before_validation :reverse_geocode
+after_validation :reverse_geocode
 
 
 def full_address
