@@ -1,4 +1,4 @@
-<%= form_for @shop_seo, url: admin_seodetail_path(:shop_id => @shop.id),  :html => { :class => '' , multipart: true  } do |f| %> 
+<%= form_for @shop_seo, url: adminshop_seodetails_action(@shop_seo, params[:action]), :html => { :class => '' , multipart: true  } do |f| %> 
 	<% if @shop_seo.errors.full_messages.any? %>
 	<% @shop_seo.errors.full_messages.each do |error_message| %>
 	<%= error_message if @shop_seo.errors.full_messages.first == error_message %> <br />
@@ -24,7 +24,7 @@
 	      <%= f.select :pagename, [['Home', "home"], ['About Us', "about"], ['Contact Us', "contact"], ['Events', "events"], ['gallery', "gallery"]] %>
 	      
 	    </div>
-	    <%= f.hidden_field :shop_id, :value => @shop.id %>
+	    <input type="hidden" id="shop_id" name="shop_id" value="<%=@shop.id%>">	    
 	    <%= f.submit "Add", :class => 'btn btn-primary' %>
 	    
 	  </fieldset>

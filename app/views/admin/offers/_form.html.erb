@@ -1,4 +1,4 @@
-<%= form_for @offer, url: admin_shop_offers_action(@offer, params[:action]),:html => { :class => '' , multipart: true  } do |f| %>
+<%= form_for @offer, url: adminshop_offers_action(@offer, params[:action]),:html => { :class => '' , multipart: true  } do |f| %>
   <fieldset>
     <div class="form-group">
       <%= f.label :name, :class => 'control-label' %>
@@ -6,7 +6,7 @@
     </div>
     <div class="form-group">
       <%= f.label :shop_id %><br />
-      <%= f.collection_select(:shop_id, current_business_user.shops.all, :id, :name, {:prompt => 'Select'}, {:class => 'form-control'}) %>
+      <%= f.collection_select(:shop_id, Shop.all, :id, :name, {:prompt => 'Select'}, {:class => 'form-control'}) %>
     </div>
     <div class="form-group">
       <%= f.label :description %><br />
