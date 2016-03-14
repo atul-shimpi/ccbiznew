@@ -1,0 +1,8 @@
+<% if !@shop.backgroundimage_url.blank? %>
+<style>
+ body{
+ 	background-image: url("<%= @shop.backgroundimage_url %>");
+ 	background-size: cover;
+ }
+</style>
+<% end %>
