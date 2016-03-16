@@ -83,7 +83,26 @@
 					<% if admin_signed_in? %>
 					<li>
 						<a href="<%= nav_path_for_single_shop %>">Single Business website</a>
-					</li>					
+					</li>	
+					<% if current_admin.issuperadmin? %>
+					<li>
+						<a href="javascript:void(0)" onclick="$('#usermenu').slideToggle();" >				
+							Users
+						</a>
+						<ul class="nav" id="usermenu">
+							<li>
+								<a href="<%= admin_business_users_path %>">
+									Business Users
+								</a>
+							</li>							
+							<li>
+								<a href="<%= admin_users_path %>">
+									Admin Users
+								</a>
+							</li>
+						</ul>
+					</li>
+					<% end %>
 					<% end %>
 				</ul>
 			</div>
