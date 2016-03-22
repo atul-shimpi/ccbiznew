@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     resources :offers
     resources :events    
     resources :shop_images    
-    resources :business_users    
+    resources :business_users 
+    resources :auctions       
+    resources :skills       
+    resources :teams       
+    resources :players       
   end
   namespace :admin do 
     resources :base
@@ -39,7 +43,7 @@ Rails.application.routes.draw do
   post '/business_user/dashboard' => "business_user/business_users#show"
 
   post '/business_user/cropimage' => "business_user/shop_images#crop"  
-
+  post '/business_user/teamplayers/:id' => "business_user/players#teamupdate"  
   # You can have the root of your site routed with "root"  
   get 'aboutus' => "home#about_us"
   get 'contactus' => "home#contact_us"
@@ -53,6 +57,11 @@ Rails.application.routes.draw do
   get 'education_2' => "home#education_2"
   get 'education_3' => "home#education_3"
   get 'health_1' => "home#health_1"
+  get 'auction' => "home#auction"
+  get 'players' => "home#players"
+  get 'teams' => "home#teams"
+  get 'team/:id' => "home#team"
+  
    
     match '/', to: 'home#index', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
   root 'home#index'

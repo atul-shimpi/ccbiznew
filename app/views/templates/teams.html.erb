@@ -1,0 +1,25 @@
+<main class="auction-section">
+  <section class="container text-center">
+    <div class="container main-content">
+      <h3>Players</h3>
+      <div class="row">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>                                                
+            </tr>
+          </thead>
+          <tbody>
+            <% if !@shop.auction.teams.blank?%>
+              <% @shop.auction.teams.each do |team| %>                    
+                <tr>
+                  <td><%= link_to team.name, "team/"+team.id.to_s %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>    
+  </section>
+</main>

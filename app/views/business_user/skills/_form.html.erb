@@ -1,0 +1,10 @@
+<%= form_for @skill, url: business_shop_skills_action(@skill, params[:action]),:html => { :class => '' , multipart: true  } do |f| %>
+  <fieldset>
+    <div class="form-group">
+      <%= f.label :name, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.text_field :name, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
+    </div>    
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to "cancel", business_user_skills_path, :class => 'btn btn-default' %>
+  </fieldset>
+<% end %>

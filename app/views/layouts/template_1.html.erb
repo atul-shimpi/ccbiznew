@@ -43,6 +43,9 @@
 		        <% if !@shop.events.blank? %>		        
 		        <li><a href="/shopevents"><span>Events</span></a></li>
 		        <% end %>
+		        <% if !@shop.auction.blank? %>		        
+		        <li><a href="/auction"><span>Auction</span></a></li>
+		        <% end %>
 		        <li><a href="/contactus">Contact Us</a></li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->

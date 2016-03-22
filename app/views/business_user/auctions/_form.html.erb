@@ -1,0 +1,24 @@
+<%= form_for @auction, url: business_shop_auctions_action(@auction, params[:action]),:html => { :class => '' , multipart: true  } do |f| %>
+  <fieldset>
+    <div class="form-group">
+      <%= f.label :name, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.text_field :name, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :shop_id %><br />
+      <%= f.collection_select(:shop_id, current_business_user.shops.all, :id, :name, {:prompt => 'Select'}, {:class => 'form-control'}) %>
+    </div>
+    <div class="form-group">
+      <%= f.label :skills %><br />
+      <%= f.collection_check_boxes :skill_ids, Skill.all, :id, :name do |b| %>
+        <div class="collection-check-box">
+          <%= b.check_box %>
+          <%= b.label %>
+        </div>
+      <% end %>
+      <%= link_to "Add New", new_business_user_skill_path , :class => 'btn btn-default' %>
+    </div>
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to "cancel", business_user_auctions_path, :class => 'btn btn-default' %>
+  </fieldset>
+<% end %>

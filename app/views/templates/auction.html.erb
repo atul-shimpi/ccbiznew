@@ -1,0 +1,32 @@
+<meta http-equiv="refresh" content="30">
+<main class="auction-section">
+  <section class="container text-center">
+    <div class="container">
+      <h3>Auction</h3>
+      <div class="row">
+        <% if !@shop.auction.teams.blank?%>
+          <% @shop.auction.teams.each do |team| %>
+            <div class="col-lg-2 col-sm-2" id="team_<%= team.id %>">
+              <strong><%= team.name %></strong><br>
+              <% team.players.each do |player| %>
+                <div id="teamplayer_<%= player.id %>"><%= player.name %>(<%= player.auctionprice %>)</div> <br>
+              <% end %>              
+            </div>
+          <% end %>
+        <% end %>
+        <div class="col-lg-2 col-sm-2">
+          <strong>Players</strong><br>
+          <% unassignedplayers(@shop.auction.id).each do |player| %>
+            <div id="player_<%= player.id %>"><%= player.name %>
+              <br>
+              <% player.skills.each_with_index do |skill, index| %>
+                <%= skill.name %>(<%= player.playerskills[index].rating %>)
+              <% end %>
+            </div>              
+          <% end %>              
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>    
+  </section>
+</main>

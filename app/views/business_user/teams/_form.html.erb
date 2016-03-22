@@ -1,0 +1,39 @@
+<%= tinymce_assets %>
+<%= form_for @team, url: business_shop_teams_action(@team, params[:action]), :html => { :class => '' , multipart: true  } do |f| %> 
+	<% if @team.errors.full_messages.any? %>
+	<% @team.errors.full_messages.each do |error_message| %>
+	<%= error_message if @team.errors.full_messages.first == error_message %> <br />
+	<% end %>
+	<% end %>
+  <div class="form-group">
+      <fieldset>
+	    <div class="form-group">
+	      <%= f.label :name, :class => 'control-label' %>
+	      <%= f.text_field :name, :class => 'text_field form-control', :placeholder => 'Enter text' %>
+	    </div>
+	    
+	    <div class="form-group">
+	      <%= f.label :points %><br />
+	      <%= f.text_field :points, :class => 'text_field form-control', :placeholder => 'Points' %>
+	    </div>
+	    <div class="form-group">
+	      <%= f.label :no_of_owners %><br />
+	      <input type="number" name="no_of_owners" id="no_of_owners" class="text_field form-control" placeholder="No of Owners" value="<%= @team.teamowners.count %>" >
+	      
+	    </div>
+	    <div class="form-group" id="owerlist">
+	    	<% if params[:action] == "edit" %>
+	    	
+	    	<% end %>
+
+	    </div>
+	    <input type="hidden" id="auction_id" name="auction_id" value="<%=@auction.id%>">	    
+
+
+	    <%= f.submit "Add", :class => 'btn btn-primary' %>
+	    
+	  </fieldset>
+  </div>  
+<% end %>                                
+
+
