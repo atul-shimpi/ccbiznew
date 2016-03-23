@@ -43,12 +43,13 @@
                       <td><%= team.points %></td>
                       <td>
                         <%= link_to "Edit", {:controller => "teams", :action => "edit", :auction_id => @auction.id, :id => team.id} , :class => 'btn btn-primary btn-mini'%>
-                        
-                        <%= link_to "Delete",
-                                    business_user_team_path(team),
+
+                        <%= link_to "Delete", {:controller => "teams", :action => "destroy", :auction_id => @auction.id, :id => team.id} ,
                                     :method => :delete,
                                     :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                                    :class => 'btn btn-mini btn-danger' %>
+                                    :class => 'btn btn-mini btn-danger'%>
+                        
+                        
                       </td>
                     </tr>
                   <% end %>

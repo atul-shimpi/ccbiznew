@@ -43,7 +43,7 @@ class BusinessUser::TeamsController < ApplicationController
     @team.destroy
 
     respond_to do |format|
-      format.html { redirect_to business_user_auction_path(@auction) }
+      format.html { redirect_to business_user_auction_path(@auction), alert: 'Team deleted.' }
       format.json { head :no_content }
     end
   end

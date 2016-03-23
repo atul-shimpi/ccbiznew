@@ -92,7 +92,7 @@ class BusinessUser::PlayersController < ApplicationController
     @player.destroy
 
     respond_to do |format|
-      format.html { redirect_to business_user_players_path }
+      format.html { redirect_to business_user_players_path(:auction_id => @auction.id), alert: 'Player deleted.' }
       format.json { head :no_content }
     end
   end
