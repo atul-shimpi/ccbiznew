@@ -52,3 +52,55 @@
   border-top: none;
   border-bottom: 2px solid #ddd;
 }
+
+
+
+
+
+
+/*Auction Styling*/
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+  outline: none;
+}
+.auction_page {
+	padding: 30px 15px;
+}
+.auction_container {
+	border: 1px solid #111;
+	padding-bottom: 20px;
+	margin-top: 10px;
+}
+.tab-content {
+	border: 1px solid #ddd;
+	border-top-color: transparent;
+	padding: 15px;
+}
+.main-content .tab-content p {
+	text-align: left;
+	white-space: normal;
+}
+.tab-content p strong {
+	white-space: normal;
+}
+.players_section {
+	padding: 10px 15px;
+	color: #555;
+}
+.tab_content_wrapper {
+	border-bottom: 1px dashed #ccc;
+	margin-bottom: 10px;
+}
+.tab_content_wrapper:last-child {
+	border-bottom: transparent;
+	margin-bottom: 0;
+}
+.auction_players_list {
+	border-right: 1px dashed #ccc;
+}
+.players_list {
+	border: 1px solid #ddd;
+	padding: 15px 0;
+}
+.main-content .players_list p {
+	text-align: left;
+}
