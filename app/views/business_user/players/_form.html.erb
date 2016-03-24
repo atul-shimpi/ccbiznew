@@ -1,0 +1,68 @@
+<%= form_for @player, url: business_shop_players_action(@player, params[:action]),:html => { :class => '' , multipart: true  } do |f| %>
+  <fieldset>
+    <div class="form-group">
+      <%= f.label :name, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.text_field :name, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
+    </div>    
+    <div class="form-group">
+      <%= f.label :age, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.text_field :age, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :baseprice, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.text_field :baseprice, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
+    </div>
+    <div class="form-group">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Skills</th>                                 
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>          
+          <% if params[:action] == "edit" %>            
+            <% index = 0 %>
+            <%= f.fields_for :playerskills do |ps| %>              
+
+              <tr>
+                <td>              
+                    <div class="collection-check-box">
+                      <%= ps.check_box :skill_id, {}, ps.object.player.skills[index].id, '' %> 
+                      <%= ps.label :skill_id, ps.object.player.skills[index].name %>   
+                    </div>
+                </td>
+                <td>
+                  <%= ps.text_field :rating %>                  
+                </td>
+              </tr>              
+              <% index = index + 1%>
+            <% end %>
+          <% else %>          
+
+          
+            <% @skills.each_with_index do |skill, index| %>            
+              <tr>
+                <td>              
+                    <div class="collection-check-box">
+                      
+                      <input type="checkbox" value="<%= skill.id %>" name="player[playerskills_attributes][<%=index%>][skill_id]">              
+                      <%= skill.name %>
+                    </div>
+                  
+                </td>
+                <td>
+                  <input type="text" name="player[playerskills_attributes][<%=index%>][rating]">              
+                </td>
+              </tr>
+            <% end %>  
+          <% end %>        
+        </tbody>
+      </table>      
+      
+    </div>
+    <input type="hidden" id="auction_id" name="auction_id" value="<%=@auction.id%>">  
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to "cancel", business_user_players_path(:auction_id => @auction.id), :class => 'btn btn-default' %>
+  </fieldset>
+<% end %>

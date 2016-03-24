@@ -75,6 +75,53 @@ class HomeController < ApplicationController
 			redirect_to root_path
 		end
 	end
+
+	def auction
+		subdomain = request.subdomain.split(".").last
+		@shop = Shop.find_by_subdomain(subdomain)
+		@seodetails = @shop.seodetails.where("pagename = 'auction'")
+		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
+		if !@shop.auction.blank?
+			render :template => "templates/auction", :layout => "#{@shop.template}"
+		else
+			redirect_to root_path
+		end
+	end
+	def players
+		subdomain = request.subdomain.split(".").last
+		@shop = Shop.find_by_subdomain(subdomain)
+		@seodetails = @shop.seodetails.where("pagename = 'players'")
+		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
+		if !@shop.auction.blank?
+			render :template => "templates/players", :layout => "#{@shop.template}"
+		else
+			redirect_to root_path
+		end
+	end
+	def teams
+		subdomain = request.subdomain.split(".").last
+		@shop = Shop.find_by_subdomain(subdomain)
+		@seodetails = @shop.seodetails.where("pagename = 'teams'")
+		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
+		if !@shop.auction.blank?
+			render :template => "templates/teams", :layout => "#{@shop.template}"
+		else
+			redirect_to root_path
+		end
+	end
+	def team
+		subdomain = request.subdomain.split(".").last
+		@shop = Shop.find_by_subdomain(subdomain)
+		@seodetails = @shop.seodetails.where("pagename = 'teams'")
+		@team = Team.find(params[:id])
+		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
+		if !@shop.auction.blank?
+			render :template => "templates/team", :layout => "#{@shop.template}"
+		else
+			redirect_to root_path
+		end
+	end
+	
 	def contact_params
 	    params.require(:contact).permit(:contactname, :contactemail, :contactnumber, :contactinfo, :shoprating, :shop_id)
 	end

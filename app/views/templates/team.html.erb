@@ -1,0 +1,27 @@
+<main class="auction-section">
+  <section class="container text-center">
+    <div class="container main-content">
+      <h3><%= @team.name%></h3>
+      <div class="row">
+        <div class="col-lg-12">
+          <h3>Owner List</h3>
+        </div>
+      </div>
+      <% if !@team.teamowners.blank?%>
+        <% @team.teamowners.each do |owner| %>                    
+          <div class="row">
+            <div class="col-lg-2">
+              <%= image_tag owner.photo_url(:thumb), :class=> "owner-image" %><br>
+              <%= owner.name%>
+            </div>
+            <div class="col-lg-10 text-left">              
+              <%= owner.description.html_safe %>
+            </div>
+          </div>              
+          <hr>  
+        <% end %>
+      <% end %>
+      
+    </div>    
+  </section>
+</main>

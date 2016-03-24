@@ -18,11 +18,9 @@
             <table class="table table-striped table-bordered table-hover dataTables-example" id="dataTables-example">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Phone</th>
-                  <th>Public url</th>
-                  <th>Address</th>
-                  <th>Actions</th>
+                  <th>Name</th>                  
+                  <th>Public url</th>                  
+                  <th width="50%">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -31,9 +29,13 @@
                 <% @shops.each do |shop| %>
                 <tr>
                   <td><%= link_to shop.name, admin_shop_path(subdomain: shop.subdomain, id: shop.id) %></td>
-                  <td><%= shop.phone %></td>
-                  <td><%= shop.address %></td>
-                  <td><a href=<%= "http://#{shop.subdomain}.#{request.domain}"%> target="_blank"><%= "#{shop.subdomain}.#{request.domain}" %></a></td>
+                  <td>
+                    <a href=<%= "http://#{shop.subdomain}.#{request.domain}"%> target="_blank"><%= "#{shop.subdomain}.#{request.domain}" %></a>
+                    <% if !shop.domain.blank? %>
+                      <br>
+                      <a href=<%= "http://#{shop.domain}"%> target="_blank"><%= "#{shop.domain}"%></a>
+                    <% end %>
+                  </td>
                   <td>
                   <%= link_to "Images",
                     admin_shop_images_path(:shop_id => shop), :class => 'btn btn-primary btn-mini' %>

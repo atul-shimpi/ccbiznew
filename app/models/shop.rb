@@ -36,6 +36,7 @@ end
 	belongs_to :admin
 	belongs_to :category
 	has_many :offers
+  has_one :auction
 	has_many :shop_images
   has_many :seodetails
 	has_many :events

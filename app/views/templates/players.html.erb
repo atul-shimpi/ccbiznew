@@ -1,0 +1,31 @@
+<main class="auction-section">
+  <section class="container text-center">
+    <div class="container main-content">
+      <h3>Players</h3>
+      <div class="row">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th> 
+              <th>Base Price</th>                                 
+              <th>Age</th>
+              <th>Skills</th>                                               
+            </tr>
+          </thead>
+          <tbody>
+            <% if !@shop.auction.players.blank?%>
+              <% @shop.auction.players.each do |player| %>                    
+                <tr>
+                  <td><%= player.name %></td>
+                  <td><%= player.baseprice %></td>
+                  <td><%= player.age %></td>                      
+                  <td><%= player.skills.map{|p| p.name} %></td>                  
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>    
+  </section>
+</main>

@@ -1,0 +1,90 @@
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Players</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <!-- /.row -->  
+  <div class="row">
+    <div class="col-lg-12">   
+      <ul class="nav nav-tabs">
+        <li><a href="<%= business_user_auction_path(params['auction_id']) %>">Teams</a></li>
+        <li class="active"><a  href="">Players</a></li>
+      </ul>
+      
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= link_to "Create a Player", new_business_user_player_path(:auction_id => @auction.id), :class => 'btn btn-primary' %>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+          <% if alert %>
+            <div class="alert alert-danger fade in">
+            <%= alert %>
+            </div>
+          <% end %>
+          <% if notice %>
+            <div class="alert alert-success fade in">
+            <%= notice %>
+            </div>
+          <% end %>
+          <div class="dataTable_wrapper">
+            <table class="table table-striped table-bordered table-hover dataTables-example" id="dataTables-example">
+              <thead>
+                <tr>
+                  <th>Name</th> 
+                  <th>Base Price</th>                                 
+                  <th>Age</th>
+                  <th>Skills</th>                                 
+                  <th>Team</th>                                 
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if !@players.blank?%>
+                  <% @players.each do |player| %>                    
+                    <tr>
+                      <td><%= player.name %></td>
+                      <td><%= player.baseprice %></td>
+                      <td><%= player.age %></td>                      
+                      <td>                        
+                        <% player.skills.each_with_index do |skill, index| %>
+                          <%= skill.name %>(<%= player.playerskills[index].rating %>)&nbsp;
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if !player.team.blank?%>
+                        <%= player.team.name  %>                        
+                        <% end %>
+                      </td>
+                      <td>                        
+                        <%= link_to "Edit", {:controller => "players", :action => "edit", :auction_id => @auction.id, :id => player.id} , :class => 'btn btn-primary btn-mini'%>
+
+                        <%= link_to "Delete", {:controller => "players", :action => "destroy", :auction_id => @auction.id, :id => player.id},
+                                    :method => :delete,
+                                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                                    :class => 'btn btn-mini btn-danger'%>            
+                        
+                      </td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+      </div>
+      <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+</div>
+<!-- /#page-wrapper -->

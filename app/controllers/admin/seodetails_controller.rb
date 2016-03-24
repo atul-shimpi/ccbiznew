@@ -8,8 +8,7 @@ class Admin::SeodetailsController < ApplicationController
     end
   end
   def new
-    @shop_seo = @shop.seodetails.new
-
+    @shop_seo = @shop.seodetails.new    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @shop_seo }
@@ -59,7 +58,7 @@ class Admin::SeodetailsController < ApplicationController
   def seodetail_params
     params.require(:seodetail).permit(:shop_id, :title, :metakeywords, :metadescription, :pagename)
   end
-  def get_shop
+  def get_shop    
     @shop = Shop.find(params[:shop_id])
   end
 end

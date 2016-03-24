@@ -88,7 +88,7 @@ class BusinessUser::ShopImagesController < BusinessUser::BaseController
   end
 
 
-   private
+  private
 
   def shop_image_params
     params.require(:shop_image).permit(:shop_id, :shop_image_id, :image_cache,  :image, :image_crop_x, :image_crop_y, :image_crop_w, :image_crop_h)

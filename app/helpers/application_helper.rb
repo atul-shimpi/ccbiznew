@@ -26,10 +26,21 @@ module ApplicationHelper
     end
   end
   def nav_path_for_profile
-  if business_user_signed_in?
+    if business_user_signed_in?
       business_user_business_user_path(current_business_user)
     elsif admin_signed_in?
       
     end
+  end
+  def nav_path_for_auction
+    if business_user_signed_in?
+      business_user_auctions_path
+    elsif admin_signed_in?
+      
+    end
+  end
+  def unassignedplayers(auction_id)
+    auction = Auction.find(auction_id)
+    return auction.players.where(:team_id => nil)
   end
 end

@@ -1,0 +1,38 @@
+<!-- Page Content -->
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Business User</h1>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+      <div class="col-lg-12">
+        <dl class="dl-horizontal">
+          <dt><strong>Name:</strong></dt>
+          <dd><%= @businessuser.full_name %></dd>
+          <dt><strong>Phone:</strong></dt>
+          <dd><%= @businessuser.phone %></dd>
+          <dt><strong>Email Address:</strong></dt>
+          <dd><%= @businessuser.email %></dd>          
+        </dl>
+        <div class="form-actions">
+          <%= link_to "Back", admin_business_users_path, :class => 'btn btn-primary'  %>
+          <%= link_to "Edit",
+          edit_admin_business_user_path(@businessuser), :class => 'btn btn-primary' %>
+          <%= link_to "Destroy",
+          admin_business_user_path(@businessuser),
+          :method => 'delete',
+          :confirm => 'Are you sure?' ,
+          :class => 'btn btn-danger' %>
+        </div>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->

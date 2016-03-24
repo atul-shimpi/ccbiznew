@@ -81,7 +81,24 @@ $(function () {
         
         $("#items1").disableSelection();
 });
+jQuery( document ).ready(function( $ ) {
+	$( "#no_of_owners" ).blur(function() {
+		var str ='<div class="form-group">';
+		for(i=0;i < $( "#no_of_owners" ).val();i++){
+			str += '<label>Name</label><br><input type="text" id="ownername'+i+'" name="team[teamowners_attributes]['+i+'][name]" placeholder="Name" class="text_field form-control">';
+			str += '<label>Description</label><br><textarea type="text" id="ownerdesc'+i+'" name="team[teamowners_attributes]['+i+'][description]" placeholder="Description" class="text_field form-control tinymce"></textarea>';
+			str += '<label>Photo</label><br><input type="file" id="ownerphoto'+i+'" name="team[teamowners_attributes]['+i+'][photo]">' ;
+		}
+		str += '</div>';
+	  	$("#owerlist").append(str);
 
+	  	tinyMCE.init({
+	      selector: "textarea.tinymce",
+	      toolbar: "styleselect | bold italic | undo redo | table | forecolor | backcolor | emoticons | visualblocks",
+	      plugins: "table,uploadimage,textcolor,colorpicker,emoticons,hr,textpattern,visualblocks"
+	    });
+	});
+});
 // jQuery( document ).ready(function( $ ) {
 // $(".newform").validate({
 // 	rules: {

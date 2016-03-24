@@ -6,4 +6,8 @@ class BusinessUser < ActiveRecord::Base
 # Setup accessible (or protected) attributes for your model
    has_many :shops
    mount_uploader :avatar, AvatarUploader
+
+  def full_name
+    "#{self.first_name} #{self.last_name}".titleize
+  end
 end
