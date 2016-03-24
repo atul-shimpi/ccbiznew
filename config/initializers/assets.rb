@@ -16,6 +16,7 @@ Rails.application.config.assets.version = '1.0'
   Rails.application.config.assets.precompile += %w( education_2.css)#, bootstrap-theme.min.css,  )
   Rails.application.config.assets.precompile += %w( education_3.css)#, bootstrap-theme.min.css,  )
   Rails.application.config.assets.precompile += %w( health_1.css)#, bootstrap-theme.min.css,  )
+  Rails.application.config.assets.precompile += %w( entertainment_1.css)#, bootstrap-theme.min.css,  )
   Rails.application.config.assets.precompile += %w( template_1.css)#, bootstrap-theme.min.css,  )
   Rails.application.config.assets.precompile += %w( template_3.css)#, bootstrap-theme.min.css,  )
   Rails.application.config.assets.precompile += %w( template_4.css)#, bootstrap-theme.min.css,  )

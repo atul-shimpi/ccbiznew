@@ -98,4 +98,7 @@ class HomeController < ApplicationController
 	def health_1
 		render :layout => false
 	end
+	def entertainment_1
+		render :layout => false
+	end
 end

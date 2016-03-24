@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   get 'education_2' => "home#education_2"
   get 'education_3' => "home#education_3"
   get 'health_1' => "home#health_1"
+  get 'entertainment_1' => "home#entertainment_1"
    
     match '/', to: 'home#index', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
   root 'home#index'
