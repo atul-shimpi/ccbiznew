@@ -49,6 +49,9 @@
 		        <% if !@shop.auction.blank? %>		        
 		        <li><a href="/auction"><span>Live auction update</span></a></li>
 		        <% end %>
+		        <% if !@shop.shop_images.blank? %>
+		        	<li><a href="/gallery"><span>Gallery</span></a></li>
+		        <% end %>
 		        <li><a href="/contactus">Contact Us</a></li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
