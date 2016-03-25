@@ -35,8 +35,8 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
           <% if !@shop.auction.teams.blank?%>
-            <% @shop.auction.teams.each do |team| %>
-              <li role="presentation" class="active"><a href="<%= @team.name%>" aria-controls="team1" role="tab" data-toggle="tab"><%= @team.name%></a></li>
+            <% @shop.auction.teams.each_with_index do |team, index| %>
+              <li role="presentation" class=" <%= index == 0 ? 'active' : ''%>"><a href="<%= team.name%>" aria-controls="team1" role="tab" data-toggle="tab"><%= team.name%></a></li>
               <!-- <li role="presentation"><a href="#team2" aria-controls="team2" role="tab" data-toggle="tab">Team2</a></li>
               <li role="presentation"><a href="#team3" aria-controls="team3" role="tab" data-toggle="tab">Team3</a></li>
               <li role="presentation"><a href="#team4" aria-controls="team4" role="tab" data-toggle="tab">Team4</a></li> -->
@@ -47,12 +47,12 @@
         <!-- Tab panes -->
         <div class="tab-content">
           <% if !@shop.auction.teams.blank?%>
-            <% @shop.auction.teams.each do |team| %>
-            <div role="tabpanel" class="tab-pane active clearfix" id="team1">
+            <% @shop.auction.teams.each_with_index do |team, index| %>
+            <div role="tabpanel" class="tab-pane clearfix <%= index == 0 ? 'active' : ''%>" id="<%= team.name%>">
               <div class="players_list clearfix">
                 <div class="col-lg-12">
-                  <% if !@team.teamowners.blank?%>
-                  <% @team.teamowners.each do |owner| %>
+                  <% if !team.teamowners.blank?%>
+                  <% team.teamowners.each do |owner| %>
                   <div class="row tab_content_wrapper">
                     <div class="pull-left col-lg-2">
                       <img src="<%= image_tag owner.photo_url(:thumb), :class=> "owner-image" %>">
