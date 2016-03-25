@@ -55,7 +55,11 @@ class HomeController < ApplicationController
 		@shop = Shop.find_by_subdomain(subdomain)
 		@seodetails = @shop.seodetails.where("pagename = 'gallery'")
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
-		render :template => "templates/gallery", :layout => "#{@shop.template}"
+		if !@shop.shop_images.blank?
+			render :template => "templates/gallery", :layout => "#{@shop.template}"
+		else
+			redirect_to root_path
+		end
 	end
 
 	def donation
