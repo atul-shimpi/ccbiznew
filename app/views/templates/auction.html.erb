@@ -15,7 +15,7 @@
         <% if !@shop.auction.teams.blank?%>
           <% @shop.auction.teams.each do |team| %>
           <!-- <li role="presentation" class="active"><a href="#team1" aria-controls="team1" role="tab" data-toggle="tab">Team1</a></li> -->
-          <li role="presentation"><a href="#<%= team.name%>" aria-controls="team2" role="tab" data-toggle="tab"><%= team.name%></a></li>
+          <li role="presentation" class="active"><a href="#<%= team.name%>" aria-controls="team2" role="tab" data-toggle="tab"><%= team.name%></a></li>
           <!-- <li role="presentation"><a href="#team3" aria-controls="team3" role="tab" data-toggle="tab">Team3</a></li> -->
           <!-- <li role="presentation"><a href="#team4" aria-controls="team4" role="tab" data-toggle="tab">Team4</a></li> -->
           <%end%>
