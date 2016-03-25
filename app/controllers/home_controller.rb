@@ -80,6 +80,7 @@ class HomeController < ApplicationController
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
 		@seodetails = @shop.seodetails.where("pagename = 'auction'")
+		@players = Player.not_in_team
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
 			render :template => "templates/auction", :layout => "#{@shop.template}"
