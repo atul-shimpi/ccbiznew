@@ -36,7 +36,7 @@
         <ul class="nav nav-tabs" role="tablist">
           <% if !@shop.auction.teams.blank?%>
             <% @shop.auction.teams.each_with_index do |team, index| %>
-              <li role="presentation" class=" <%= index == 0 ? 'active' : ''%>"><a href="<%= team.name%>" aria-controls="team1" role="tab" data-toggle="tab"><%= team.name%></a></li>
+              <li role="presentation" class=" <%= index == 0 ? 'active' : ''%>"><a href="#<%= team.name%>" aria-controls="team1" role="tab" data-toggle="tab"><%= team.name%></a></li>
               <!-- <li role="presentation"><a href="#team2" aria-controls="team2" role="tab" data-toggle="tab">Team2</a></li>
               <li role="presentation"><a href="#team3" aria-controls="team3" role="tab" data-toggle="tab">Team3</a></li>
               <li role="presentation"><a href="#team4" aria-controls="team4" role="tab" data-toggle="tab">Team4</a></li> -->
