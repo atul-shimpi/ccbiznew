@@ -25,10 +25,10 @@
         <!-- Tab panes -->
         <div class="tab-content">
         <% if !@shop.auction.teams.blank?%>
-          <% @shop.auction.teams.each do |team| %>
-          <% team.players.in_groups_of(2) do |players| %>
+              <% @shop.auction.teams.each do |team| %>
           <div role="tabpanel" class="tab-pane active clearfix" id="<%= team.name%>">
-
+            
+              <% team.players.in_groups_of(2) do |players| %>
            
             <div class="row tab_content_wrapper">
             <% players.each_with_index do |player, index|%>
@@ -48,11 +48,11 @@
               <%end%>
 
             </div>
-           
+           <%end%>
+          <%end%>
+          
           </div>
          <%end%>
-         <%end%>
-          <%end%>
 
         </div>
       </div>
