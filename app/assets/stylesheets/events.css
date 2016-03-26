@@ -101,6 +101,14 @@
 	border: 1px solid #ddd;
 	padding: 15px 0;
 }
+.players_list img {
+	width: 100%;
+}
 .main-content .players_list p {
 	text-align: left;
+}
+@media only screen and (max-width: 767px) {
+	.auction_players_list {
+    border-right: none;
+	}
 }
