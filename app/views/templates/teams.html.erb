@@ -55,7 +55,7 @@
                   <% team.teamowners.each do |owner| %>
                   <div class="row tab_content_wrapper">
                     <div class="pull-left col-lg-2">
-                      <img src="<%= image_tag owner.photo_url(:thumb), :class=> "owner-image" %>">
+                      <%= image_tag owner.photo_url(:thumb), :class=> "owner-image" %>
                       <!-- <img src="<%#= image_path("no-image.jpg") %>"> -->
                     </div>
                     <div class="pull-left col-lg-10">
