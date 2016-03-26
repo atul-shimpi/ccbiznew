@@ -59,9 +59,9 @@ Rails.application.routes.draw do
   get 'health_1' => "home#health_1"
   get 'entertainment_1' => "home#entertainment_1"
   get 'auction' => "home#auction"
-  get 'players' => "home#players"
   get 'teams' => "home#teams"
   get 'team/:id' => "home#team"
+  get 'player/:id' => "home#player"
   
    
     match '/', to: 'home#index', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]

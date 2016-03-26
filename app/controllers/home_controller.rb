@@ -92,13 +92,15 @@ class HomeController < ApplicationController
 			redirect_to root_path
 		end
 	end
-	def players
+
+	def player
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
 		@seodetails = @shop.seodetails.where("pagename = 'players'")
+		@player = Player.find(params[:id])
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
-			render :template => "templates/players", :layout => "#{@shop.template}"
+			render :template => "templates/player", :layout => "#{@shop.template}"
 		else
 			redirect_to root_path
 		end
