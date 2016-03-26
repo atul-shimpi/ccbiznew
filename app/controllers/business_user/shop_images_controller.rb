@@ -36,13 +36,11 @@ class BusinessUser::ShopImagesController < BusinessUser::BaseController
     @shop_image = @shop.shop_images.new(shop_image_params)
     
     respond_to do |format|
+      
       if @shop_image.save
+
         format.html { 
-          if params[:shop_image][:image].present?
-            render :crop  ## Render the view for cropping
-          else                  
-            redirect_to business_user_shop_images_path(:shop_id => @shop.id), notice: 'Business website was successfully created.' 
-          end
+        redirect_to business_user_shop_images_path(:shop_id => @shop.id), notice: 'Business website was successfully created.' 
         }
         format.json { render json: @shop_image, status: :created, location: @shop_image }
       else
