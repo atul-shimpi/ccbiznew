@@ -16,10 +16,10 @@
             <%# if !@shop.auction.players.blank?%>
               <%# @shop.auction.players.each do |player| %>                    
                 <tr>
-                  <td><%= player.name %></td>
-                  <td><%= player.baseprice %></td>
-                  <td><%= player.age %></td>                      
-                  <td><%= player.skills.map{|p| p.name} %></td>                  
+                  <td><%#= player.name %></td>
+                  <td><%#= player.baseprice %></td>
+                  <td><%#= player.age %></td>                      
+                  <td><%#= player.skills.map{|p| p.name} %></td>                  
                 </tr>
               <%# end %>
             <%# end %>
