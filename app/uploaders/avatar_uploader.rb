@@ -3,7 +3,7 @@
 class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+  include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -15,15 +15,15 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end  
-  # version :banner do    
-  #   process :resize_to_fill => [1280, 456]    
-  # end
-  # version :cropbanner do    
+  version :banner do    
+    process :resize_to_fill => [1280, 456]    
+  end
+  version :cropbanner do    
     
-  # end
-  # version :thumb do
-  #   process :resize_to_fit => [100, 100]    
-  # end  
+  end
+  version :thumb do
+    process :resize_to_fit => [100, 100]    
+  end  
 
   
   # Provide a default URL as a default if there hasn't been a file uploaded:
