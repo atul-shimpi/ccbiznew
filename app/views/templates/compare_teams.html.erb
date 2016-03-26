@@ -1,0 +1,101 @@
+
+<!-- Auction page-->
+<div class="container main-content auction_page">
+  <div class="row">
+    <div class="auction_container col-lg-12 clearfix">
+      <h3>Teams</h3>
+      <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 auction_players_list">
+	      <table>
+	      	<thead>
+	      		<tr>
+	      		<% if !@shop.auction.teams.blank?%>
+        			<% @shop.auction.teams.each_with_index do |team, index| %>
+	      				<th><%= team.name%></th>
+	      			<% end %>
+	      		<% end %>
+	      		</tr>
+	      	</thead>
+	      	
+			            
+	      	<tbody>
+	      		<% if !@shop.auction.teams.blank?%>
+		          <% @shop.auction.teams.each_with_index do |team, index| %>
+			          <tr>
+			            <% team.players.in_groups_of(2) do |players| %>
+			              <% players.each_with_index do |player, index|%>
+			            		<% if !player.blank?%>
+		      							<td>
+					                <p><b><%= player.name %></b></p>
+					                <p>Auction Price: <strong><%= player.auctionprice %></strong></p>
+					                <p>Skills: 
+						                <% player.skills.each_with_index do |skill, index| %>
+						                  <strong>
+						                  	<%= skill.name %>(<%= player.playerskills[index].rating %>/5)&nbsp;
+						                  </strong>
+						                <% end %>
+					                </p>
+				              	</td>
+					          	<%end%>
+				          	<%end%>
+				          <%end%>
+		      			</tr>
+				    	<% end %>
+		      	<% end %>      	
+	      	</tbody>
+
+				          	
+	      </table>
+
+
+
+
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+        <% if !@shop.auction.teams.blank?%>
+          <% @shop.auction.teams.each_with_index do |team, index| %>
+          <!-- <li role="presentation" class="active"><a href="#team1" aria-controls="team1" role="tab" data-toggle="tab">Team1</a></li> -->
+          <li role="presentation" class=" <%= index == 0 ? 'active' : ''%>"><a href="#<%= team.name%>" aria-controls="team2" role="tab" data-toggle="tab"><%= team.name%></a></li>
+          <!-- <li role="presentation"><a href="#team3" aria-controls="team3" role="tab" data-toggle="tab">Team3</a></li> -->
+          <!-- <li role="presentation"><a href="#team4" aria-controls="team4" role="tab" data-toggle="tab">Team4</a></li> -->
+          <%end%>
+          <%end%>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+        <% if !@shop.auction.teams.blank?%>
+              <% @shop.auction.teams.each_with_index do |team, index| %>
+          <div role="tabpanel" class="tab-pane clearfix <%= index == 0 ? 'active' : ''%>" id="<%= team.name%>">
+
+              <% team.players.in_groups_of(2) do |players| %>
+           
+            <div class="row tab_content_wrapper">
+            <% players.each_with_index do |player, index|%>
+
+            <% if !player.blank?%>
+              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 ">
+                <p><b><%= player.name %></b></p>
+                <p>Auction Price: <strong><%= player.auctionprice %></strong></p>
+                <p>Skills: 
+                <% player.skills.each_with_index do |skill, index| %>
+                          
+                          <strong><%= skill.name %>(<%= player.playerskills[index].rating %>/5)&nbsp;</strong>
+                        <% end %>
+                </p>
+              </div>
+              <%end%>
+              <%end%>
+
+            </div>
+           <%end%>
+          
+          
+          </div>
+         <%end%>
+         <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

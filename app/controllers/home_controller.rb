@@ -92,6 +92,18 @@ class HomeController < ApplicationController
 			redirect_to root_path
 		end
 	end
+	def compare_teams
+		subdomain = request.subdomain.split(".").last
+		@shop = Shop.find_by_subdomain(subdomain)
+		@seodetails = @shop.seodetails.where("pagename = 'compare_teams'")
+		@players = Player.not_in_team
+		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
+		if !@shop.auction.blank?
+			render :template => "templates/compare_teams", :layout => "#{@shop.template}"
+		else
+			redirect_to root_path
+		end
+	end
 	def players
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)

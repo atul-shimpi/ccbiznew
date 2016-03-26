@@ -62,6 +62,7 @@ Rails.application.routes.draw do
   get 'players' => "home#players"
   get 'teams' => "home#teams"
   get 'team/:id' => "home#team"
+  get 'compare_teams' => "home#compare_teams"
   
    
     match '/', to: 'home#index', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
