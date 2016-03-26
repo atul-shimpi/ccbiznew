@@ -1,30 +1,3 @@
-<!-- <main class="auction-section">
-  <section class="container text-center">
-    <div class="container main-content">
-      <h3>Players</h3>
-      <div class="row">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Name</th>                                                
-            </tr>
-          </thead>
-          <tbody>
-            <%# if !@shop.auction.teams.blank?%>
-              <%# @shop.auction.teams.each do |team| %>                    
-                <tr>
-                  <td><%#= link_to team.name, "team/"+team.id.to_s %></td>
-                </tr>
-              <%# end %>
-            <%# end %>
-          </tbody>
-        </table>
-      </div>
-    </div>    
-  </section>
-</main> -->
-
-
 <!-- Teams page-->
 <div class="container main-content auction_page">
   <div class="row">
@@ -37,9 +10,6 @@
           <% if !@shop.auction.teams.blank?%>
             <% @shop.auction.teams.each_with_index do |team, index| %>
               <li role="presentation" class=" <%= index == 0 ? 'active' : ''%>"><a href="#<%= team.name%>" aria-controls="team1" role="tab" data-toggle="tab"><%= team.name%></a></li>
-              <!-- <li role="presentation"><a href="#team2" aria-controls="team2" role="tab" data-toggle="tab">Team2</a></li>
-              <li role="presentation"><a href="#team3" aria-controls="team3" role="tab" data-toggle="tab">Team3</a></li>
-              <li role="presentation"><a href="#team4" aria-controls="team4" role="tab" data-toggle="tab">Team4</a></li> -->
             <% end %>
           <% end %>
         </ul>
