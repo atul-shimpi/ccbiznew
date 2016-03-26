@@ -38,34 +38,34 @@
     <div class="auction_container col-lg-12 clearfix">
       <h3>Players List</h3>
       <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 players_section">
-        <% if !@shop.auction.players.blank?%>
-          <% @shop.auction.players.each do |player| %>
             <div class="players_list clearfix">
               <div class="col-lg-12">
                 <div class="row tab_content_wrapper">
                   <div class="pull-left col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                  <% if @player.image.blank?%>
                     <img src="<%= image_path("no-image.jpg") %>">
+                    <%else%>
+                    <%= image_tag @player.image_url(:thumb), :class=> "owner-image" %>
+                    <%end%>
                   </div>
                   <div class="pull-left col-lg-10 col-md-10 col-sm-9 col-xs-9">
                     <div class="col-lg-12">
-                        <p><%= player.name %></p>
-                        <p>Age: <strong><%= player.age %></strong></p>
-                        <p>Base Price: <strong><%= player.baseprice %></strong></p>
+                        <p><%= @player.name %></p>
+                        <p>Age: <strong><%= @player.age %></strong></p>
+                        <p>Base Price: <strong><%= @player.baseprice %></strong></p>
                         <p>Skills:
-                          <% player.skills.each_with_index do |skill, index| %>
+                          <% @player.skills.each_with_index do |skill, index| %>
                             <strong>
-                              <%= skill.name %>&nbsp;(<%= player.playerskills[index].rating %>/5)
+                              <%= skill.name %>&nbsp;(<%= @player.playerskills[index].rating %>/5)
                             </strong>
                           <% end %>
                         </p>
-                        <p>Description: Not yet added Not yet added Not yet added Not yet added Not yet added Not yet addedNot yet addedNot yet added Not yet added Not yet added Not yet added Not yet added Not yet added Not yet added Not yet added Not yet added Not yet added</p>
+                        <p><%= @player.description.html_safe %></p>
                       </div>
                   </div>
                 </div>
               </div>
             </div>
-          <% end %>
-        <% end %>
       </div>
     </div>
   </div>

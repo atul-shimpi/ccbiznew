@@ -53,6 +53,10 @@
       <%= f.collection_select(:team_id, auction_teams(@auction.id, @player.id), :id, :name, {:prompt => 'Select'}, {:class => 'form-control', :required => ''}) %>
     </div>
     <div class="form-group">
+      <%= f.label :is_captain %><br />
+      <%= f.radio_button :is_captain, true %> <br>
+    </div>
+    <div class="form-group">
       <%= f.label :auctionprice, :class => 'control-label' %><span class="asterix">*</span>
       <%= f.text_field :auctionprice, :class => 'text_field form-control', :placeholder => 'Auction Price', :required => '' %>
     </div>
