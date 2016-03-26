@@ -15,6 +15,7 @@ class BusinessUser::TeamsController < ApplicationController
   def create
     @team = @auction.teams.new(team_params)
     
+    
     respond_to do |format|
       if @team.save
         format.html { redirect_to business_user_auction_path(@auction), notice: 'Team was successfully created.' }

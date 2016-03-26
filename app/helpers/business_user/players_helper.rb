@@ -1,7 +1,7 @@
 module BusinessUser::PlayersHelper
 	
 	def business_shop_players_action(player, action)
-		if action == "new"
+		if action == "new" || action == "create"
 			business_user_players_path(player)
 		else
 			business_user_player_path(player)

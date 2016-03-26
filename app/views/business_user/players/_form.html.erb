@@ -1,4 +1,9 @@
 <%= form_for @player, url: business_shop_players_action(@player, params[:action]),:html => { :class => '' , multipart: true  } do |f| %>
+<% if @player.errors.full_messages.any? %>
+  <% @player.errors.full_messages.each do |error_message| %>
+  <%= error_message if @player.errors.full_messages.first == error_message %> <br />
+  <% end %>
+  <% end %>
   <fieldset>
     <div class="form-group">
       <%= f.label :name, :class => 'control-label' %><span class="asterix">*</span>
@@ -7,6 +12,14 @@
     <div class="form-group">
       <%= f.label :age, :class => 'control-label' %><span class="asterix">*</span>
       <%= f.text_field :age, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :image, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.file_field :image, :required => '' %>
+    </div>
+        <div class="form-group">
+      <%= f.label :description, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.text_area :description, :class => 'text_field form-control tinymce'  %>
     </div>
     <div class="form-group">
       <%= f.label :baseprice, :class => 'control-label' %><span class="asterix">*</span>
@@ -41,7 +54,7 @@
           <% else %>          
 
           
-            <% @skills.each_with_index do |skill, index| %>            
+            <% @auction.skill.all.each_with_index do |skill, index| %>            
               <tr>
                 <td>              
                     <div class="collection-check-box">
@@ -66,3 +79,10 @@
     <%= link_to "cancel", business_user_players_path(:auction_id => @auction.id), :class => 'btn btn-default' %>
   </fieldset>
 <% end %>
+<script type="text/javascript">
+  tinyMCE.init({
+        selector: "textarea.tinymce",
+        toolbar: "styleselect | bold italic | undo redo | table | forecolor | backcolor | emoticons | visualblocks",
+        plugins: "table,uploadimage,textcolor,colorpicker,emoticons,hr,textpattern,visualblocks"
+      });
+</script>

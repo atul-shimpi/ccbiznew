@@ -102,6 +102,6 @@ class BusinessUser::PlayersController < ApplicationController
     @auction = Auction.find(params[:auction_id])
   end
   def player_params
-    params.require(:player).permit(:name, :age, :baseprice, :auctionprice, :team_id, playerskills_attributes:[:id, :skill_id, :rating])
+    params.require(:player).permit(:name, :age, :baseprice, :auctionprice, :image, :description, :is_captain, :team_id, playerskills_attributes:[:id, :skill_id, :rating])
   end
 end
