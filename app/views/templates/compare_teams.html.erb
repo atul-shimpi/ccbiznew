@@ -27,7 +27,7 @@
 		                      <%end%>
 		                    </div>
 		                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-					                <p><b><%= player.name %></b></p>
+					                <p><b><%= link_to player.name, "player/"+player.id.to_s %></b></p>
 					                <p>Auction Price: <strong><%= player.auctionprice %></strong></p>
 					                <p>Skills: 
 						                <% player.skills.each_with_index do |skill, index| %>

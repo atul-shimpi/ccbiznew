@@ -59,7 +59,7 @@
                             </strong>
                           <% end %>
                         </p>
-                        <p><%= @player.description.html_safe %></p>
+                        <p><%= @player.description.html_safe rescue "" %></p>
                       </div>
                   </div>
                 </div>
