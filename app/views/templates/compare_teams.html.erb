@@ -23,7 +23,7 @@
 			      							<% if player.image.blank?%>
 		                      	<img src="<%= image_path("no-image.jpg") %>">
 		                      <%else%>
-		                      	<%= image_tag @player.image_url(:thumb), :class=> "owner-image" %>
+		                      	<%= image_tag player.image_url(:thumb), :class=> "owner-image" %>
 		                      <%end%>
 		                    </div>
 		                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
