@@ -64,6 +64,9 @@ ul.nav.navbar-nav li {
 	margin-top: 0;
 	margin-bottom: 40px;
 }
+.main-content {
+	margin-bottom: 90px;
+}
 .main-content p {
 	text-align: center;
 }
@@ -130,6 +133,9 @@ footer {
 	background: #000;
 	padding: 10px 0px;
 	color: rgb(255, 255, 255);
+	position: fixed;
+	width: 100%;
+	bottom: 0;
 }
 .panel-body {
 	padding-left: 0;

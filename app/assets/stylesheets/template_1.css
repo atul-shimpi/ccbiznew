@@ -64,6 +64,9 @@ ul.nav.navbar-nav li {
 .main-content p {
 	text-align: center;
 }
+.main-content {
+	margin-bottom: 90px;
+}
 .offer_products {
 	position: relative;
 	margin-bottom: 20px;
@@ -126,6 +129,9 @@ footer {
 	background: #000;
 	padding: 10px 0px;
 	color: rgb(255, 255, 255);
+	position: fixed;
+	width: 100%;
+	bottom: 0;
 }
 .panel-body {
 	padding-left: 0;
