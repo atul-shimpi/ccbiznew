@@ -36,15 +36,18 @@
         <tbody>          
           <% if params[:action] == "edit" %>            
             <% index = 0 %>
-            <%= f.fields_for :playerskills do |ps| %>              
-
+            <%= f.fields_for :playerskills do |ps| %>  
               <tr>
                 <td>              
                     <div class="collection-check-box">
                       <%= ps.check_box :skill_id, {}, ps.object.player.skills[index].id, '' %> 
                       <%= ps.label :skill_id, ps.object.player.skills[index].name %>   
+                      <% if ps.object.player.skills[index].image_url %>                        
+                        <%= image_tag ps.object.player.skills[index].image_url(:thumb), :class=> "img-responsive skill-icon"%>
+                      <% end %>
                     </div>
                 </td>
+
                 <td>
                   <%= ps.text_field :rating %>                  
                 </td>
@@ -61,6 +64,9 @@
                       
                       <input type="checkbox" value="<%= skill.id %>" name="player[playerskills_attributes][<%=index%>][skill_id]">              
                       <%= skill.name %>
+                      <% if skill.image_url %>
+                        <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon"%>
+                      <% end %>
                     </div>
                   
                 </td>

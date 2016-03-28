@@ -1,4 +1,4 @@
-
+<meta http-equiv="refresh" content="30">
 <!-- Auction page-->
 <div class="container main-content auction_page">
   <div class="clearfix">
@@ -17,7 +17,7 @@
         <% if !@shop.auction.teams.blank?%>
           <% @shop.auction.teams.each_with_index do |team, index| %>
           <!-- <li role="presentation" class="active"><a href="#team1" aria-controls="team1" role="tab" data-toggle="tab">Team1</a></li> -->
-          <li role="presentation" class=" <%= index == 0 ? 'active' : ''%>"><a href="#<%= team.name%>" aria-controls="team2" role="tab" data-toggle="tab"><%= team.name%></a></li>
+          <li role="presentation" class=" <%= index == 0 ? 'active' : ''%>"><a href="#team<%= team.id%>" aria-controls="team2" role="tab" data-toggle="tab"><%= team.name%></a></li>
           <!-- <li role="presentation"><a href="#team3" aria-controls="team3" role="tab" data-toggle="tab">Team3</a></li> -->
           <!-- <li role="presentation"><a href="#team4" aria-controls="team4" role="tab" data-toggle="tab">Team4</a></li> -->
           <%end%>
@@ -28,7 +28,7 @@
         <div class="tab-content">
         <% if !@shop.auction.teams.blank?%>
               <% @shop.auction.teams.each_with_index do |team, index| %>
-          <div role="tabpanel" class="tab-pane clearfix <%= index == 0 ? 'active' : ''%>" id="<%= team.name%>">
+          <div role="tabpanel" class="tab-pane clearfix <%= index == 0 ? 'active' : ''%>" id="team<%= team.id%>">
 
               <% team.players.in_groups_of(2) do |players| %>
            
@@ -40,10 +40,12 @@
                 <p><b><%= link_to player.name, "player/"+player.id.to_s %></b></p>
                 <p>Auction Price: <strong><%= player.auctionprice %></strong></p>
                 <p>Skills: 
-                <% player.skills.each_with_index do |skill, index| %>
-                          
-                          <strong><%= skill.name %>(<%= player.playerskills[index].rating %>/5)&nbsp;</strong>
-                        <% end %>
+                <% player.skills.each_with_index do |skill, index| %>                  
+                  <% if skill.image_url %>                        
+                    <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon"%>
+                  <% end %>        
+                  <strong><%= skill.name %>(<%= player.playerskills[index].rating %>/5)&nbsp;</strong>
+                <% end %>
                 </p>
               </div>
               <%end%>
@@ -78,7 +80,9 @@
                     <p>Base Price: <strong><%= player.baseprice %></strong></p>
                     <p>Skills: <strong>
                     <% player.skills.each_with_index do |skill, index| %>
-                          
+                          <% if skill.image_url %>                        
+                            <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon"%>
+                          <% end %>  
                           <strong><%= skill.name %>(<%= player.playerskills[index].rating %>/5)&nbsp;</strong>
                         <% end %>
                     </strong></p>

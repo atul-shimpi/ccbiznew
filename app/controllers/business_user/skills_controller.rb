@@ -69,6 +69,6 @@ class BusinessUser::SkillsController < ApplicationController
   private
 
   def skill_params
-    params.require(:skill).permit(:name)
+    params.require(:skill).permit(:name, :image)
   end
 end
