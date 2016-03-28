@@ -80,23 +80,9 @@
 					<li>
 						<a href="<%= nav_path_for_event %>">Event</a>
 					</li>
-					<li>						
-						<a href="javascript:void(0)" onclick="$('#auctionmenu').slideToggle();" >	
-							Auctions
-						</a>
-						<ul class="nav" id="auctionmenu">
-							<li>
-								<a href="<%= business_user_skills_path %>">
-									Skills
-								</a>
-							</li>							
-							<li>
-								<a href="<%= nav_path_for_auction %>">
-									Auctions
-								</a>
-							</li>
-						</ul>
-					</li>					
+					<li>
+						<a href="<%= nav_path_for_auction %>">Auctions</a>
+					</li>
 					<% if admin_signed_in? %>
 					<li>
 						<a href="<%= nav_path_for_single_shop %>">Single Business website</a>

@@ -54,10 +54,9 @@
               </tr>              
               <% index = index + 1%>
             <% end %>
-          <% else %>          
-
+          <% else %>       
           
-            <% @auction.skill.all.each_with_index do |skill, index| %>            
+            <% @auction.skills.all.each_with_index do |skill, index| %>            
               <tr>
                 <td>              
                     <div class="collection-check-box">

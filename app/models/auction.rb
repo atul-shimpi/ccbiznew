@@ -3,6 +3,7 @@ class Auction < ActiveRecord::Base
   has_and_belongs_to_many :skill
   has_many :teams
   has_many :players
+  has_many :skills
   is_impressionable
   validates :shop_id, uniqueness: { message: "One Business Website can have only one Auction" }
 end
