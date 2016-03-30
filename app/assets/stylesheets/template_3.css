@@ -75,6 +75,9 @@ ul.nav.navbar-nav {
 	margin-top: 0;
 	margin-bottom: 40px;
 }
+.main-content {
+	margin-bottom: 90px;
+}
 .main-content p {
 	text-align: left;
 }
@@ -166,6 +169,9 @@ footer {
 	background: #f1b500;
 	padding: 10px 0px;
 	color: rgb(255, 255, 255);
+	position: fixed;
+	width: 100%;
+	bottom: 0;
 }
 .panel-body {
 	padding-left: 0;

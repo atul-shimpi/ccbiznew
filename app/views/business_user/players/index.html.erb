@@ -10,7 +10,9 @@
     <div class="col-lg-12">   
       <ul class="nav nav-tabs">
         <li><a href="<%= business_user_auction_path(params['auction_id']) %>">Teams</a></li>
+        <li><a href="<%= business_user_skills_path(:auction_id => @auction.id) %>">Skills</a></li>
         <li class="active"><a  href="">Players</a></li>
+        
       </ul>
       
     </div>

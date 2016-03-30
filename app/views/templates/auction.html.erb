@@ -1,8 +1,10 @@
-
+<meta http-equiv="refresh" content="30">
 <!-- Auction page-->
 <div class="container main-content auction_page">
   <div class="clearfix">
-    <span class="pull-left">No. of visitors: 189</span>
+    <span class="pull-left">No. of visitors: <%= @shop.auction.impressionist_count(:start_date=>Time.now.strftime("%Y-%m-%d"),:filter=>:ip_address)%></span>
+    
+
     <span class="pull-right"><input type="button" value="Refresh Page" onClick="window.location.reload();" /></span>
   </div>
   <div class="row">
@@ -38,10 +40,12 @@
                 <p><b><%= link_to player.name, "player/"+player.id.to_s %></b></p>
                 <p>Auction Price: <strong><%= player.auctionprice %></strong></p>
                 <p>Skills: 
-                <% player.skills.each_with_index do |skill, index| %>
-                          
-                          <strong><%= skill.name %>(<%= player.playerskills[index].rating %>/5)&nbsp;</strong>
-                        <% end %>
+                <% player.skills.each_with_index do |skill, index| %>                  
+                  <% if skill.image_url %>                        
+                    <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon"%>
+                  <% end %>        
+                  <strong><%= skill.name %>(<%= player.playerskills[index].rating %>/5)&nbsp;</strong>
+                <% end %>
                 </p>
               </div>
               <%end%>
@@ -76,7 +80,9 @@
                     <p>Base Price: <strong><%= player.baseprice %></strong></p>
                     <p>Skills: <strong>
                     <% player.skills.each_with_index do |skill, index| %>
-                          
+                          <% if skill.image_url %>                        
+                            <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon"%>
+                          <% end %>  
                           <strong><%= skill.name %>(<%= player.playerskills[index].rating %>/5)&nbsp;</strong>
                         <% end %>
                     </strong></p>

@@ -102,6 +102,9 @@ ul.nav.navbar-nav {
 	margin: 0;
 	line-height: 46px;
 }
+.main-content {
+	margin-bottom: 90px;
+}
 .main-content p {
 	text-align: left;
 }
@@ -168,6 +171,9 @@ footer {
 	background: #0d45c3;
 	padding: 10px 0px;
 	color: rgb(255, 255, 255);
+	position: fixed;
+	width: 100%;
+	bottom: 0;
 }
 .panel-body {
 	padding-left: 0;

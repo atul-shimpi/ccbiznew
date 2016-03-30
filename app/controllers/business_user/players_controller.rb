@@ -29,6 +29,7 @@ class BusinessUser::PlayersController < ApplicationController
   def edit    
     @player = Player.find(params[:id])
     @skills = @auction.skill.all    
+    binding.pry
     @teams = @auction.teams.where("points > "+@player.baseprice.to_s)
   end
 

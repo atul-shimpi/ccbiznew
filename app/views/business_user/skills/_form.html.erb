@@ -3,7 +3,12 @@
     <div class="form-group">
       <%= f.label :name, :class => 'control-label' %><span class="asterix">*</span>
       <%= f.text_field :name, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
-    </div>    
+    </div>   
+    <div class="form-group">
+      <%= f.label :image, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.file_field :image, :required => '' %>
+    </div> 
+    <input type="hidden" id="auction_id" name="auction_id" value="<%=@auction.id%>">  
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to "cancel", business_user_skills_path, :class => 'btn btn-default' %>
   </fieldset>
