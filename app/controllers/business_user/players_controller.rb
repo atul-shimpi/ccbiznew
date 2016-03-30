@@ -1,7 +1,7 @@
 class BusinessUser::PlayersController < ApplicationController
   before_action :get_auction
 	def index    
-    @players = Player.all
+    @players = @auction.players
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @players }
