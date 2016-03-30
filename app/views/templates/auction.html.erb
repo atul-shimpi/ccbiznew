@@ -81,7 +81,7 @@
                     <p>Skills: <strong>
                     <% player.skills.each_with_index do |skill, index| %>
                           <% if skill.image_url %>                        
-                            <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon"%>
+                            <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon", :style => "height:15px;width:15px"%>
                           <% end %>  
                           <strong><%= skill.name %>(<%= player.playerskills[index].rating %>/5)&nbsp;</strong>
                         <% end %>
