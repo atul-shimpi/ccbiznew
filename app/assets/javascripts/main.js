@@ -82,13 +82,15 @@ $(function () {
         $("#items1").disableSelection();
 });
 jQuery( document ).ready(function( $ ) {
-	$( "#no_of_owners" ).blur(function() {
+	$( "#add_more_owner" ).click(function() {
+		var values = parseInt($(this).attr("data-value"));						
+		$(this).attr("data-value",values + 1);
 		var str ='<div class="form-group">';
-		for(i=0;i < $( "#no_of_owners" ).val();i++){
-			str += '<label>Name</label><br><input type="text" id="ownername'+i+'" name="team[teamowners_attributes]['+i+'][name]" placeholder="Name" class="text_field form-control">';
-			str += '<label>Description</label><br><textarea type="text" id="ownerdesc'+i+'" name="team[teamowners_attributes]['+i+'][description]" placeholder="Description" class="text_field form-control tinymce"></textarea>';
-			str += '<label>Photo</label><br><input type="file" id="ownerphoto'+i+'" name="team[teamowners_attributes]['+i+'][photo]">' ;
-		}
+		//for(i=0;i < $( "#no_of_owners" ).val();i++){
+			str += '<label>Name</label><br><input type="text" id="ownername'+values+'" name="team[teamowners_attributes]['+values+'][name]" placeholder="Name" class="text_field form-control">';
+			str += '<label>Description</label><br><textarea type="text" id="ownerdesc'+values+'" name="team[teamowners_attributes]['+values+'][description]" placeholder="Description" class="text_field form-control tinymce"></textarea>';
+			str += '<label>Photo</label><br><input type="file" id="ownerphoto'+values+'" name="team[teamowners_attributes]['+values+'][photo]">' ;
+		//}
 		str += '</div>';
 	  	$("#owerlist").append(str);
 

@@ -16,24 +16,61 @@
 	      <%= f.label :points %><br />
 	      <%= f.text_field :points, :class => 'text_field form-control', :placeholder => 'Points' %>
 	    </div>
+	    <% if params[:action] == "edit" %>
 	    <div class="form-group">
 	      <%= f.label :no_of_owners %><br />
-	      <input type="number" name="no_of_owners" id="no_of_owners" class="text_field form-control" placeholder="No of Owners" value="<%= @team.teamowners.count %>" >
+	      <input type="number" name="no_of_owners" id="no_of_owners" class="text_field form-control" placeholder="No of Owners" readonly="readonly" value="<%= @team.teamowners.count %>" >
 	      
 	    </div>
+	    <% end %>
 	    <div class="form-group" id="owerlist">
 	    	<% if params[:action] == "edit" %>
-	    	
+	    		<% index = 0 %>
+		            <%= f.fields_for :teamowners do |ps| %>  
+			            <div class="form-group">
+					      <%= ps.label :name %><br />
+					      <%= ps.text_field :name, :class => 'text_field form-control', :placeholder => 'Owner Name' %>
+					    </div>
+					    <div class="form-group">
+					      <%= ps.label :description %><br />
+					      <%= ps.text_area :description, :class => 'form-control tinymce' %>
+					    </div>
+					    <div class="form-group">
+					      <%= ps.label :photo %><br />
+					      <%= ps.file_field :photo, :class => ''%>
+					      
+					      <% if ps.object.photo_url %>                        
+	                        <%= image_tag ps.object.photo_url(:thumb), :class=> "img-responsive skill-icon"%>
+	                      <% end %>
+					    </div>		              
+		              <% index = index + 1%>
+		            <% end %>
 	    	<% end %>
 
 	    </div>
+	    <div class="pull-right">
+	    <% if @team.teamowners.count == 0 %>
+	    	<%= f.button "Add Owner", :id=>"add_more_owner", :"data-value"=> 0, :class => 'btn btn-primary', :type=>"button" %>
+	    <% else %>
+	    	<%= f.button "Add Owner", :id=>"add_more_owner", :"data-value"=> @team.teamowners.count + 1, :class => 'btn btn-primary', :type=>"button" %>
+	    <% end %>
+	    
+	    </div>
+	    <br>
+	    
 	    <input type="hidden" id="auction_id" name="auction_id" value="<%=@auction.id%>">	    
 
 
-	    <%= f.submit "Add", :class => 'btn btn-primary' %>
+	    <%= f.submit  :class => 'btn btn-primary' %>
 	    
 	  </fieldset>
   </div>  
 <% end %>                                
-
+<script type="text/javascript">
+  tinyMCE.init({
+        selector: "textarea.tinymce",
+        toolbar: "styleselect | bold italic | undo redo | table | forecolor | backcolor | emoticons | visualblocks",
+        plugins: "table,uploadimage,textcolor,colorpicker,emoticons,hr,textpattern,visualblocks"
+      });
+</script>
 

@@ -9,7 +9,7 @@
         <ul class="nav nav-tabs" role="tablist">
           <% if !@shop.auction.teams.blank?%>
             <% @shop.auction.teams.each_with_index do |team, index| %>
-              <li role="presentation" class=" <%= index == 0 ? 'active' : ''%>"><a href="#<%= team.name%>" aria-controls="team1" role="tab" data-toggle="tab"><%= team.name%></a></li>
+              <li role="presentation" class=" <%= index == 0 ? 'active' : ''%>"><a href="#team<%= team.id%>" aria-controls="team1" role="tab" data-toggle="tab"><%= team.name%></a></li>
             <% end %>
           <% end %>
         </ul>
@@ -18,7 +18,7 @@
         <div class="tab-content">
           <% if !@shop.auction.teams.blank?%>
             <% @shop.auction.teams.each_with_index do |team, index| %>
-            <div role="tabpanel" class="tab-pane clearfix <%= index == 0 ? 'active' : ''%>" id="<%= team.name%>">
+            <div role="tabpanel" class="tab-pane clearfix <%= index == 0 ? 'active' : ''%>" id="team<%= team.id%>">
               <div class="players_list clearfix">
                 <div class="col-lg-12">
                   <% if !team.teamowners.blank?%>

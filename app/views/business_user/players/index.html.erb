@@ -66,7 +66,8 @@
                         <% end %>
                       </td>
                       <td>                        
-                        <%= link_to "Edit", {:controller => "players", :action => "edit", :auction_id => @auction.id, :id => player.id} , :class => 'btn btn-primary btn-mini'%>
+                        <%= link_to "Auction", {:controller => "players", :action => "edit", :auction_id => @auction.id, :id => player.id} , :class => 'btn btn-primary btn-mini'%>
+                        <%= link_to "Edit", {:controller => "players", :action => "playeredit", :auction_id => @auction.id, :id => player.id} , :class => 'btn btn-primary btn-mini'%>
 
                         <%= link_to "Delete", {:controller => "players", :action => "destroy", :auction_id => @auction.id, :id => player.id},
                                     :method => :delete,
