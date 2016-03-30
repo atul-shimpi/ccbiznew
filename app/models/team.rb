@@ -3,5 +3,5 @@ class Team < ActiveRecord::Base
 
   has_many :teamowners, :dependent => :delete_all
   has_many :players
-  accepts_nested_attributes_for :teamowners
+  accepts_nested_attributes_for :teamowners, reject_if: proc { |attributes| attributes['name'].blank? }
 end

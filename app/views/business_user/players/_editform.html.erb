@@ -38,7 +38,7 @@
                     <div class="collection-check-box">                      
                       <%= ps.label :skill_id, ps.object.player.skills[index].name %>   
                       <% if ps.object.player.skills[index].image_url %>                        
-                        <%= image_tag ps.object.player.skills[index].image_url(:thumb), :class=> "img-responsive skill-icon"%>
+                        <%= image_tag ps.object.player.skills[index].image_url(:thumb), :class=> "img-responsive skill-icon",  :style => "height:15px;width:15px"%>
                       <% end %>
                     </div>
                 </td>

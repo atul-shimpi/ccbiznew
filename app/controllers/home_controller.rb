@@ -14,7 +14,7 @@ class HomeController < ApplicationController
 	def about_us
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
-		@seodetails = @shop.seodetails.where("pagename = 'about'")
+		@seodetails = @shop.seodetails.where("pagename = 'about'") rescue nil
 		if !@shop.info.blank?
 			render :template => "templates/about_us", :layout => "#{@shop.template}"
 		else
@@ -25,7 +25,7 @@ class HomeController < ApplicationController
 	def contact_us
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
-		@seodetails = @shop.seodetails.where("pagename = 'contact'")
+		@seodetails = @shop.seodetails.where("pagename = 'contact'") rescue nil
 		@contact = Contact.new  
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		render :template => "templates/contact_us", :layout => "#{@shop.template}"
@@ -54,7 +54,7 @@ class HomeController < ApplicationController
 	def gallery
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
-		@seodetails = @shop.seodetails.where("pagename = 'gallery'")
+		@seodetails = @shop.seodetails.where("pagename = 'gallery'") rescue nil
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.shop_images.blank?
 			render :template => "templates/gallery", :layout => "#{@shop.template}"
@@ -72,7 +72,7 @@ class HomeController < ApplicationController
 	def shop_events
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
-		@seodetails = @shop.seodetails.where("pagename = 'events'")
+		@seodetails = @shop.seodetails.where("pagename = 'events'") rescue nil
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.events.blank?
 			render :template => "templates/events", :layout => "#{@shop.template}"
@@ -84,7 +84,7 @@ class HomeController < ApplicationController
 	def auction
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
-		@seodetails = @shop.seodetails.where("pagename = 'auction'")
+		@seodetails = @shop.seodetails.where("pagename = 'auction'") rescue nil
 		@players = Player.not_in_team
 		impressionist(@shop.auction)
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
@@ -97,7 +97,7 @@ class HomeController < ApplicationController
 	def compare_teams
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
-		@seodetails = @shop.seodetails.where("pagename = 'compare_teams'")
+		@seodetails = @shop.seodetails.where("pagename = 'compare_teams'") rescue nil
 		@players = Player.not_in_team
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
@@ -110,7 +110,7 @@ class HomeController < ApplicationController
 	def player
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
-		@seodetails = @shop.seodetails.where("pagename = 'players'")
+		@seodetails = @shop.seodetails.where("pagename = 'players'") rescue nil
 		@player = Player.find(params[:id])
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
@@ -122,7 +122,7 @@ class HomeController < ApplicationController
 	def teams
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
-		@seodetails = @shop.seodetails.where("pagename = 'teams'")
+		@seodetails = @shop.seodetails.where("pagename = 'teams'") rescue nil
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
 			render :template => "templates/teams", :layout => "#{@shop.template}"
@@ -133,7 +133,7 @@ class HomeController < ApplicationController
 	def team
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
-		@seodetails = @shop.seodetails.where("pagename = 'teams'")
+		@seodetails = @shop.seodetails.where("pagename = 'teams'") rescue nil
 		@team = Team.find(params[:id])
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?

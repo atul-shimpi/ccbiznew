@@ -44,6 +44,8 @@ Rails.application.routes.draw do
 
   post '/business_user/cropimage' => "business_user/shop_images#crop"  
   post '/business_user/teamplayers/:id' => "business_user/players#teamupdate"  
+  get '/business_user/players/:id/playeredit' => "business_user/players#playeredit"  
+
   # You can have the root of your site routed with "root"  
   get 'aboutus' => "home#about_us"
   get 'contactus' => "home#contact_us"

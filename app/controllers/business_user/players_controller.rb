@@ -1,7 +1,7 @@
 class BusinessUser::PlayersController < ApplicationController
   before_action :get_auction
 	def index    
-    @players = Player.all
+    @players = @auction.players
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @players }
@@ -28,11 +28,17 @@ class BusinessUser::PlayersController < ApplicationController
 
   def edit    
     @player = Player.find(params[:id])
-    @skills = @auction.skill.all    
-    binding.pry
+    @skills = @auction.skill.all        
     @teams = @auction.teams.where("points > "+@player.baseprice.to_s)
   end
-
+  def playeredit
+    @player = Player.find(params[:id])
+    @skills = @auction.skill.all        
+    @playerskills = @player.playerskills.build
+   
+    @skills = @auction.skill.all    
+    @teams = @auction.teams.where("points > "+@player.baseprice.to_s)
+  end
   def create    
     @player = @auction.players.new(player_params)        
     respond_to do |format|

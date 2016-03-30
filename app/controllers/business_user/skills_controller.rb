@@ -44,7 +44,6 @@ class BusinessUser::SkillsController < ApplicationController
 
   def update
     @skill = Skill.find(params[:id])
-    binding.pry
     respond_to do |format|
       if @skill.update_attributes(skill_params)
         format.html { redirect_to business_user_skills_path(:auction_id => @auction.id), notice: 'Business website was successfully updated.' }
