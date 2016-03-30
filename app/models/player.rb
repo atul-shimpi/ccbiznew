@@ -5,5 +5,5 @@ class Player < ActiveRecord::Base
   has_many :playerskills, class_name: PlayerSkill 
   has_many :skills, :through => :playerskills  
   accepts_nested_attributes_for :playerskills, reject_if: proc { |attributes| attributes['skill_id'].blank? }
-  scope :not_in_team, -> (auction_id){ where(:team_id => nil, :auction_id => auction_id) }
+  scope :not_in_team, -> { where(:team_id => nil) }
 end
