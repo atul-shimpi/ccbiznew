@@ -42,7 +42,7 @@
                           <p>Skills: <br>
                           <% player.skills.each_with_index do |skill, index| %>                  
                             <% if skill.image_url %>                        
-                              <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon pull-left",  :style => "height:15px;width:15px"%>
+                              <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon pull-left",  :style => "height:15px;width:15px;margin-right:5px;"%>
                             <% end %>        
                             <strong class="pull-left"><%= skill.name %>(<%= player.playerskills[index].rating %>/5)&nbsp;</strong><br>
                           <% end %>
@@ -78,7 +78,7 @@
                     <p>Skills: <br><strong>
                     <% player.skills.each_with_index do |skill, index| %>
                           <% if skill.image_url %>                        
-                            <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon pull-left", :style => "height:15px;width:15px"%>
+                            <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon pull-left", :style => "height:15px;width:15px;margin-right:5px;"%>
                           <% end %>  
                           <strong class="pull-left"><%= skill.name %>(<%= player.playerskills[index].rating %>/5)&nbsp;</strong><br>
                         <% end %>
