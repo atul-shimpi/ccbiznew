@@ -61,11 +61,11 @@
                 <td>              
                     <div class="collection-check-box">
                       
-                      <input type="checkbox" value="<%= skill.id %>" name="player[playerskills_attributes][<%=index%>][skill_id]">              
-                      <%= skill.name %>
+                      <input type="checkbox" value="<%= skill.id %>" name="player[playerskills_attributes][<%=index%>][skill_id]" class=" pull-left" style="margin-right: 10px;">              
                       <% if skill.image_url %>
-                        <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon"%>
+                        <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon pull-left",  :style => "height:15px;width:15px;margin-right:5px;"%>
                       <% end %>
+                      <%= skill.name %>
                     </div>
                   
                 </td>
