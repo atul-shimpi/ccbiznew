@@ -14,51 +14,47 @@
 
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-        <% if !@shop.auction.teams.blank?%>
-          <% @shop.auction.teams.each_with_index do |team, index| %>
-          <!-- <li role="presentation" class="active"><a href="#team1" aria-controls="team1" role="tab" data-toggle="tab">Team1</a></li> -->
-          <li role="presentation" class=" <%= index == 0 ? 'active' : ''%>"><a href="#<%= team.name.tr(" ", "_")%>" aria-controls="team2" role="tab" data-toggle="tab"><%= team.name%></a></li>
-          <!-- <li role="presentation"><a href="#team3" aria-controls="team3" role="tab" data-toggle="tab">Team3</a></li> -->
-          <!-- <li role="presentation"><a href="#team4" aria-controls="team4" role="tab" data-toggle="tab">Team4</a></li> -->
-          <%end%>
+          <% if !@shop.auction.teams.blank?%>
+            <% @shop.auction.teams.each_with_index do |team, index| %>
+            <!-- <li role="presentation" class="active"><a href="#team1" aria-controls="team1" role="tab" data-toggle="tab">Team1</a></li> -->
+              <li role="presentation" class=" <%= index == 0 ? 'active' : ''%>">
+                <a href="#<%= team.name.tr(" ", "_")%>" aria-controls="team2" role="tab" data-toggle="tab"><%= team.name%></a>
+              </li>
+            <!-- <li role="presentation"><a href="#team3" aria-controls="team3" role="tab" data-toggle="tab">Team3</a></li> -->
+            <!-- <li role="presentation"><a href="#team4" aria-controls="team4" role="tab" data-toggle="tab">Team4</a></li> -->
+            <%end%>
           <%end%>
         </ul>
 
         <!-- Tab panes -->
         <div class="tab-content">
-        <% if !@shop.auction.teams.blank?%>
-              <% @shop.auction.teams.each_with_index do |team, index| %>
-          <div role="tabpanel" class="tab-pane clearfix <%= index == 0 ? 'active' : ''%>" id="<%= team.name.tr(" ", "_")%>">
-
-              <% team.players.in_groups_of(2) do |players| %>
-           
-            <div class="row tab_content_wrapper">
-            <% players.each_with_index do |player, index|%>
-
-            <% if !player.blank?%>
-              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 ">
-                <p><b><%= link_to player.name, "player/"+player.id.to_s %></b></p>
-                <p>Base Price: <strong><%= player.baseprice %></strong></p>
-                <p>Auction Price: <strong><%= player.auctionprice %></strong></p>
-                <p>Skills: 
-                <% player.skills.each_with_index do |skill, index| %>                  
-                  <% if skill.image_url %>                        
-                    <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon",  :style => "height:15px;width:15px"%>
-                  <% end %>        
-                  <strong><%= skill.name %>(<%= player.playerskills[index].rating %>/5)&nbsp;</strong>
-                <% end %>
-                </p>
+          <% if !@shop.auction.teams.blank?%>
+            <% @shop.auction.teams.each_with_index do |team, index| %>
+              <div role="tabpanel" class="tab-pane clearfix <%= index == 0 ? 'active' : ''%>" id="<%= team.name.tr(" ", "_")%>">
+                <% team.players.in_groups_of(2) do |players| %>
+                  <div class="row tab_content_wrapper">
+                    <% players.each_with_index do |player, index|%>
+                      <% if !player.blank?%>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 ">
+                          <p><b><%= link_to player.name, "player/"+player.id.to_s %></b></p>
+                          <p>Base Price: <strong><%= player.baseprice %></strong></p>
+                          <p>Auction Price: <strong><%= player.auctionprice %></strong></p>
+                          <p>Skills: <br>
+                          <% player.skills.each_with_index do |skill, index| %>                  
+                            <% if skill.image_url %>                        
+                              <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon pull-left",  :style => "height:15px;width:15px"%>
+                            <% end %>        
+                            <strong class="pull-left"><%= skill.name %>(<%= player.playerskills[index].rating %>/5)&nbsp;</strong><br>
+                          <% end %>
+                          </p>
+                        </div>
+                      <%end%>
+                    <%end%>
+                  </div>
+                <%end%>
               </div>
-              <%end%>
-              <%end%>
-
-            </div>
-           <%end%>
-          
-          
-          </div>
-         <%end%>
-         <%end%>
+            <%end%>
+          <%end%>
         </div>
       </div>
       <div class="pull-right col-lg-5 col-sm-5 col-md-5 col-xs-12 players_section">
@@ -91,10 +87,11 @@
               </div>
             </div>
           </div>
-          <%end%>
+          
 
 
         </div>
+        <%end%>
       </div>
     </div>
   </div>
