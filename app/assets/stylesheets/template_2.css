@@ -130,12 +130,16 @@ p.title a {
 	opacity: 0.9;
 }
 footer {
-	background: #000;
+	background: #1191cb;
 	padding: 10px 0px;
 	color: rgb(255, 255, 255);
 	position: fixed;
 	width: 100%;
 	bottom: 0;
+}
+footer p.copyright, footer .panel-body, footer .follow-me-icons {
+	margin-bottom: 0;
+	padding-bottom: 0;
 }
 .panel-body {
 	padding-left: 0;

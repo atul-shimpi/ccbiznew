@@ -35,7 +35,7 @@
                   <div class="row tab_content_wrapper">
                     <% players.each_with_index do |player, index|%>
                       <% if !player.blank?%>
-                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 ">
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
                           <p><b><%= link_to player.name, "player/"+player.id.to_s %></b></p>
                           <p>Base Price: <strong><%= player.baseprice %></strong></p>
                           <p>Auction Price: <strong><%= player.auctionprice %></strong></p>
