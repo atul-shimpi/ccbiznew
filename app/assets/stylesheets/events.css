@@ -112,6 +112,21 @@
     border-right: none;
 	}
 }
+@media (max-width: 760px) and (min-width: 320px) {
+	.auction_page .auction_players_list .tab_content_wrapper {
+    border-bottom: none;
+	}
+	.auction_page .auction_players_list .tab_content_wrapper div  {
+		border-bottom: 1px dashed #ccc;
+		margin-bottom: 10px;
+	}
+	.compare_teams .teams_columns {
+    border-left: 1px solid #ccc;
+	}
+	.events_container {
+		border-right: none;
+	}
+}
 
 
 

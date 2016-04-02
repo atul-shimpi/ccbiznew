@@ -154,6 +154,7 @@ div.date {
   border-collapse: collapse;
   border-radius: 15px;
   border: none;
+  white-space: nowrap;
 }
 .table-bordered thead tr th, .table-bordered thead tr th.sorting, .table-bordered thead tr th.sorting_asc, .table-bordered thead tr th.sorting_desc {
   border: none;
@@ -256,4 +257,30 @@ table.dataTable thead .sorting::after {
 }
 #usermenu{
   display:none;
+}
+.collection-check-box img {
+  height: 15px;
+  width: 15px;
+  margin-right: 10px;
+}
+.player_edit .collection-check-box {
+  width: 160px;
+}
+.player_edit .skill_rating {
+  width: 40px;
+}
+@media (max-width: 760px) {
+  table.dataTable thead > tr > th {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .edit_player_form .collection-check-box.clearfix img {
+    margin-right: 2px;
+  }
+  div.dataTables_filter input {
+    width: 80%;
+  }
+  .sidebar {
+    margin-top: 0;
+  }
 }

@@ -11,13 +11,13 @@
     <div class="form-group">
       <%= f.label :skills %><br />
       <% @auction.skills.all.each_with_index do |skill, index| %>   
-        <div class="collection-check-box">
+        <div class="collection-check-box clearfix">
           <%= skill.name %>
-          <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon" %>          
+          <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon pull-left" %>          
         </div>
       <% end %>
     </div>
     <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to "cancel", business_user_auctions_path, :class => 'btn btn-default' %>
+    <%= link_to "Cancel", business_user_auctions_path, :class => 'btn btn-default' %>
   </fieldset>
 <% end %>
