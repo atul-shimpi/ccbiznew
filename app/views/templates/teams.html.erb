@@ -28,8 +28,13 @@
                   <% team.teamowners.each do |owner| %>
                   <div class="row tab_content_wrapper">
                     <div class="pull-left col-lg-2">
-                      <%= image_tag owner.photo_url(:thumb), :class=> "owner-image" %>
-                      <!-- <img src="<%#= image_path("no-image.jpg") %>"> -->
+                      <% if owner.photo.blank?%>
+                        <img src="<%= image_path("no-image.jpg") %>">
+                      <%else%>
+                        <a href="<%= owner.photo_url(:thumb) %>" data-lightbox="<%= owner.name %>" data-title="<%= owner.name %>">
+                          <%= image_tag owner.photo_url(:thumb), :class=> "owner-image" %>
+                        </a>
+                      <% end %>
                     </div>
                     <div class="pull-left col-lg-10">
                       <div class="col-lg-12">
