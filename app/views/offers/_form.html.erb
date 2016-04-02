@@ -41,7 +41,7 @@
       <%= f.select(:status, ["latest", "featured"].map { |value| [ value, value ] }, {}, {:class => 'form-control'})%>
     </div>
     <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to "cancel", business_user_offers_path, :class => 'btn btn-default' %>
+    <%= link_to "Cancel", business_user_offers_path, :class => 'btn btn-default' %>
   </fieldset>
 <% end %>
 
