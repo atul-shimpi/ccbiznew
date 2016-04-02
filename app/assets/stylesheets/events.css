@@ -107,6 +107,11 @@
 .main-content .players_list p {
 	text-align: left;
 }
+.img-responsive, .players_list .img-responsive {
+	height: 15px;
+  width: 15px;
+  margin-right: 10px;
+}
 @media only screen and (max-width: 767px) {
 	.auction_players_list {
     border-right: none;
