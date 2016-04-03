@@ -23,7 +23,9 @@
 			      							<% if player.image.blank?%>
 		                      	<img src="<%= image_path("no-image.jpg") %>">
 		                      <%else%>
-		                      	<%= image_tag player.image_url(:thumb), :class=> "owner-image" %>
+		                      	<a href="<%= player.image_url(:thumb) %>" data-lightbox="<%= player.name %>" data-title="<%= player.name %>">
+		                      		<%= image_tag player.image_url(:thumb), :class=> "owner-image" %>
+		                      	</a>
 		                      <%end%>
 		                    </div>
 		                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">

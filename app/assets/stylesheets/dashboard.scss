@@ -269,6 +269,9 @@ table.dataTable thead .sorting::after {
 .player_edit .skill_rating {
   width: 40px;
 }
+.dataTables-example td {
+  white-space: normal;
+}
 @media (max-width: 760px) {
   table.dataTable thead > tr > th {
     padding-left: 10px;
