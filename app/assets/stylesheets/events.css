@@ -167,3 +167,24 @@
 .compare_teams td {
 	border-bottom: 1px dashed #ccc;
 }
+
+
+
+/*Gallery Page Styling*/
+.gallery_images {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.gallery_images img {
+	border: 1px solid #5CB1E7;
+  padding: 2px;
+  height: 250px;
+  max-height: 250px;
+  width: 250px;
+	max-width: 250px;
+}
+.gallery_images img:hover {
+  border: 1px solid #5bc0de;
+  opacity: 0.8;
+}
+
