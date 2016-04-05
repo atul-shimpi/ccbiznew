@@ -13,9 +13,22 @@
       <%= f.label :age, :class => 'control-label' %><span class="asterix">*</span>
       <%= f.text_field :age, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
     </div>
-    <div class="form-group">
+    <div class="form-group">      
       <%= f.label :image, :class => 'control-label' %><span class="asterix">*</span>
-      <%= f.file_field :image, :required => '' %>
+      <% if params[:action] == "playeredit" || params[:action] == "edit" %>  
+        <%= f.file_field :image %>
+        <% if @player.image.blank?%>
+          <img src="<%= image_path("no-image.jpg") %>">
+        <%else%>
+          <a href="<%= @player.image_url(:thumb) %>" data-lightbox="<%= @player.name %>" data-title="<%= @player.name %>">
+            <%= image_tag @player.image_url(:thumb), :class=> "owner-image" %>
+          </a>
+        <%end%>
+      <% else %>
+        <%= f.file_field :image, :required => '' %>
+      <% end %>
+      
+      
     </div>
         <div class="form-group">
       <%= f.label :description, :class => 'control-label' %><span class="asterix">*</span>
@@ -31,37 +44,26 @@
           <tr>
             <th>Skills</th>                                 
             <th>Rating</th>
+            <% if params[:action] == "edit" || params[:action] == "playeredit" %>
+            <th>Delete</th>
+            <% end %>
           </tr>
         </thead>
-        <tbody>          
-          <% if params[:action] == "edit" %>            
-            <% index = 0 %>            
-            <%= f.fields_for :playerskills do |ps| %>  
+        <tbody>        
+            <% mindex = 0 %>            
+            <% @auction.skills.all.each_with_index do |skill, index| %>                          
               <tr>
                 <td>              
                     <div class="collection-check-box clearfix">
-                      <%= ps.check_box :skill_id, {}, ps.object.player.skills[index].id, '' %> 
-                      <%= ps.label :skill_id, ps.object.player.skills[index].name %>   
-                      <% if ps.object.player.skills[index].image_url %>                        
-                        <%= image_tag ps.object.player.skills[index].image_url(:thumb), :class=> "img-responsive skill-icon"%>
-                      <% end %>
-                    </div>
-                </td>
+                      <% if @player.skills.ids.include?(skill.id) %>
 
-                <td>
-                  <%= ps.text_field :rating %>                  
-                </td>
-              </tr>              
-              <% index = index + 1%>
-            <% end %>
-          <% else %>       
-          
-            <% @auction.skills.all.each_with_index do |skill, index| %>            
-              <tr>
-                <td>              
-                    <div class="collection-check-box clearfix">
+                        <input type="checkbox" value="<%= skill.id %>" name="player[playerskills_attributes][<%=index%>][skill_id]" class=" pull-left" style="margin-right: 10px;" checked="checked"> 
+                        <input type="hidden" name="player[playerskills_attributes][<%=index%>][id]" class="skill_rating" value="<%= @player.playerskills[mindex].id %>">
+                      <% else %>
+                        <input type="checkbox" value="<%= skill.id %>" name="player[playerskills_attributes][<%=index%>][skill_id]" class=" pull-left" style="margin-right: 10px;"> 
+                      <% end %>
                       
-                      <input type="checkbox" value="<%= skill.id %>" name="player[playerskills_attributes][<%=index%>][skill_id]" class=" pull-left" style="margin-right: 10px;">              
+
                       <% if skill.image_url %>
                         <%= image_tag skill.image_url(:thumb), :class=> "img-responsive skill-icon pull-left"%>
                       <% end %>
@@ -70,10 +72,24 @@
                   
                 </td>
                 <td>
-                  <input type="text" name="player[playerskills_attributes][<%=index%>][rating]" class="skill_rating">              
+                  <% if @player.skills.ids.include?(skill.id) %>
+                    <input type="text" name="player[playerskills_attributes][<%=index%>][rating]" class="skill_rating" value="<%= @player.playerskills[mindex].rating %>">          
+                  <% else %> 
+                    <input type="text" name="player[playerskills_attributes][<%=index%>][rating]" class="skill_rating">            
+                  <% end %> 
                 </td>
-              </tr>
-            <% end %>  
+                
+                <% if params[:action] == "edit" || params[:action] == "playeredit" %>
+                  <td>
+                    <input type="checkbox" name="player[playerskills_attributes][<%=index%>][_destroy]" class="skill_rating" value="1">
+                  <td>
+                <% end %>
+              </tr>   
+              <% 
+                if @player.skills.ids.include?(skill.id)
+                  mindex = mindex + 1
+                end
+              %>         
           <% end %>        
         </tbody>
       </table>      
