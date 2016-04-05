@@ -53,8 +53,7 @@ class BusinessUser::PlayersController < ApplicationController
   end
 
   def update
-    @player = Player.find(params[:id])      
-    binding.pry
+    @player = Player.find(params[:id])         
     respond_to do |format|
       if @player.update_attributes(player_params)
         format.html { redirect_to business_user_players_path(:auction_id => @auction.id), notice: 'player was successfully updated.' }
