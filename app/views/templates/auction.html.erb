@@ -42,7 +42,7 @@
           <% if !@shop.auction.teams.blank?%>
             <% @shop.auction.teams.each_with_index do |team, index| %>
               <div role="tabpanel" class="tab-pane clearfix <%= index == 0 ? 'active' : ''%>" id="<%= team.name.tr(" ", "_")%>">
-                <% team.players.in_groups_of(2) do |players| %>
+                <% team.players.sort_by{|e| -e[:auctionprice]}.in_groups_of(2) do |players| %>
                   <div class="row tab_content_wrapper">
                     <% players.each_with_index do |player, index|%>
                       <% if !player.blank?%>
