@@ -86,7 +86,7 @@ function getTimer(auctiondate){
     $(this).html("Auctions Starts In: "+ event.strftime('%d days %H:%M:%S'));
   }).on('finish.countdown', function(event) {
   	
-  	location.reload();
+  	//location.reload();
   });
 } 
     
