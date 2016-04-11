@@ -72,7 +72,7 @@
 		
 		<script type="text/javascript">
 		  $(document).ready(function() {
-		    getTimer("<%= Time.at(@shop.auction.startdatetime.to_i).to_datetime.strftime("%Y-%m-%d %H:%M:%S") %>");
+		    getTimer("<%= @shop.auction.startdatetime %>");
 		  })
 		</script>
 	<% end %>

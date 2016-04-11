@@ -94,6 +94,13 @@
         <script src="jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="bootstrap.min.js"></script>
-
+    <% if !@shop.auction.startdatetime.blank? %>
+    
+    <script type="text/javascript">
+      $(document).ready(function() {
+        getTimer("<%= @shop.auction.startdatetime %>");
+      })
+    </script>
+  <% end %>
   </body>
 </HTML>

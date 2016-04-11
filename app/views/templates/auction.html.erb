@@ -1,10 +1,9 @@
 <meta http-equiv="refresh" content="30">
 <!-- Auction page-->
-
 <div class="container main-content auction_page">
-  <% if @shop.auction.startdatetime.to_i > Time.now.getutc.to_i %>
+  <% if @shop.auction.startdatetime.to_time.to_i > Time.now.getutc.to_i %>
   <div class="auctiondate">
-    Auction Timing: <%= Time.at(@shop.auction.startdatetime.to_i).to_datetime.strftime("%m-%d-%Y %H:%M:%S") %>
+    Auction Timing: <%= Time.at(@shop.auction.startdatetime.to_time.to_i).to_datetime.strftime("%m-%d-%Y %H:%M:%S") %>
   </div>
   <br>
   <div class="countdown">
