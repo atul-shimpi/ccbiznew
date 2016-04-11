@@ -8,6 +8,16 @@
       <%= f.label :shop_id %><br />
       <%= f.collection_select(:shop_id, current_business_user.shops.all, :id, :name, {:prompt => 'Select'}, {:class => 'form-control'}) %>
     </div>
+    <div class="form-group" >
+      <%= f.label :start_date_time %><span class="asterix">*</span><br />
+      
+    </div>
+    <div class='input-group date' id='datetimepicker2'>
+        <%= f.text_field :startdatetime, :class => 'text_field date form-control', :id => 'date-time-start-display', :required => '' %>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+    </div>
     <div class="form-group">
       <%= f.label :skills %><br />
       <% @auction.skills.all.each_with_index do |skill, index| %>   

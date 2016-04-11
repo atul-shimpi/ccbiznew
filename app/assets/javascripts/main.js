@@ -72,7 +72,21 @@ jQuery( document ).ready(function( $ ) {
 	        $('#event-date').datepicker('hide');
 	    });
 
+	$('#datetimepicker2').datetimepicker({
+                    locale: 'en',
+
+                });
+
+	 
 });
+
+function getTimer(auctiondate){
+  $('.countdown').countdown(auctiondate, function(event) {
+    $(this).html("Auctions Starts In: "+ event.strftime('%d days %H:%M:%S'));
+  });
+} 
+    
+ 
 
 $(function () {
         $("#items1").sortable({

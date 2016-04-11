@@ -34,5 +34,6 @@
 //= require jquery.jcrop
 //= require geocomplete
 //= require_tree .
-
+//= require bootstrap-datetimepicker
+//= require jquery.countdown
        
