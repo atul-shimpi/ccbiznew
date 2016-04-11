@@ -31,7 +31,7 @@
                       <% if owner.photo.blank?%>
                         <img src="<%= image_path("no-image.jpg") %>">
                       <%else%>
-                        <a href="<%= owner.photo_url(:thumb) %>" data-lightbox="<%= owner.name %>" data-title="<%= owner.name %>">
+                        <a href="<%= owner.photo_url %>" data-lightbox="<%= owner.name %>" data-title="<%= owner.name %>">
                           <%= image_tag owner.photo_url(:thumb), :class=> "owner-image" %>
                         </a>
                       <% end %>
