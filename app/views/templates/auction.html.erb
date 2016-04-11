@@ -1,16 +1,16 @@
 <meta http-equiv="refresh" content="30">
 <!-- Auction page-->
 <div class="container main-content auction_page">
-  <% if Time.at(@shop.auction.startdatetime.to_time.to_i).to_datetime.strftime("%m-%d-%Y %H:%M:%S").to_time.to_i > Time.now.to_i %>
-  <div class="auctiondate">
+  <% #if Time.at(@shop.auction.startdatetime.to_time.to_i).to_datetime.strftime("%m-%d-%Y %H:%M:%S").to_time.to_i > Time.now.to_i %>
+  <!--div class="auctiondate">
     Auction Timing: <%= Time.at(@shop.auction.startdatetime.to_time.to_i).to_datetime.strftime("%m-%d-%Y %H:%M:%S") %>
   </div>
   <br>
   <div class="countdown">
 
-  </div>
+  </div-->
 
-  <% else %>
+  <% #else %>
 
   <div class="clearfix">
   <span class="pull-left">Total No. of visitors: <%= @shop.auction.impressionist_count(:filter=>:ip_address)%></span><br>
@@ -106,5 +106,5 @@
       </div>
     </div>
   </div>
-  <% end %>
+  <% #end %>
 </div>
