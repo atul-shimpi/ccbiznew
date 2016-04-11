@@ -188,3 +188,7 @@
   opacity: 0.8;
 }
 
+.countdown, .auctiondate{
+  text-align:center;
+  font-size:22px;
+}

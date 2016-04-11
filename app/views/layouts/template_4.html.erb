@@ -68,5 +68,13 @@
 		</footer>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <%= render :partial => "layouts/googleanalytics"%>
+<% if !@shop.auction.startdatetime.blank? %>
+		
+		<script type="text/javascript">
+		  $(document).ready(function() {
+		    getTimer("<%= Time.at(@shop.auction.startdatetime.to_i).to_datetime.strftime("%Y-%m-%d %H:%M:%S") %>");
+		  })
+		</script>
+	<% end %>
 	</body>
 </HTML>
