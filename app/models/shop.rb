@@ -35,11 +35,11 @@ end
 	belongs_to :business_user
 	belongs_to :admin
 	belongs_to :category
-	has_many :offers
-  has_one :auction
-	has_many :shop_images
-  has_many :seodetails
-	has_many :events
+	has_many :offers, :dependent => :destroy
+  has_one :auction, :dependent => :destroy
+	has_many :shop_images, :dependent => :destroy
+  has_many :seodetails, :dependent =>:destroy
+	has_many :events, :dependent => :destroy
 
 	DESIGN_TEMPLATE = { "template_1" => "theme_1", "template_2" => "theme_2", "template_3" => "theme_3", "template_4" => "theme_4", "mandir" => "mandir"}
   
