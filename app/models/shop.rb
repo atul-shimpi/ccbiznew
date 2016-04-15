@@ -1,7 +1,7 @@
 class Shop < ActiveRecord::Base
   after_create :admin_notification_init
 
-  after_create :business_user_domain_info, unless: :domain?
+  after_create :business_user_domain_info
   validates :name, presence: true
   validates :subdomain, uniqueness: {message: "Please choose another subdomain" }
 
@@ -51,7 +51,7 @@ end
     end 
   end
   def business_user_domain_info
-    # send information to business user if his own domain    
+    # send information to business user if his own domain        
     if !self.admin      
       if !self.domain.blank?
         BusinessUserMailer.business_user_domain_info_email(self).deliver_now 
