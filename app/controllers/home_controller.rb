@@ -85,7 +85,7 @@ class HomeController < ApplicationController
 		subdomain = request.subdomain.split(".").last
 		@shop = Shop.find_by_subdomain(subdomain)
 		@seodetails = @shop.seodetails.where("pagename = 'auction'") rescue nil
-		@players = Player.not_in_team
+		@players = @shop.auction.players.not_in_team
 		impressionist(@shop.auction)
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?

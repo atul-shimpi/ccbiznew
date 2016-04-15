@@ -51,6 +51,14 @@
       <li><a href="#">Upcoming Projects</a></li>
     </ul>
   </div>
-</footer
+</footer>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<% if !@shop.auction.blank? %>
+    
+    <script type="text/javascript">
+      $(document).ready(function() {
+        getTimer("<%= @shop.auction.startdatetime %>");
+      })
+    </script>
+  <% end %>
 <%= render :partial => "layouts/googleanalytics"%>

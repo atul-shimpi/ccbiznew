@@ -34,8 +34,8 @@ class BusinessUser::PlayersController < ApplicationController
   def playeredit
     @player = Player.find(params[:id])
     @skills = @auction.skill.all        
-    @playerskills = @player.playerskills.build
-   
+    
+    
     @skills = @auction.skill.all    
     @teams = @auction.teams.where("points > "+@player.baseprice.to_s)
   end
@@ -53,11 +53,10 @@ class BusinessUser::PlayersController < ApplicationController
   end
 
   def update
-    @player = Player.find(params[:id])  
-
+    @player = Player.find(params[:id])         
     respond_to do |format|
       if @player.update_attributes(player_params)
-        format.html { redirect_to business_user_players_path(:auction_id => @auction.id), notice: 'Business website was successfully updated.' }
+        format.html { redirect_to business_user_players_path(:auction_id => @auction.id), notice: 'player was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -109,6 +108,6 @@ class BusinessUser::PlayersController < ApplicationController
     @auction = Auction.find(params[:auction_id])
   end
   def player_params
-    params.require(:player).permit(:name, :age, :baseprice, :auctionprice, :image, :description, :is_captain, :team_id, playerskills_attributes:[:id, :skill_id, :rating])
+    params.require(:player).permit(:name, :age, :baseprice, :auctionprice, :image, :description, :is_captain, :team_id, playerskills_attributes:[:id, :skill_id, :rating, :_destroy])
   end
 end

@@ -34,7 +34,7 @@ class BusinessUser::AuctionsController < ApplicationController
 
   def create
     @auction = Auction.new(auction_params)
-
+    #params[:auction][:startdatetime] = params[:auction][:startdatetime].to_time.to_i
     respond_to do |format|
       if @auction.save
         format.html { redirect_to business_user_auctions_path, notice: 'Auction was successfully created.' }
@@ -48,7 +48,9 @@ class BusinessUser::AuctionsController < ApplicationController
 
   def update
     @auction = Auction.find(params[:id])
-
+    
+    #params[:auction][:startdatetime] = params[:auction][:startdatetime].to_time.to_i
+    
     respond_to do |format|
       if @auction.update_attributes(auction_params)
         format.html { redirect_to business_user_auctions_path, notice: 'Business website was successfully updated.' }
@@ -73,6 +75,6 @@ class BusinessUser::AuctionsController < ApplicationController
   private
 
   def auction_params
-    params.require(:auction).permit(:name, :shop_id, skill_ids:[])
+    params.require(:auction).permit(:name, :shop_id,:startdatetime, skill_ids:[])
   end
 end

@@ -48,8 +48,17 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
   def update
     @shop = current_business_user.shops.find(params[:id])
     
+    
+    
     respond_to do |format|
+      
       if @shop.update_attributes(shop_params)
+        if params[:removebg]                    
+          @shop.remove_backgroundimage!
+          @shop.remove_backgroundimage = true
+          @shop.save          
+        end
+        
         format.html { redirect_to business_user_shops_path, notice: 'Business website was successfully updated.' }
         format.json { head :no_content }
       else
@@ -75,7 +84,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
    private
 
   def shop_params
-    params.require(:shop).permit(:name, :phone, :address, :info, :user_id, :avatar,:backgroundimage, :category_id, :template, :subdomain, :domain, :city, :state, :country, :zip, :facebook, :linkedin, :google, :twitter, :shoptype, :latitude, :longitude)
+    params.require(:shop).permit(:name, :phone, :address, :info, :user_id, :avatar,:backgroundimage, :removebg, :category_id, :template, :subdomain, :domain, :city, :state, :country, :zip, :facebook, :linkedin, :google, :twitter, :shoptype, :latitude, :longitude, :backgroundimage_cache)
   end
 
 

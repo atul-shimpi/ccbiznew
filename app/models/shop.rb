@@ -1,7 +1,7 @@
 class Shop < ActiveRecord::Base
   after_create :admin_notification_init
 
-  after_create :business_user_domain_info, unless: :domain?
+  after_create :business_user_domain_info
   validates :name, presence: true
   validates :subdomain, uniqueness: {message: "Please choose another subdomain" }
 
@@ -35,21 +35,27 @@ end
 	belongs_to :business_user
 	belongs_to :admin
 	belongs_to :category
-	has_many :offers
-  has_one :auction
-	has_many :shop_images
-  has_many :seodetails
-	has_many :events
+	has_many :offers, :dependent => :destroy
+  has_one :auction, :dependent => :destroy
+	has_many :shop_images, :dependent => :destroy
+  has_many :seodetails, :dependent =>:destroy
+	has_many :events, :dependent => :destroy
 
 	DESIGN_TEMPLATE = { "template_1" => "theme_1", "template_2" => "theme_2", "template_3" => "theme_3", "template_4" => "theme_4", "mandir" => "mandir"}
   
   protected
   def admin_notification_init
-    # send notification to admin, once shop is created    
-    AdminMailer.shopcreation_admin_notification_email(self).deliver_now 
+    # send notification to admin, once shop is created        
+    if !self.admin
+      AdminMailer.shopcreation_admin_notification_email(self).deliver_now 
+    end 
   end
   def business_user_domain_info
-    # send information to business user if his own domain    
-    BusinessUserMailer.business_user_domain_info_email(self).deliver_now 
+    # send information to business user if his own domain        
+    if !self.admin      
+      if !self.domain.blank?
+        BusinessUserMailer.business_user_domain_info_email(self).deliver_now 
+      end
+    end
   end
 end

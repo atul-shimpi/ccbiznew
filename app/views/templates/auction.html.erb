@@ -1,9 +1,20 @@
 <meta http-equiv="refresh" content="30">
 <!-- Auction page-->
 <div class="container main-content auction_page">
+  <% #if Time.at(@shop.auction.startdatetime.to_time.to_i).to_datetime.strftime("%m-%d-%Y %H:%M:%S").to_time.to_i > Time.now.to_i %>
+  <!--div class="auctiondate">
+    Auction Timing: <%= Time.at(@shop.auction.startdatetime.to_time.to_i).to_datetime.strftime("%m-%d-%Y %H:%M:%S") %>
+  </div>
+  <br>
+  <div class="countdown">
+
+  </div-->
+
+  <% #else %>
+
   <div class="clearfix">
-    <span class="pull-left">No. of visitors: <%= @shop.auction.impressionist_count(:start_date=>Time.now.strftime("%Y-%m-%d"),:filter=>:ip_address)%></span>
-    
+  <span class="pull-left">Total No. of visitors: <%= @shop.auction.impressionist_count(:filter=>:ip_address)%></span><br>
+    <span class="pull-left">No. of visitors: <%= @shop.auction.impressionist_count(:start_date=>Time.now.strftime("%Y-%m-%d"),:filter=>:ip_address)%></span>    
 
     <span class="pull-right"><input type="button" value="Refresh Page" onClick="window.location.reload();" /></span>
   </div>
@@ -31,7 +42,7 @@
           <% if !@shop.auction.teams.blank?%>
             <% @shop.auction.teams.each_with_index do |team, index| %>
               <div role="tabpanel" class="tab-pane clearfix <%= index == 0 ? 'active' : ''%>" id="<%= team.name.tr(" ", "_")%>">
-                <% team.players.in_groups_of(2) do |players| %>
+                <% team.players.sort_by{|e| -e[:auctionprice]}.in_groups_of(2) do |players| %>
                   <div class="row tab_content_wrapper">
                     <% players.each_with_index do |player, index|%>
                       <% if !player.blank?%>
@@ -68,7 +79,7 @@
                 <% if player.image.blank?%>
                     <img src="<%= image_path("no-image.jpg") %>">
                     <%else%>
-                    <a href="<%= player.image_url(:thumb) %>" data-lightbox="<%= player.name %>" data-title="<%= player.name %>">
+                    <a href="<%= player.image_url %>" data-lightbox="<%= player.name %>" data-title="<%= player.name %>">
                       <%= image_tag player.image_url(:thumb), :class=> "owner-image" %>
                     </a>
                 <%end%>
@@ -95,4 +106,5 @@
       </div>
     </div>
   </div>
+  <% #end %>
 </div>
