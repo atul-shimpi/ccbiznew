@@ -32,8 +32,8 @@ class Admin::ShopsController < Admin::BaseController
     @shop = current_admin.shops.new(shop_params)
 
     respond_to do |format|
-      if @shop.save
-        format.html { redirect_to admin_shop_path(@shop), notice: 'Business website was successfully created.' }
+      if @shop.save        
+        format.html { redirect_to admin_shops_url, notice: 'Business website was successfully created.' }
         format.json { render json: @shop, status: :created, location: @shop }
       else
         format.html { render action: "new" }

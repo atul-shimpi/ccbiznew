@@ -45,11 +45,17 @@ end
   
   protected
   def admin_notification_init
-    # send notification to admin, once shop is created    
-    AdminMailer.shopcreation_admin_notification_email(self).deliver_now 
+    # send notification to admin, once shop is created        
+    if !self.admin
+      AdminMailer.shopcreation_admin_notification_email(self).deliver_now 
+    end 
   end
   def business_user_domain_info
     # send information to business user if his own domain    
-    BusinessUserMailer.business_user_domain_info_email(self).deliver_now 
+    if !self.admin      
+      if !self.domain.blank?
+        BusinessUserMailer.business_user_domain_info_email(self).deliver_now 
+      end
+    end
   end
 end
