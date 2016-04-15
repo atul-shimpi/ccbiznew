@@ -64,7 +64,9 @@
 					<p class="pull-left col-lg-6 copyright">Copyright @ 2015.<span>Powered by <a href="http://www.jalaram-techsolutions.com" target="blank"> jalaram-techsolutions.com</a></span></p>
 					<div class="pull-right col-lg-3 address hidden-xs">
 						<p>Contacts & info:</p>
+					<% if !@shop.business_user.blank? %>		
      				<span class="glyphicon glyphicon-envelope">:   <a href="mailto:<%= @shop.business_user.email%>"><%= @shop.business_user.email%></a></span> <br/>
+    				<% end %> 				
      				<span class="glyphicon glyphicon-phone-alt">:   <a href="tel:<%= @shop.phone%>"><%= @shop.phone%></a></span>
 					</div>
 					<div class="pull-right col-md-3 hidden-xs">	          

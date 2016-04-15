@@ -54,9 +54,11 @@
     <div class="col-lg-5 col-lg-offset-2 col-sm-5 col-sm-offset-2">
       <p class="tab_title">Contact us at :</p>
       <div class="contact_address">
-        <%= @shop.address%><br >
-        Telephone: <%= @shop.phone%><br>
+        <%= @shop.address%><br >        
+        Telephone: <%= @shop.phone%><br>        
+        <% if !@shop.business_user.blank? %>
         E-mail: <%= @shop.business_user.email%>
+        <% end %>
       </div>
       <div id="googleMap" style="height:270px;margin-top:60px;border-radius: 3px;">
         <%#= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.first}%2C#{@location.last}" %>
