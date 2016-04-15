@@ -73,7 +73,7 @@
 		</footer>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 		<%= render :partial => "layouts/googleanalytics"%> 		
-		<% if !@shop.auction.startdatetime.blank? %>
+		<% if !@shop.auction.blank? %>
 		
 		<script type="text/javascript">
 		  $(document).ready(function() {

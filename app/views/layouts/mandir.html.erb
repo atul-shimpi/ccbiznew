@@ -53,7 +53,7 @@
   </div>
 </footer>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-<% if !@shop.auction.startdatetime.blank? %>
+<% if !@shop.auction.blank? %>
     
     <script type="text/javascript">
       $(document).ready(function() {
