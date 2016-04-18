@@ -21,7 +21,7 @@
             <% @shop_images.each do |shop_image| %>
             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 list">
               <div class="image-wrapper clearfix">
-                <%= image_tag shop_image.image_url , :class => "img-responsive" if shop_image.image? %>
+                <%= image_tag shop_image.image_url(:cover) , :class => "img-responsive" if shop_image.image? %>
                 <%= link_to "Delete",
                     business_user_shop_image_path(:id => shop_image.id, :shop_id => @shop.id),
                     :method => :delete,

@@ -31,16 +31,13 @@ class BusinessUser::ShopImagesController < BusinessUser::BaseController
     @shop_image = Shop.find(params[:id])
   end
 
-  def create
-    
-    @shop_image = @shop.shop_images.new(shop_image_params)
-    
-    respond_to do |format|
-      
-      if @shop_image.save
-
+  def create    
+    @shop_image = @shop.shop_images.new(shop_image_params)    
+    respond_to do |format|      
+      if @shop_image.save                
         format.html { 
-        redirect_to business_user_shop_images_path(:shop_id => @shop.id), notice: 'Business website was successfully created.' 
+          @shop_image.image.recreate_versions!          
+          redirect_to business_user_shop_images_path(:shop_id => @shop.id), notice: 'Business website was successfully created.'                   
         }
         format.json { render json: @shop_image, status: :created, location: @shop_image }
       else
@@ -89,7 +86,7 @@ class BusinessUser::ShopImagesController < BusinessUser::BaseController
   private
 
   def shop_image_params
-    params.require(:shop_image).permit(:shop_id, :shop_image_id, :image_cache,  :image, :image_crop_x, :image_crop_y, :image_crop_w, :image_crop_h)
+    params.require(:shop_image).permit(:shop_id, :shop_image_id, :image_cache,  :image, :crop_x, :crop_y, :crop_w, :crop_h)
   end
 
   def get_shop    

@@ -25,7 +25,6 @@
 //= require base
 //= require bootstrap-datepicker
 //= require jquery.validate.min
-//= require main
 //= require tinymce-jquery
 //= require countries
 //= require helper
@@ -36,5 +35,7 @@
 //= require slick.min
 //= require bootstrap-datetimepicker
 //= require jquery.countdown
+//= require jquery.jcrop
+//= require main
 //= require_tree .
        

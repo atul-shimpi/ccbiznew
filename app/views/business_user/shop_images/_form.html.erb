@@ -1,11 +1,19 @@
 <%= form_for @shop_image, url: business_user_shop_images_path(:shop_id => @shop.id),  :html => { :class => '' , multipart: true  } do |f| %>
  
   <div class="form-group">
-      <%= f.label :image, :class => 'control-label' %>
-      <%= f.file_field :image, :required => '' %>
-      <p class="help-block">resolution: 1280(width) x 456 (height)</p>
-      <%= f.hidden_field :image_cache %>
-      <%= f.hidden_field :shop_id, :value => @shop.id %>
+    <%= f.label :image, :class => 'control-label' %>
+    <%= f.file_field :image, :required => '', :onchange =>"fileSelectHandler()" %>
+    <p class="help-block">resolution: 1280(width) x 456 (height)</p>
+    <%= f.hidden_field :image_cache %>
+    <%= f.hidden_field :shop_id, :value => @shop.id %>
+    <input id="shopimage_image_crop_x" type="hidden" name="shop_image[crop_x]" value="280"><input id="shopimage_image_crop_y" type="hidden" name="shop_image[crop_y]" value="449"><input id="shopimage_image_crop_w" type="hidden" name="shop_image[crop_w]" value="0"><input id="shopimage_image_crop_h" type="hidden" name="shop_image[crop_h]" value="0">
+    <div class="error"></div>
+    <div class="step2" style="display: none;">
+        <h4>Step2: Please select a crop region</h4>
+        <img id="preview" />
+
+    </div>
+
   </div>
   <%= f.submit nil, :class => 'btn btn-primary' %>
   <%= link_to "Cancel", business_user_shops_path, :class => 'btn btn-default' %>
