@@ -14,18 +14,28 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end  
-  version :banner do    
-    process :resize_to_fill => [1280, 456]    
-  end
-  version :cropbanner do    
-    
-  end
+  end    
   version :thumb do
+    process :crop
     process :resize_to_fit => [100, 100]    
   end  
 
-  
+  version :cover do    
+    process :crop    
+    #process resize_to_fit: [1280, 456]    
+  end
+
+  def crop
+    if model.crop_x.present?            
+      manipulate! do |img|
+        x = model.crop_x.to_i
+        y = model.crop_y.to_i
+        w = model.crop_w.to_i
+        h = model.crop_h.to_i
+        img.crop!(x, y, w, h)
+      end
+    end
+  end
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:

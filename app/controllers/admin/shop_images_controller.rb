@@ -35,7 +35,9 @@ before_action :get_shop
 
     respond_to do |format|
       if @shop_image.save
-        format.html { redirect_to admin_shop_images_path(:shop_id => @shop.id), notice: 'Business website was successfully created.' }
+        format.html { 
+          @shop_image.image.recreate_versions!  
+          redirect_to admin_shop_images_path(:shop_id => @shop.id), notice: 'Business website was successfully created.' }
         format.json { render json: @shop_image, status: :created, location: @shop_image }
       else
         format.html { render action: "new" }
@@ -72,7 +74,7 @@ before_action :get_shop
   private
 
   def shop_image_params
-    params.require(:shop_image).permit(:shop_id,  :image)
+    params.require(:shop_image).permit(:shop_id, :shop_image_id, :image_cache,  :image, :crop_x, :crop_y, :crop_w, :crop_h)
   end
 
   def get_shop
