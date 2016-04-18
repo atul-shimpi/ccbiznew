@@ -169,4 +169,10 @@ class HomeController < ApplicationController
 	def entertainment_1
 		render :layout => false
 	end
+	def entertainment_2
+		render :layout => false
+	end
+	def entertainment_3
+		render :layout => false
+	end
 end
