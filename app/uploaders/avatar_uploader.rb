@@ -25,8 +25,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     #process resize_to_fit: [1280, 456]    
   end
 
-  def crop
-    binding.pry
+  def crop    
     if model.model_name.name == "ShopImage"
       if model.crop_x.present?            
         manipulate! do |img|
