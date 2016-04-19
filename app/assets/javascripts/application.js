@@ -32,9 +32,10 @@
 //= require lightbox
 //= require jquery.jcrop
 //= require geocomplete
-//= require_tree .
+//= require slick.min
 //= require bootstrap-datetimepicker
 //= require jquery.countdown
 //= require jquery.jcrop
 //= require main
+//= require_tree .
        

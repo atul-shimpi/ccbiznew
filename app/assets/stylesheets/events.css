@@ -107,7 +107,12 @@
 .main-content .players_list p {
 	text-align: left;
 }
-.img-responsive, .players_list .img-responsive {
+/*.img-responsive, .players_list .img-responsive {
+	height: 15px;
+  width: 15px;
+  margin-right: 10px;
+}*/
+.players_list .img-responsive {
 	height: 15px;
   width: 15px;
   margin-right: 10px;

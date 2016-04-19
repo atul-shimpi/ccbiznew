@@ -34,6 +34,7 @@
 				      <ul class="nav navbar-nav">
 				        <li class="active"><a href="#"><span>Home</span></a></li>
 				        <li><a href="#"><span>Gallery</span></a></li>
+				        <li><a href="#"><span>Events</span></a></li>
 				        <li><a href="#"><span>Contact Us</span></a></li>
 				      </ul>
 				    </div><!-- /.navbar-collapse -->
@@ -61,7 +62,7 @@
 		    </div>
 		    <div class="content_wrapper">
 			    <div class="">
-						<div class="row facilities paddingTopBottom">
+						<!-- <div class="row facilities paddingTopBottom">
 							<div class="col-lg-12">
 								<div class="row">
 									<div class="col-lg-4">
@@ -86,6 +87,84 @@
 									</div>
 								</div>
 							</div>
+						</div> -->
+						<div class="row paddingTop">
+							<div class="col-lg-12">
+								<h3>Latest Events</h3>
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="resp_slider">
+										  <div>
+										  	<img src="../assets/entertainment1.gif" class="img-responsive">
+										  	<p>Rs 250 OFF</p>
+										  </div>
+										  <div>
+										  	<img src="../assets/entertainment2.jpg" class="img-responsive">
+										  	<p>Rs 250 OFF</p>
+										  </div>
+										  <div>
+										  	<img src="../assets/entertainment3.jpg" class="img-responsive">
+										  	<p>Rs 250 OFF</p>
+										  </div>
+										  <div>
+										  	<img src="../assets/entertainment1.gif" class="img-responsive">
+										  	<p>Rs 250 OFF</p>
+										  </div>
+										  <div>
+										  	<img src="../assets/entertainment2.jpg" class="img-responsive">
+										  	<p>Rs 250 OFF</p>
+										  </div>
+										  <div>
+										  	<img src="../assets/entertainment3.jpg" class="img-responsive">
+										  	<p>Rs 250 OFF</p>
+										  </div>
+										  <div>
+										  	<img src="../assets/entertainment1.gif" class="img-responsive">
+										  	<p>Rs 250 OFF</p>
+										  </div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row paddingTopBottom">
+							<div class="col-lg-12">
+								<h3>Upcoming Events</h3>
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="resp_slider">
+										  <div>
+										  	<img src="../assets/entertainment1.gif" class="img-responsive">
+										  	<p>Rs 250 OFF</p>
+										  </div>
+										  <div>
+										  	<img src="../assets/entertainment2.jpg" class="img-responsive">
+										  	<p>Rs 250 OFF</p>
+										  </div>
+										  <div>
+										  	<img src="../assets/entertainment3.jpg" class="img-responsive">
+										  	<p>Rs 250 OFF</p>
+										  </div>
+										  <div>
+										  	<img src="../assets/entertainment1.gif" class="img-responsive">
+										  	<p>Rs 250 OFF</p>
+										  </div>
+										  <div>
+										  	<img src="../assets/entertainment2.jpg" class="img-responsive">
+										  	<p>Rs 250 OFF</p>
+										  </div>
+										  <div>
+										  	<img src="../assets/entertainment3.jpg" class="img-responsive">
+										  	<p>Rs 250 OFF</p>
+										  </div>
+										  <div>
+										  	<img src="../assets/entertainment1.gif" class="img-responsive">
+										  	<p>Rs 250 OFF</p>
+										  </div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -97,6 +176,46 @@
 					</div>
 				</div>
 			</footer>
+			</div>
 		</div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+			  $('.resp_slider').slick({
+			    dots: true,
+				  infinite: false,
+				  speed: 300,
+				  slidesToShow: 4,
+				  slidesToScroll: 4,
+				  responsive: [
+				    {
+				      breakpoint: 1024,
+				      settings: {
+				        slidesToShow: 3,
+				        slidesToScroll: 3,
+				        infinite: true,
+				        dots: true
+				      }
+				    },
+				    {
+				      breakpoint: 600,
+				      settings: {
+				        slidesToShow: 2,
+				        slidesToScroll: 2
+				      }
+				    },
+				    {
+				      breakpoint: 480,
+				      settings: {
+				        slidesToShow: 1,
+				        slidesToScroll: 1
+				      }
+				    }
+				    // You can unslick at a given breakpoint now by adding:
+				    // settings: "unslick"
+				    // instead of a settings object
+				  ]
+				});
+			});
+		</script>
 	</body>
 </HTML>

@@ -60,6 +60,8 @@ Rails.application.routes.draw do
   get 'education_3' => "home#education_3"
   get 'health_1' => "home#health_1"
   get 'entertainment_1' => "home#entertainment_1"
+  get 'entertainment_2' => "home#entertainment_2"
+  get 'entertainment_3' => "home#entertainment_3"
   get 'auction' => "home#auction"
   get 'teams' => "home#teams"
   get 'team/:id' => "home#team"
