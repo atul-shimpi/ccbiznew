@@ -72,10 +72,10 @@ jQuery( document ).ready(function( $ ) {
 	        $('#event-date').datepicker('hide');
 	    });
 
-	$('#datetimepicker2').datetimepicker({
-                    locale: 'en',
+	// $('#datetimepicker2').datetimepicker({
+ //                    locale: 'en',
 
-                });
+ //                });
 
 	 
 });
