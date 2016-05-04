@@ -175,4 +175,13 @@ class HomeController < ApplicationController
 	def entertainment_3
 		render :layout => false
 	end
+	def food_1
+		render :layout => false
+	end
+	def food_2
+		render :layout => false
+	end
+	def clothes_1
+		render :layout => false
+	end
 end
