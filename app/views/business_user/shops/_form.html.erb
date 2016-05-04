@@ -51,8 +51,12 @@
       <%= f.text_field :zip, :class => 'text_field form-control', :type => 'number', :required => '',  :"data-geo"=>"postal_code" , :required => '' %>
   </div> -->
   <div class="form-group">
-      <%= f.label :info, :class => 'control-label' %>
+      <%= f.label :About_us, :class => 'control-label' %>
       <%= f.text_area :info, :class => 'text_field form-control tinymce', :rows => 10 %>
+  </div>
+  <div class="form-group">
+      <%= f.label :Home_Page_Content, :class => 'control-label' %>
+      <%= f.text_area :homecontent, :class => 'text_field form-control tinymce', :rows => 10 %>
   </div>
   <div class="form-group">
       <%= f.label :avatar, :class => 'control-label' %>
