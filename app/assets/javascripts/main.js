@@ -25,8 +25,27 @@ jQuery( document ).ready(function( $ ) {
 
   
   	$("#my_input").bind("geocode:dragged", function(event, latLng){
+        console.log(latLng)
       $("#shop_latitude").val(latLng.lat());
       $("#shop_longitude").val(latLng.lng());
+
+
+        var map = $("#my_input").geocomplete("map");
+        
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({'latLng': latLng }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                
+                if (results[0]) {
+                    var road = results[0].address_components[1].long_name;
+                    var town = results[0].address_components[2].long_name;
+                    var county = results[0].address_components[3].long_name;
+                    var country = results[0].address_components[4].long_name;
+                    $('#my_input').html(results[0].formatted_address);
+                }
+            }
+        });
+
       
     });
     $("#find").click(function(){
