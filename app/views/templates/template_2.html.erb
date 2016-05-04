@@ -1,4 +1,15 @@
+		<% if !@shop.homecontent.blank? %>
+		<div class="container main-content">
+			<div class="latest_offers">
+				<div class="row">
+					<div class="col-lg-12">						
+						<p class="about_content"><%= @shop.homecontent.html_safe%></p>
+					</div>
+				</div>
+			</div>
 
+		</div>
+		<% end %>
 		<div class="container main-content">
 			<% if !@shop.offers.latest.blank? %>
 			<div class="latest_offers">
