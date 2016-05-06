@@ -26,7 +26,7 @@
     <div>
      <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="http://<%= @shop.subdomain%>.<%= request.domain%>">Home</a></li>
+          <li class="active"><a href="/">Home</a></li>
           <li><a href="/about_us">About US</a></li>
           <li><a href="#">About Trust</a></li>
           <li><a href="#">Temple</a></li>
@@ -41,6 +41,9 @@
     </div>
   </div>
 </header>
+<% if @shop.isactive == 0 || @shop.isactive.to_s == "nil"%>   
+    <div class="transparent">Waiting for administrator approval</div> 
+    <% end %>
 <%= yield %>
 <footer id="footer" class="top-space">
   <div class="footer1 clearfix">

@@ -71,6 +71,6 @@ class Admin::ShopsController < Admin::BaseController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :phone, :address, :info, :homecontent, :user_id, :avatar,:backgroundimage, :category_id, :template, :subdomain, :metakeywords, :metadescription,:pagetitle, :googleanalytics, :isactive, :latitude, :longitude)
+    params.require(:shop).permit(:name, :phone, :address, :info, :homecontent, :user_id, :avatar,:backgroundimage, :category_id, :template, :subdomain, :metakeywords, :metadescription,:pagetitle, :googleanalytics, :isactive, :latitude, :longitude, :addressname, :buildingname, :blockno, :gallerytype, :domain)
   end
 end

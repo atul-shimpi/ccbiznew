@@ -21,7 +21,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href=""><img class="img-responsive" src="images/hos_logo.jpg" alt="" /></a>
+		      <a class="navbar-brand" href="/"><img class="img-responsive" src="images/hos_logo.jpg" alt="" /></a>
 		    </div>
 
 
@@ -83,6 +83,9 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
+    <% if @shop.isactive == 0 || @shop.isactive.to_s == "nil"%>   
+    <div class="transparent">Waiting for administrator approval</div> 
+    <% end %>
 <%= yield %>
 <footer class="clearfix">
       <div class="container">

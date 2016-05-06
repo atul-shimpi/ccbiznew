@@ -21,9 +21,12 @@
 						<div class="offers_box">
 							<div class="offer_products">
 							<%= image_tag offer.image_url, :class=> "img-responsive" %>
+								<% if !offer.discount.blank? %>
 								<div class="offer_text">
 									<p><%= offer.discount%> Discount</p>
 								</div>
+								<% end %>
+								
 							</div>
 							<p class="title"><a href="#"><%= offer.name%></a></p>
 						</div>
@@ -46,9 +49,11 @@
 						<div class="offers_box">
 							<div class="offer_products">
 							<%= image_tag offer.image_url, :class=> "img-responsive" %>
+								<% if !offer.discount.blank? %>
 								<div class="offer_text">
 									<p><%= offer.discount%> Discount</p>
 								</div>
+								<% end %>
 							</div>
 							<p class="title"><a href="#"><%= offer.name%></a></p>
 						</div>
