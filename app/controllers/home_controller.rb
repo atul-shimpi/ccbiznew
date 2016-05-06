@@ -1,13 +1,15 @@
 class HomeController < ApplicationController
 	impressionist :actions=>[:auction]
 	def index		
+
 		subdomain = request.subdomain.split(".").last		
 		if subdomain.blank? || subdomain =='www'
-			@shop = Shop.where(domain:request.host)
+			
+			@shop = Shop.find_by_domain(request.host)	
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
-		
+		binding.pry
 		@seodetails = @shop.seodetails.where("pagename = 'home'") rescue nil
 		
 		if !@shop.blank?
