@@ -24,6 +24,18 @@
       <%= f.label :phone, :class => 'control-label' %>
       <%= f.text_field :phone, :class => 'text_field form-control', :placeholder => 'Enter text' %>
   </div>
+  <div class="form-group">
+      <%= f.label :address_name, :class => 'control-label' %>
+      <%= f.text_field :addressname, :class => 'text_field form-control', :placeholder => 'Enter text' %>
+  </div>
+  <div class="form-group">
+      <%= f.label :street_address, :class => 'control-label' %>
+      <%= f.text_field :buildingname, :class => 'text_field form-control', :placeholder => 'Enter text' %>
+  </div>
+  <div class="form-group">
+      <%= f.label :landmark, :class => 'control-label' %>
+      <%= f.text_field :blockno, :class => 'text_field form-control', :placeholder => 'Enter text' %>
+  </div>
   <div class="form-group details">
       <%= f.label :address, :class => 'control-label' %>
       <%= f.text_area :address, :class => 'text_field form-control', :rows => '3', :placeholder => 'Type in an address', :id=>"my_input", :"data-geo"=>"formatted_address" %>
@@ -72,6 +84,11 @@
         <input type="checkbox" name="removebg" id="removebg" value="1" > Remove
         <%= image_tag @shop.backgroundimage_url(:thumb), :class=> "img-responsive bg-icon"%>
       <% end %>
+  </div>
+  <div class="form-group">
+      <%= f.label :gallerytype, :class => 'control-label' %><br>
+      <%= f.radio_button :gallerytype, '0' %> Listing <br>
+      <%= f.radio_button :gallerytype, '1' %> Carousel <br>
   </div>
   <div class="form-group">
       <%= f.label :facebook, :class => 'control-label' %>

@@ -20,9 +20,11 @@
 						<div class="offers_box">
 							<div class="offer_products">
 							<%= image_tag offer.image_url, :class=> "img-responsive" %>
+								<% if !offer.discount.blank? %>
 								<div class="offer_text">
-									<p><%= offer.discount%> Discount</p>
+									<p><%= offer.discount %> Discount</p>
 								</div>
+								<% end %>
 							</div>
 							<p class="title"><%= offer.name%></p>
 						</div>
@@ -44,7 +46,10 @@
 							<div class="col-lg-6">
 							<%= offer.name%><br>
 								<p><%= offer.description%></p>
+								<% if !offer.discount.blank? %>
 								<a class="offers_btn btn btn-lg btn-primary" href="#"><p> <%= offer.discount%> Discount</p></a>
+								<% end %>
+								
 							</div>
 						</div>
 					</div>

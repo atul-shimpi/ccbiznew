@@ -24,8 +24,7 @@ jQuery( document ).ready(function( $ ) {
 	});
 
   
-  	$("#my_input").bind("geocode:dragged", function(event, latLng){
-        console.log(latLng)
+  	$("#my_input").bind("geocode:dragged", function(event, latLng){       
       $("#shop_latitude").val(latLng.lat());
       $("#shop_longitude").val(latLng.lng());
 
