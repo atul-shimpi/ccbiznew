@@ -1,8 +1,7 @@
 class HomeController < ApplicationController
 	impressionist :actions=>[:auction]
 	def index		
-		subdomain = request.subdomain.split(".").last
-		binding.pry
+		subdomain = request.subdomain.split(".").last		
 		if subdomain.blank? || subdomain =='www'
 			@shop = Shop.where(domain:request.host)
 		else
