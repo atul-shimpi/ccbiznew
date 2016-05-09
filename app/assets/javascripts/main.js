@@ -15,7 +15,7 @@
   
 //   return Conectc;
 // })(Conectc);
-
+var jcrop_api, boundx, boundy;
 jQuery( document ).ready(function( $ ) {
   $('.dataTables-example').DataTable({
           responsive: true,
@@ -136,6 +136,52 @@ jQuery( document ).ready(function( $ ) {
 	      plugins: "table,uploadimage,textcolor,colorpicker,emoticons,hr,textpattern,visualblocks"
 	    });
 	});
+    $(".imagetype input:radio").click(function() {
+       if(jcrop_api) 
+        jcrop_api.destroy(); 
+       if($(this).val()==0){
+
+                    $('#preview').Jcrop({
+                        minSize: [32, 32], // min crop size                   
+                        aspectRatio : 16 / 5.7, // keep aspect ratio 1:1
+                        bgFade: true, // use fade effect
+                        bgOpacity: .3, // fade opacity
+                        onChange: updateInfo,
+                        onSelect: updateInfo,
+                        onRelease: clearInfo
+                    }, function(){
+
+                        // use the Jcrop API to get the real image size
+                        var bounds = this.getBounds();
+                        boundx = bounds[0];
+                        boundy = bounds[1];
+
+                        // Store the Jcrop API in the jcrop_api variable
+                        jcrop_api = this;
+
+                    });
+                }else{
+                    $('#preview').Jcrop({
+                        minSize: [32, 32], // min crop size                   
+                        
+                        bgFade: true, // use fade effect
+                        bgOpacity: .3, // fade opacity
+                        onChange: updateInfo,
+                        onSelect: updateInfo,
+                        onRelease: clearInfo
+                    }, function(){
+
+                        // use the Jcrop API to get the real image size
+                        var bounds = this.getBounds();
+                        boundx = bounds[0];
+                        boundy = bounds[1];
+
+                        // Store the Jcrop API in the jcrop_api variable
+                        jcrop_api = this;
+                    });
+                }
+
+    });
 });
 // jQuery( document ).ready(function( $ ) {
 // $(".newform").validate({
@@ -147,7 +193,7 @@ jQuery( document ).ready(function( $ ) {
 // 	}
 // });
 // });
-var jcrop_api, boundx, boundy;
+
 function fileSelectHandler() {
 
     // get selected file
@@ -196,25 +242,48 @@ function fileSelectHandler() {
             
             setTimeout(function(){
                 // initialize Jcrop
-                $('#preview').Jcrop({
-                    minSize: [32, 32], // min crop size                   
-                    aspectRatio : 16 / 5.7, // keep aspect ratio 1:1
-                    bgFade: true, // use fade effect
-                    bgOpacity: .3, // fade opacity
-                    onChange: updateInfo,
-                    onSelect: updateInfo,
-                    onRelease: clearInfo
-                }, function(){
+                imagetype = $('#shop_image_imagetype_0:checked').val();
+                if(imagetype==0){
+                    $('#preview').Jcrop({
+                        minSize: [32, 32], // min crop size                   
+                        aspectRatio : 16 / 5.7, // keep aspect ratio 1:1
+                        bgFade: true, // use fade effect
+                        bgOpacity: .3, // fade opacity
+                        onChange: updateInfo,
+                        onSelect: updateInfo,
+                        onRelease: clearInfo
+                    }, function(){
 
-                    // use the Jcrop API to get the real image size
-                    var bounds = this.getBounds();
-                    boundx = bounds[0];
-                    boundy = bounds[1];
+                        // use the Jcrop API to get the real image size
+                        var bounds = this.getBounds();
+                        boundx = bounds[0];
+                        boundy = bounds[1];
 
-                    // Store the Jcrop API in the jcrop_api variable
-                    jcrop_api = this;
-                });
-            },1000);
+                        // Store the Jcrop API in the jcrop_api variable
+                        jcrop_api = this;
+                    });
+                }else{
+                    $('#preview').Jcrop({
+                        minSize: [32, 32], // min crop size                   
+                        aspectRatio : 1/1, // keep aspect ratio 1:1
+                        bgFade: true, // use fade effect
+                        bgOpacity: .3, // fade opacity
+                        onChange: updateInfo,
+                        onSelect: updateInfo,
+                        onRelease: clearInfo
+                    }, function(){
+
+                        // use the Jcrop API to get the real image size
+                        var bounds = this.getBounds();
+                        boundx = bounds[0];
+                        boundy = bounds[1];
+
+                        // Store the Jcrop API in the jcrop_api variable
+                        jcrop_api = this;
+                    });
+                }
+                
+            },400);
 
         };
     };

@@ -80,6 +80,8 @@ class HomeController < ApplicationController
 		end
 		@seodetails = @shop.seodetails.where("pagename = 'gallery'") rescue nil
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
+		@images = @shop.shop_images.where("imagetype = 1")
+		
 		if !@shop.shop_images.blank?
 			render :template => "templates/gallery", :layout => "#{@shop.template}"
 		else
