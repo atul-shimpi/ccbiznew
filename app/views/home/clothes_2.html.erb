@@ -7,7 +7,7 @@
 		<%= stylesheet_link_tag    'bootstrap-theme'%>
 		<%= stylesheet_link_tag    'font-awesome.min'%>
 		<%= stylesheet_link_tag    'events'%>
-		<%= stylesheet_link_tag    'food_2'%>
+		<%= stylesheet_link_tag    'clothes_2'%>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     
 
@@ -24,16 +24,16 @@
 			        <span class="icon-bar"></span>
 			      </button>
 
-			      <a class="navbar-brand" href="">Food</a>
+			      <a class="navbar-brand" href="">CLOTHES</a>
 			    </div>
 
 			    <!-- Collect the nav links, forms, and other content for toggling -->
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul class="nav navbar-nav">
-			        <li class="active"><a href="#">Home</a></li>
-			        <li class=""><a href="/aboutus">About Us</a></li>
-			        <li><a href="/shopevents">Events</a></li>
-			        <li><a href="/contactus">Contact Us</a></li>
+			        <li class="active"><a href="#"><span>Home</span></a></li>
+			        <li class=""><a href="/aboutus"><span>About Us</span></a></li>
+			        <li><a href="/shopevents"><span>Events</span></a></li>
+			        <li><a href="/contactus"><span>Contact Us</span></a></li>
 			      </ul>
 			    </div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->
@@ -48,13 +48,13 @@
 	      </ol>
 	      <div class="carousel-inner" role="listbox">
 	        <div class="item active">
-	          <img class="first-slide" src="../assets/food_banner_3.jpg" alt="First slide">
+	          <img class="first-slide" src="../assets/food_banner_2.jpg" alt="First slide">
 	        </div>
 	        <div class="item">
-	          <img class="second-slide" src="../assets/food_banner_3.jpg" alt="Second slide">
+	          <img class="second-slide" src="../assets/food_banner_2.jpg" alt="Second slide">
 	        </div>
 	        <div class="item">
-	          <img class="third-slide" src="../assets/food_banner_3.jpg" alt="Third slide">
+	          <img class="third-slide" src="../assets/food_banner_2.jpg" alt="Third slide">
 	        </div>
 	      </div>
 	      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -77,10 +77,7 @@
 										<h3 class="welcome_text">About Us</h3>
 									</div>
 									<div class="offers_box">
-										<div class="col-lg-2">
-											<img src="<%= image_path('chef2.jpg') %>">
-										</div>
-										<div class="col-lg-10 aboutus">
+										<div class="aboutus">
 											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 										</div>
 									</div>
@@ -100,42 +97,36 @@
 										</div>
 										<div class="row">
 											<div class="col-lg-12">
-											  <div class="col-lg-3">
-											  	<img src="<%= image_path('spring-roll.jpg') %>" class="img-responsive">
-											  	<p>Rs 250 OFF</p>
-											  </div>
-											  <div class="col-lg-3">
-											  	<img src="<%= image_path('spring-roll.jpg') %>" class="img-responsive">
-											  	<p>Rs 250 OFF</p>
-											  </div>
-											  <div class="col-lg-3">
-											  	<img src="<%= image_path('spring-roll.jpg') %>" class="img-responsive">
-											  	<p>Rs 250 OFF</p>
-											  </div>
-											  <div class="col-lg-3">
-											  	<img src="<%= image_path('spring-roll.jpg') %>" class="img-responsive">
-											  	<p>Rs 250 OFF</p>
-											  </div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-12">
-												  <div class="col-lg-3">
-												  	<img src="<%= image_path('spring-roll.jpg') %>" class="img-responsive">
+												<div class="resp_slider">
+												  <div>
+												  	<img src="../assets/clothes_img1.jpg" class="img-responsive">
 												  	<p>Rs 250 OFF</p>
 												  </div>
-												  <div class="col-lg-3">
-												  	<img src="<%= image_path('spring-roll.jpg') %>" class="img-responsive">
+												  <div>
+												  	<img src="../assets/clothes_img2.jpg" class="img-responsive">
 												  	<p>Rs 250 OFF</p>
 												  </div>
-												  <div class="col-lg-3">
-												  	<img src="<%= image_path('spring-roll.jpg') %>" class="img-responsive">
+												  <div>
+												  	<img src="../assets/clothes_img3.jpg" class="img-responsive">
 												  	<p>Rs 250 OFF</p>
 												  </div>
-												  <div class="col-lg-3">
-												  	<img src="<%= image_path('spring-roll.jpg') %>" class="img-responsive">
+												  <div>
+												  	<img src="../assets/clothes_img1.jpg" class="img-responsive">
 												  	<p>Rs 250 OFF</p>
 												  </div>
+												  <div>
+												  	<img src="../assets/clothes_img2.jpg" class="img-responsive">
+												  	<p>Rs 250 OFF</p>
+												  </div>
+												  <div>
+												  	<img src="../assets/clothes_img3.jpg" class="img-responsive">
+												  	<p>Rs 250 OFF</p>
+												  </div>
+												  <div>
+												  	<img src="../assets/clothes_img1.jpg" class="img-responsive">
+												  	<p>Rs 250 OFF</p>
+												  </div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -154,43 +145,29 @@
 											<h3 class="welcome_text">Latest Offers</h3>
 										</div>
 										<div class="row">
-											<div class="col-lg-12">
-											  <div class="col-lg-3">
-											  	<img src="<%= image_path('spring-roll.jpg') %>" class="img-responsive">
-											  	<p>Rs 250 OFF</p>
-											  </div>
-											  <div class="col-lg-3">
-											  	<img src="<%= image_path('spring-roll.jpg') %>" class="img-responsive">
-											  	<p>Rs 250 OFF</p>
-											  </div>
-											  <div class="col-lg-3">
-											  	<img src="<%= image_path('spring-roll.jpg') %>" class="img-responsive">
-											  	<p>Rs 250 OFF</p>
-											  </div>
-											  <div class="col-lg-3">
-											  	<img src="<%= image_path('spring-roll.jpg') %>" class="img-responsive">
-											  	<p>Rs 250 OFF</p>
-											  </div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-12">
-												  <div class="col-lg-3">
-												  	<img src="<%= image_path('spring-roll.jpg') %>" class="img-responsive">
-												  	<p>Rs 250 OFF</p>
-												  </div>
-												  <div class="col-lg-3">
-												  	<img src="<%= image_path('spring-roll.jpg') %>" class="img-responsive">
-												  	<p>Rs 250 OFF</p>
-												  </div>
-												  <div class="col-lg-3">
-												  	<img src="<%= image_path('spring-roll.jpg') %>" class="img-responsive">
-												  	<p>Rs 250 OFF</p>
-												  </div>
-												  <div class="col-lg-3">
-												  	<img src="<%= image_path('spring-roll.jpg') %>" class="img-responsive">
-												  	<p>Rs 250 OFF</p>
-												  </div>
+											<div class="col-lg-6 mid-slider">
+							        	<div class="col-lg-4">
+							          	<img class="first-slide" src="../assets/entertainment1.gif" alt="First slide">
+							          </div>
+							          <div class="col-lg-8">
+							          	<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+							          </div>
+							        </div>
+							        <div class="col-lg-6 mid-slider">
+							          <div class="col-lg-4">
+							          	<img class="first-slide" src="../assets/entertainment1.gif" alt="First slide">
+							          </div>
+							          <div class="col-lg-8">
+							          	<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+							          </div>
+							        </div>
+							        <div class="col-lg-6 mid-slider">
+							          <div class="col-lg-4">
+							          	<img class="first-slide" src="../assets/entertainment1.gif" alt="First slide">
+							          </div>
+							          <div class="col-lg-8">
+							          	<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+							          </div>
 											</div>
 										</div>
 									</div>
@@ -204,5 +181,41 @@
 					<p class="col-lg-12 copyright">Copyright @ 2016. All Rights Reserved.</p>
 				</footer>
 			</div>
+			<script type="text/javascript">
+			$(document).ready(function(){
+			  $('.resp_slider').slick({
+			    dots: true,
+				  infinite: false,
+				  speed: 300,
+				  slidesToShow: 4,
+				  slidesToScroll: 4,
+				  responsive: [
+				    {
+				      breakpoint: 1024,
+				      settings: {
+				        slidesToShow: 3,
+				        slidesToScroll: 3,
+				        infinite: true,
+				        dots: true
+				      }
+				    },
+				    {
+				      breakpoint: 600,
+				      settings: {
+				        slidesToShow: 2,
+				        slidesToScroll: 2
+				      }
+				    },
+				    {
+				      breakpoint: 480,
+				      settings: {
+				        slidesToShow: 1,
+				        slidesToScroll: 1
+				      }
+				    }
+				  ]
+				});
+			});
+		</script>
 	</body>
 </HTML>

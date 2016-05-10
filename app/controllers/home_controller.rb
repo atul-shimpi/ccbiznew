@@ -184,4 +184,7 @@ class HomeController < ApplicationController
 	def clothes_1
 		render :layout => false
 	end
+	def clothes_2
+		render :layout => false
+	end
 end
