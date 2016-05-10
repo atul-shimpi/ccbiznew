@@ -2,7 +2,12 @@
   <section class="container text-center">
 
     <div class="container main-content">
-    <% @shop.shop_images.in_groups_of(4) do |images| %>
+    <% if @shop.gallerytype == 1 %>
+    <div class="row gallery_images gallerycarousel">
+    <%= render :partial => "layouts/gallery"%>
+    </div>
+    <% else %>
+    <% @images.in_groups_of(4) do |images| %>
       <div class="row gallery_images">
       <% images.each do |image|%>
         <div class="col-lg-3">
@@ -14,6 +19,7 @@
       <%end%>
       </div>
       <%end%>
+    <% end %> 
     </div>
     
   </section>

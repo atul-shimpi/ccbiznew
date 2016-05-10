@@ -207,11 +207,14 @@ div.date {
 table.dataTable thead .sorting::after {
   color: #FF0;
 }
-.panel-body.col-lg-6, .panel-body.col-lg-5 {
+.panel-body.col-lg-6, .panel-body.col-lg-5, .panelwhite {
   background-color: rgba(255, 255, 255, 0.5);
   border-collapse: collapse;
   border-radius: 15px;
   margin-top: 30px;
+}
+.panelwhite{
+  padding:15px;
 }
 .dataTables_wrapper .col-sm-12 {
   overflow-y: scroll;

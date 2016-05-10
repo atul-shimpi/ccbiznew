@@ -33,6 +33,7 @@
 //= require jquery.jcrop
 //= require geocomplete
 //= require slick.min
+//= require moment
 //= require bootstrap-datetimepicker
 //= require jquery.countdown
 //= require jquery.jcrop

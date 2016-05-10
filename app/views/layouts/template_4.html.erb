@@ -25,7 +25,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="">
+		      <a class="navbar-brand" href="/">
 		      <%= image_tag @shop.avatar_url, :class=> "img-responsive" , :style => "width: 148px;height: 43px"%>
 		      </a>
 		    </div>
@@ -34,7 +34,7 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
-		        <li class="active"><a href="http://<%= @shop.subdomain%>.<%= request.domain%>"><span>Home</span></a></li>		        
+		        <li class="active"><a href="/"><span>Home</span></a></li>		        
 		        <% if !@shop.events.blank? %>		        
 		        <li><a href="/shopevents"><span>Events</span></a></li>
 		        <% end %>
@@ -51,8 +51,10 @@
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
 		</nav>
-    <%#= render :partial => "layouts/carousel"%>		
-
+    <%#= render :partial => "layouts/carousel"%>
+    <% if @shop.isactive == 0 || @shop.isactive.to_s == "nil"%>		
+    <div class="transparent">Waiting for administrator approval</div>	
+    <% end %>
     <%= yield %>
 
 <footer class="clearfix">

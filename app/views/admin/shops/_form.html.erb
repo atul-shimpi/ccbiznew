@@ -20,6 +20,18 @@
       <%= f.label :phone, :class => 'control-label' %>
       <%= f.text_field :phone, :class => 'text_field form-control', :placeholder => 'Enter text' %>
   </div>
+  <div class="form-group">
+      <%= f.label :address_name, :class => 'control-label' %>
+      <%= f.text_field :addressname, :class => 'text_field form-control', :placeholder => 'Enter text' %>
+  </div>
+  <div class="form-group">
+      <%= f.label :street_address, :class => 'control-label' %>
+      <%= f.text_field :buildingname, :class => 'text_field form-control', :placeholder => 'Enter text' %>
+  </div>
+  <div class="form-group">
+      <%= f.label :landmark, :class => 'control-label' %>
+      <%= f.text_field :blockno, :class => 'text_field form-control', :placeholder => 'Enter text' %>
+  </div>
   <div class="form-group details">
       <%= f.label :address, :class => 'control-label' %>
       <%= f.text_area :address, :class => 'text_field form-control', :rows => '3', :placeholder => 'Type in an address', :id=>"my_input", :"data-geo"=>"formatted_address" %>
@@ -50,9 +62,14 @@
 
 
   <div class="form-group">
-      <%= f.label :info, :class => 'control-label' %>
+      <%= f.label :About_us, :class => 'control-label' %>
       <%= f.text_area :info, :class => 'text_field form-control tinymce', :rows => 10  %>
   </div>
+  <div class="form-group">
+      <%= f.label :Home_Page_Content, :class => 'control-label' %>
+      <%= f.text_area :homecontent, :class => 'text_field form-control tinymce', :rows => 10 %>
+  </div>
+  <!--
   <div class="form-group">
       <%= f.label :page_title, :class => 'control-label' %>
       <%= f.text_area :pagetitle, :class => 'text_field form-control', :rows => '3' %>
@@ -64,7 +81,7 @@
   <div class="form-group">
       <%= f.label :meta_description, :class => 'control-label' %>
       <%= f.text_area :metadescription, :class => 'text_field form-control', :rows => '3' %>
-  </div>
+  </div>-->
   <div class="form-group">
       <%= f.label :google_analytics, :class => 'control-label' %>
       <%= f.text_field :googleanalytics, :class => 'text_field form-control', :rows => '3' %>
@@ -82,6 +99,11 @@
       <%= f.label :background_image, :class => 'control-label' %>
       <%= f.file_field :backgroundimage %>
       <%= f.hidden_field :backgroundimage_cache %>
+  </div>
+  <div class="form-group">
+      <%= f.label :gallerytype, :class => 'control-label' %><br>
+      <%= f.radio_button :gallerytype, '0' %> Listing <br>
+      <%= f.radio_button :gallerytype, '1' %> Carousel <br>
   </div>
   <div class="form-group">
       <%= f.label :facebook, :class => 'control-label' %>

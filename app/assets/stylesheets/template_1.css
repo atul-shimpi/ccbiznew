@@ -26,6 +26,7 @@ ul.nav.navbar-nav li {
 }
 .navbar-brand img {
 	height: 46px;
+	width: auto;
 }
 .navbar-default .navbar-nav li a {
 	color: #fff;

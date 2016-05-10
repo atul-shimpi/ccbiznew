@@ -1,4 +1,15 @@
+		<% if !@shop.homecontent.blank? %>
+		<div class="container main-content">
+			<div class="latest_offers">
+				<div class="row">
+					<div class="col-lg-12">						
+						<p class="about_content"><%= @shop.homecontent.html_safe%></p>
+					</div>
+				</div>
+			</div>
 
+		</div>
+		<% end %>
 		<div class="container main-content">
 			<% if !@shop.info.blank? %>
 			<div class="row latest_offers">
@@ -35,7 +46,10 @@
 								<div class="offers_cont">
 									<a href=""><%= image_tag offer.image_url, :class=> "img-responsive" %>
 									</a>
+									<% if !offer.discount.blank? %>
 									<div class="discount"><p><a href=""><%= offer.discount%> Discount</a></p></div>
+									<% end %>
+									
 								</div>
 								<p class="title"><a href=""><%= offer.name%></a></p>
 							</div>
@@ -60,7 +74,10 @@
 								<div class="offers_cont">
 									<a href=""><%= image_tag offer.image_url, :class=> "img-responsive" %>
 									</a>
+									<% if !offer.discount.blank? %>
 									<div class="discount"><p class="discount"><a href=""><%= offer.discount%> Discount</a></p></div>
+									<% end %>
+									
 								</div>	
 								<p class="title"><a href=""><%= offer.name%></a></p>
 							</div>

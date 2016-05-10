@@ -15,7 +15,7 @@
   
 //   return Conectc;
 // })(Conectc);
-
+var jcrop_api, boundx, boundy;
 jQuery( document ).ready(function( $ ) {
   var docHeight = $(document).outerHeight();
   var loginWrap = $(document).find('.login_wrapper');
@@ -28,9 +28,27 @@ jQuery( document ).ready(function( $ ) {
 	});
 
   
-  	$("#my_input").bind("geocode:dragged", function(event, latLng){
+  	$("#my_input").bind("geocode:dragged", function(event, latLng){       
       $("#shop_latitude").val(latLng.lat());
       $("#shop_longitude").val(latLng.lng());
+
+
+        var map = $("#my_input").geocomplete("map");
+        
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({'latLng': latLng }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                
+                if (results[0]) {
+                    var road = results[0].address_components[1].long_name;
+                    var town = results[0].address_components[2].long_name;
+                    var county = results[0].address_components[3].long_name;
+                    var country = results[0].address_components[4].long_name;
+                    $('#my_input').html(results[0].formatted_address);
+                }
+            }
+        });
+
       
     });
     $("#find").click(function(){
@@ -122,6 +140,52 @@ jQuery( document ).ready(function( $ ) {
 	      plugins: "table,uploadimage,textcolor,colorpicker,emoticons,hr,textpattern,visualblocks"
 	    });
 	});
+    $(".imagetype input:radio").click(function() {
+       if(jcrop_api) 
+        jcrop_api.destroy(); 
+       if($(this).val()==0){
+
+                    $('#preview').Jcrop({
+                        minSize: [32, 32], // min crop size                   
+                        aspectRatio : 16 / 5.7, // keep aspect ratio 1:1
+                        bgFade: true, // use fade effect
+                        bgOpacity: .3, // fade opacity
+                        onChange: updateInfo,
+                        onSelect: updateInfo,
+                        onRelease: clearInfo
+                    }, function(){
+
+                        // use the Jcrop API to get the real image size
+                        var bounds = this.getBounds();
+                        boundx = bounds[0];
+                        boundy = bounds[1];
+
+                        // Store the Jcrop API in the jcrop_api variable
+                        jcrop_api = this;
+
+                    });
+                }else{
+                    $('#preview').Jcrop({
+                        minSize: [32, 32], // min crop size                   
+                        
+                        bgFade: true, // use fade effect
+                        bgOpacity: .3, // fade opacity
+                        onChange: updateInfo,
+                        onSelect: updateInfo,
+                        onRelease: clearInfo
+                    }, function(){
+
+                        // use the Jcrop API to get the real image size
+                        var bounds = this.getBounds();
+                        boundx = bounds[0];
+                        boundy = bounds[1];
+
+                        // Store the Jcrop API in the jcrop_api variable
+                        jcrop_api = this;
+                    });
+                }
+
+    });
 });
 // jQuery( document ).ready(function( $ ) {
 // $(".newform").validate({
@@ -133,7 +197,7 @@ jQuery( document ).ready(function( $ ) {
 // 	}
 // });
 // });
-var jcrop_api, boundx, boundy;
+
 function fileSelectHandler() {
 
     // get selected file
@@ -182,25 +246,48 @@ function fileSelectHandler() {
             
             setTimeout(function(){
                 // initialize Jcrop
-                $('#preview').Jcrop({
-                    minSize: [32, 32], // min crop size                   
-                    aspectRatio : 16 / 5.7, // keep aspect ratio 1:1
-                    bgFade: true, // use fade effect
-                    bgOpacity: .3, // fade opacity
-                    onChange: updateInfo,
-                    onSelect: updateInfo,
-                    onRelease: clearInfo
-                }, function(){
+                imagetype = $('#shop_image_imagetype_0:checked').val();
+                if(imagetype==0){
+                    $('#preview').Jcrop({
+                        minSize: [32, 32], // min crop size                   
+                        aspectRatio : 16 / 5.7, // keep aspect ratio 1:1
+                        bgFade: true, // use fade effect
+                        bgOpacity: .3, // fade opacity
+                        onChange: updateInfo,
+                        onSelect: updateInfo,
+                        onRelease: clearInfo
+                    }, function(){
 
-                    // use the Jcrop API to get the real image size
-                    var bounds = this.getBounds();
-                    boundx = bounds[0];
-                    boundy = bounds[1];
+                        // use the Jcrop API to get the real image size
+                        var bounds = this.getBounds();
+                        boundx = bounds[0];
+                        boundy = bounds[1];
 
-                    // Store the Jcrop API in the jcrop_api variable
-                    jcrop_api = this;
-                });
-            },1000);
+                        // Store the Jcrop API in the jcrop_api variable
+                        jcrop_api = this;
+                    });
+                }else{
+                    $('#preview').Jcrop({
+                        minSize: [32, 32], // min crop size                   
+                        aspectRatio : 1/1, // keep aspect ratio 1:1
+                        bgFade: true, // use fade effect
+                        bgOpacity: .3, // fade opacity
+                        onChange: updateInfo,
+                        onSelect: updateInfo,
+                        onRelease: clearInfo
+                    }, function(){
+
+                        // use the Jcrop API to get the real image size
+                        var bounds = this.getBounds();
+                        boundx = bounds[0];
+                        boundy = bounds[1];
+
+                        // Store the Jcrop API in the jcrop_api variable
+                        jcrop_api = this;
+                    });
+                }
+                
+            },400);
 
         };
     };

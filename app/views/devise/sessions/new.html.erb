@@ -12,9 +12,6 @@
             <% if flash.any? %>
             
             <div id="error_explanation">
-              <% if flash[:alert] %>
-              <h2><%= flash.count%> errors prohibited this business user from being saved:</h2>
-              <% end %>
               <ul>
                 <% flash.each do |key, value| %>
                   <li ><%= value %></li>

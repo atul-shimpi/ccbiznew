@@ -54,6 +54,15 @@
     <div class="col-lg-5 col-lg-offset-2 col-sm-5 col-sm-offset-2">
       <p class="tab_title">Contact us at :</p>
       <div class="contact_address">
+        <% if !@shop.addressname.blank? %>
+        <%= @shop.addressname %> <br>
+        <% end %>
+        <% if !@shop.buildingname.blank? %>
+        <%= @shop.buildingname %> <br>
+        <% end %>
+        <% if !@shop.blockno.blank? %>
+        <%= @shop.blockno %> <br>
+        <% end %>
         <%= @shop.address%><br >        
         Telephone: <%= @shop.phone%><br>        
         <% if !@shop.business_user.blank? %>

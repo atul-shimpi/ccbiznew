@@ -1,6 +1,6 @@
 class BusinessUser::ShopsController < BusinessUser::BaseController
 
-	  def index
+	def index
     @shops = current_business_user.shops.all
 
     respond_to do |format|
@@ -84,7 +84,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
    private
 
   def shop_params
-    params.require(:shop).permit(:name, :phone, :address, :info, :user_id, :avatar,:backgroundimage, :removebg, :category_id, :template, :subdomain, :domain, :city, :state, :country, :zip, :facebook, :linkedin, :google, :twitter, :shoptype, :latitude, :longitude, :backgroundimage_cache)
+    params.require(:shop).permit(:name, :phone, :address, :info, :homecontent, :user_id, :avatar,:backgroundimage, :removebg, :category_id, :template, :subdomain, :domain, :city, :state, :country, :zip, :facebook, :linkedin, :google, :twitter, :shoptype, :latitude, :longitude, :backgroundimage_cache, :addressname, :buildingname, :blockno, :gallerytype)
   end
 
 
