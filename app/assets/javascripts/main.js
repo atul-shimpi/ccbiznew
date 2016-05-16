@@ -17,6 +17,10 @@
 // })(Conectc);
 var jcrop_api, boundx, boundy;
 jQuery( document ).ready(function( $ ) {
+  var docHeight = $(document).outerHeight();
+  var loginWrap = $(document).find('.login_wrapper');
+  loginWrap.css('height', docHeight);
+
   $('.dataTables-example').DataTable({
           responsive: true,
 					columnDefs: [{ targets: -1, orderable: false }]

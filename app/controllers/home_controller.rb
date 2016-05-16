@@ -205,7 +205,8 @@ class HomeController < ApplicationController
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
-		render :template => "templates/dashboard", :layout => "#{@shop.template}"
+		@userfiles = current_site_user.userfiles.all    
+    	render :template => "templates/files", :layout => "#{@shop.template}"		
 	end
 	def contact_params
 	    params.require(:contact).permit(:contactname, :contactemail, :contactnumber, :contactinfo, :shoprating, :shop_id)
@@ -246,6 +247,9 @@ class HomeController < ApplicationController
 		render :layout => false
 	end
 	def clothes_1
+		render :layout => false
+	end
+	def clothes_2
 		render :layout => false
 	end
 end

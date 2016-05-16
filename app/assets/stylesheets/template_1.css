@@ -138,12 +138,8 @@ footer p.copyright, footer .panel-body, footer .follow-me-icons {
 	margin-bottom: 0;
 	padding-bottom: 0;
 }
-.panel-body {
-	padding-left: 0;
-	padding-top: 7px;
-}
-footer .panel-body a {
-	margin-right: 10px;
+footer a, footer a:hover {
+	color: rgb(255, 255, 255);
 }
 .address p {
 	line-height: 1;
