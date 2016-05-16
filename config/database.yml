@@ -85,5 +85,5 @@ test:
 production:
   <<: *default
   database: conectc_production
-  username: conectc
-  password: <%= ENV['CONECTC_DATABASE_PASSWORD'] %>
+  username: postgres
+  password: Jalaram@12
