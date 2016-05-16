@@ -4,10 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def after_sign_in_path_for(resource)
+   
     if business_user_signed_in?
   	 business_user_shops_path
     elsif admin_signed_in?
       admin_shops_path
+    elsif site_user_signed_in?
+     userdashboard_path
     end
   end
 

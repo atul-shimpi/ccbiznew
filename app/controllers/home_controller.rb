@@ -197,7 +197,16 @@ class HomeController < ApplicationController
 			redirect_to root_path
 		end
 	end
-	
+	# User Section
+	def dashboard
+		subdomain = request.subdomain.split(".").last
+		if subdomain.blank? || subdomain =='www'			
+			@shop = Shop.find_by_domain(request.host)	
+		else
+			@shop = Shop.find_by_subdomain(subdomain)	
+		end
+		render :template => "templates/dashboard", :layout => "#{@shop.template}"
+	end
 	def contact_params
 	    params.require(:contact).permit(:contactname, :contactemail, :contactnumber, :contactinfo, :shoprating, :shop_id)
 	end
