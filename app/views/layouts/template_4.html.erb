@@ -47,6 +47,13 @@
 		        	<li><a href="/gallery"><span>Gallery</span></a></li>
 		        <% end %>
 		        <li><a href="/contactus"><span>Contact Us</span></a></li>
+		        <li>
+		        <% if !current_site_user %>
+		        <a href="/site_users/sign_in">Login</a>
+		        <% else %>
+		        	<%= link_to "#{"Log Out"}".html_safe, destroy_site_user_session_path, :method=>'delete' %>
+		        <% end %>
+		        </li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
