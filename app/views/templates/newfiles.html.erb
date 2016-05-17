@@ -1,0 +1,26 @@
+<div class="container main-content">
+	<div class="latest_offers">
+		<div class="row">			
+			<div class="col-lg-12">				
+				<%= form_for @userfile, url: "/files",  :html => { :class => '' , multipart: true  } do |f| %>					  
+					  <div class="form-group">
+
+					    <%= f.label :filename, :class => 'control-label' %>
+					    <%= f.file_field :filename, :required => '', :onchange =>"fileSelectHandler()" %>
+					    
+					    <%= f.hidden_field :filename_cache %>
+					    <%= f.hidden_field :site_user_id, :value => current_site_user.id %>
+
+					    
+
+					  </div>
+					  <%= f.submit nil, :class => 'btn btn-primary' %>					  
+					<% end %>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+	
