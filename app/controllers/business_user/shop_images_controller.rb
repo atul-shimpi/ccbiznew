@@ -33,6 +33,7 @@ class BusinessUser::ShopImagesController < BusinessUser::BaseController
 
   def create    
     @shop_image = @shop.shop_images.new(shop_image_params)    
+    
     respond_to do |format|      
       if @shop_image.save                
         format.html { 

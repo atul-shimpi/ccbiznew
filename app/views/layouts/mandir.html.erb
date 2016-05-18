@@ -36,6 +36,13 @@
           <li><a href="/shopevents">Events</a></li>
           <li><a href="/donation">Donation</a></li>
           <li><a href="/contactus">Contact Us</a></li>
+          <li>
+            <% if !current_site_user %>
+            <a href="/site_users/sign_in">Login</a>
+            <% else %>
+              <%= link_to "#{"Log Out"}".html_safe, destroy_site_user_session_path, :method=>'delete' %>
+            <% end %>
+            </li>
         </ul>
       </div>
     </div>

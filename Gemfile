@@ -32,6 +32,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'carrierwave'
 gem 'carrierwave-crop'
+gem 'carrierwave-aws'
+
 gem 'rmagick', '~> 2.15', '>= 2.15.2'
 #gem 'jcrop-rails-v2'
 gem 'geocoder'

@@ -1,17 +1,7 @@
 <div class="container main-content">
 	<div class="latest_offers">
-		<div class="row">
-			<div class="col-lg-3">
-				<ul class="nav" id="side-menu">
-					<li>
-						<%= current_site_user.email %>
-					</li>
-					<li>
-						<%= link_to "#{"Log Out"}".html_safe, destroy_site_user_session_path, :method=>'delete' %>
-					</li>
-				</ul>
-			</div>
-			<div class="col-lg-9">				
+		<div class="row">			
+			<div class="col-lg-12">				
 				<p class="about_content">
 					<%= link_to "New Files", new_file_path %>
 				</p>
@@ -39,7 +29,7 @@
 		                      	%>
 		                      		
 		                      </td>
-		                      <td>
+		                      <td>		                      	
 		                        <%= link_to "Download","/files/download/"+file.id.to_s, :class => 'btn btn-primary btn-mini' %>
 		                        
 		                      </td>
