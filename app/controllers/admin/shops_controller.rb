@@ -60,8 +60,9 @@ class Admin::ShopsController < Admin::BaseController
   def destroy
 
     @shop = Shop.find(params[:id])
-    @shop.destroy
-
+    ActiveRecord::Base.connection.disable_referential_integrity do
+      @shop.destroy
+    end
     respond_to do |format|
       format.html { redirect_to admin_shops_url }
       format.json { head :no_content }

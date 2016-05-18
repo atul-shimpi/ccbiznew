@@ -7,7 +7,7 @@ class FilesUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  storage :aws
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -41,7 +41,9 @@ class FilesUploader < CarrierWave::Uploader::Base
   def extension_white_list
      %w(jpg jpeg gif png pdf doc docx xls xlsx ppt pptx txt)
   end
-
+  def download_url(filename)
+    url(response_content_disposition: %Q{attachment; filename="#{filename}"})
+  end
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename

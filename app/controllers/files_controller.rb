@@ -53,12 +53,10 @@ class FilesController < ApplicationController
 
   def download
   	
-  	@model = Userfile.find(params[:id])
-    send_file(@model.filename.path,
-          :filename => @model.filename_identifier,
-          :type => @model.filename.content_type,
-          :disposition => 'attachment',
-          :url_based_filename => true)
+  	@model = Userfile.find(params[:id])    
+    data = open(@model.filename_url) 
+
+    send_data data.read, filename: @model.filename_identifier, type: @model.filename.content_type, disposition: 'attachment', stream: 'true'    
   end
   def destroy
     @userfile = Userfile.find(params[:id])
