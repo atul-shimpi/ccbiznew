@@ -9,6 +9,29 @@ body {
 img {
   width: 100%;
 }
+.btn-primary-login {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.signup_link {
+  color: #fff;
+  text-decoration: underline;
+  margin-top: 20px;
+  display: inline-block;
+  &:hover {
+    text-decoration: none;
+    color: #fff;
+  }
+}
+.btn-primary-login:hover {
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+}
+.btn-success, .btn-info {
+  width: 100%;
+}
 .btn-primary {
   background-color: #ccc;
   color: #000;
@@ -40,13 +63,17 @@ img {
   background-size: cover;
   min-height: 594px;
 }
+.login_wrapper {
+  background: asset_url('money3.jpg');
+  background-size: cover;
+}
 .login-panel.panel {
   background: #fff;
   .panel-heading {
     background: none;
     border: none;
   }
-  .submit_btn {
+  .submit_btn, .btn-success {
     margin-bottom: 10px;
   }
 }
@@ -180,11 +207,14 @@ div.date {
 table.dataTable thead .sorting::after {
   color: #FF0;
 }
-.panel-body.col-lg-6, .panel-body.col-lg-5 {
+.panel-body.col-lg-6, .panel-body.col-lg-5, .panelwhite {
   background-color: rgba(255, 255, 255, 0.5);
   border-collapse: collapse;
   border-radius: 15px;
   margin-top: 30px;
+}
+.panelwhite{
+  padding:15px;
 }
 .dataTables_wrapper .col-sm-12 {
   overflow-y: scroll;

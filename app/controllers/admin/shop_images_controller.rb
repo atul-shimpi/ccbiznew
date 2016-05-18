@@ -74,7 +74,7 @@ before_action :get_shop
   private
 
   def shop_image_params
-    params.require(:shop_image).permit(:shop_id, :shop_image_id, :image_cache,  :image, :crop_x, :crop_y, :crop_w, :crop_h)
+    params.require(:shop_image).permit(:shop_id, :shop_image_id, :image_cache,  :image, :crop_x, :crop_y, :crop_w, :crop_h,:imagetype)
   end
 
   def get_shop

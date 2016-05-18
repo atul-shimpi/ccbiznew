@@ -1,0 +1,51 @@
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Files</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <!-- /.row -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">   
+          <%= @site_user.email %> Files
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+          <div class="dataTable_wrapper">
+            <table class="table table-striped table-bordered table-hover dataTables-example" id="dataTables-example">
+              <thead>
+                <tr>
+                  <th>Name</th>                     
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if !@userfiles.blank?%>
+                  <% @userfiles.each do |file| %>
+                    <tr>
+                      <td><%= file.filename_identifier %></td>
+                      <td>
+                        <%= link_to "Download","/files/download/"+file.id.to_s, :class => 'btn btn-primary btn-mini' %>
+                        <%= link_to "Approve", {:controller => "files", :action => "approve", :site_user_id => file.site_user_id, :id => file.id} , :class => 'btn btn-info btn-mini'%>
+                        <%= link_to "Delete", {:controller => "files", :action => "destroy", :site_user_id => file.site_user_id, :id => file.id} ,:method => :delete,:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-primary btn-mini'%>
+                        
+                      </td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+      </div>
+      <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+</div>
+<!-- /#page-wrapper -->

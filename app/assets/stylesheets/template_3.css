@@ -184,6 +184,9 @@ footer p.copyright, footer .panel-body, footer .follow-me-icons {
 footer .panel-body a {
 	margin-right: 10px;
 }
+footer p.copyright, footer p.copyright a {
+	color: #000;
+}
 .address {
 	text-align: left;
 	width: 18%;

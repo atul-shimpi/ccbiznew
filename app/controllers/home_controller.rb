@@ -80,6 +80,8 @@ class HomeController < ApplicationController
 		end
 		@seodetails = @shop.seodetails.where("pagename = 'gallery'") rescue nil
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
+		@images = @shop.shop_images.where("imagetype = 1")
+		
 		if !@shop.shop_images.blank?
 			render :template => "templates/gallery", :layout => "#{@shop.template}"
 		else
@@ -195,7 +197,17 @@ class HomeController < ApplicationController
 			redirect_to root_path
 		end
 	end
-	
+	# User Section
+	def dashboard
+		subdomain = request.subdomain.split(".").last
+		if subdomain.blank? || subdomain =='www'			
+			@shop = Shop.find_by_domain(request.host)	
+		else
+			@shop = Shop.find_by_subdomain(subdomain)	
+		end
+		@userfiles = current_site_user.userfiles.all    
+    	render :template => "templates/files", :layout => "#{@shop.template}"		
+	end
 	def contact_params
 	    params.require(:contact).permit(:contactname, :contactemail, :contactnumber, :contactinfo, :shoprating, :shop_id)
 	end
@@ -235,6 +247,9 @@ class HomeController < ApplicationController
 		render :layout => false
 	end
 	def clothes_1
+		render :layout => false
+	end
+	def clothes_2
 		render :layout => false
 	end
 end

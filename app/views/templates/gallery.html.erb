@@ -7,7 +7,7 @@
     <%= render :partial => "layouts/gallery"%>
     </div>
     <% else %>
-    <% @shop.shop_images.in_groups_of(4) do |images| %>
+    <% @images.in_groups_of(4) do |images| %>
       <div class="row gallery_images">
       <% images.each do |image|%>
         <div class="col-lg-3">

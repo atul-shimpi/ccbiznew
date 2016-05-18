@@ -1,8 +1,8 @@
 <div id="myCarousel" class="carousel slide"  data-ride="carousel">
   <!-- Indicators -->
-  <% if !@shop.shop_images.blank?%>
+  <% if !@images.blank?%>
   <ol class="carousel-indicators">
-    <% @shop.shop_images.each_with_index do |shop_image, index|%>
+    <% @images.each_with_index do |shop_image, index|%>
     <li data-target="#myCarousel" data-slide-to="<%= index %>" class="<% if index == 0%>active<%end%>"></li>
     
     
@@ -10,7 +10,7 @@
   </ol>
   
   <div class="carousel-inner" role="listbox">
-    <% @shop.shop_images.each_with_index do |shop_image, index|%>
+    <% @images.each_with_index do |shop_image, index|%>
       <% if shop_image.image_url %>
         <div class="item <% if index == 0%>active<%end%>">       
           <% if FileTest.exist?(shop_image.image.file.path) %>      

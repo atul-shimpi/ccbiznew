@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :site_users
   devise_for :admins
   devise_for :business_users
   get 'dashboard/index'
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   resources :shops
   resources :offers
   resources :events
+  resources :files
 
   namespace :business_user do 
     resources :base
@@ -20,6 +22,8 @@ Rails.application.routes.draw do
     resources :skills       
     resources :teams       
     resources :players       
+    resources :site_users       
+    resources :files       
   end
   namespace :admin do 
     resources :base
@@ -41,6 +45,8 @@ Rails.application.routes.draw do
   post '/business_user/search' => "business_user/business_users#search"
   get '/business_user/userdetails/:id' => "business_user/business_users#userdetails"
   post '/business_user/dashboard' => "business_user/business_users#show"
+  get '/files/download/:id' => "files#download"
+  get '/business_user/files/approve/:id' => "business_user/files#approve"
 
   post '/business_user/cropimage' => "business_user/shop_images#crop"  
   post '/business_user/teamplayers/:id' => "business_user/players#teamupdate"  
@@ -48,6 +54,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"  
   get 'aboutus' => "home#about_us"
+  get 'userdashboard' => "home#dashboard"
   get 'contactus' => "home#contact_us"
   post 'contact_us' => "home#update_contact_us"
   get 'gallery' => "home#gallery"
@@ -65,6 +72,7 @@ Rails.application.routes.draw do
   get 'food_1' => "home#food_1"
   get 'food_2' => "home#food_2"
   get 'clothes_1' => "home#clothes_1"
+  get 'clothes_2' => "home#clothes_2"
   get 'auction' => "home#auction"
   get 'teams' => "home#teams"
   get 'team/:id' => "home#team"

@@ -7,14 +7,24 @@ img {
 .marginTop {
     margin-top: 60px;
 }
+.navbar-header {
+  float: none;
+}
 .navbar {
   margin: 0;
 }
 .navbar-default .navbar-brand {
   color: #cc4846;
+  display: block;
+  float: none;
+  text-align: center;
+}
+#bs-example-navbar-collapse-1 {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
 }
 ul.nav.navbar-nav {
-  margin-left: 60px;
+  margin-left: 318px;
 }
 .navbar.navbar-default {
   background-color: #fff;
@@ -33,6 +43,7 @@ ul.nav.navbar-nav {
 .navbar-default .navbar-nav li a {
     color: #000;
     font-weight: bold;
+    padding: 10px 35px;
 }
 .navbar-default .navbar-nav li a span {
   padding: 0px 35px;
