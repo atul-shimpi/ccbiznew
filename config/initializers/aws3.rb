@@ -1,4 +1,4 @@
-CarrierWave.configure do |config|
+FilesUploader::CarrierWave.configure do |config|  
   config.storage    = :aws
   config.aws_bucket = "ccbizon"
   config.aws_acl    = 'public-read'
