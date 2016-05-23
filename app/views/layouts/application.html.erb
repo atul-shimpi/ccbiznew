@@ -27,8 +27,9 @@
 		<ul class="nav navbar-top-links navbar-right">
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">				
-				<% if current_business_user%>									
-					<%= image_tag current_business_user.avatar_url, :class=> "img-responsive prof_icon"%><i class="fa fa-caret-down"></i>									
+				<% if current_business_user %>									
+					<%= image_tag current_business_user.avatar_url, :class=> "img-responsive prof_icon"%>
+					<i class="fa fa-caret-down"></i>									
 				<% else %>
 					<i class="fa fa-user fa-fw prof_icon"></i>
 				<%end%>
@@ -38,7 +39,7 @@
 					</li>
 					<li class="divider"></li>
 					<li>
-					<% if current_admin %>
+					<% if current_admin %>						
 						<%= link_to "#{"<i class='fa fa-sign-out fa-fw'></i> Sign Out"}".html_safe, destroy_admin_session_path, :method=>'delete' %>
 					<% else %>
 						<%= link_to "#{"<i class='fa fa-sign-out fa-fw'></i> Sign Out"}".html_safe, destroy_business_user_session_path, :method=>'delete' %>

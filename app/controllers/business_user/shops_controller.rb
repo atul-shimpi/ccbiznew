@@ -70,7 +70,9 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
 
   def destroy
     @user = Shop.find(params[:id])
-    @user.destroy
+    ActiveRecord::Base.connection.disable_referential_integrity do
+      @user.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to business_user_shops_url }

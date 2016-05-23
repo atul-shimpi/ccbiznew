@@ -66,7 +66,5 @@ class BusinessUser::SiteUsersController < ApplicationController
   def siteuser_params
     params.require(:site_user).permit(:email, :shop_id, :password, :password_confirmation)
   end
-  def get_shop    
-  	@shop = Shop.find(params[:shop_id])
-  end
+  
 end
