@@ -12,8 +12,8 @@
   <div class="carousel-inner" role="listbox">
     <% @shop.shop_images.where("imagetype = 0").each_with_index do |shop_image, index|%>
       <% if shop_image.image_url %>
-        <div class="item <% if index == 0%>active<%end%>">       
-          <% if FileTest.exist?(shop_image.image.file.path) %>      
+        <div class="item <% if index == 0%>active<%end%>">
+			 <% if shop_image.image.cover.file.exists? %>      
             <%= image_tag shop_image.image_url(:cover), :class=> "img-responsive third-slide" if  !shop_image.blank?%>
           <%else%>
             <%= image_tag shop_image.image_url, :class=> "img-responsive third-slide" if  !shop_image.blank?%>

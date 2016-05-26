@@ -208,3 +208,8 @@
     padding-top: 250px;
     font-size: 25px;
 }
+.gallerypage.carousel .item img{
+	height: auto;
+	width: auto;
+	margin: 0px auto;
+} 
