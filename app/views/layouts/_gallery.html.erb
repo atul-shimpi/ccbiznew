@@ -1,4 +1,4 @@
-<div id="myCarousel" class="carousel slide"  data-ride="carousel">
+<div id="myCarousel" class="carousel slide gallerypage"  data-ride="carousel">
   <!-- Indicators -->
   <% if !@images.blank?%>
   <ol class="carousel-indicators">
@@ -13,8 +13,8 @@
     <% @images.each_with_index do |shop_image, index|%>
       <% if shop_image.image_url %>
         <div class="item <% if index == 0%>active<%end%>">       
-          <% if FileTest.exist?(shop_image.image.file.path) %>      
-            <%= image_tag shop_image.image_url, :class=> "img-responsive third-slide" if  !shop_image.blank?%>
+          <% if shop_image.image.cover.file.exists? %>      
+            <%= image_tag shop_image.image_url(:cover), :class=> "img-responsive third-slide" if  !shop_image.blank?%>
           <%else%>
             <%= image_tag shop_image.image_url, :class=> "img-responsive third-slide" if  !shop_image.blank?%>
           <%end%>
