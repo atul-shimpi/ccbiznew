@@ -18,7 +18,7 @@
   </div>
   <div class="form-group">
     <%= f.label :category_id %><br />
-    <%= f.collection_select(:category_id, Category.all, :id, :name, {:prompt => 'Select'}, {:class => 'form-control'}) %>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, {:prompt => 'Select'}, {:class => 'form-control', :onchange=> "changetemplate(this.value)"}) %>
   </div>
   <div class="form-group">
       <%= f.label :phone, :class => 'control-label' %>
@@ -129,10 +129,65 @@
       <%= f.radio_button :template, 'template_4' %> <br>
       <%= image_tag "sports_thumbnail.jpg", :class => 'img-responsive', :style => "width : 100px; height :100px"%>
     </div>
-        <div class="col-lg-3 col-xs-3 text-center">
+    <div class="col-lg-3 col-xs-3 text-center">
       <%= f.radio_button :template, 'mandir' %> <br>
       <%= image_tag "mandir_thumbnail.jpg", :class => 'img-responsive', :style => "width : 100px; height :100px"%>
     </div>
+    <div class="col-lg-3 col-xs-3 text-center">
+      <%= f.radio_button :template, 'entertainment_1' %> <br>
+      <%= image_tag "entertainment_1_banner.jpg", :class => 'img-responsive', :style => "width : 100px; height :100px"%>
+    </div>
+    <div class="col-lg-3 col-xs-3 text-center">
+      <%= f.radio_button :template, 'entertainment_2' %> <br>
+      <%= image_tag "entertainment_2_banner.jpg", :class => 'img-responsive', :style => "width : 100px; height :100px"%>
+    </div>
+    <div class="col-lg-3 col-xs-3 text-center">
+      <%= f.radio_button :template, 'education_1' %> <br>
+      <%= image_tag "educ_2_banner.jpg", :class => 'img-responsive', :style => "width : 100px; height :100px"%>
+    </div>
+    <div class="col-lg-3 col-xs-3 text-center">
+      <%= f.radio_button :template, 'education_2' %> <br>
+      <%= image_tag "educ_2_facilty.jpg", :class => 'img-responsive', :style => "width : 100px; height :100px"%>
+    </div>
+    <div class="col-lg-3 col-xs-3 text-center">
+      <%= f.radio_button :template, 'education_3' %> <br>
+      <%= image_tag "educ_3_banner.jpg", :class => 'img-responsive', :style => "width : 100px; height :100px"%>
+    </div>
+    <div class="col-lg-3 col-xs-3 text-center">
+      <%= f.radio_button :template, 'clothes_1' %> <br>
+      <%= image_tag "clothes_img1.jpg", :class => 'img-responsive', :style => "width : 100px; height :100px"%>
+    </div>
+    <div class="col-lg-3 col-xs-3 text-center">
+      <%= f.radio_button :template, 'clothes_2' %> <br>
+      <%= image_tag "clothes_img2.jpg", :class => 'img-responsive', :style => "width : 100px; height :100px"%>
+    </div>
+    <div class="col-lg-3 col-xs-3 text-center">
+      <%= f.radio_button :template, 'food_1' %> <br>
+      <%= image_tag "food_thumbnail.jpg", :class => 'img-responsive', :style => "width : 100px; height :100px"%>
+    </div>
+    <div class="col-lg-3 col-xs-3 text-center">
+      <%= f.radio_button :template, 'food_2' %> <br>
+      <%= image_tag "food_banner_2.jpg", :class => 'img-responsive', :style => "width : 100px; height :100px"%>
+    </div>
+    <div class="col-lg-3 col-xs-3 text-center">
+      <%= f.radio_button :template, 'health_1' %> <br>
+      <%= image_tag "health_banner1.jpg", :class => 'img-responsive', :style => "width : 100px; height :100px"%>
+    </div>
+    <div class="col-lg-3 col-xs-3 text-center">
+      <%= f.radio_button :template, 'social_1' %> <br>
+      <%= image_tag "social_banner_1.jpg", :class => 'img-responsive', :style => "width : 100px; height :100px"%>
+    </div>
+    <div class="col-lg-3 col-xs-3 text-center">
+      <%= f.radio_button :template, 'sports_1' %> <br>
+      <%= image_tag "sports_thumbnail.jpg", :class => 'img-responsive', :style => "width : 100px; height :100px"%>
+    </div>
+    <div class="col-lg-3 col-xs-3 text-center">
+      <%= f.radio_button :template, 'sports_2' %> <br>
+      <%= image_tag "sports_2.jpg", :class => 'img-responsive', :style => "width : 100px; height :100px"%>
+    </div>
+    
+    
+    
 </p>
   </div>
   <%= f.submit nil, :class => 'btn btn-primary' %>
@@ -142,12 +197,24 @@
 
 <script language="javascript">
   //print_country("country");
+  function changetemplate(id){
+    $.ajax({
+      type: "GET",
+      url: "/business_user/templatelist/",
+      data: {catid:id},
+      cache: false,
+      success: function(data){
+        console.log(data)
+         //$("#resultarea").text(data);
+      }
+    });
+  }
   $(function() {
     //$("#country").val('<%= @shop.country%>');
     //$("#country option[value='<%= @shop.country%>']").prop('selected', true);
    // populateStates("country","state")
    // $("#state").val('<%= @shop.state%>');
-
+    
      $("#my_input").geocomplete({
       map: "#my_map",
       details: ".details",

@@ -1,0 +1,66 @@
+<%= render :partial => "layouts/carousel"%>		
+<% if !@shop.homecontent.blank? %>
+<div class="main-content">
+	<div class="content_wrapper welcome_content">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">						
+					<p class="about_content"><%= @shop.homecontent.html_safe%></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<% end %>
+<div class="container main-content">
+	<% if !@shop.offers.latest.blank? %>
+		<div class="row latest_offers">
+			<div class="section_heading"><h3>Latest Offers</h3></div>
+			
+			<% @shop.offers.latest.each do |offer|%>
+			<div class="col-lg-3">
+				<div class="offers_box">
+					<div class="offer_products">
+					<%= image_tag offer.image_url, :class=> "img-responsive" %>
+						<% if !offer.discount.blank? %>
+						<div class="offer_text">
+							<p><%= offer.discount %> Discount</p>
+						</div>
+						<% end %>
+					</div>
+					<p class="title"><%= offer.name%></p>
+				</div>
+			</div>
+			<%end%>					
+		</div>
+	<%end%>
+	<% if !@shop.offers.featured.blank? %>
+	<div class="row upcomin_off">
+		<div class="section_heading"><h3>Upcoming Offers</h3></div>
+		
+		<% @shop.offers.featured.each do |offer|%>
+		<div class="col-lg-6">
+			<div class="upcoming_offers_container">
+				<div class="upcoming_offers clearfix">
+					<div class="col-lg-6">
+						<%= image_tag offer.image_url, :class=> "img-responsive" %>
+					</div>
+					<div class="col-lg-6">
+					<%= offer.name%><br>
+						<p><%= offer.description%></p>
+						<% if !offer.discount.blank? %>
+						<a class="offers_btn btn btn-lg btn-primary" href="#"><p> <%= offer.discount%> Discount</p></a>
+						<% end %>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<%end%>
+		
+	</div>
+	<%end%>
+</div>
+
+

@@ -42,6 +42,19 @@ end
 	has_many :events, :dependent => :destroy
   has_many :site_users, :dependent => :destroy
 	DESIGN_TEMPLATE = { "template_1" => "theme_1", "template_2" => "theme_2", "template_3" => "theme_3", "template_4" => "theme_4", "mandir" => "mandir"}
+
+  SPORTS_TEMPLATE = ['sports_1', 'sports_2'].freeze
+  EDUCATION_TEMPLATE = ['education_1', 'education_2', 'education_3'].freeze
+  
+  ENTERTAINTEMENT_TEMPLATE = ['entertainment_1', 'entertainment_2'].freeze
+  SOCIAL_TEMPLATE = ['social_1'].freeze
+  POPULARCHAKRAS_TEMPLATE = [].freeze
+  CARPOOLING_TEMPLATE = [].freeze
+  EVENTPARTIES_TEMPLATE = [].freeze
+  BUSINESS_TEMPLATE = [].freeze
+  COMMUNITY_TEMPLATE = ['mandir'].freeze
+  CAREER_TEMPLATE = [].freeze
+  OTHER_TEMPLATE = ['template_1', 'template_2', 'template_3', 'template_4'].freeze
   
   protected
   def admin_notification_init
@@ -58,4 +71,6 @@ end
       end
     end
   end
+
+  
 end
