@@ -48,6 +48,8 @@ Rails.application.routes.draw do
   get '/files/download/:id' => "files#download"
   get '/business_user/files/approve/:id' => "business_user/files#approve"
 
+  get '/business_user/templatelist' => "business_user/business_users#templatelist"
+
   post '/business_user/cropimage' => "business_user/shop_images#crop"  
   post '/business_user/teamplayers/:id' => "business_user/players#teamupdate"  
   get '/business_user/players/:id/playeredit' => "business_user/players#playeredit"  

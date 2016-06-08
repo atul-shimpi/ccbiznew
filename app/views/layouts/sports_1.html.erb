@@ -7,16 +7,16 @@
 		<%= stylesheet_link_tag    'bootstrap-theme'%>
 		<%= stylesheet_link_tag    'font-awesome.min'%>
 		<%= stylesheet_link_tag    'events'%>
-		<%= stylesheet_link_tag    'template_1'%>
-		<%= stylesheet_link_tag    'lightbox'%>    	
-  	<%= render :partial => "layouts/metatags"%>
-  	<%= render :partial => "layouts/commonstyles"%>
-    	
+		<%= stylesheet_link_tag    'sports_1'%>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= render :partial => "layouts/metatags"%>
+  	<%= render :partial => "layouts/commonstyles"%>   
+
 	</HEAD>
 	<body>
     
 		<nav class="navbar navbar-default">
-		  <div class="container">
+		  <div class="container nav_container">
 		    <!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">
 		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -27,7 +27,7 @@
 		      </button>
 
 		      <a class="navbar-brand" href="/">
-		      <%= image_tag @shop.avatar_url, :class=> "img-responsive" , :style => "max-width: 148px;"%>
+		      	<%= image_tag @shop.avatar_url, :class=> "img-responsive"%>
 		      </a>
 		    </div>
 
@@ -62,24 +62,24 @@
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
 		</nav>
-    <%#= render :partial => "layouts/carousel"%>	
-    <% if @shop.isactive == 0 || @shop.isactive.to_s == "nil"%>		
-    <div class="transparent">Waiting for administrator approval</div>	
-    <% end %>
-    <%= yield %>
+    <div class="main-content">
+		  <% if @shop.isactive == 0 || @shop.isactive.to_s == "nil"%>		
+	    <div class="transparent">Waiting for administrator approval</div>	
+	    <% end %>
+	    <%= yield %>
+		</div>
+
     <footer class="clearfix">
 			<div class="container">
 				<div class="row">
 					<p class="pull-left col-lg-6 copyright">Copyright @ 2015.<span>Powered by <a href="http://www.jalaram-techsolutions.com" target="blank"> jalaram-techsolutions.com</a></span></p>
 					<div class="pull-right col-lg-3 address hidden-xs">
-						<p>Contacts & info:</p>
-					<% if !@shop.business_user.blank? %>		
-     				<span class="glyphicon glyphicon-envelope">:   <a href="mailto:<%= @shop.business_user.email%>"><%= @shop.business_user.email%></a></span> <br/>
-    				<% end %> 				
-     				<span class="glyphicon glyphicon-phone-alt">:   <a href="tel:<%= @shop.phone%>"><%= @shop.phone%></a></span>
+						<p>Contacts & Info:</p>
+     				<span class="glyphicon glyphicon-envelope">:   <a href="mailto:">Email</a></span> <br/>
+     				<span class="glyphicon glyphicon-phone-alt">:   <a href="tel:">1234567890</a></span>
 					</div>
-					<div class="pull-right col-md-3 hidden-xs">	          
-	          <%= render :partial => "layouts/social_media"%>
+					<div class="pull-right col-md-3">	          
+	        	
         	</div>
 				</div>
 			</div>

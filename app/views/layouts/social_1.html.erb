@@ -1,0 +1,82 @@
+<!Doctype HTML>
+<HTML>
+	<HEAD>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Latest compiled and minified CSS -->
+		<%= stylesheet_link_tag    'bootstrap.min', media: 'all', 'data-turbolinks-track' => true %>
+		<%= stylesheet_link_tag    'bootstrap-theme'%>
+		<%= stylesheet_link_tag    'font-awesome.min'%>
+		<%= stylesheet_link_tag    'events'%>
+		<%= stylesheet_link_tag    'social_1'%>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= render :partial => "layouts/metatags"%>
+  	<%= render :partial => "layouts/commonstyles"%>    
+
+	</HEAD>
+	<body>
+			<nav class="navbar navbar-default navbar-fixed-top">
+			  <div class="container nav_container">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+
+			      <a class="navbar-brand" href="/">
+			      	<%= image_tag @shop.avatar_url, :class=> "img-responsive"%>
+			      </a>
+			    </div>
+
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      <ul class="nav navbar-nav">
+			        <li class=""><a href="/">Home</a></li>
+		        
+			        <% if !@shop.info.blank? %>
+			        <li><a href="/aboutus">About Us</a></li>
+			        <% end %>
+			        <% if !@shop.events.blank? %>		        
+			        <li><a href="/shopevents">Events</a></li>
+			        <% end %>
+			        <% if !@shop.auction.blank? %>		        
+			        <li><a href="/auction">Live auction update</a></li>
+			        <li><a href="/teams">Teams</a></li>
+			        <% end %>
+			        <% if !@shop.shop_images.blank? %>
+			        	<li><a href="/gallery">Gallery</a></li>
+			        <% end %>
+			        <li><a href="/contactus">Contact Us</a></li>
+			        <li>
+			        <% if !current_site_user %>
+			        <a href="/site_users/sign_in">Login</a>
+			        <% else %>
+			        	<%= link_to "#{"Log Out"}".html_safe, destroy_site_user_session_path, :method=>'delete' %>
+			        <% end %>
+			        </li>
+			      </ul>
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+			<div class="main-content">
+				<% if @shop.isactive == 0 || @shop.isactive.to_s == "nil"%>		
+    		<div class="transparent">Waiting for administrator approval</div>	
+    		<% end %>
+    		<%= yield %>
+
+				<footer class="clearfix">
+					<p class="col-lg-12 copyright">Copyright @ 2016. All Rights Reserved.</p>
+				</footer>
+			</div>
+			<%= render :partial => "layouts/googleanalytics"%>	
+			<% if !@shop.auction.blank? %>		
+				<script type="text/javascript">
+				  $(document).ready(function() {
+				    getTimer("<%= @shop.auction.startdatetime %>");
+				  })
+				</script>
+			<% end %>
+	</body>
+</HTML>
