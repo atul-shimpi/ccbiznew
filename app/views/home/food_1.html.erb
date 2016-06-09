@@ -33,6 +33,7 @@
 			        <li class="active"><a href="#"><span>Home</span></a></li>
 			        <li class=""><a href="/aboutus"><span>About Us</span></a></li>
 			        <li><a href="/shopevents"><span>Events</span></a></li>
+			        <li><a href="" data-toggle="modal" data-target="#myModal"><span>Login</span></a></li>
 			        <li><a href="/contactus"><span>Contact Us</span></a></li>
 			      </ul>
 			    </div><!-- /.navbar-collapse -->
@@ -217,5 +218,8 @@
 				});
 			});
 		</script>
+
+		<!-- Modal partial -->
+		<%= render :partial => "login_modal", locals: {} %>
 	</body>
 </HTML>
