@@ -46,6 +46,10 @@ ul.nav.navbar-nav {
 	background: none;
 	text-decoration: underline;
 }
+#myCarousel img {
+    width: auto;
+    height: auto;
+}
 .carousel-inner {
 	height: 632px;
 }

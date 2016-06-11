@@ -50,6 +50,10 @@
 	background: #fff;
 	color: rgb(0, 0, 0);
 }
+#myCarousel img {
+    width: auto;
+    height: auto;
+}
 .content_wrapper {
 	background: #4E4134;
 	padding-bottom: 3em;

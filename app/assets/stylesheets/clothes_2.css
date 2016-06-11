@@ -59,7 +59,8 @@ ul.nav.navbar-nav {
   background: none;
 }
 #myCarousel img {
-    width: 100%;
+    width: auto;
+    height: auto;
 }
 .section_heading {
     text-align: center;

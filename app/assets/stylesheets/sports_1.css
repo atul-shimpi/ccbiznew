@@ -31,6 +31,10 @@
 .navbar-default .nav.navbar-nav li.active a {
 	background: rgb(226, 80, 80) none repeat scroll 0% 0%;
 }
+#myCarousel img {
+    width: auto;
+    height: auto;
+}
 .section_heading {
 	padding: 3em 0;
 }
