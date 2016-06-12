@@ -40,6 +40,11 @@ img {
   color: white;
   font-size: 34px;
 }
+.navbar-brand > img {
+    display: block;
+    max-height: 100%;
+    margin: 0 auto;
+}
 ul.nav.navbar-nav {
 	margin-left: 260px;
 }

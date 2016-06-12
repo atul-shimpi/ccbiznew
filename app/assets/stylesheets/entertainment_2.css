@@ -13,7 +13,14 @@ img {
 .navbar {
   margin: 0;
 }
-.navbar-default .navbar-brand {
+.navbar-brand {
+    height: 68px;
+    padding: 10px 15px;
+}
+.navbar-brand > img {
+    display: block;
+    max-height: 100%;
+    margin: 0 auto;
 }
 ul.nav.navbar-nav {
   margin-left: 60px;

@@ -11,6 +11,15 @@
 	border-radius: 0;
 	margin-bottom: 0;
 }
+.navbar-brand {
+    height: 68px;
+    padding: 10px 15px;
+}
+.navbar-brand > img {
+    display: block;
+    max-height: 100%;
+    margin: 0 auto;
+}
 .nav.navbar-nav { 
 	margin: 0.75em 0px;
 }

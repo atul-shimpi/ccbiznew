@@ -14,10 +14,17 @@ img {
   margin: 0;
 }
 .navbar-default .navbar-brand {
-  color: #cc4846;
-  display: block;
-  float: none;
-  text-align: center;
+    color: #cc4846;
+    display: block;
+    float: none;
+    text-align: center;
+    height: 68px;
+    padding: 10px 15px;
+}
+.navbar-brand > img {
+    display: block;
+    max-height: 100%;
+    margin: 0 auto;
 }
 #bs-example-navbar-collapse-1 {
   border-top: 1px solid #000;

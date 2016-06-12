@@ -7,10 +7,6 @@ img {
 .navbar {
 	margin: 0;
 }
-.navbar-brand {
-  padding: 12px 15px;
-  height: auto;
-}
 ul.nav.navbar-nav {
 	margin-left: 50px;
 }
@@ -20,6 +16,15 @@ ul.nav.navbar-nav {
 	box-shadow: none;
 	border: none;
 	border-radius: 0;
+}
+.navbar-brand {
+    height: 68px;
+    padding: 10px 15px;
+}
+.navbar-brand > img {
+    display: block;
+    max-height: 100%;
+    margin: 0 auto;
 }
 .navbar-default .navbar-nav > .active > a {
 	background: none;
