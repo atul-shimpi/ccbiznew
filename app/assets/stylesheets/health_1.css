@@ -135,6 +135,6 @@ footer {
 	padding: 10px 0px;
 	color: rgb(255, 255, 255);
 }
-.copyright {
-	text-align: center;
+.main-content .follow-me-icons a {
+    margin-right: 10px;
 }

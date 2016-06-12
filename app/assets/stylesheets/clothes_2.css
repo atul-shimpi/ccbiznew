@@ -231,9 +231,11 @@ footer {
   color: rgb(255, 255, 255);
 }
 .main-content .copyright {
-  text-align: center;
   color: #ccc;
   margin-bottom: 0;
+}
+.main-content .follow-me-icons a {
+    margin-right: 10px;
 }
 .bottm_section {
   background: #0ab3a3;

@@ -89,3 +89,6 @@ footer p a, footer span.glyphicon, footer a  {
 footer a:hover {
 	color: #ccc;
 }
+.main-content .follow-me-icons a {
+    margin-right: 10px;
+}
