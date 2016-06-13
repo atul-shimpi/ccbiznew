@@ -44,10 +44,8 @@ ul.nav.navbar-nav li {
 	text-decoration: underline;
 }
 .carousel.slide img{
-	width: 100%;
-	height: 456px;
-	max-height: 456px;
-	max-width: 100%;
+    width: auto;
+    height: auto;
 }
 .section_heading {
 	text-align: center;

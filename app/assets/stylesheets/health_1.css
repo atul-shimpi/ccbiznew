@@ -4,12 +4,17 @@ img {
 .navbar {
 	margin: 0;
 }
-.navbar-brand {
-  padding: 12px 15px;
-  height: auto;
-}
 ul.nav.navbar-nav {
 	margin-left: 50px;
+}
+.navbar-brand {
+    height: 68px;
+    padding: 10px 15px;
+}
+.navbar-brand > img {
+    display: block;
+    max-height: 100%;
+    margin: 0 auto;
 }
 .navbar.navbar-default {
 	background-color: #286090;
@@ -45,6 +50,10 @@ ul.nav.navbar-nav {
 	color: #fff;
 	background: none;
 	text-decoration: underline;
+}
+#myCarousel img {
+    width: auto;
+    height: auto;
 }
 .carousel-inner {
 	height: 632px;
@@ -131,6 +140,6 @@ footer {
 	padding: 10px 0px;
 	color: rgb(255, 255, 255);
 }
-.copyright {
-	text-align: center;
+.main-content .follow-me-icons a {
+    margin-right: 10px;
 }

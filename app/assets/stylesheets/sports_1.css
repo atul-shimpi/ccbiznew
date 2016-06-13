@@ -11,6 +11,15 @@
 	border-radius: 0;
 	margin-bottom: 0;
 }
+.navbar-brand {
+    height: 68px;
+    padding: 10px 15px;
+}
+.navbar-brand > img {
+    display: block;
+    max-height: 100%;
+    margin: 0 auto;
+}
 .nav.navbar-nav { 
 	margin: 0.75em 0px;
 }
@@ -30,6 +39,10 @@
 }
 .navbar-default .nav.navbar-nav li.active a {
 	background: rgb(226, 80, 80) none repeat scroll 0% 0%;
+}
+#myCarousel img {
+    width: auto;
+    height: auto;
 }
 .section_heading {
 	padding: 3em 0;
@@ -84,4 +97,7 @@ footer p a, footer span.glyphicon, footer a  {
 }
 footer a:hover {
 	color: #ccc;
+}
+.main-content .follow-me-icons a {
+    margin-right: 10px;
 }
