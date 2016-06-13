@@ -1,0 +1,30 @@
+<%= form_for @shop_seo, url: businessuser_pages_action(@shop_seo, params[:action]), :html => { :class => '' , multipart: true  } do |f| %> 
+	<% if @shop_seo.errors.full_messages.any? %>
+	<% @shop_seo.errors.full_messages.each do |error_message| %>
+	<%= error_message if @shop_seo.errors.full_messages.first == error_message %> <br />
+	<% end %>
+	<% end %>
+  <div class="form-group">
+      <fieldset>
+      <div class="form-group">
+	      <%= f.label :shop_id %><br />
+	      <%= f.collection_select(:shop_id, current_business_user.shops.all, :id, :name, {:prompt => 'Select'}, {:class => 'form-control'}) %>
+	    </div>	
+	    <div class="form-group">
+	      <%= f.label :page_name, :class => 'control-label' %>
+	      <%= f.text_field :pagealias, :class => 'text_field form-control', :placeholder => 'Enter text' %>
+	    </div>    
+	    
+	    <div class="form-group">
+	      <%= f.label :pagename %><br />
+	      <%= f.select :pagename, [['Home', "home"], ['About Us', "about"], ['Contact Us', "contact"], ['Events', "events"], ['Gallery', "gallery"], ['Auction', "auction"], ['Team', "team"], ['Donation', "donation"], ['Player', "player"]] %>
+	      
+	    </div>	    
+	    <%= f.submit "Add", :class => 'btn btn-primary' %>
+	    
+	  </fieldset>
+  </div>  
+<% end %>
+                                
+
+
