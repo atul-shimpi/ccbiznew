@@ -32,27 +32,27 @@
 			    <!-- Collect the nav links, forms, and other content for toggling -->
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      <ul class="nav navbar-nav">
-			        <li class=""><a href="/"><span>Home</span></a></li>		        
-			        <% if !@shop.info.blank? %>
-			        <li><a href="/aboutus"><span>About Us</span></a></li>
-			        <% end %>
-			        <% if !@shop.events.blank? %>		        
-			        <li><a href="/shopevents"><span>Events</span></a></li>
-			        <% end %>
-			        <% if !@shop.auction.blank? %>		        
-			        <li><a href="/auction"><span>Live auction update</span></a></li>
-			        <li><a href="/teams"><span>Teams</span></a></li>
-			        <% end %>
-			        <% if !@shop.shop_images.blank? %>
-			        	<li><a href="/gallery"><span>Gallery</span></a></li>
-			        <% end %>
-			        <li><a href="/contactus"><span>Contact Us</span></a></li>
-			        <li>
-			        <% if !current_site_user %>
-			        <a href="/site_users/sign_in"><span>Login</span></a>
-			        <% else %>
-			        	<span><%= link_to "#{"Log Out"}".html_safe, destroy_site_user_session_path, :method=>'delete' %></span>
-			        <% end %>
+			        <li class=""><a href="/"><span><%= get_page_name(@shop.id,'home', "Home") %></span></a></li>
+		        <% if !@shop.info.blank? %>
+		        <li><a href="/aboutus"><span><%= get_page_name(@shop.id,'about',"About Us") %></span></a></li>
+		        <% end %>
+		        <% if !@shop.events.blank? %>		        
+		        <li><a href="/shopevents"><span><%= get_page_name(@shop.id,'events',"Events") %></span></a></li>
+		        <% end %>
+		        <% if !@shop.auction.blank? %>		        
+		        <li><a href="/auction"><span><%= get_page_name(@shop.id,'auction',"Live auction update") %></span></a></li>
+		        <li><a href="/teams"><span><%= get_page_name(@shop.id,'team',"Teams") %></span></a></li>
+		        <% end %>
+		        <% if !@shop.shop_images.blank? %>
+		        	<li><a href="/gallery"><span><%= get_page_name(@shop.id,'gallery',"Gallery") %></span></a></li>
+		        <% end %>
+		        <li><a href="/contactus"><span><%= get_page_name(@shop.id,'contact',"Contact Us") %></span></a></li>
+		        <li>
+		        <% if !current_site_user %>
+		        <a href="/site_users/sign_in"><span>Login</span></a>
+		        <% else %>
+		        	<span><%= link_to "#{"Log Out"}".html_safe, destroy_site_user_session_path, :method=>'delete' %></span>
+		        <% end %>
 			        </li>
 			      </ul>
 			    </div><!-- /.navbar-collapse -->

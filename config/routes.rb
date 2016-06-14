@@ -23,7 +23,8 @@ Rails.application.routes.draw do
     resources :teams       
     resources :players       
     resources :site_users       
-    resources :files       
+    resources :files
+    resources :pages       
   end
   namespace :admin do 
     resources :base

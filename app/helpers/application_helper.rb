@@ -51,4 +51,16 @@ module ApplicationHelper
     auction = Auction.find(auction_id)
     return auction.players.where(:team_id => nil)
   end
+  def get_page_name(shopid, pagename, defaultname)
+    pagename = Seodetail.where(:pagename => pagename, :shop_id => shopid)            
+    if !pagename.blank?
+      if pagename.first.pagealias
+        return pagename.first.pagealias
+      else
+        return defaultname
+      end
+    else
+      return defaultname
+    end
+  end
 end
