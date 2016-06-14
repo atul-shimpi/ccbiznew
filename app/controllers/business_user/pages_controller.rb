@@ -1,6 +1,9 @@
 class BusinessUser::PagesController < ApplicationController
   def index    
-    @shop_seo = Seodetail.all
+    @shops_ids = current_business_user.shops.all.map{ |shop|
+      [shop.id]
+    }    
+    @shop_seo = Seodetail.where(shop_id:@shops_ids)    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @shop_seo }

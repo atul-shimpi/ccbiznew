@@ -20,6 +20,7 @@
               <thead>
                 <tr>
                   <th>Page</th>
+                  <th>Shop/Website</th>
                   <th>Page Name</th>                  
                   <th>Actions</th>
                 </tr>
@@ -29,6 +30,7 @@
             <% @shop_seo.each do |seo| %>            
                 <tr>
                   <td><%= seo.pagename %></td>
+                  <td><%= seo.shop.name %></td>
                   <td><%= seo.pagealias %></td>                  
                   <td>
                     <%= link_to "Edit", {:controller => "pages", :action => "edit", :id => seo.id} , :class => 'btn btn-primary btn-mini'%>
