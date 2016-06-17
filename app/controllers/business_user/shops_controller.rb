@@ -1,5 +1,5 @@
 class BusinessUser::ShopsController < BusinessUser::BaseController
-
+  require 'net/http'
 	def index
     @shops = current_business_user.shops.all
 
@@ -46,26 +46,58 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
   end
 
   def update
-    @shop = current_business_user.shops.find(params[:id])
-    
-    
-    
-    respond_to do |format|
+    @shop = current_business_user.shops.find(params[:id])     
+
+    if params[:shop][:shoptype] == "1" && @shop.storeid.nil?
       
-      if @shop.update_attributes(shop_params)
-        if params[:removebg]                    
-          @shop.remove_backgroundimage!
-          @shop.remove_backgroundimage = true
-          @shop.save          
+      if current_business_user.storeuserid.nil?
+        userid = user_creation_process
+        if !userid
+          respond_to do |format|
+            format.html { render action: "edit" }
+            format.json { render json: @shop.errors, status: :unprocessable_entity }
+          end
         end
-        
-        format.html { redirect_to business_user_shops_path, notice: 'Business website was successfully updated.' }
-        format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @shop.errors, status: :unprocessable_entity }
-      end
-    end
+        userid = current_business_user.storeuserid
+      end      
+      
+       
+      current_business_user.update_attributes("storeuserid"=>userid)  
+      storeid = store_creation_process(userid, params[:shop])
+      
+      if storeid
+        @shop.update_attributes("storeid"=>storeid) 
+        respond_to do |format|
+          format.html { redirect_to business_user_shops_path, notice: 'Business website was successfully updated.' }
+          format.json { head :no_content }
+        end
+      else
+        respond_to do |format|
+          format.html { render action: "edit" }
+          format.json { render json: @shop.errors, status: :unprocessable_entity }
+        end
+      end  
+      
+    else
+      respond_to do |format|      
+        if @shop.update_attributes(shop_params)
+          if params[:removebg]                    
+            @shop.remove_backgroundimage!
+            @shop.remove_backgroundimage = true
+            @shop.save          
+          end
+          
+          format.html { redirect_to business_user_shops_path, notice: 'Business website was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @shop.errors, status: :unprocessable_entity }
+        end
+      end  
+    end 
+    
+    
   end
 
   def destroy
@@ -83,11 +115,48 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
 
 
 
-   private
+  private
 
   def shop_params
     params.require(:shop).permit(:name, :phone, :address, :info, :homecontent, :user_id, :avatar,:backgroundimage, :removebg, :category_id, :template, :subdomain, :domain, :city, :state, :country, :zip, :facebook, :linkedin, :google, :twitter, :shoptype, :latitude, :longitude, :backgroundimage_cache, :addressname, :buildingname, :blockno, :gallerytype)
   end
 
+  def user_creation_process
+    
+    uri = URI.parse("http://52.72.131.86/api/v1/users")
+    
+    http = Net::HTTP.new(uri.host, uri.port)
 
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.set_form_data({"token"=>"4c6effe718469e70a9219d6a672de153a52553ff6a2733a8", "user[email]" => current_business_user.email, "user[password]" => "reset123", "user[spree_role_ids]"=>1})
+
+    response = http.request(request)
+    if response.code == "201"      
+      response = JSON.parse(response.body)
+      
+      return response["id"]
+    else
+      flash[:error] = response.body
+      return false
+    end
+    
+  end
+
+  def store_creation_process(userid, shop)
+    uri = URI.parse("http://52.72.131.86/api/v1/stores")
+    
+    http = Net::HTTP.new(uri.host, uri.port)
+    
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.set_form_data({"token"=>"4c6effe718469e70a9219d6a672de153a52553ff6a2733a8", "store[url]" => shop["subdomain"]+".ccbizon.com", "store[name]" => shop["name"], "store[code]" => shop["subdomain"], "store[mail_from_address]"=>current_business_user.email, "store[spree_user_id]"=>userid})
+
+    response = http.request(request)
+    if response.code == "201"      
+      response = JSON.parse(response.body)      
+      return response["id"]
+    else      
+      flash[:error] = response.body
+      return false
+    end
+  end
 end
