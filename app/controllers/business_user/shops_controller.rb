@@ -30,17 +30,46 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
 
   def create
     @shop = current_business_user.shops.new(shop_params)
-    
-    respond_to do |format|
-      if @shop.save
-        
-        format.html { redirect_to business_user_shops_path, notice: 'Shop was successfully created.' }
-        format.json { render json: @shop, status: :created, location: @shop }
-      else        
-        
-        
-        format.html { render action: "new" }
-        format.json { render json: @shop.errors, status: :unprocessable_entity }
+    if params[:shop][:shoptype] == "1" && @shop.storeid.nil?
+      
+      if current_business_user.storeuserid.nil?
+        userid = user_creation_process
+        if !userid
+          respond_to do |format|
+            format.html { render action: "edit" }
+            format.json { render json: @shop.errors, status: :unprocessable_entity }
+          end
+        end
+      else
+        userid = current_business_user.storeuserid
+      end      
+      
+       
+      current_business_user.update_attributes("storeuserid"=>userid)  
+      storeid = store_creation_process(userid, params[:shop])
+      
+      if storeid
+        @shop.update_attributes("storeid"=>storeid) 
+        redirect_to "http://52.72.131.86/spree/api/v1/login/sign_in?user[email]=#{current_business_user.email}&user[password]=reset123", notice: 'Business website was successfully updated.'
+      else
+        respond_to do |format|
+          format.html { render action: "edit" }
+          format.json { render json: @shop.errors, status: :unprocessable_entity }
+        end
+      end  
+      
+    else
+      respond_to do |format|
+        if @shop.save
+          
+          format.html { redirect_to business_user_shops_path, notice: 'Shop was successfully created.' }
+          format.json { render json: @shop, status: :created, location: @shop }
+        else        
+          
+          
+          format.html { render action: "new" }
+          format.json { render json: @shop.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

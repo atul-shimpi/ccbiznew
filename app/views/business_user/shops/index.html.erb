@@ -50,6 +50,13 @@
                     :method => :delete,
                     :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure you want to delete shop?')) },
                     :class => 'btn btn-mini btn-danger' %>
+                    <% if !shop.storeid.nil?%>
+                    <%= link_to "Store Login",
+                    "http://52.72.131.86/spree/api/v1/login/sign_in?user[email]=#{current_business_user.email}&user[password]=reset123", :class => 'btn btn-primary btn-mini' %>
+                    <% end %>
+                    
+
+
                   </td>
                 </tr>
                 <% end %>
