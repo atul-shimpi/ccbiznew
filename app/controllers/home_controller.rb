@@ -115,7 +115,18 @@ class HomeController < ApplicationController
 			redirect_to root_path
 		end
 	end
+	def sitemap
+		respond_to do |format|
+	      format.xml
+	    end
+	end
+	def robots
 
+		@site = request.host_with_port
+		respond_to do |format|
+	      format.text
+	    end
+	end
 	def auction
 		subdomain = request.subdomain.split(".").last
 		if subdomain.blank? || subdomain =='www'			
@@ -124,10 +135,12 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
 		@seodetails = @shop.seodetails.where("pagename = 'auction'") rescue nil
-		@players = @shop.auction.players.not_in_team
-		impressionist(@shop.auction)
+		
+		
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
+			@players = @shop.auction.players.not_in_team
+			impressionist(@shop.auction)
 			render :template => "templates/auction", :layout => "#{@shop.template}"
 		else
 			redirect_to root_path
@@ -141,9 +154,10 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
 		@seodetails = @shop.seodetails.where("pagename = 'team'") rescue nil
-		@players = Player.not_in_team
+		
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
+			@players = Player.not_in_team
 			render :template => "templates/compare_teams", :layout => "#{@shop.template}"
 		else
 			redirect_to root_path
@@ -158,9 +172,10 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
 		@seodetails = @shop.seodetails.where("pagename = 'player'") rescue nil
-		@player = Player.find(params[:id])
+		
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
+			@player = Player.find(params[:id])
 			render :template => "templates/player", :layout => "#{@shop.template}"
 		else
 			redirect_to root_path
@@ -189,9 +204,10 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
 		@seodetails = @shop.seodetails.where("pagename = 'team'") rescue nil
-		@team = Team.find(params[:id])
+		
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
+			@team = Team.find(params[:id])
 			render :template => "templates/team", :layout => "#{@shop.template}"
 		else
 			redirect_to root_path
