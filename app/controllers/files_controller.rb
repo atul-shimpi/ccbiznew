@@ -25,7 +25,7 @@ class FilesController < ApplicationController
   end
 
   def create    
-    @userfile = current_site_user.userfiles.new(files_params)    
+    @userfile = current_site_user.userfiles.new(files_params)        
     respond_to do |format|      
       if @userfile.save                
         format.html {           

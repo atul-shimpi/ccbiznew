@@ -39,7 +39,8 @@ class BusinessUser::BusinessUsersController < BusinessUser::BaseController
       @cat = Category.find(params[:catid])
       @tempcat =  @cat.name.delete(' ').delete('&').delete("'").upcase+"_TEMPLATE"
       
-      @templatearr = Shop.send("#{@tempcat}")
+      #@templatearr = Shop.send("#{@tempcat}")
+      @templatearr = Shop.send("#{@tempcat}".to_sym)
       puts @tempcat
       render :nothing => true
       #render template: "business_user/search/single"

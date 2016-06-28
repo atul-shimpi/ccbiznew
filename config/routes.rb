@@ -83,6 +83,8 @@ Rails.application.routes.draw do
   get 'team/:id' => "home#team"
   get 'compare_teams' => "home#compare_teams"
   get 'player/:id' => "home#player"
+  get 'sitemap.xml' => "home#sitemap", :format => "xml", :as => :sitemap
+  get 'robots.txt' => "home#robots", :format => "txt", :as => :robots
   
    
     match '/', to: 'home#index', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
