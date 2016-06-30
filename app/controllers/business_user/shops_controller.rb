@@ -172,13 +172,14 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
 
   def store_creation_process(userid, shop)
     uri = URI.parse(Rails.application.secrets.store_api_url+"api/v1/stores")
-    puts Rails.application.secrets.store_api_url
+    
     http = Net::HTTP.new(uri.host, uri.port)
     
     request = Net::HTTP::Post.new(uri.request_uri)
     request.set_form_data({"token"=>Rails.application.secrets.store_api_key, "store[url]" => shop["subdomain"]+".ccbizon.com", "store[name]" => shop["name"], "store[code]" => shop["subdomain"], "store[mail_from_address]"=>current_business_user.email, "store[spree_user_id]"=>userid})
 
     response = http.request(request)
+    puts response.body
     if response.code == "201"      
       response = JSON.parse(response.body)      
       return response["id"]
