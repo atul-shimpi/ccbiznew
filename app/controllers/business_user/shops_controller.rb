@@ -50,7 +50,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
       
       if storeid
         @shop.update_attributes("storeid"=>storeid) 
-        redirect_to "http://52.72.131.86/spree/api/v1/login/sign_in?user[email]=#{current_business_user.email}&user[password]=reset123", notice: 'Business website was successfully updated.'
+        redirect_to "http://#{@shop.subdomain}."+Rails.application.secrets.store_url+"/spree/api/v1/login/sign_in?user[email]=#{current_business_user.email}&user[password]=reset123", notice: 'Business website was successfully updated.'
       else
         respond_to do |format|
           format.html { render action: "edit" }
@@ -76,10 +76,10 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
 
   def update
     @shop = current_business_user.shops.find(params[:id])     
-
+    binding.pry
     if params[:shop][:shoptype] == "1" && @shop.storeid.nil?
       
-      if current_business_user.storeuserid.nil?
+      if current_business_user.storeuserid.nil? || current_business_user.storeuserid == 0
         userid = user_creation_process
         if !userid
           respond_to do |format|
@@ -152,12 +152,12 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
 
   def user_creation_process
     
-    uri = URI.parse("http://52.72.131.86/api/v1/users")
+    uri = URI.parse(Rails.application.secrets.store_api_url+"api/v1/users")
     
     http = Net::HTTP.new(uri.host, uri.port)
 
     request = Net::HTTP::Post.new(uri.request_uri)
-    request.set_form_data({"token"=>"4c6effe718469e70a9219d6a672de153a52553ff6a2733a8", "user[email]" => current_business_user.email, "user[password]" => "reset123", "user[spree_role_ids]"=>1})
+    request.set_form_data({"token"=>Rails.application.secrets.store_api_key, "user[email]" => current_business_user.email, "user[password]" => "reset123", "user[spree_role_ids]"=>1})
 
     response = http.request(request)
     if response.code == "201"      
@@ -172,12 +172,12 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
   end
 
   def store_creation_process(userid, shop)
-    uri = URI.parse("http://52.72.131.86/api/v1/stores")
+    uri = URI.parse(Rails.application.secrets.store_api_url+"api/v1/stores")
     
     http = Net::HTTP.new(uri.host, uri.port)
     
     request = Net::HTTP::Post.new(uri.request_uri)
-    request.set_form_data({"token"=>"4c6effe718469e70a9219d6a672de153a52553ff6a2733a8", "store[url]" => shop["subdomain"]+".ccbizon.com", "store[name]" => shop["name"], "store[code]" => shop["subdomain"], "store[mail_from_address]"=>current_business_user.email, "store[spree_user_id]"=>userid})
+    request.set_form_data({"token"=>Rails.application.secrets.store_api_key, "store[url]" => shop["subdomain"]+".ccbizon.com", "store[name]" => shop["name"], "store[code]" => shop["subdomain"], "store[mail_from_address]"=>current_business_user.email, "store[spree_user_id]"=>userid})
 
     response = http.request(request)
     if response.code == "201"      
