@@ -163,7 +163,8 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
       return response["id"]
     else
       
-      flash[:error] = JSON.parse(response.body)["error"]
+      #flash[:error] = JSON.parse(response.body)["error"]
+      flash[:error] = "There is problem creating your store, Please contact administrater"
       return false
     end
     
@@ -175,14 +176,15 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
     http = Net::HTTP.new(uri.host, uri.port)
     
     request = Net::HTTP::Post.new(uri.request_uri)
-    request.set_form_data({"token"=>Rails.application.secrets.store_api_key, "store[url]" => shop["subdomain"]+Rails.application.secrets.store_url, "store[name]" => shop["name"], "store[code]" => shop["subdomain"], "store[mail_from_address]"=>current_business_user.email, "store[spree_user_id]"=>userid})
-    
+    request.set_form_data({"token"=>Rails.application.secrets.store_api_key, "store[url]" => shop["subdomain"]+"."+Rails.application.secrets.store_url, "store[name]" => shop["name"], "store[code]" => shop["subdomain"], "store[mail_from_address]"=>current_business_user.email, "store[spree_user_id]"=>userid})
+
     response = http.request(request)
     if response.code == "201"      
       response = JSON.parse(response.body)      
       return response["id"]
     else      
-      flash[:error] = JSON.parse(response.body)["error"]
+      #flash[:error] = JSON.parse(response.body)["error"]
+      flash[:error] = "Please choose another sub-domain"
       return false
     end
   end
