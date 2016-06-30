@@ -26,37 +26,36 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
 
   def edit
     @shop = Shop.find(params[:id])
+
   end
 
   def create
     @shop = current_business_user.shops.new(shop_params)
     if params[:shop][:shoptype] == "1" && @shop.storeid.nil?
       
-      if current_business_user.storeuserid.nil?
+      if current_business_user.storeuserid.nil? || current_business_user.storeuserid == 0
         userid = user_creation_process
-        if !userid
-          respond_to do |format|
-            format.html { render action: "edit" }
-            format.json { render json: @shop.errors, status: :unprocessable_entity }
-          end
-        end
       else
         userid = current_business_user.storeuserid
       end      
-      
-       
-      current_business_user.update_attributes("storeuserid"=>userid)  
-      storeid = store_creation_process(userid, params[:shop])
-      
-      if storeid
-        @shop.update_attributes("storeid"=>storeid) 
-        redirect_to "http://#{@shop.subdomain}."+Rails.application.secrets.store_url+"/spree/api/v1/login/sign_in?user[email]=#{current_business_user.email}&user[password]=reset123", notice: 'Business website was successfully updated.'
-      else
+      if !userid
         respond_to do |format|
-          format.html { render action: "edit" }
+          format.html { render action: "edit" , error: 'There is problem with store creation try later or contact administratore' } 
           format.json { render json: @shop.errors, status: :unprocessable_entity }
         end
-      end  
+      else
+        current_business_user.update_attributes("storeuserid"=>userid)  
+        storeid = store_creation_process(userid, params[:shop])
+        if storeid
+          @shop.update_attributes("storeid"=>storeid) 
+          redirect_to "http://#{@shop.subdomain}."+Rails.application.secrets.store_url+"/spree/api/v1/login/sign_in?user[email]=#{current_business_user.email}&user[password]=reset123", notice: 'Business website was successfully updated.'
+        else
+          respond_to do |format|
+            format.html { render action: "edit", error: 'There is problem with store creation try later or contact administratore' }
+            format.json { render json: @shop.errors, status: :unprocessable_entity }
+          end
+        end  
+      end
       
     else
       respond_to do |format|
@@ -75,38 +74,37 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
   end
 
   def update
-    @shop = current_business_user.shops.find(params[:id])        
+    @shop = current_business_user.shops.find(params[:id])     
+   
     if params[:shop][:shoptype] == "1" && @shop.storeid.nil?
       
       if current_business_user.storeuserid.nil? || current_business_user.storeuserid == 0
         userid = user_creation_process
-        if !userid
-          respond_to do |format|
-            format.html { render action: "edit" }
-            format.json { render json: @shop.errors, status: :unprocessable_entity }
-          end
-        end
       else
         userid = current_business_user.storeuserid
       end      
-      
-       
-      current_business_user.update_attributes("storeuserid"=>userid)  
-      storeid = store_creation_process(userid, params[:shop])
-      
-      if storeid
-        @shop.update_attributes("storeid"=>storeid) 
+      if !userid
         respond_to do |format|
-          format.html { redirect_to business_user_shops_path, notice: 'Business website was successfully updated.' }
-          format.json { head :no_content }
+          format.html { render action: "edit" , error: 'There is problem with store creation try later or contact administratore'} 
+          format.json { render json: @shop.errors, status: :unprocessable_entity }
+
         end
       else
-        respond_to do |format|
-          format.html { render action: "edit" }
-          format.json { render json: @shop.errors, status: :unprocessable_entity }
-        end
-      end  
-      
+        current_business_user.update_attributes("storeuserid"=>userid)  
+        storeid = store_creation_process(userid, params[:shop])
+        if storeid
+          @shop.update_attributes("storeid"=>storeid) 
+          respond_to do |format|
+            format.html { redirect_to business_user_shops_path, notice: 'Business website was successfully updated.' }
+            format.json { head :no_content }
+          end
+        else
+          respond_to do |format|
+            format.html { render action: "edit", error: 'There is problem with store creation try later or contact administratore' }
+            format.json { render json: @shop.errors, status: :unprocessable_entity }
+          end
+        end  
+      end
     else
       respond_to do |format|      
         if @shop.update_attributes(shop_params)
@@ -159,13 +157,13 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
     request.set_form_data({"token"=>Rails.application.secrets.store_api_key, "user[email]" => current_business_user.email, "user[password]" => "reset123", "user[spree_role_ids]"=>1})
 
     response = http.request(request)
-    puts response.body
     if response.code == "201"      
       response = JSON.parse(response.body)
       
       return response["id"]
     else
-      flash[:error] = response.body
+      
+      flash[:error] = JSON.parse(response.body)["error"]
       return false
     end
     
@@ -177,15 +175,14 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
     http = Net::HTTP.new(uri.host, uri.port)
     
     request = Net::HTTP::Post.new(uri.request_uri)
-    request.set_form_data({"token"=>Rails.application.secrets.store_api_key, "store[url]" => shop["subdomain"]+".ccbizon.com", "store[name]" => shop["name"], "store[code]" => shop["subdomain"], "store[mail_from_address]"=>current_business_user.email, "store[spree_user_id]"=>userid})
-
+    request.set_form_data({"token"=>Rails.application.secrets.store_api_key, "store[url]" => shop["subdomain"]+Rails.application.secrets.store_url, "store[name]" => shop["name"], "store[code]" => shop["subdomain"], "store[mail_from_address]"=>current_business_user.email, "store[spree_user_id]"=>userid})
+    
     response = http.request(request)
-    puts response.body
     if response.code == "201"      
       response = JSON.parse(response.body)      
       return response["id"]
     else      
-      flash[:error] = response.body
+      flash[:error] = JSON.parse(response.body)["error"]
       return false
     end
   end
