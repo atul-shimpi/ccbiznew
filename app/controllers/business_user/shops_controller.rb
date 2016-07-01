@@ -157,6 +157,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
     request.set_form_data({"token"=>Rails.application.secrets.store_api_key, "user[email]" => current_business_user.email, "user[password]" => "reset123", "user[spree_role_ids]"=>1})
 
     response = http.request(request)
+    puts response.body
     if response.code == "201"      
       response = JSON.parse(response.body)
       
@@ -176,9 +177,10 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
     http = Net::HTTP.new(uri.host, uri.port)
     
     request = Net::HTTP::Post.new(uri.request_uri)
-    request.set_form_data({"token"=>Rails.application.secrets.store_api_key, "store[url]" => shop["subdomain"]+"."+Rails.application.secrets.store_url, "store[name]" => shop["name"], "store[code]" => shop["subdomain"], "store[mail_from_address]"=>current_business_user.email, "store[spree_user_id]"=>userid})
+    request.set_form_data({"token"=>Rails.application.secrets.store_api_key, "store[url]" => shop["subdomain"]+"."+Rails.application.secrets.store_url, "store[name]" => shop["name"], "store[code]" => shop["subdomain"], "store[mail_from_address]"=>current_business_user.email, "store[spree_user_id]"=>userid, "store[layout]"=>shop["template"], "store[default_currency]"=>"INR"})
 
     response = http.request(request)
+    puts response.body
     if response.code == "201"      
       response = JSON.parse(response.body)      
       return response["id"]
