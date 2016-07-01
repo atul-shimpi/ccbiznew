@@ -157,6 +157,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
     request.set_form_data({"token"=>Rails.application.secrets.store_api_key, "user[email]" => current_business_user.email, "user[password]" => "reset123", "user[spree_role_ids]"=>1})
 
     response = http.request(request)
+    puts uri
     puts "user createion"+response.body
     if response.code == "201"      
       response = JSON.parse(response.body)
@@ -184,7 +185,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
     if response.code == "201"      
       response = JSON.parse(response.body)      
       return response["id"]
-    else      
+    else       
       flash[:error] = JSON.parse(response.body)["error"]
       flash[:error] = "Please choose another sub-domain"
       return false
