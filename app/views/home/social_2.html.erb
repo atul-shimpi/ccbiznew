@@ -29,7 +29,7 @@
 
 			    <!-- Collect the nav links, forms, and other content for toggling -->
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			      <ul class="nav navbar-nav">
+			      <ul class="nav navbar-nav one_page_theme">
 			        <li class="active"><a href="#myCarousel">Home</a></li>
 			        <li class=""><a href="#aboutus">About Us</a></li>
 			        <li><a href="#upcoming_offers">Upcoming Offers</a></li>
@@ -339,19 +339,71 @@
 				</div>
 
         <footer class="clearfix" id="contactus">
-          <div class="container">
-            <div class="row">
-              <p class="pull-left col-lg-6 copyright">Copyright @ 2015.<span>Powered by <a href="http://www.jalaram-techsolutions.com" target="blank"> jalaram-techsolutions.com</a></span></p>
-              <div class="pull-right col-md-3 hidden-xs">
-                <%#= render :partial => "layouts/social_media"%>
-              </div>
-            </div>
-          </div>
+          <form>
+						<div class="container main-content">
+						  <div class="row contact_page">
+						    <div class="col-lg-5 col-sm-5">
+						      <div class="enquiry_form">
+						        <form role="form">
+						        <h3 class="tab_title">Enquiry Form</h3>
+						          <div class="form-group">
+						              <label>Name</label>
+						              <input type="text" name="" class="text_field form-control" placeholder="Enter Name" required="">
+						              <%#= f.text_field :contactname, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
+						          </div>
+						          <div class="form-group">
+						              <label>Email</label>
+						              <input type="text" name="" class="text_field form-control" placeholder="Enter Email id" required="">
+						              <%#= f.text_field :contactemail, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
+						          </div>
+						          <div class="form-group">
+						              <label>Contact No</label>
+						              <input type="text" name="" class="text_field form-control" placeholder="Enter Contact no" required="">
+						              <%#= f.text_field :contactnumber, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
+						          </div>
+						          <div class="form-group">
+						              <label>Description</label>
+						              <textarea class="text_field form-control" placeholder="Description" required=""></textarea>
+						              <%#= f.text_area :contactinfo, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
+						          </div>
+						          <button type="submit" class="btn btn-default">Submit</button>
+						          <%#= f.hidden_field :shop_id, :value=>@shop.id %>
+						        </form>
+						      </div>
+						    </div>
+						    <div class="col-lg-5 col-lg-offset-2 col-sm-5 col-sm-offset-2">
+						      <h3 class="tab_title">Contact us at :</h3>
+						      <div class="contact_address">
+										DieSachbearbeiter
+										Schönhauser Allee 167c
+										10435 Berlin
+										Germany </br>
+										Telephone: +49 30 47373795</br>
+										E-mail: moin@blindtextgenerator.de</br>
+									</div>
+						      <div id="googleMap" style="height:270px;margin-top:60px;border-radius: 3px;">
+						        <%#= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.first}%2C#{@location.last}" %>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+					</form>
+					<div class="copyright_container">
+						<div class="container">
+	            <div class="row">
+	              <p class="pull-left col-lg-6 copyright">Copyright @ 2015.<span>Powered by <a href="http://www.jalaram-techsolutions.com" target="blank"> jalaram-techsolutions.com</a></span></p>
+	              <div class="pull-right col-md-3 hidden-xs">
+	                <%#= render :partial => "layouts/social_media"%>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
         </footer>
 			</div>
+			<script src="http://maps.googleapis.com/maps/api/js"></script>
 			<script type="text/javascript">
 				// scrolling code///
-			  $('.navbar-nav a[href*=#]').click(function() {
+			  $('.one_page_theme.navbar-nav a[href*=#]').click(function() {
 					 if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
 			 		&& location.hostname == this.hostname) {
 			   var $target = $(this.hash);
@@ -365,6 +417,16 @@
 				   }
 				 }
 		    });
+
+		    function initialize() {
+				  var mapProp = {
+				    center:new google.maps.LatLng(51.508742,-0.120850),
+				    zoom:5,
+				    mapTypeId:google.maps.MapTypeId.ROADMAP
+				  };
+				  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+				}
+				google.maps.event.addDomListener(window, 'load', initialize);
 			</script>
 	</body>
 </HTML>
