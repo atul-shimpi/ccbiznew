@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
+	require 'open-uri'
 	impressionist :actions=>[:auction]
 	def index		
-
 		subdomain = request.subdomain.split(".").last		
 		if subdomain.blank? || subdomain =='www'			
 			@shop = Shop.find_by_domain(request.host)	
@@ -17,7 +17,7 @@ class HomeController < ApplicationController
 			redirect_to new_business_user_session_path
 		end
 	end
-
+	
 	def about_us
 		subdomain = request.subdomain.split(".").last
 		if subdomain.blank? || subdomain =='www'			
@@ -35,6 +35,7 @@ class HomeController < ApplicationController
 	end
 
 	def contact_us
+
 		subdomain = request.subdomain.split(".").last
 		if subdomain.blank? || subdomain =='www'			
 			@shop = Shop.find_by_domain(request.host)	

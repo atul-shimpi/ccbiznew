@@ -1,0 +1,13 @@
+<%
+
+@templatearr.each do |template|  
+%>
+<div class="col-lg-3 col-xs-3 text-center">
+ 	<input id="shop_template_<%=template%>" type="radio" name="shop[template]" checked="checked" value="<%=template%>">
+	<br>	
+  <%= image_tag template+"_thumbnail.jpg", :class => 'img-responsive', :style => "width : 100px; height :100px"%>
+</div>
+<%
+
+end
+%>
