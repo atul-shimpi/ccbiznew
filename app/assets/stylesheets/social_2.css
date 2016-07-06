@@ -300,9 +300,23 @@ p.title {
   opacity: 0.8;
 }
 footer {
-  background: #111;
-  padding: 10px 0px;
+  background: #222;
+  padding: 10px 0 0;
   color: rgb(255, 255, 255);
+}
+footer form {
+  margin-bottom: 40px
+}
+.enquiry_form button[type="submit"] {
+  background: #a9bf04
+}
+footer h3 {
+  margin-bottom: 35px;
+  color: #a9bf04
+}
+.copyright_container {
+  background: #111;
+  padding: 20px 0;
 }
 .main-content .copyright {
   color: #ccc;

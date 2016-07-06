@@ -50,13 +50,16 @@ end
   SOCIAL_TEMPLATE = ['social_1'].freeze
   POPULARCHAKRAS_TEMPLATE = [].freeze
   CARPOOLING_TEMPLATE = [].freeze
-  EVENTPARTIES_TEMPLATE = [].freeze
+  EVENTSANDPARTIES_TEMPLATE = [].freeze
   BUSINESS_TEMPLATE = [].freeze
-  COMMUNITY_TEMPLATE = ['mandir'].freeze
-  CAREER_TEMPLATE = [].freeze
-  OTHER_TEMPLATE = ['template_1', 'template_2', 'template_3', 'template_4'].freeze
-  
+  RELIGIOUNANDCOMMUNITY_TEMPLATE = ['mandir'].freeze
+  CAREERS_TEMPLATE = [].freeze
+  OTHERS_TEMPLATE = ['template_1', 'template_2', 'template_3', 'template_4'].freeze
+  def layout_template(type)    
+    return eval("#{type}")
+  end
   protected
+
   def admin_notification_init
     # send notification to admin, once shop is created        
     if !self.admin

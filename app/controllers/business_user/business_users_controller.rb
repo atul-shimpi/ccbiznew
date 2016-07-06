@@ -40,10 +40,15 @@ class BusinessUser::BusinessUsersController < BusinessUser::BaseController
       @tempcat =  @cat.name.delete(' ').delete('&').delete("'").upcase+"_TEMPLATE"
       
       #@templatearr = Shop.send("#{@tempcat}")
-      @templatearr = Shop.send("#{@tempcat}".to_sym)
-      puts @tempcat
-      render :nothing => true
-      #render template: "business_user/search/single"
+      @shop = Shop.find(params[:shopid])
+      @templatearr = @shop.layout_template(@tempcat)
+      puts @templatearr
+      #binding.pry
+      #render :nothing => true
+      respond_to do |format|
+        format.html { render template: "business_user/shared/templatelist", layout: false}
+        
+      end
     end
   end
  private

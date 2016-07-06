@@ -115,7 +115,7 @@
       <%= f.radio_button :shoptype, '1' %> Store
       
   </div>
-  <div class="form-group clearfix">
+  <div class="form-group clearfix" id="templatelist">
     <div class="col-lg-3 col-xs-3 text-center">
       <%= f.radio_button :template, 'template_1', :checked => true %><br> 
       <%= image_tag "footwear_thumbnail.jpg", :class => 'img-responsive', :style => "width : 100px; height :100px"%>
@@ -204,11 +204,11 @@
     $.ajax({
       type: "GET",
       url: "/business_user/templatelist/",
-      data: {catid:id},
+      data: {catid:id, shopid:<%= @shop.id%>},
       cache: false,
       success: function(data){
         console.log(data)
-         //$("#resultarea").text(data);
+        $("#templatelist").html(data);
       }
     });
   }

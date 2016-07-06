@@ -74,8 +74,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
   end
 
   def update
-    @shop = current_business_user.shops.find(params[:id])     
-   
+    @shop = current_business_user.shops.find(params[:id])         
     if params[:shop][:shoptype] == "1" && @shop.storeid.nil?
       
       if current_business_user.storeuserid.nil? || current_business_user.storeuserid == 0
