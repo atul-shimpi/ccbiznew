@@ -278,4 +278,7 @@ class HomeController < ApplicationController
 	def social_3
 		render :layout => false
 	end
+	def footwear_1
+		render :layout => false
+	end
 end
