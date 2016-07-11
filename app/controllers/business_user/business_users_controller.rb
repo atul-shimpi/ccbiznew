@@ -40,8 +40,8 @@ class BusinessUser::BusinessUsersController < BusinessUser::BaseController
       @tempcat =  @cat.name.delete(' ').delete('&').delete("'").upcase+"_TEMPLATE"
       
       #@templatearr = Shop.send("#{@tempcat}")
-      @shop = Shop.find(params[:shopid])
-      @templatearr = @shop.layout_template(@tempcat)
+      #@shop = Shop.find(params[:shopid])
+      @templatearr = Shop.layout_template(@tempcat)
       puts @templatearr
       #binding.pry
       #render :nothing => true
