@@ -204,7 +204,7 @@
     $.ajax({
       type: "GET",
       url: "/business_user/templatelist/",
-      data: {catid:id, shopid:<%= @shop.id%>},
+      data: {catid:id},
       cache: false,
       success: function(data){
         console.log(data)
