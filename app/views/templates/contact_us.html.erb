@@ -79,7 +79,7 @@
 <% end %>
 <% if !@shop.latitude.blank? || !@shop.longitude.blank? %>
    <!--<script src="http://maps.googleapis.com/maps/api/js"></script>-->
-   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxijw6CuNtintrylsnpJ30EhQxBB93oLo"
+   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxijw6CuNtintrylsnpJ30EhQxBB93oLo&callback=initialize"
   type="text/javascript"></script>
 <script>
 function initialize() {
@@ -96,7 +96,7 @@ var myCenter = new google.maps.LatLng(<%= @shop.latitude%>,<%= @shop.longitude%>
 
 marker.setMap(map);
 }
-google.maps.event.addDomListener(window, 'load', initialize);
+//google.maps.event.addDomListener(window, 'load', initialize);
 
 
 </script>
