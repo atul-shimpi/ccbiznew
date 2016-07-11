@@ -79,6 +79,7 @@ Rails.application.routes.draw do
   get 'social_1' => "home#social_1"
   get 'social_2' => "home#social_2"
   get 'social_3' => "home#social_3"
+  get 'footwear_1' => "home#footwear_1"
   get 'auction' => "home#auction"
   get 'teams' => "home#teams"
   get 'team/:id' => "home#team"
