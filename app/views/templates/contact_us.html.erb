@@ -69,6 +69,7 @@
         E-mail: <%= @shop.business_user.email%>
         <% end %>
       </div>
+
       <div id="googleMap" style="height:270px;margin-top:60px;border-radius: 3px;">
         <%#= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.first}%2C#{@location.last}" %>
       </div>
@@ -77,7 +78,9 @@
 </div>
 <% end %>
 <% if !@shop.latitude.blank? || !@shop.longitude.blank? %>
-   <script src="http://maps.googleapis.com/maps/api/js"></script>
+   <!--<script src="http://maps.googleapis.com/maps/api/js"></script>-->
+   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxijw6CuNtintrylsnpJ30EhQxBB93oLo"
+  type="text/javascript"></script>
 <script>
 function initialize() {
 var myCenter = new google.maps.LatLng(<%= @shop.latitude%>,<%= @shop.longitude%>);
