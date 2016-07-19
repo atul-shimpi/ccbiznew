@@ -9,6 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="common.css">
     <%= render :partial => "layouts/metatags"%>
     <%= render :partial => "layouts/commonstyles"%>
+    
 	</HEAD>
 	<body>
 		<nav class="navbar navbar-default">
@@ -27,17 +28,7 @@
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		      <ul class="nav navbar-nav">
-		        <li class="active"><a href="#"><span>Home</span></a></li>
-		        <li><a href="#"><span>Contact Us</span></a></li>
-            <li>
-            <% if !current_site_user %>
-            <a href="/site_users/sign_in">Login</a>
-            <% else %>
-              <%= link_to "#{"Log Out"}".html_safe, destroy_site_user_session_path, :method=>'delete' %>
-            <% end %>
-            </li>
-		      </ul>
+		      <%= render partial: 'layouts/menubuilder' %>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
 		</nav>
@@ -115,5 +106,6 @@
       })
     </script>
   <% end %>
+  <%= render :partial => "home/login_modal", locals: {} %>
   </body>
 </HTML>

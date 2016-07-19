@@ -63,4 +63,33 @@ module ApplicationHelper
       return defaultname
     end
   end
+  def get_page_content    
+    return !@seodetails.empty? ? @seodetails[0].pagecontent.html_safe : ''
+  end
+  def buildmenu(menuitems, issubmenu)    
+    @attr = issubmenu ? ' class="nav navbar-nav"' : ' class="submenu"';    
+    @menu = "<ul #{@attr}>";
+    menuitems.each_with_index do |shoplink, index|      
+      @submenu = Seodetail.where("parentpage = ? ", shoplink.id)      
+      if !@submenu.empty?        
+         @submenuelement = buildmenu(@submenu,true)
+         
+      else  
+        @submenuelement = ""
+      end
+      #@menu += "<li>"
+      if shoplink.extrapage
+        @url = "<a href='/page/"+shoplink.id.to_s+"/"+shoplink.pagename+"'><span>"+shoplink.pagealias+"</span></a>";    
+      else
+        @url = "<a href='/"+shoplink.pagename+"'><span>"+shoplink.pagealias+"</span></a>";    
+      end
+      
+      
+      @menu += "<li>"+@url+@submenuelement+"</li>"
+      binding.pry
+      @url = ""
+    end
+    @menu += "</ul>";
+    return @menu.html_safe
+  end
 end

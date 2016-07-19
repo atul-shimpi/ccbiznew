@@ -6,25 +6,52 @@
 	<% end %>
   <div class="form-group">
       <fieldset>
-      <div class="form-group">
-	      <%= f.label :shop_id %><br />
-	      <%= f.collection_select(:shop_id, current_business_user.shops.all, :id, :name, {:prompt => 'Select'}, {:class => 'form-control'}) %>
+      	<div class="form-group">	      
+      	<input type="hidden" name="shop_id" id="shop_id" value="<%=@shop.id%>">
+	      
 	    </div>	
 	    <div class="form-group">
-	      <%= f.label :page_name, :class => 'control-label' %>
+	      <%= f.label :page_name, :class => 'control-label' %> (Visible in menu)
 	      <%= f.text_field :pagealias, :class => 'text_field form-control', :placeholder => 'Enter text' %>
 	    </div>    
 	    
 	    <div class="form-group">
-	      <%= f.label :pagename %><br />
-	      <%= f.select :pagename, [['Home', "home"], ['About Us', "about"], ['Contact Us', "contact"], ['Events', "events"], ['Gallery', "gallery"], ['Auction', "auction"], ['Team', "team"], ['Donation', "donation"], ['Player', "player"]] %>
-	      
-	    </div>	    
+	      <%= f.label :page_name, :class => 'control-label' %> 
+	      <%= f.text_field :pagename, :class => 'text_field form-control', :placeholder => 'Enter text' %>
+	    </div>   
+	   
+	    <div class="form-group">
+	      <%= f.label :parentpage %><br />
+	      <%= f.collection_select(:parentpage, @shop.seodetails.all, :id, :pagename, {:prompt => 'Select'}, {:class => 'form-control'}) %>
+	    </div>
+	    <div class="form-group">
+	      <%= f.label :Page_Content, :class => 'control-label' %>
+	      <%= f.text_area :pagecontent, :class => 'text_field form-control tinymce', :rows => 10 %>
+	  	</div>
+	  	<div class="form-group">
+	      <%= f.label :header_background_color, :class => 'control-label' %> 
+	      <%= f.text_field :headerbg, :type=>"color", :class => 'text_field form-control', :placeholder => 'Enter text' %>
+	    </div>
+	    <div class="form-group">
+	      <%= f.label :footer_background_color, :class => 'control-label' %> 
+	      <%= f.text_field :footerbg, :type=>"color", :class => 'text_field form-control', :placeholder => 'Enter text' %>
+	    </div>
+
 	    <%= f.submit "Add", :class => 'btn btn-primary' %>
 	    
 	  </fieldset>
   </div>  
 <% end %>
-                                
+<%= tinymce :alternate %>
+<script language="javascript">
+
+$( "#seodetail_pagename" ).change(function() {
+  if($(this).val()=="other"){
+  	$("#otherpage").show("slow");
+  }else{
+  	$("#otherpage").hide("slow");
+  }
+});
+</script>                              
 
 

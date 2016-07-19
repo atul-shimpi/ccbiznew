@@ -50,28 +50,40 @@
   </div>
   <!--
   <div class="form-group details">
-      <%= f.label :country, :class => 'control-label' %><span class="asterix">*</span>
-      <select onchange="print_state('state', this.selectedIndex);" id="country" name ="shop[country]" selected="<%= @shop.country%>" class="form-control" data-geo="country" required></select>
+      < %= f.label :country, :class => 'control-label' %><span class="asterix">*</span>
+      <select onchange="print_state('state', this.selectedIndex);" id="country" name ="shop[country]" selected="< %= @shop.country%>" class="form-control" data-geo="country" required></select>
   </div>
   <div class="form-group details">
-      <%= f.label :state, :class => 'control-label' %><span class="asterix">*</span>
-      <select name ="shop[state]" id ="state" selected="<%= @shop.state%>" class="form-control", data-geo="administrative_area_level_1" required></select>
+      < %= f.label :state, :class => 'control-label' %><span class="asterix">*</span>
+      <select name ="shop[state]" id ="state" selected="< %= @shop.state%>" class="form-control", data-geo="administrative_area_level_1" required></select>
   </div>
   <div class="form-group details">
-      <%= f.label :city, :class => 'control-label' %><span class="asterix">*</span>
-      <%= f.text_field :city, :class => 'text_field form-control', :placeholder => 'City', :required => '',  :"data-geo"=>"locality" , :required => '' %>
+      < %= f.label :city, :class => 'control-label' %><span class="asterix">*</span>
+      < %= f.text_field :city, :class => 'text_field form-control', :placeholder => 'City', :required => '',  :"data-geo"=>"locality" , :required => '' %>
   </div>
   <div class="form-group details">
-      <%= f.label :zip, :class => 'control-label' %><span class="asterix">*</span>
-      <%= f.text_field :zip, :class => 'text_field form-control', :type => 'number', :required => '',  :"data-geo"=>"postal_code" , :required => '' %>
+      < %= f.label :zip, :class => 'control-label' %><span class="asterix">*</span>
+      < %= f.text_field :zip, :class => 'text_field form-control', :type => 'number', :required => '',  :"data-geo"=>"postal_code" , :required => '' %>
   </div> -->
-  <div class="form-group">
-      <%= f.label :About_us, :class => 'control-label' %>
-      <%= f.text_area :info, :class => 'text_field form-control tinymce', :rows => 10 %>
+  <!--<div class="form-group">
+      < %= f.label :About_us, :class => 'control-label' %>
+      < %= f.text_area :info, :class => 'text_field form-control tinymce', :rows => 10 %>
   </div>
+  <div class="form-group">
+      < %= f.label :Home_Page_Content, :class => 'control-label' %>
+      < %= f.text_area :homecontent, :class => 'text_field form-control tinymce', :rows => 10 %>
+  </div>-->
   <div class="form-group">
       <%= f.label :Home_Page_Content, :class => 'control-label' %>
       <%= f.text_area :homecontent, :class => 'text_field form-control tinymce', :rows => 10 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :header_background_color, :class => 'control-label' %> 
+    <%= f.text_field :headerbg, :type=>"color", :class => 'text_field form-control', :placeholder => 'Enter text' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :footer_background_color, :class => 'control-label' %> 
+    <%= f.text_field :footerbg, :type=>"color", :class => 'text_field form-control', :placeholder => 'Enter text' %>
   </div>
   <div class="form-group">
       <%= f.label :logo, :class => 'control-label' %>
@@ -113,6 +125,12 @@
       <%= f.label :type, :class => 'control-label' %><span class="asterix">*</span>
       <%= f.radio_button :shoptype, '0', :checked => true %> Shop
       <%= f.radio_button :shoptype, '1' %> Store
+      
+  </div>
+  <div class="form-group">
+      <%= f.label :login_enabled, :class => 'control-label' %><span class="asterix">*</span>
+      <%= f.radio_button :loginenabled, false, :checked => true %> No
+      <%= f.radio_button :loginenabled, true %> Yes
       
   </div>
   <div class="form-group clearfix" id="templatelist">

@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
       when :admin, Admin
         new_admin_session_path
       when :site_user, SiteUser
-        new_site_user_session_path
+        root_path
       else
         super
     end

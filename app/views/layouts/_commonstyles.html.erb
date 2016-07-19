@@ -4,5 +4,37 @@
  	background-image: url("<%= @shop.backgroundimage_url %>");
  	background-size: cover;
  }
+ <% if !@shop.headerbg.nil?  %>
+    .navbar.navbar-default{
+      background-color:<%=@shop.headerbg%>;
+    }    
+  <% end %>
+  <% if !@shop.footerbg.nil?  %>
+    footer{
+      background-color:<%=@shop.footerbg%>;
+    }
+  <% end %>
 </style>
 <% end %>
+<style type="text/css">
+<% if !@seodetails.empty? %>
+  <% if !@seodetails[0].headerbg.nil? %>
+    .navbar.navbar-default{
+      background-color:<%=@seodetails[0].headerbg%>;
+    }
+  <% elsif !@shop.headerbg.nil?  %>
+    .navbar.navbar-default{
+      background-color:<%=@shop.headerbg%>;
+    }
+  <% end %>
+  <% if !@seodetails[0].footerbg.nil? %>
+  footer{
+    background-color:<%=@seodetails[0].footerbg%>;
+  }
+  <% elsif !@shop.footerbg.nil?  %>
+    footer{
+      background-color:<%=@shop.footerbg%>;
+    }
+  <% end %>
+<% end %>
+</style>

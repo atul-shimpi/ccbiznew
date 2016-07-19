@@ -225,9 +225,23 @@ class HomeController < ApplicationController
 		@userfiles = current_site_user.userfiles.all    
     	render :template => "templates/files", :layout => "#{@shop.template}"		
 	end
+	#Dyanamic Pages
+	def pageshow
+		subdomain = request.subdomain.split(".").last
+		if subdomain.blank? || subdomain =='www'			
+			@shop = Shop.find_by_domain(request.host)	
+		else
+			@shop = Shop.find_by_subdomain(subdomain)	
+		end
+		@seodetails = @shop.seodetails.where("id = ?",params[:id]) rescue nil
+				
+		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
+		render :template => "templates/pageshow", :layout => "#{@shop.template}"
+	end
 	def contact_params
 	    params.require(:contact).permit(:contactname, :contactemail, :contactnumber, :contactinfo, :shoprating, :shop_id)
 	end
+
 
 	def sports_1
 		render :layout => false

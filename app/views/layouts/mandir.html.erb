@@ -25,25 +25,7 @@
   <div class="navbar">
     <div>
      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="/about_us">About US</a></li>
-          <li><a href="#">About Trust</a></li>
-          <li><a href="#">Temple</a></li>
-          <li><a href="#">Annkshetra</a></li>
-          <li><a href="#">Life story of Bapa</a></li>
-          <li><a href="/gallery">Gallery</a></li>
-          <li><a href="/shopevents">Events</a></li>
-          <li><a href="/donation">Donation</a></li>
-          <li><a href="/contactus">Contact Us</a></li>
-          <li>
-            <% if !current_site_user %>
-            <a href="/site_users/sign_in">Login</a>
-            <% else %>
-              <%= link_to "#{"Log Out"}".html_safe, destroy_site_user_session_path, :method=>'delete' %>
-            <% end %>
-            </li>
-        </ul>
+        <%= render partial: 'layouts/menubuilder' %>
       </div>
     </div>
   </div>
@@ -71,4 +53,5 @@
       })
     </script>
   <% end %>
+  <%= render :partial => "home/login_modal", locals: {} %>
 <%= render :partial => "layouts/googleanalytics"%>

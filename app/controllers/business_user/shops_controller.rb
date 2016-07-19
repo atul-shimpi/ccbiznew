@@ -31,6 +31,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
 
   def create
     @shop = current_business_user.shops.new(shop_params)
+    
     if params[:shop][:shoptype] == "1" && @shop.storeid.nil?
       
       if current_business_user.storeuserid.nil? || current_business_user.storeuserid == 0
@@ -143,7 +144,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :phone, :address, :info, :homecontent, :user_id, :avatar,:backgroundimage, :removebg, :category_id, :template, :subdomain, :domain, :city, :state, :country, :zip, :facebook, :linkedin, :google, :twitter, :shoptype, :latitude, :longitude, :backgroundimage_cache, :addressname, :buildingname, :blockno, :gallerytype)
+    params.require(:shop).permit(:name, :phone, :address, :info, :homecontent, :user_id, :avatar,:backgroundimage, :removebg, :category_id, :template, :subdomain, :domain, :city, :state, :country, :zip, :facebook, :linkedin, :google, :twitter, :shoptype, :latitude, :longitude, :backgroundimage_cache, :addressname, :buildingname, :blockno, :gallerytype, :loginenabled, :headerbg, :footerbg)
   end
 
   def user_creation_process
