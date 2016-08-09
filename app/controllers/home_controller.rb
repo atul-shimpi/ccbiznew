@@ -1,6 +1,10 @@
 class HomeController < ApplicationController
 	require 'open-uri'
 	impressionist :actions=>[:auction]
+
+	def  home
+		
+	end
 	def index		
 		subdomain = request.subdomain.split(".").last		
 		if subdomain.blank? || subdomain =='www'			

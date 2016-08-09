@@ -92,7 +92,7 @@ Rails.application.routes.draw do
   
    
     match '/', to: 'home#index', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
-  root 'home#index'
+  root 'home#home'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
