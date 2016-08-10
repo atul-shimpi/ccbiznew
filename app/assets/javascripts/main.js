@@ -186,6 +186,20 @@ jQuery( document ).ready(function( $ ) {
                 }
 
     });
+
+     $(function(){
+        $(".dropdown").hover(            
+                function() {
+                    $('.dropdown-menu', this).first().stop( true, true ).fadeIn("fast");
+                    $(this).toggleClass('open');
+                    $('b', this).toggleClass("caret caret-up");                
+                },
+                function() {
+                    $('.dropdown-menu', this).stop( true, true ).fadeOut("fast");
+                    $(this).toggleClass('open');
+                    $('b', this).toggleClass("caret caret-up");                
+                });
+        });
 });
 // jQuery( document ).ready(function( $ ) {
 // $(".newform").validate({

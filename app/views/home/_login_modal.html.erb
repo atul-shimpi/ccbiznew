@@ -6,34 +6,37 @@
         <h3 class="modal-title text-center" id="myModalLabel">Login</h3>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal">
-				  <div class="form-group">
-				    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-				    <div class="col-sm-10">
-				      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" required>
-				    </div>
-				  </div>
-				  <div class="form-group">
-				    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-				    <div class="col-sm-10">
-				      <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required>
-				    </div>
-				  </div>
-				  <div class="form-group">
-				    <div class="col-sm-offset-2 col-sm-10">
-				      <div class="checkbox">
-				        <label>
-				          <input type="checkbox"> Remember me
-				        </label>
-				      </div>
-				    </div>
-				  </div>
-				  <div class="form-group">
-				    <div class="col-sm-offset-2 col-sm-10">
-				      <button type="submit" class="btn btn-primary">Log in</button>
-				    </div>
-				  </div>
-				</form>
+      	<form method="post" accept-charset="UTF-8" action="/site_users/sign_in" id="new_site_user" class="newform form-horizontal">	
+      		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+            <fieldset>
+              <div class="form-group">
+              	<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+			    <div class="col-sm-10">
+			      <input type="email" id="site_user_email" name="site_user[email]" value="" required="required" placeholder="E-mail" autofocus="autofocus" class="form-control">
+			    </div>
+              </div>
+              <div class="form-group">
+			    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+			    <div class="col-sm-10">
+			      <input type="password" id="site_user_password" name="site_user[password]" required="required" placeholder="Password" autocomplete="off" class="form-control">
+			    </div>
+			  </div>       
+			  <div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <div class="checkbox">
+			        <label>
+			          <input type="hidden" value="0" name="site_user[remember_me]"><input type="checkbox" id="site_user_remember_me" name="site_user[remember_me]" value="1">Remember Me
+			        </label>
+			      </div>
+			    </div>
+			  </div>       
+              <div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <button type="submit" class="btn btn-primary">Log in</button>
+			    </div>
+			  </div>
+            </fieldset>
+		</form>        
       </div>
     </div>
   </div>

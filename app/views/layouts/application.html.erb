@@ -3,10 +3,12 @@
 <head>
   <title>CCbizon</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>  
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxijw6CuNtintrylsnpJ30EhQxBB93oLo&libraries=places"
+  type="text/javascript"></script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  
 </head>
 <body>
 <div id="wrapper">
@@ -87,9 +89,7 @@
 					<li>
 						<a href="<%= nav_path_for_siteuser %>">Users</a>
 					</li>
-					<li>
-						<a href="<%= business_user_pages_path %>">Page Names</a>
-					</li>
+					
 					<% if admin_signed_in? %>
 					<li>
 						<a href="<%= nav_path_for_single_shop %>">Single Business website</a>
