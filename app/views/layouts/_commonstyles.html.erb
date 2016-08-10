@@ -1,9 +1,10 @@
-<% if !@shop.backgroundimage_url.blank? %>
 <style>
+<% if !@shop.backgroundimage_url.blank? %>
  body{
  	background-image: url("<%= @shop.backgroundimage_url %>");
  	background-size: cover;
  }
+ <% end %>
  <% if !@shop.headerbg.nil?  %>
     .navbar.navbar-default{
       background-color:<%=@shop.headerbg%>;
@@ -15,7 +16,6 @@
     }
   <% end %>
 </style>
-<% end %>
 <style type="text/css">
 <% if !@seodetails.empty? %>
   <% if !@seodetails[0].headerbg.nil? %>
