@@ -50,13 +50,13 @@
 		        	<li><a href="/gallery"><span><%= get_page_name(@shop.id,'gallery',"Gallery") %></span></a></li>
 		        <% end %>
 		        <li><a href="/contactus"><span><%= get_page_name(@shop.id,'contact',"Contact Us") %></span></a></li>
-		        <li>
-		        <% if !current_site_user %>
+		        <!--<li>
+		        < % if !current_site_user %>
 		        <a href="/site_users/sign_in"><span>Login</span></a>
-		        <% else %>
+		        < % else %>
 		        	<span><%= link_to "#{"Log Out"}".html_safe, destroy_site_user_session_path, :method=>'delete' %></span>
-		        <% end %>
-		        </li>
+		        < % end %>
+		        </li-->
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
@@ -83,6 +83,29 @@
 				</div>
 			</div>
 		</footer>
+		<% if @shop.subdomain=="flyingsaucer" %>
+		<style type="text/css">
+			.main-content img{
+				max-width: 100%;
+				width: auto;
+				text-align: left;
+				padding-right: 10px;
+			}
+			.main-content p span, .main-content p{
+				text-align: left;
+				font-size: 14px !important;
+			}
+			.navbar.navbar-default, footer {
+    			background-color: #272727;
+    		}
+    		.gallery_images img{
+    			max-height: 100% !important;
+    		}
+    		body .main-content{
+    			color: #999999;
+    		}
+		</style>
+		<% end %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= render :partial => "layouts/googleanalytics"%>	
 	<% if !@shop.auction.blank? %>		

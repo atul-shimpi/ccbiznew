@@ -1,5 +1,31 @@
 		<%= render :partial => "layouts/carousel"%>		
 		<% if !@shop.homecontent.blank? %>
+		<% if @shop.subdomain=="flyingsaucer" %>
+		<style type="text/css">
+			.main-content img{
+				max-width: 100%;
+				width: auto;
+				text-align: left;
+				padding-right: 10px;
+			}
+			.main-content p{
+				text-align: left;
+			}
+			.navbar.navbar-default {
+    			background-color: #272727;
+    		}
+		</style>
+		<div class="container main-content">
+			<div >
+				<div class="row">
+					<div class="col-lg-12">						
+						<p class="about_content"><%= @shop.homecontent.html_safe%></p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<% else %>
 		<div class="container main-content">
 			<div class="latest_offers">
 				<div class="row">
@@ -10,6 +36,8 @@
 			</div>
 
 		</div>
+		<% end %>
+		
 		<% end %>
 		<div class="container main-content">
 			<% if !@shop.offers.latest.blank? %>
