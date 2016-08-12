@@ -57,6 +57,7 @@ gem 'memcached_store'
 # gem 'capistrano-rails', group: :development
 #sendgrid integration
 gem 'sendgrid'
+gem 'bootstrap_colorpicker_rails'
 group :production do
   gem 'rails_12factor'
 end

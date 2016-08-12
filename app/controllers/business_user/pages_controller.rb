@@ -43,7 +43,7 @@ class BusinessUser::PagesController < ApplicationController
         format.html { redirect_to business_user_pages_path(:shop_id => @shop.id), notice: 'Page was successfully created.' }
         format.json { render json: @shop_seo, status: :created, location: @shop_seo }
       else
-        binding.pry
+        
         format.html { render action: "new" }
         format.json { render json: @shop_seo.errors, status: :unprocessable_entity }
       end
