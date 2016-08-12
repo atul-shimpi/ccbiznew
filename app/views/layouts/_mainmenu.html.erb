@@ -10,11 +10,9 @@
     	<li class="top-clear">
     <% end %>
     
-    	<% if sub.extrapage %>
+    	
     		<a <%= "#{@attr}" %> href='/page/<%=sub.id%>/<%=sub.pagename%>'><span><%=sub.pagename%></span></a>
-    	<% else %>
-    		<a <%= "#{@attr}" %> href='/page/<%=category.id%>/<%=category.pagename%>'><span><%=sub.pagename%></span></a>
-    	<% end %>	    
+    	
   		<% if @submenu.present? %>
     		<%= render partial: 'layouts/mainmenu', locals: {subcategories: @submenu} %>
   		<% end %>
