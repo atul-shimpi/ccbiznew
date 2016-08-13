@@ -33,6 +33,8 @@ Rails.application.config.assets.version = '1.0'
   Rails.application.config.assets.precompile += %w( lightbox.css)#, bootstrap-theme.min.css,  )
   Rails.application.config.assets.precompile += %w( mandir.css)#, bootstrap-theme.min.css,  )
   Rails.application.config.assets.precompile += %w( events.css)#, bootstrap-theme.min.css,  )
+  Rails.application.config.assets.precompile += %w( style.css)#, bootstrap-theme.min.css,  )
+  Rails.application.config.assets.precompile += %w( carousel.css)#, bootstrap-theme.min.css,  )
   Rails.application.config.assets.precompile += %w( bootstrap.min.js)#, bootstrap-theme.min.css,  )
   Rails.application.config.assets.precompile += %w( tinymce/plugins/uploadimage/plugin.js tinymce/plugins/uploadimage/langs/en.js )
 end

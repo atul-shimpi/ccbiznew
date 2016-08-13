@@ -1,1 +1,197 @@
-<div style="color: #fff">home</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+  <script>
+  function initialize() {
+    var mapProp = {
+      center:new google.maps.LatLng(18.57097,73.87875),
+      zoom:15,
+      mapTypeId:google.maps.MapTypeId.ROADMAP
+    };
+    var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(18.57097,73.87875),
+          map: map,
+          title: 'Hello World!'
+        });
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+    <title>CCbizon - Create your Website</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <%= stylesheet_link_tag    'bootstrap.min', media: 'all', 'data-turbolinks-track' => true %>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <!-- <link href="carousel.css" rel="stylesheet"> -->
+    <%= stylesheet_link_tag    'carousel'%>
+    <%= stylesheet_link_tag    'style'%>
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">CCbizon</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse pull-right">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">What We Do</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+
+
+    <!-- bg image
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img class="first-slide" src="/assets/banner_bg.jpg" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Say Good Bye to Coding Because website and E-Commerce portal Development has become..<br>"Easy and Free"</h1>
+              <h3>Get your Business Online by starting with a spectacular website, Blogs Or Your E-Commerce portal</h3>
+              <p><a class="btn btn-lg btn-default clickable-btn" href="business_users/sign_in" role="button">Let's Begin </a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.bg image -->
+
+
+    <div class="container marketing">
+
+      <div class="row">
+        <div class="clearfix section-header-text">
+          <p class="col-lg-10 text-center">
+          	<p>“Create your business website and manage your online store. Create product which you wish to sell online, upload product image and product details use existing payment gateway. Add shipping detail and start selling product online”</p>
+        </div>
+        <div class="col-lg-4">
+          <img class="img-circle" src="/assets/design_icon.png" alt="Generic placeholder image" width="140" height="140">
+          <h2>User Friendly Designs</h2>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="/assets/seo_icon.png" alt="Generic placeholder image" width="140" height="140">
+          <h2>Search Engine Friendly</h2>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="/assets/mobile_icon.png" alt="Generic placeholder image" width="140" height="140">
+          <h2>Mobile Optimized</h2>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+
+
+      <hr class="featurette-divider">
+
+      <div class="row what-we-do-section">
+        <div class="col-md-12">
+          <h2 class="text-center">ccbizon presents</h2>
+          <!-- <p class="">We provide you with many professionally designed templates out of which you can chose one</p> -->
+          <ul class="list-unstyled">
+		    <li class="col-md-6 odd">1. Your Own Domain name 
+				Map your existing domain name to ccbizon in a few easy steps or simply use your domainname.ccbizon.com</li>
+		    <li class="col-md-6 odd">2. ccbizon store :  ccbizon power easy to manage your online store, Create product and product details , 		upload product image, select payment gateway, Add shipping detail and start selling product online 
+			</li>
+		    <li class="col-md-6 even">3. Create business user for your business website using ccbizon create user Addon
+				Your business user can now login to your business website virtual share  directory, create folder and share files online 
+			</li>
+		    <li class="col-md-6 even">4. ccbizon blog : Create Edit and manage your blog post</li>
+		    <li class="col-md-6 odd">5. Domain and Mailbox :Build your brand with customized Domain and mailbox</li>
+		    <li class="col-md-6 odd">6. A Head Start with Multimedia
+				Treat your visitors with beautiful creations. Be it galleries, slideshows , one-off images, or engaging videos, you can bring them all into your websites with a few clicks.</li>
+  		  </ul>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row contact-section">
+        <div class="col-md-6 col-md-push-6">
+          <h2 class="">Get In Touch</h2>
+          <p class="">Leave us a messsage and we will get in touch with you.</p>
+          <form id="enquiry_form" novalidate>
+          	<div class="form-group">
+					    <label for="name">Name <span class="required">*</span></label>
+					    <input type="text" class="form-control" id="name" name="name">
+					  </div>
+					  <div class="form-group">
+					    <label for="email">Email ID <span class="required">*</span></label>
+					    <input type="email" class="form-control" id="email" name="email">
+					  </div>
+					  <div class="form-group">
+					    <label for="phone">Phone No. <span class="required">*</span></label>
+					    <input type="text" class="form-control" id="phone" name="phone">
+					  </div>
+					  <div class="form-group">
+					    <label for="message">Message <span class="required">*</span></label>
+					    <textarea class="form-control" rows="5" id="message" required></textarea>
+					  </div>
+					  <button type="submit" class="btn btn-default submit_btn">Submit</button>
+					</form>
+        </div>
+        <div class="col-md-6 col-md-pull-6">
+          <h2 class="">Find Us</h2>
+
+          <p class="">Shop No. 4, A-9, Deep Apartment, Opp Big Bazaar, Alandi Road, Vishrantwadi, Pune-15.
+			Website: www.jalaram-techsolutions.com</p>
+			<ul>
+            <li><a href="tel:09823292221" title="contact"><i class="fa fa-phone"></i>09823292221</a></li>
+            <li><a href="mailto:jugal@jalaram-techsolutions.com" title="contact"><i class="fa fa-envelope-o"></i>jugal@jalaram-techsolutions.com</a></li>
+          </ul>
+          <div id="googleMap" style="width:500px;height:380px;"></div>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2016 Company, Inc. &middot;</p>
+      </footer>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 	impressionist :actions=>[:auction]
 
 	def  home
-		
+	render :layout => false		
 	end
 	def index		
 		subdomain = request.subdomain.split(".").last		
