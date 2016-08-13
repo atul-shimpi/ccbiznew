@@ -13,6 +13,7 @@
   margin-left: 15px;
   margin-right: 15px;
   font-size: 18px;
+  outline: none;
 }
 .navbar-inverse .navbar-nav>.active>a, 
 .navbar-inverse .navbar-nav>.active>a:focus, 
@@ -23,10 +24,12 @@
   background-color: transparent;
   border-bottom: 1px solid #ccc;
 }
+.carousel {
+  margin-bottom: 0;
+}
 .carousel .item {
   height: 657px;
 }
-
 .carousel-inner > .item > img {
   height: 100%;
 }
@@ -39,16 +42,23 @@
   text-decoration: underline;
 }
 .carousel-caption {
-  bottom: 180px;
+  bottom: 80px;
+  left: 10%;
+  right: 10%;
 }
 .carousel-caption h1 {
-  line-height: 54px;
-  margin-bottom: 40px;
+  font-size: 28px;
+  line-height: 44px;
+  margin-bottom: 20px;
+}
+.carousel-caption h3 {
+  line-height: 34px;
+  margin-bottom: 30px;
 }
 .section-header-text p {
   margin: 0 auto 60px;
   float: none;
-  color: #000;
+  color: #010101;
   font-size: 18px;
   font-weight: bold;
 }
@@ -56,5 +66,105 @@
   border: 1px solid #0eabde;
   padding: 15px;
 }
-
-
+.first-tab-section, 
+.ccbizon-presents-section, 
+.contact-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.first-tab-section {
+  background: #e7e7e7;
+}
+.first-tab-section h2 {
+  color: #00add8;
+  font-size: 20px;
+  font-weight: 500;
+}
+.featurette-divider {
+  margin: 0;
+}
+.ccbizon-presents-section {
+  background: #00acd9;
+  color: #fff;
+}
+.marketing .section-common-header {
+  color: #000;
+  margin-bottom: 40px;
+  font-family: Candara;
+  font-weight: bold;
+  font-weight: 600;
+}
+.list-unstyled li {
+  line-height: 22px;
+  margin-bottom: 10px;
+}
+.list-unstyled li:before{
+  content: ">";
+  margin-left: -22px;
+  padding-right: 10px;
+}
+.contact-section {
+  background: url('footer_bg.jpg') no-repeat;
+}
+#googleMap {
+  width: 420px;
+  height: 260px;
+}
+.address-section {
+  margin: 20px 0;
+  color: #000;
+}
+.contact-details {
+  color: #000;
+}
+.contact-details a:hover {
+  text-decoration: none;
+}
+.vertical-divider {
+  width: 1px !important;
+  background: #696969 none repeat scroll 0% 0%;
+  height: 490px;
+  margin: 28px 60px;
+}
+.form-title {
+  color: #000;
+  font-size: 16px;
+}
+.enquiry_form {
+  width: 400px;
+}
+.form-control {
+  background: #000;
+  color: #a6a4a5;
+  border-radius: 5px;
+  box-shadow: none;
+  height: 46px;
+  width: 280px;
+  border: 0;
+}
+.message-field.form-control {
+  width: 340px;
+  height: 120px;
+}
+.submit_btn {
+  background: #000;
+  border: 0;
+  color: #a6a4a5;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgb(75, 75, 75);
+  padding: 8px 30px;
+  font-size: 16px;
+}
+.submit_btn:hover {
+  background: #000;
+  color: #a6a4a5;
+  text-decoration: underline;
+}
+footer {
+  background: #122633;
+  padding: 15px 0;
+}
+footer p {
+  margin-bottom: 0;
+  color: #fff;
+}

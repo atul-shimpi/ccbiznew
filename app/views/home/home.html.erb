@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
+    <title>CCbizon - Create your Website</title>
     <script src="http://maps.googleapis.com/maps/api/js"></script>
   <script>
   function initialize() {
@@ -19,16 +20,18 @@
     var marker = new google.maps.Marker({
           position: new google.maps.LatLng(18.57097,73.87875),
           map: map,
-          title: 'Hello World!'
+          title: ''
         });
   }
   google.maps.event.addDomListener(window, 'load', initialize);
+  
   </script>
-    <title>CCbizon - Create your Website</title>
-
+    
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <!-- Bootstrap core CSS -->
     <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
     <%= stylesheet_link_tag    'bootstrap.min', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'font-awesome.min'%>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -61,9 +64,9 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse pull-right">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">What We Do</a></li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li class="active"><a href="#" data-id='home-section'>Home</a></li>
+                <li><a href="#" data-id='info-section'>CCbizon Presents</a></li>
+                <li><a href="#" data-id='contact-section'>Contact Us</a></li>
               </ul>
             </div>
           </div>
@@ -92,106 +95,126 @@
     <!-- /.bg image -->
 
 
-    <div class="container marketing">
+    <div class="marketing">
 
-      <div class="row">
-        <div class="clearfix section-header-text">
-          <p class="col-lg-10 text-center">
-          	<p>“Create your business website and manage your online store. Create product which you wish to sell online, upload product image and product details use existing payment gateway. Add shipping detail and start selling product online”</p>
-        </div>
-        <div class="col-lg-4">
-          <img class="img-circle" src="/assets/design_icon.png" alt="Generic placeholder image" width="140" height="140">
-          <h2>User Friendly Designs</h2>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="/assets/seo_icon.png" alt="Generic placeholder image" width="140" height="140">
-          <h2>Search Engine Friendly</h2>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="/assets/mobile_icon.png" alt="Generic placeholder image" width="140" height="140">
-          <h2>Mobile Optimized</h2>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
-
-
-
-      <hr class="featurette-divider">
-
-      <div class="row what-we-do-section">
-        <div class="col-md-12">
-          <h2 class="text-center">ccbizon presents</h2>
-          <!-- <p class="">We provide you with many professionally designed templates out of which you can chose one</p> -->
-          <ul class="list-unstyled">
-		    <li class="col-md-6 odd">1. Your Own Domain name 
-				Map your existing domain name to ccbizon in a few easy steps or simply use your domainname.ccbizon.com</li>
-		    <li class="col-md-6 odd">2. ccbizon store :  ccbizon power easy to manage your online store, Create product and product details , 		upload product image, select payment gateway, Add shipping detail and start selling product online 
-			</li>
-		    <li class="col-md-6 even">3. Create business user for your business website using ccbizon create user Addon
-				Your business user can now login to your business website virtual share  directory, create folder and share files online 
-			</li>
-		    <li class="col-md-6 even">4. ccbizon blog : Create Edit and manage your blog post</li>
-		    <li class="col-md-6 odd">5. Domain and Mailbox :Build your brand with customized Domain and mailbox</li>
-		    <li class="col-md-6 odd">6. A Head Start with Multimedia
-				Treat your visitors with beautiful creations. Be it galleries, slideshows , one-off images, or engaging videos, you can bring them all into your websites with a few clicks.</li>
-  		  </ul>
+      <div class="first-tab-section">
+        <div class="container">
+          <div class="row">
+            <div class="clearfix section-header-text">
+              <p class="col-lg-12 text-center">
+                “Create your business website and manage your online store. Create product which you wish to sell online, upload product image and product details use existing payment gateway. Add shipping detail and start selling product online”
+              </p>
+            </div>
+            <div class="col-lg-4">
+              <img class="img-circle" alt="User Friendly Designs" title="User Friendly Designs" src="/assets/design_icon.png" alt="Generic placeholder image" width="140" height="140">
+              <h2>User Friendly Designs</h2>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+              <img class="img-circle" alt="Search Engine Friendly" title="Search Engine Friendly" src="/assets/seo_icon.png" alt="Generic placeholder image" width="140" height="140">
+              <h2>Search Engine Friendly</h2>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+              <img class="img-circle" alt="Mobile Optimized" title="Mobile Optimized" src="/assets/mobile_icon.png" alt="Generic placeholder image" width="140" height="140">
+              <h2>Mobile Optimized</h2>
+            </div><!-- /.col-lg-4 -->
+          </div><!-- /.row -->
         </div>
       </div>
 
-      <hr class="featurette-divider">
-
-      <div class="row contact-section">
-        <div class="col-md-6 col-md-push-6">
-          <h2 class="">Get In Touch</h2>
-          <p class="">Leave us a messsage and we will get in touch with you.</p>
-          <form id="enquiry_form" novalidate>
-          	<div class="form-group">
-					    <label for="name">Name <span class="required">*</span></label>
-					    <input type="text" class="form-control" id="name" name="name">
-					  </div>
-					  <div class="form-group">
-					    <label for="email">Email ID <span class="required">*</span></label>
-					    <input type="email" class="form-control" id="email" name="email">
-					  </div>
-					  <div class="form-group">
-					    <label for="phone">Phone No. <span class="required">*</span></label>
-					    <input type="text" class="form-control" id="phone" name="phone">
-					  </div>
-					  <div class="form-group">
-					    <label for="message">Message <span class="required">*</span></label>
-					    <textarea class="form-control" rows="5" id="message" required></textarea>
-					  </div>
-					  <button type="submit" class="btn btn-default submit_btn">Submit</button>
-					</form>
-        </div>
-        <div class="col-md-6 col-md-pull-6">
-          <h2 class="">Find Us</h2>
-
-          <p class="">Shop No. 4, A-9, Deep Apartment, Opp Big Bazaar, Alandi Road, Vishrantwadi, Pune-15.
-			Website: www.jalaram-techsolutions.com</p>
-			<ul>
-            <li><a href="tel:09823292221" title="contact"><i class="fa fa-phone"></i>09823292221</a></li>
-            <li><a href="mailto:jugal@jalaram-techsolutions.com" title="contact"><i class="fa fa-envelope-o"></i>jugal@jalaram-techsolutions.com</a></li>
-          </ul>
-          <div id="googleMap" style="width:500px;height:380px;"></div>
+      <div class="ccbizon-presents-section" id="info-section">
+        <div class="container">
+          <div class="row">
+          <div class="col-md-12">
+            <h2 class="text-center section-common-header">CCbizon Presents</h2>
+            <ul class="list-unstyled col-md-6 col-md-push-6">
+      		    <li class="col-md-12">
+                CCbizon blog : Create Edit and manage your blog post
+              </li>
+              <li class="col-md-12">
+                Domain and Mailbox :Build your brand with customized Domain and mailbox
+              </li>
+              <li class="col-md-12">
+                A Head Start with Multimedia Treat your visitors with beautiful creations. Be it galleries, slideshows , one-off images, or engaging videos, you can bring them all into your websites with a few clicks.
+              </li>
+    		    </ul>
+            <ul class="list-unstyled col-md-6 col-md-pull-6">
+            <li class="col-md-12">
+                Your Own Domain name Map your existing domain name to ccbizon in a few easy steps or simply use your domainname.ccbizon.com
+              </li>
+              <li class="col-md-12">
+                CCbizon store :  ccbizon power easy to manage your online store, Create product and product details ,    upload product image, select payment gateway, Add shipping detail and start selling product online 
+              </li>
+              <li class="col-md-12">
+                Create business user for your business website using ccbizon create user Addon Your business user can now login to your business website virtual share  directory, create folder and share files online 
+              </li>
+            </ul>
+          </div>
+          </div>
         </div>
       </div>
 
-      <hr class="featurette-divider">
-
-
+      <div class="contact-section" id="contact-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <h2 class="section-common-header">Find Us</h2>
+              <div id="googleMap"></div>
+              <p class="address-section">Shop No. 4, A-9, Deep Apartment, Opp Big Bazaar, Alandi Road, Vishrantwadi, Pune-15. Website: www.jalaram-techsolutions.com</p>
+              <p class="contact-details"><span>Email-id: </span><a href="mailto:jugal@jalaram-techsolutions.com" title="contact">jugal@jalaram-techsolutions.com</a></p>
+              <p class="contact-details"><span>Contact no: </span><a href="tel:09823292221" title="contact">09823292221</a></p>
+              </ul>
+            </div>
+            <div class="pull-left vertical-divider"></div>
+            <div class="col-md-5">
+              <h2 class="section-common-header">Get In Touch</h2>
+              <p class="form-title">Leave us a messsage and we will get in touch with you.</p>
+              <form id="enquiry_form" class="enquiry_form" novalidate>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Name*">
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Email ID*">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone No.*">
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control message-field" rows="5" id="message" required placeholder="Message*"></textarea>
+                </div>
+                <button type="submit" class="btn btn-default submit_btn">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- FOOTER -->
-      <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2016 Company, Inc. &middot;</p>
+      <footer class="">
+        <div class="container">
+          <p class="pull-right"><a href="#">Back to top</a></p>
+          <p>&copy; 2016 <span>Powered by <a href="http://www.jalaram-techsolutions.com" target="blank"> jalaram-techsolutions.com</a></span></p>
+        </div>
       </footer>
 
-    </div><!-- /.container -->
+    </div><!-- /.marketing -->
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <script src="jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        function scrollTo(id){
+          // Scroll
+              $('html,body').animate({
+                    scrollTop: $("#"+id).offset().top
+              }, 'slow');
+        }
+        $('.navbar li a').on('click', function (e){
+          scrollTo($(this).attr("data-id"));
+        })
+      });
+    </script>
   </body>
 </html>
