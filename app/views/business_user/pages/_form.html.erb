@@ -30,11 +30,20 @@
 	  	</div>
 	  	<div class="form-group">
 	      <%= f.label :header_background_color, :class => 'control-label' %> 
-	      <%= f.text_field :headerbg, :type=>"color", :class => 'text_field form-control', :placeholder => 'Enter text' %>
+	      <div id="colorheaderbg">
+	      <%= f.text_field :headerbg, :type=>"text", :class => 'text_field form-control', :placeholder => 'Enter text' %>
+	      <span class="input-group-addon"><i></i></span>	      
+	      <span class="trigger" data-for="seodetail_headerbg">Clear</span>
+	      </div>
 	    </div>
 	    <div class="form-group">
+
 	      <%= f.label :footer_background_color, :class => 'control-label' %> 
-	      <%= f.text_field :footerbg, :type=>"color", :class => 'text_field form-control', :placeholder => 'Enter text' %>
+	      <div id="colorfooterbg">
+	      <%= f.text_field :footerbg, :type=>"text", :class => 'text_field form-control', :placeholder => 'Enter text' %>
+	      <span class="input-group-addon"><i></i></span>
+	      <span class="trigger" data-for="seodetail_footerbg">Clear</span>
+	      </div>
 	    </div>
 
 	    <%= f.submit "Add", :class => 'btn btn-primary' %>
@@ -44,7 +53,14 @@
 <% end %>
 <%= tinymce :alternate %>
 <script language="javascript">
-
+$(document).ready(function(){
+    $('#colorheaderbg').colorpicker();
+    $('#colorfooterbg').colorpicker();
+  })
+$(".trigger").click(function(){
+		
+				$("#"+$(this).data('for')).val('');				
+			});
 $( "#seodetail_pagename" ).change(function() {
   if($(this).val()=="other"){
   	$("#otherpage").show("slow");
@@ -52,6 +68,8 @@ $( "#seodetail_pagename" ).change(function() {
   	$("#otherpage").hide("slow");
   }
 });
+
+
 </script>                              
 
 

@@ -37,5 +37,6 @@
 //= require jquery.countdown
 //= require jquery.jcrop
 //= require main
+//= require bootstrap-colorpicker
 //= require_tree .
        
