@@ -105,6 +105,7 @@
 }
 .contact-section {
   background: url('footer_bg.jpg') no-repeat;
+  background-size: cover;
 }
 #googleMap {
   width: 420px;
