@@ -18,7 +18,7 @@ class HomeController < ApplicationController
 		if !@shop.blank?
     		render :template => "templates/#{@shop.template}", :layout => "#{@shop.template}"
 		else
-			redirect_to new_business_user_session_path
+			redirect_to home_path
 		end
 	end
 	
