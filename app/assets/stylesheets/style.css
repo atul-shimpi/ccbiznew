@@ -108,7 +108,7 @@
   background-size: cover;
 }
 #googleMap {
-  width: 420px;
+  width: 90%;
   height: 260px;
 }
 .address-section {
@@ -132,7 +132,7 @@
   font-size: 16px;
 }
 .enquiry_form {
-  width: 400px;
+  width: 100%;
 }
 .form-control {
   background: #000;
@@ -140,11 +140,11 @@
   border-radius: 5px;
   box-shadow: none;
   height: 46px;
-  width: 280px;
+  width: 75%;
   border: 0;
 }
 .message-field.form-control {
-  width: 340px;
+  width: 90%;
   height: 120px;
 }
 .submit_btn {
