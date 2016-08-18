@@ -108,7 +108,7 @@
   background-size: cover;
 }
 #googleMap {
-  width: 420px;
+  width: 90%;
   height: 260px;
 }
 .address-section {
@@ -132,7 +132,7 @@
   font-size: 16px;
 }
 .enquiry_form {
-  width: 400px;
+  width: 100%;
 }
 .form-control {
   background: #000;
@@ -140,11 +140,11 @@
   border-radius: 5px;
   box-shadow: none;
   height: 46px;
-  width: 280px;
+  width: 75%;
   border: 0;
 }
 .message-field.form-control {
-  width: 340px;
+  width: 90%;
   height: 120px;
 }
 .submit_btn {
@@ -168,4 +168,37 @@ footer {
 footer p {
   margin-bottom: 0;
   color: #fff;
+}
+
+
+/*Media Queries*/
+
+@media (max-width: 768px) {
+  .navbar-inverse .navbar-collapse {
+    float: none !important;
+    background: rgba(0, 0, 0, 0.901961);
+  }
+  .navbar-inverse .navbar-nav>.active>a, 
+  .navbar-inverse .navbar-nav>.active>a:focus, 
+  .navbar-inverse .navbar-nav>.active>a:hover, 
+  .navbar-inverse .navbar-nav>li>a:focus, 
+  .navbar-inverse .navbar-nav>li>a:hover {
+    background-color: #333;
+    border-bottom: 0;
+    display: block;
+    padding: 10px;
+  }
+  .navbar-inverse .navbar-nav > li > a {
+    padding: 10px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-caption h3 {
+    font-size: 18px;
+  }
+  .carousel-caption h1 {
+    font-size: 20px;
+  }
 }
