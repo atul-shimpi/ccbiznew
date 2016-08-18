@@ -92,8 +92,8 @@ Rails.application.routes.draw do
   get 'page/:id/:pagename' => "home#pageshow"
   
    
-    match '/', to: 'home#index', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
-  root 'home#home'
+  match '/', to: 'home#index', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
+  root 'home#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
