@@ -17,7 +17,7 @@
   <% end %>
 </style>
 <style type="text/css">
-<% if !@seodetails.empty? %>
+<% if !@seodetails.nil? %>
   <% if !@seodetails[0].headerbg.nil? %>
     .navbar.navbar-default{
       background-color:<%=@seodetails[0].headerbg%>;
