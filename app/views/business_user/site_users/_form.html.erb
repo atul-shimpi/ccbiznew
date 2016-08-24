@@ -1,3 +1,8 @@
+<% if @siteuser.errors.full_messages.any? %>
+<% @siteuser.errors.full_messages.each do |error_message| %>
+<%= error_message if @siteuser.errors.full_messages.first == error_message %> <br />
+<% end %>
+<% end %>
 <%= form_for @siteuser, url: business_shop_site_users_action(@siteuser, params[:action]),:html => { :class => '' , multipart: true  } do |f| %>
   <fieldset>
     <div class="form-group">
