@@ -17,8 +17,9 @@
   <% end %>
 </style>
 <style type="text/css">
-
-  <% if !@seodetails.nil? || !@seodetails[0].headerbg.nil? %>
+<% if !@seodetails.nil? %>
+<% if !@seodetails.empty? %>
+  <% if !@seodetails[0].headerbg.nil? %>
     .navbar.navbar-default{
       background-color:<%=@seodetails[0].headerbg%>;
     }
@@ -27,7 +28,7 @@
       background-color:<%=@shop.headerbg%>;
     }
   <% end %>
-  <% if !@seodetails.nil? || !@seodetails[0].footerbg.nil? %>
+  <% if !@seodetails[0].footerbg.nil? %>
   footer{
     background-color:<%=@seodetails[0].footerbg%>;
   }
@@ -36,5 +37,6 @@
       background-color:<%=@shop.footerbg%>;
     }
   <% end %>
-
+<% end %>
+<% end %>
 </style>
