@@ -7,4 +7,12 @@ class SiteUser < ActiveRecord::Base
   has_many :userfiles, :dependent => :destroy
   validates :email, presence: true
   validates :email, uniqueness: { scope: [:shop_id], message: "This user is already registered" }
+
+  def email_required?
+	false
+  end
+  def email_changed?
+	false
+  end
+  	
 end

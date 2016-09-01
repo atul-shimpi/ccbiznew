@@ -31,7 +31,8 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
 
   def create
     @shop = current_business_user.shops.new(shop_params)
-    
+    params[:shop][:subdomain] = params[:shop][:subdomain].downcase
+    params[:shop][:domain] = params[:shop][:domain].downcase
     if params[:shop][:shoptype] == "1" && @shop.storeid.nil?
       
       if current_business_user.storeuserid.nil? || current_business_user.storeuserid == 0
