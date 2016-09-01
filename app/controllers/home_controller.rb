@@ -3,9 +3,10 @@ class HomeController < ApplicationController
 	impressionist :actions=>[:auction]
 
 	def  home
-	render :layout => false		
+		render :layout => false		
 	end
 	def index		
+
 		subdomain = request.subdomain.split(".").last		
 		if subdomain.blank? || subdomain =='www'			
 			@shop = Shop.find_by_domain(request.host)	

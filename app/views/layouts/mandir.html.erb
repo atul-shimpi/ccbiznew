@@ -30,7 +30,7 @@
     </div>
   </div>
 </header>
-<% if @shop.isactive == 0 || @shop.isactive.to_s == "nil"%>   
+<% if @shop.isactive == 0 || @shop.isactive.nil? %>   
     <div class="transparent">Waiting for administrator approval</div> 
     <% end %>
 <%= yield %>
