@@ -31,9 +31,12 @@
                       <td><%= shopuser.shop.name if !shopuser.shop.blank?%></td>
                       <td>
                         <%= link_to "Files", {:controller => "files", :action => "index", :site_user_id => shopuser.id} , :class => 'btn btn-primary btn-mini'%>
-                        
+                        <% if shopuser.shop.fields.count > 0 %>
+                        <%= link_to "User Details","/business_user/site_users/properties/#{shopuser.id}", :class => 'btn btn-primary btn-mini' %>
+                        <% end %>
                         <%= link_to "Edit",
                                     edit_business_user_site_user_path(shopuser), :class => 'btn btn-primary btn-mini' %>
+                        
                         <%= link_to "Delete",
                                     business_user_site_user_path(shopuser),
                                     :method => :delete,

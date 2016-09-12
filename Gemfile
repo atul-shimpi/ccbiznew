@@ -33,6 +33,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'carrierwave-crop'
 gem 'carrierwave-aws'
+gem 'aws-sdk', '~> 2'
 
 gem 'rmagick', '~> 2.15', '>= 2.15.2'
 #gem 'jcrop-rails-v2'
@@ -58,6 +59,7 @@ gem 'memcached_store'
 #sendgrid integration
 gem 'sendgrid'
 gem 'bootstrap_colorpicker_rails'
+
 group :production do
   gem 'rails_12factor'
 end

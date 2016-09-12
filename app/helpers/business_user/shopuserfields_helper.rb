@@ -1,0 +1,2 @@
+module BusinessUser::ShopuserfieldsHelper
+end

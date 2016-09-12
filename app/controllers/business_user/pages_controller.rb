@@ -1,5 +1,7 @@
 class BusinessUser::PagesController < ApplicationController
-  before_action :get_shop
+  before_action :get_shop, except: [:designupdate, :show, :imageupload]
+  protect_from_forgery except: [:designupdate, :imageupload]
+  
   def index    
     @shops_ids = current_business_user.shops.all.map{ |shop|
       [shop.id]
@@ -19,10 +21,8 @@ class BusinessUser::PagesController < ApplicationController
     end
   end
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @shop }
-    end
+    @shop_seo = Seodetail.find(params[:id])
+    render :json => @shop_seo.pagecontent.as_json
   end
 
   def edit
@@ -80,6 +80,29 @@ class BusinessUser::PagesController < ApplicationController
       format.html { redirect_to business_user_pages_path(:shop_id => @shop.id), alert: 'Page deleted successfully.' }
       format.json { head :no_content }
     end
+  end
+  def design
+    @page = Seodetail.find(params[:page_id])
+    render :layout => false
+  end
+  def designupdate
+    if !params['data'].blank?      
+      @page = Seodetail.find(params['data']['page_id'])
+      
+      @page['pagecontent'] = params['data'].to_json
+      @page.save
+      render :nothing => true
+    end
+    
+  end
+  def imageupload
+    begin
+      image = S3Store.new(params[:upload][:image]).store
+      #...
+    rescue Exception => e
+      #...
+    end
+    binding.pry
   end
   private  
   def get_shop

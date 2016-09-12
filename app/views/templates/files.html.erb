@@ -5,7 +5,13 @@
 				<p class="about_content">
 					<%= link_to "New Files", new_file_path %>
 				</p>
-				
+				<%= form_for current_site_user, url: business_shop_site_users_action(current_site_user, params[:action]),:html => { :class => '' , multipart: true  } do |f| %>
+		            <%= f.fields_for :properties, OpenStruct.new(current_site_user.properties) do |builder| %>
+		              <% current_site_user.shop.fields.each do |field| %>
+		                <%= render "userdetails/fields/#{field.field_type}", field: field, f:builder %>
+		              <% end %>
+		            <% end %> 		            
+		          <% end %>		         
 				<div class="dataTable_wrapper">
 		            <table class="table table-striped table-bordered table-hover dataTables-example" id="dataTables-example">
 		              <thead>

@@ -239,9 +239,10 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
 		@seodetails = @shop.seodetails.where("id = ?",params[:id]) rescue nil
-				
+		@page_blocks = JSON.parse(@seodetails[0].pagecontent)["pages"]["index"]["blocks"]
+		
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
-		render :template => "templates/pageshow", :layout => "#{@shop.template}"
+		render :template => "templates/pageshow", :layout => "page"
 	end
 	def contact_params
 	    params.require(:contact).permit(:contactname, :contactemail, :contactnumber, :contactinfo, :shoprating, :shop_id)

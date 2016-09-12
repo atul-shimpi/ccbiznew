@@ -16,7 +16,8 @@ Rails.application.routes.draw do
     resources :shops
     resources :offers
     resources :events    
-    resources :shop_images    
+    resources :shop_images
+    resources :shopuserfields
     resources :business_users 
     resources :auctions       
     resources :skills       
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
     resources :site_users       
     resources :files
     resources :pages       
+    
   end
   namespace :admin do 
     resources :base
@@ -48,8 +50,15 @@ Rails.application.routes.draw do
   post '/business_user/dashboard' => "business_user/business_users#show"
   get '/files/download/:id' => "files#download"
   get '/business_user/files/approve/:id' => "business_user/files#approve"
+  get '/business_user/site_users/properties/:id' => "business_user/site_users#properties"
 
   get '/business_user/templatelist' => "business_user/business_users#templatelist"
+
+  get '/business_user/pages/design/:shop_id/:page_id' => "business_user/pages#design"
+  
+
+  post '/business_user/pages/designupdate' => "business_user/pages#designupdate"
+  post '/business_user/pages/imageupload' => "business_user/pages#imageupload"
 
   post '/business_user/cropimage' => "business_user/shop_images#crop"  
   post '/business_user/teamplayers/:id' => "business_user/players#teamupdate"  
@@ -94,6 +103,7 @@ Rails.application.routes.draw do
    
   match '/', to: 'home#index', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
   root 'home#index'
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

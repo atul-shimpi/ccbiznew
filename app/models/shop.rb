@@ -41,6 +41,8 @@ end
   has_many :seodetails, :dependent =>:destroy
 	has_many :events, :dependent => :destroy
   has_many :site_users, :dependent => :destroy
+  has_many :fields, class_name: "SiteUserField"
+  accepts_nested_attributes_for :fields, allow_destroy: true
 	DESIGN_TEMPLATE = { "template_1" => "theme_1", "template_2" => "theme_2", "template_3" => "theme_3", "template_4" => "theme_4", "mandir" => "mandir"}
 
   SPORTS_TEMPLATE = ['sports_1', 'sports_2'].freeze

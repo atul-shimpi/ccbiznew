@@ -29,7 +29,11 @@ class ApplicationController < ActionController::Base
     end
 
   end
+ 
 
+    def can_administer?      
+      business_user_signed_in?
+    end
 protected
 
   def layout_by_resource  
