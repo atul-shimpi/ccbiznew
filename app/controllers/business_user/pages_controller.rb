@@ -30,7 +30,7 @@ class BusinessUser::PagesController < ApplicationController
   end
 
   def create
-    seodetail_params[:htmldata] = "{}"
+    params[:seodetail][:htmldata] = "{}"    
     @shop_seo = Seodetail.new(seodetail_params)
     if seodetail_params[:pagename] == "other"
       @shop_seo.pagename = params[:otherpage]
@@ -91,8 +91,11 @@ class BusinessUser::PagesController < ApplicationController
       @page = Seodetail.find(params['data']['page_id'])
       
       @page['htmldata'] = params['data'].to_json
+
       @page.save
-      render :nothing => true
+      
+      render :nothing => true 
+      
     end
     
   end

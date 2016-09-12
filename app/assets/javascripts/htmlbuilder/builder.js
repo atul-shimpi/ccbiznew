@@ -1770,7 +1770,7 @@
             publisher.publish('onBeforeSave');
 
             //disable button
-            $("a#savePage").addClass('disabled');
+            //$("a#savePage").addClass('disabled');
 
             var originalText = $('a#savePage').find('.bLabel').text();
             var altText = $('a#savePage').find('.bLabel').attr('data-alt-text');
@@ -1826,7 +1826,7 @@
 
                 //enable button
                 $("a#savePage").removeClass('disabled');
-
+                
                 if( res.responseCode === 0 ) {
                     
                     if( showConfirmModal ) {
@@ -1843,6 +1843,9 @@
                     $('body').trigger('changePage');
 
                 }
+                site.setPendingChanges(false);
+            
+                $('body').trigger('changePage');
 
             });
     
