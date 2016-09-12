@@ -90,7 +90,7 @@ class BusinessUser::PagesController < ApplicationController
     if !params['data'].blank?      
       @page = Seodetail.find(params['data']['page_id'])
       
-      @page['pagecontent'] = params['data'].to_json
+      @page['htmldata'] = params['data'].to_json
       @page.save
       render :nothing => true
     end
