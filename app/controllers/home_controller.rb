@@ -239,7 +239,7 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
 		@seodetails = @shop.seodetails.where("id = ?",params[:id]) rescue nil
-		@page_blocks = JSON.parse(@seodetails[0].pagecontent)["pages"]["index"]["blocks"]
+		@page_blocks = JSON.parse(@seodetails[0].htmldata)["pages"]["index"]["blocks"]
 		
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		render :template => "templates/pageshow", :layout => "page"

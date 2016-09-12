@@ -1,7 +1,7 @@
 class BusinessUser::PagesController < ApplicationController
   before_action :get_shop, except: [:designupdate, :show, :imageupload]
   protect_from_forgery except: [:designupdate, :imageupload]
-  
+
   def index    
     @shops_ids = current_business_user.shops.all.map{ |shop|
       [shop.id]
@@ -30,6 +30,7 @@ class BusinessUser::PagesController < ApplicationController
   end
 
   def create
+    seodetail_params[:htmldata] = "{}"
     @shop_seo = Seodetail.new(seodetail_params)
     if seodetail_params[:pagename] == "other"
       @shop_seo.pagename = params[:otherpage]
@@ -109,6 +110,6 @@ class BusinessUser::PagesController < ApplicationController
     @shop = Shop.find(params[:shop_id])
   end
   def seodetail_params
-    params.require(:seodetail).permit(:shop_id, :title, :metakeywords, :metadescription, :pagename, :pagealias, :parentpage, :pagecontent, :headerbg, :footerbg)
+    params.require(:seodetail).permit(:shop_id, :title, :metakeywords, :metadescription, :pagename, :pagealias, :parentpage, :pagecontent, :headerbg, :footerbg, :htmldata)
   end  
 end
