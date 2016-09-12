@@ -22,7 +22,7 @@ class BusinessUser::PagesController < ApplicationController
   end
   def show
     @shop_seo = Seodetail.find(params[:id])
-    render :json => @shop_seo.pagecontent.as_json
+    render :json => @shop_seo.htmldata.as_json
   end
 
   def edit
