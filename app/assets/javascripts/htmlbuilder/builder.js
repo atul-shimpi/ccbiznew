@@ -1,21 +1,21 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function () {
-	"use strict";	
+    "use strict";   
 
-	require('./modules/config.js');
-	require('./modules/ui.js');
-	require('./modules/builder.js');
-	require('./modules/utils.js');
-	require('./modules/canvasElement.js');
-	require('./modules/styleeditor.js');
-	require('./modules/content.js');
-	require('./modules/export.js');
-	require('./modules/preview.js');
+    require('./modules/config.js');
+    require('./modules/ui.js');
+    require('./modules/builder.js');
+    require('./modules/utils.js');
+    require('./modules/canvasElement.js');
+    require('./modules/styleeditor.js');
+    require('./modules/content.js');
+    require('./modules/export.js');
+    require('./modules/preview.js');
 
 }());
 },{"./modules/builder.js":2,"./modules/canvasElement.js":3,"./modules/config.js":4,"./modules/content.js":5,"./modules/export.js":6,"./modules/preview.js":8,"./modules/styleeditor.js":9,"./modules/ui.js":10,"./modules/utils.js":11}],2:[function(require,module,exports){
 (function () {
-	"use strict";
+    "use strict";
 
     var siteBuilderUtils = require('./utils.js');
     var bConfig = require('./config.js');
@@ -23,7 +23,7 @@
     var publisher = require('../vendor/publisher');
 
 
-	 /*
+     /*
         Basic Builder UI initialisation
     */
     var builderUI = {
@@ -1332,7 +1332,7 @@
 
             //enable draggable on the LI
             $(this.parentLI.parentNode).sortable('enable');
-		
+        
             //delete the errorDrawer
             $(this.parentLI.nextSibling).remove();
         
@@ -1648,8 +1648,8 @@
         buttonEmptyPage: document.getElementById('clearScreen'),
 
         actionButtons: document.querySelectorAll('.actionButtons'),
-		
-		autoSaveTimer: {},
+        
+        autoSaveTimer: {},
         
         init: function() {
 
@@ -1729,8 +1729,8 @@
             if(site.pendingChanges) {
                 site.save(false);
             }
-			
-			window.clearInterval(this.autoSaveTimer);
+            
+            window.clearInterval(this.autoSaveTimer);
             this.autoSaveTimer = setTimeout(site.autoSave, bConfig.autoSaveTimeout);
         
         },
@@ -1742,10 +1742,10 @@
             this.isEmpty();
             
             if( value === true ) {
-				
-				//reset timer
-				window.clearInterval(this.autoSaveTimer);
-            	this.autoSaveTimer = setTimeout(site.autoSave, bConfig.autoSaveTimeout);
+                
+                //reset timer
+                window.clearInterval(this.autoSaveTimer);
+                this.autoSaveTimer = setTimeout(site.autoSave, bConfig.autoSaveTimeout);
                 
                 $('#savePage .bLabel').text("Save now (!)");
                 
@@ -1754,11 +1754,11 @@
                     site.activePage.status = 'changed';
                     
                 }
-			
+            
             } else {
-	
+    
                 $('#savePage .bLabel').text("Nothing to save");
-				
+                
                 site.updatePageStatus('');
 
             }
@@ -2210,7 +2210,7 @@
 }());
 },{"./builder.js":2}],4:[function(require,module,exports){
 (function () {
-	"use strict";
+    "use strict";
         
     module.exports.pageContainer = "#page";
     
@@ -2267,16 +2267,16 @@
 }());
 },{}],5:[function(require,module,exports){
 (function () {
-	"use strict";
+    "use strict";
 
-	var canvasElement = require('./canvasElement.js').Element;
-	var bConfig = require('./config');
-	var siteBuilder = require('./builder.js');
+    var canvasElement = require('./canvasElement.js').Element;
+    var bConfig = require('./config');
+    var siteBuilder = require('./builder.js');
     var publisher = require('../vendor/publisher');
     var MediumEditor = require('medium-editor');
     var mediumExtensions = require('./mediumEditorExtensions');
 
-	var contenteditor = {
+    var contenteditor = {
         
         labelContentMode: document.getElementById('modeContentLabel'),
         radioContent: document.getElementById('modeContent'),
@@ -2311,15 +2311,15 @@
             publisher.subscribe('onClickContent', function (el) {
                 contenteditor.contentClick(el);
             });
-			
-			//listen for the beforeSave event, removes outlines before saving
+            
+            //listen for the beforeSave event, removes outlines before saving
             $('body').on('beforeSave', function () {
-				
-				if( Object.keys( contenteditor.activeElement ).length > 0 ) {
-                	contenteditor.activeElement.removeOutline();
-            	}
-				
-			});
+                
+                if( Object.keys( contenteditor.activeElement ).length > 0 ) {
+                    contenteditor.activeElement.removeOutline();
+                }
+                
+            });
                         
         },
         
@@ -2431,12 +2431,12 @@
 }());
 },{"../vendor/publisher":12,"./builder.js":2,"./canvasElement.js":3,"./config":4,"./mediumEditorExtensions":7,"medium-editor":13}],6:[function(require,module,exports){
 (function () {
-	"use strict";
+    "use strict";
 
-	var bConfig = require('./config.js');
+    var bConfig = require('./config.js');
     var publisher = require('../vendor/publisher');
 
-	var bexport = {
+    var bexport = {
         
         modalExport: document.getElementById('exportModal'),
         buttonExport: document.getElementById('exportPage'),
@@ -2474,13 +2474,13 @@
             $('#pageList > ul').each(function(){
 
                 var theContents;
-				
+                
                 //grab the skeleton markup
                 var newDocMainParent = $('iframe#skeleton').contents().find( bConfig.pageContainer );
                 
                 //empty out the skeleto
                 newDocMainParent.find('*').remove();
-			
+            
                 //loop through page iframes and grab the body stuff
                 $(this).find('iframe').each(function(){
                                         
@@ -2495,7 +2495,7 @@
                     theContents.find('.frameCover').each(function(){
                         $(this).remove();
                     });
-				
+                
                     
                     //remove inline styling leftovers
                     for( var key in bConfig.editableItems ) {
@@ -2509,7 +2509,7 @@
                             }
                         });
                     }
-				
+                
                     for ( var i = 0; i < bConfig.editableContent.length; ++i) {
                         
                         theContents.find( bConfig.editableContent[i] ).each(function(){
@@ -2517,18 +2517,18 @@
                         });
 
                     }
-			
+            
                     var toAdd = theContents.html();
-				
+                
                     //grab scripts
                     var scripts = $(this).contents().find( bConfig.pageContainer ).find('script');
                     
                     if( scripts.size() > 0 ) {
-				
+                
                         var theIframe = document.getElementById("skeleton"), script;
                         
                         scripts.each(function(){
-					
+                    
                             if( $(this).text() !== '' ) {//script tags with content
 
                                 script = theIframe.contentWindow.document.createElement("script");
@@ -2578,10 +2578,10 @@
 }());
 },{"../vendor/publisher":12,"./config.js":4}],7:[function(require,module,exports){
 (function () {
-	"use strict";
+    "use strict";
 
-	var MediumEditor = require('medium-editor');
-	var rangy = require('rangy');
+    var MediumEditor = require('medium-editor');
+    var rangy = require('rangy');
     require('rangy/lib/rangy-classapplier');
 
     rangy.init();
@@ -2590,44 +2590,44 @@
 
         name: 'highlighter',
         tagNames: ['mark'], // nodeName which indicates the button should be 'active' when isAlreadyApplied() is called
-		contentDefault: '<b>H</b>', // default innerHTML of the button
-		contentFA: '<i class="fa fa-paint-brush"></i>', // innerHTML of button when 'fontawesome' is being used
-		aria: 'Hightlight', // used as both aria-label and title attributes
-		action: 'highlight', // used as the data-action attribute of the button
+        contentDefault: '<b>H</b>', // default innerHTML of the button
+        contentFA: '<i class="fa fa-paint-brush"></i>', // innerHTML of button when 'fontawesome' is being used
+        aria: 'Hightlight', // used as both aria-label and title attributes
+        action: 'highlight', // used as the data-action attribute of the button
         iframeWin: {},
 
         init: function () {
 
-        	MediumEditor.extensions.button.prototype.init.call(this);
+            MediumEditor.extensions.button.prototype.init.call(this);
 
-		    this.classApplier = rangy.createClassApplier('highlight', {
-		        elementTagName: 'mark',
-		        normalize: true
-		    });
+            this.classApplier = rangy.createClassApplier('highlight', {
+                elementTagName: 'mark',
+                normalize: true
+            });
 
-		    this.iframeWin = rangy.dom.getIframeWindow(this.window.frameElement);
+            this.iframeWin = rangy.dom.getIframeWindow(this.window.frameElement);
 
-		},
+        },
 
-		handleClick: function (event) {
+        handleClick: function (event) {
 
-		    this.classApplier.toggleSelection(this.iframeWin);
-		    return false;
+            this.classApplier.toggleSelection(this.iframeWin);
+            return false;
 
-		}
-		
+        }
+        
     });
 
 }());
 },{"medium-editor":13,"rangy":15,"rangy/lib/rangy-classapplier":14}],8:[function(require,module,exports){
 (function () {
-	"use strict";
+    "use strict";
 
-	var bConfig = require('./config.js');
-	var siteBuilder = require('./builder.js');
+    var bConfig = require('./config.js');
+    var siteBuilder = require('./builder.js');
     var publisher = require('../vendor/publisher');
 
-	var preview = {
+    var preview = {
 
         modalPreview: document.getElementById('previewModal'),
         buttonPreview: document.getElementById('buttonPreview'),
@@ -2713,11 +2713,11 @@
 }());
 },{"../vendor/publisher":12,"./builder.js":2,"./config.js":4}],9:[function(require,module,exports){
 (function (){
-	"use strict";
+    "use strict";
 
-	var canvasElement = require('./canvasElement.js').Element;
-	var bConfig = require('./config.js');
-	var siteBuilder = require('./builder.js');
+    var canvasElement = require('./canvasElement.js').Element;
+    var bConfig = require('./config.js');
+    var siteBuilder = require('./builder.js');
     var publisher = require('../vendor/publisher');
 
     var styleeditor = {
@@ -2951,19 +2951,19 @@
 
             }
 
-			if( $(this.activeElement.element).prop('tagName') === 'IMG' ){
+            if( $(this.activeElement.element).prop('tagName') === 'IMG' ){
 
                 this.editImage(this.activeElement.element);
 
             }
 
-			if( $(this.activeElement.element).attr('data-type') === 'video' ) {
+            if( $(this.activeElement.element).attr('data-type') === 'video' ) {
 
                 this.editVideo(this.activeElement.element);
 
             }
 
-			if( $(this.activeElement.element).hasClass('fa') ) {
+            if( $(this.activeElement.element).hasClass('fa') ) {
 
                 this.editIcon(this.activeElement.element);
 
@@ -3132,11 +3132,11 @@
 
             $('#styleEditor #tab1 .form-group:not(#styleElTemplate) input, #styleEditor #tab1 .form-group:not(#styleElTemplate) select').each(function(){
 
-				if( $(this).attr('name') !== undefined ) {
+                if( $(this).attr('name') !== undefined ) {
 
-                	$(styleeditor.activeElement.element).css( $(this).attr('name'),  $(this).val());
+                    $(styleeditor.activeElement.element).css( $(this).attr('name'),  $(this).val());
 
-				}
+                }
 
                 /* SANDBOX */
 
@@ -3226,11 +3226,11 @@
                     type : 'POST',
                 }).done(function(response){
                                 
-                    if( response.code === 1 ) {//success
+                    if( response != "0" ) {//success
                     
-                        $('input#imageURL').val( response.response );
+                        $('input#imageURL').val( response );
                     
-                        $(styleeditor.activeElement.element).attr('src', response.response);
+                        $(styleeditor.activeElement.element).attr('src', response);
                         
                         //reset the file upload
                         $('.imageFileTab').find('a.fileinput-exists').click();
@@ -3241,15 +3241,15 @@
                     
                             var elementID = $(styleeditor.activeElement.element).attr('id');
                                     
-                            $('#'+styleeditor.activeElement.sandbox).contents().find('#'+elementID).attr('src', response.response);
+                            $('#'+styleeditor.activeElement.sandbox).contents().find('#'+elementID).attr('src', response);
                     
                         }
                 
                         /* END SANDBOX */
                     
-                    } else if( response.code === 0 ) {//error
+                    } else if( response === 0 ) {//error
                     
-                        alert('Something went wrong: '+response.response);
+                        alert('Something went wrong: '+response);
                     
                     }
                 
@@ -4023,18 +4023,18 @@
         
             $('#menu #main a').removeClass('active');
             $(this).addClass('active');
-	
+    
             //show only the right elements
             $('#menu #second ul li').hide();
             $('#menu #second ul li.'+$(this).attr('id')).show();
 
             if( $(this).attr('id') === 'all' ) {
-                $('#menu #second ul#elements li').show();		
+                $('#menu #second ul#elements li').show();       
             }
-	
+    
             $('.menu .second').css('display', 'block').stop().animate({
                 width: appUI.secondMenuWidth
-            }, 500);	
+            }, 500);    
                 
         }
         
@@ -4050,7 +4050,7 @@
 }());
 },{}],11:[function(require,module,exports){
 (function () {
-	"use strict";
+    "use strict";
     
     exports.getRandomArbitrary = function(min, max) {
         return Math.floor(Math.random() * (max - min) + min);

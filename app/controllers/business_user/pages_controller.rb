@@ -99,14 +99,31 @@ class BusinessUser::PagesController < ApplicationController
     end
     
   end
-  def imageupload
+  def imageupload    
+    obj = ""
     begin
-      image = S3Store.new(params[:upload][:image]).store
+      s3 = Aws::S3::Client.new  
+      #bucket_obj =  s3.bucket('ccbizon').object("userfiles/"+params['imageFileField'].original_filename).upload_file(params['imageFileField'].tempfile.path)
+      File.open(params['imageFileField'].tempfile.path, 'rb') do |file|
+        s3.put_object(bucket:'ccbizon', key:'userfiles/'+params['imageFileField'].original_filename,body:file)
+        s3.put_object_acl(bucket: 'ccbizon', key: 'userfiles/'+params['imageFileField'].original_filename, acl: 'public-read')
+        obj = Aws::S3::Object.new(key: 'userfiles/'+params['imageFileField'].original_filename,
+            bucket_name: 'ccbizon',
+            client: s3
+          ).public_url
+
+        
+
+        puts "{#{obj}}"
+
+      end
       #...
     rescue Exception => e
       #...
-    end
-    binding.pry
+      
+      obj = "0"
+    end    
+    render :json => obj.to_json
   end
   private  
   def get_shop

@@ -25,3 +25,9 @@ CarrierWave::FilesUploader.configure do |config|
   # Optional: Signing of download urls, e.g. for serving private content through CloudFront.
   #config.aws_signer = -> (unsigned_url, options) { Aws::CF::Signer.sign_url unsigned_url, options }
 end
+require 'aws-sdk'
+
+Aws.config.update({
+  region: 'us-east-1',    
+  credentials: Aws::Credentials.new('AKIAI4RHXJBH5FMS7TGQ', 'gCDgZy/NdGolKZYH9IS1/odHQlCsCetJhIfqcHWi')
+})
