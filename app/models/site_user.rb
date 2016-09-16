@@ -2,6 +2,7 @@ class SiteUser < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   #attr_accessible :fields_attributes
+  cattr_accessor :current_shop
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :shop
@@ -17,6 +18,13 @@ class SiteUser < ActiveRecord::Base
   def email_changed?
 	  false
   end
+
+  def self.find_for_database_authentication(warden_conditions)    
+    
+    conditions = warden_conditions.dup
+    where(conditions.to_hash).where(["shop_id="+current_shop.id.to_s]).first
+  end
+
   def validate_properties
     shop.fields.each do |field|
       if field.required? && properties[field.name].blank?

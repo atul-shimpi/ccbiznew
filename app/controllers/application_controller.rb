@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   layout :layout_by_resource
   before_action :get_shop
-
+  before_filter :set_current_account
   def after_sign_in_path_for(resource)
    
     if business_user_signed_in?
@@ -52,5 +52,8 @@ protected
       @shop = Shop.find_by_subdomain(subdomain) 
     end
   end
-  
+  def set_current_account
+    #  set @current_account from session data here
+    SiteUser.current_shop = @shop
+  end
 end
