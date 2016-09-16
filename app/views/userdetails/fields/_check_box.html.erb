@@ -1,5 +1,7 @@
 <div class="form-group">
-  <%= f.check_box field.name %>	
-  <%= current_site_user.properties["#{field.name}"] %>
+  
+  <% if current_site_user.properties["#{field.name}"] == "1" %>
+  	<%= f.label field.name %>
+  <% end %>
 
 </div>

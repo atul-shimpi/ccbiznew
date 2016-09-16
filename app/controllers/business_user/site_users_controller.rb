@@ -45,7 +45,7 @@ class BusinessUser::SiteUsersController < ApplicationController
     end
   end
 
-  def update
+  def update    
     @siteuser = SiteUser.find(params[:id])    
     respond_to do |format|
       if @siteuser.update_attributes(siteuser_params)
