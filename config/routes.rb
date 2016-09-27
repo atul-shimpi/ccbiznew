@@ -99,6 +99,9 @@ Rails.application.routes.draw do
   get 'robots.txt' => "home#robots", :format => "txt", :as => :robots
 
   get 'page/:id/:pagename' => "home#pageshow"
+
+  get 'create' => "home#create"
+  get 'edit_project' => "home#edit_project"
   
    
   match '/', to: 'home#index', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
