@@ -77,6 +77,10 @@
 	font-size: 24px;
 }
 
+p.desc {
+	color: #777;
+}
+
 .delete-site {
 	color: #2f2f2f;
 	padding: 20px 0 0;
@@ -122,7 +126,7 @@
   width: auto;
 	padding: 7px 20px;
 	margin-top: 25px;
-	margin-bottom: 15px;
+	margin-bottom: 25px;
 }
 
 footer {

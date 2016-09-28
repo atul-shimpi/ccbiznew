@@ -102,6 +102,7 @@ Rails.application.routes.draw do
 
   get 'create' => "home#create"
   get 'edit_project' => "home#edit_project"
+  get 'activate_project' => "home#activate_project"
   
    
   match '/', to: 'home#index', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
