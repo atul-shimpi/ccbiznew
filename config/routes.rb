@@ -107,6 +107,10 @@ Rails.application.routes.draw do
   get 'robots.txt' => "home#robots", :format => "txt", :as => :robots
   
   get 'page/:id/:pagename' => "home#pageshow"
+
+  get 'create' => "home#create"
+  get 'edit_project' => "home#edit_project"
+  get 'activate_project' => "home#activate_project"
   
   #Routes for sites users
   get '/user/updatepayment' => "home#updatepayment"

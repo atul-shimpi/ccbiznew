@@ -37,6 +37,10 @@ Rails.application.config.assets.version = '1.0'
   Rails.application.config.assets.precompile += %w( carousel.css)#, bootstrap-theme.min.css,  )
   Rails.application.config.assets.precompile += %w( bootstrap.min.js)#, bootstrap-theme.min.css,  )
   Rails.application.config.assets.precompile += %w( tinymce/plugins/uploadimage/plugin.js tinymce/plugins/uploadimage/langs/en.js )
+  Rails.application.config.assets.precompile += %w( create.css)#, bootstrap-theme.min.css,  )
+  Rails.application.config.assets.precompile += %w( edit_project.css)#, bootstrap-theme.min.css,  )
+  Rails.application.config.assets.precompile += %w( activate_project.css)#, bootstrap-theme.min.css,  )
+
 
   Rails.application.config.assets.precompile += %w(htmlbuilder/flat-ui-pro.css)
   Rails.application.config.assets.precompile += %w(htmlbuilder/style.css)
