@@ -25,7 +25,10 @@ Rails.application.routes.draw do
     resources :players       
     resources :site_users       
     resources :files
-    resources :pages       
+    resources :pages
+    resources :subscriptions
+    resources :payments
+    resources :receipts       
     
   end
   namespace :admin do 
@@ -39,7 +42,8 @@ Rails.application.routes.draw do
     resources :business_users
     resources :users
   end
-
+  
+  
   post '/tinymce_assets' => 'tinymce_assets#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -51,10 +55,12 @@ Rails.application.routes.draw do
   get '/files/download/:id' => "files#download"
   get '/business_user/files/approve/:id' => "business_user/files#approve"
   get '/business_user/site_users/properties/:id' => "business_user/site_users#properties"
+  get '/business_user/site_users/subscription/:id' => "business_user/site_users#subscriptionlist"
 
   get '/business_user/templatelist' => "business_user/business_users#templatelist"
 
   get '/business_user/pages/design/:shop_id/:page_id' => "business_user/pages#design"
+
   
 
   post '/business_user/pages/designupdate' => "business_user/pages#designupdate"
@@ -63,6 +69,8 @@ Rails.application.routes.draw do
   post '/business_user/cropimage' => "business_user/shop_images#crop"  
   post '/business_user/teamplayers/:id' => "business_user/players#teamupdate"  
   get '/business_user/players/:id/playeredit' => "business_user/players#playeredit"  
+  get '/business_user/pages/design/:shop_id/:page_id' => "business_user/pages#design"
+  get '/payment_reciept/:payment_id/:public_token' => "business_user/receipts#public_show"
 
   # You can have the root of your site routed with "root"  
   get 'aboutus' => "home#about_us"
@@ -97,9 +105,12 @@ Rails.application.routes.draw do
   get 'player/:id' => "home#player"
   get 'sitemap.xml' => "home#sitemap", :format => "xml", :as => :sitemap
   get 'robots.txt' => "home#robots", :format => "txt", :as => :robots
-
+  
   get 'page/:id/:pagename' => "home#pageshow"
   
+  #Routes for sites users
+  get '/user/updatepayment' => "home#updatepayment"
+  post '/user/paymentupdate' => "payments#create"
    
   match '/', to: 'home#index', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
   root 'home#index'

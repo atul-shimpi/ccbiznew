@@ -29,6 +29,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
 gem 'devise'
 gem 'carrierwave'
 gem 'carrierwave-crop'
@@ -59,7 +60,8 @@ gem 'memcached_store'
 #sendgrid integration
 gem 'sendgrid'
 gem 'bootstrap_colorpicker_rails'
-
+gem "wicked_pdf"
+gem 'wkhtmltopdf-binary'
 group :production do
   gem 'rails_12factor'
 end

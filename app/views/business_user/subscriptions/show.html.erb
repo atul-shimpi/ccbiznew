@@ -1,0 +1,56 @@
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Users</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <!-- /.row -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= link_to "Create a New User", new_business_user_site_user_path, :class => 'btn btn-primary' %>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+          <div class="dataTable_wrapper">
+            <h1> Subscription details </h1>
+            <div id="subscription-details">
+              <p>
+                <b>Name:</b> <%= @subscription.name %>
+              </p>
+
+              <p>
+                <b>Price:</b> <%= number_to_currency @subscription.price %>
+              </p>
+
+              <p>
+                <b>Description:</b> <%= @subscription.description %>
+              </p>
+            </div>
+
+            <% if @subscription.customers.present? %>
+              <h2> Subscribers </h2>
+              <ul id="subscribers">
+                <% @subscription.customers.each do |subscriber| %>
+                  <li>
+                    <%= link_to subscriber.email , customer_path(subscriber) %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+
+            <%= link_to 'Edit', edit_subscription_path(@subscription) %> |
+            <%= link_to 'Back', subscriptions_path %>
+          </div>
+          <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+      </div>
+      <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+</div>
+<!-- /#page-wrapper -->

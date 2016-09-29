@@ -31,6 +31,14 @@ class BusinessUser::SiteUsersController < ApplicationController
       format.json { render json: @siteuser }
     end
   end
+  def subscriptionlist    
+    @siteuser = SiteUser.find(params[:id])    
+    @subscriptions = current_business_user.subscriptions.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @siteuser }
+    end
+  end
   def create
     @siteuser = SiteUser.new(siteuser_params)
 
@@ -70,7 +78,7 @@ class BusinessUser::SiteUsersController < ApplicationController
 
   private  
   def siteuser_params
-    params.require(:site_user).permit(:email, :shop_id, :password, :password_confirmation).tap do |whitelisted|
+    params.require(:site_user).permit(:email, :shop_id, :password, :password_confirmation, { subscription_ids:[] }).tap do |whitelisted|
       whitelisted[:properties] = params[:site_user][:properties]
     end 
   end

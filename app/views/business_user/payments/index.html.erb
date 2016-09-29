@@ -1,0 +1,62 @@
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Payments</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <!-- /.row -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          
+          
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+          <div class="dataTable_wrapper">           
+
+            <% if @payments.present? %>
+
+              <table id="latest-payments" class="table table-striped">
+                <thead>
+                  <tr>
+                    <th> User Email </th>
+                    <th> Amount</th>
+                    <th> Created at</th>
+                    <th> </th>
+                  </tr>
+
+                  <tbody>
+                    <% @payments.each do |payment| %>        
+                      <tr id="payment-<%= payment.id %>">
+                        <td class="customer-email"><%= payment.site_user.email %></td>
+                        <td class="amount"><%= number_to_currency(payment.amount, unit: "Rs ") %></td>
+                        <td class="created_at"><%= distance_of_time_in_words_to_now(payment.created_at) %></td>
+                        <td class="view_receipt"><%= link_to "View Receipt", business_user_receipt_path(payment, :format => 'pdf') %></td>
+                      </tr>
+                    <% end %>  
+                  </tbody>
+                </thead>
+
+              </table>
+            <% end %>
+
+            
+          </div>
+          <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+      </div>
+      <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+</div>
+<!-- /#page-wrapper -->
+
+
+
+
+

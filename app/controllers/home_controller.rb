@@ -228,6 +228,8 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
 		@userfiles = current_site_user.userfiles.all    
+		@payments = Payment.where("site_user_id":current_site_user.id)
+		
     	render :template => "templates/files", :layout => "#{@shop.template}"		
 	end
 	#Dyanamic Pages
@@ -247,7 +249,16 @@ class HomeController < ApplicationController
 	def contact_params
 	    params.require(:contact).permit(:contactname, :contactemail, :contactnumber, :contactinfo, :shoprating, :shop_id)
 	end
-
+	def updatepayment
+		subdomain = request.subdomain.split(".").last
+		if subdomain.blank? || subdomain =='www'			
+			@shop = Shop.find_by_domain(request.host)	
+		else
+			@shop = Shop.find_by_subdomain(subdomain)	
+		end		
+		@payment = current_site_user.payments.new
+    	render :template => "Site_User/paymentupdate", :layout => "#{@shop.template}"		
+	end
 
 	def sports_1
 		render :layout => false
