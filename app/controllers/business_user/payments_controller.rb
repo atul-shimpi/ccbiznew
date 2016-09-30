@@ -3,7 +3,15 @@ class BusinessUser::PaymentsController < ApplicationController
   
 
   def index
-    @payments = Payment.all
+  	@shops_ids = current_business_user.shops.all.map{ |shop|
+      [shop.id]
+    }    
+    @shop_usersids = SiteUser.where(shop_id:@shops_ids).all.map{ |siteuser|
+      [siteuser.id]
+    } 
+
+  	@payments = Payment.where("site_user_id":@shop_usersids)
+    
   end 
 
 end
