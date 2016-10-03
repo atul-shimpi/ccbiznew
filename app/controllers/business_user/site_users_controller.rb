@@ -68,7 +68,11 @@ class BusinessUser::SiteUsersController < ApplicationController
 
   def destroy
     @siteuser = SiteUser.find(params[:id])
-    @siteuser.destroy
+    payment = Payment.where("site_user_id":params[:id])
+    
+    @siteuser.payments.delete(payment)
+
+    @siteuser.destroy 
 
     respond_to do |format|
       format.html { redirect_to business_user_site_users_path }

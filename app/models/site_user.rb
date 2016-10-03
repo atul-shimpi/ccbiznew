@@ -7,10 +7,10 @@ class SiteUser < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :shop
   has_many :userfiles, :dependent => :destroy
-  has_and_belongs_to_many :subscriptions
+  has_and_belongs_to_many :subscriptions, :dependent => :delete_all
 
   belongs_to :subscription  
-  has_many :payments, :through => :subscription 
+  has_many :payments, :dependent => :delete_all
 
   validates :email, presence: true
   validates :email, uniqueness: { scope: [:shop_id], message: "This user is already registered" }
