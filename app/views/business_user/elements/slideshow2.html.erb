@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Slide Show</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/elements/css/build.css" rel="stylesheet">
+	
+	
+
+	<link href="/elements/css/css.css" rel="stylesheet" type="text/css">
+  <link href="/elements/css/font-awesome.css" rel="stylesheet">
+  <link href="/elements/css/bootstrap.css" rel="stylesheet">
+  <link href="/elements/css/flexslider.css" rel="stylesheet">
+  <link href="/elements/css/reset.css" rel="stylesheet">
+  <link href="/elements/css/banner-style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/elements/images/favicon.ico">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="bodyPaddingLess">
+    
+    <div id="page" class="page">
+    	<section class="tm-banner">
+			<!-- Flexslider -->
+			<div class="flexslider flexslider-banner">
+			  <ul class="slides">
+			    <li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;" class="">
+				    <div class="tm-banner-inner editContent">
+						<h1 class="tm-banner-title">Feel <span class="tm-yellow-text">At Home</span> Away</h1>
+						<!--<p class="tm-banner-subtitle">From Your Home</p>-->
+						<a href="http://www.tsapartments.com/services.php" class="tm-banner-link">Learn More</a>	
+					</div>
+					<img src="/elements/images/autumn-507555.jpg" alt="Image" draggable="false">	
+			    </li>
+			    <li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;" class="">
+				    <div class="tm-banner-inner editContent">
+						<h1 class="tm-banner-title">Clean, <span class="tm-yellow-text">Spacious,</span> Furnished</h1>
+						<p class="tm-banner-subtitle">Apartment Rooms</p>
+						<a href="http://www.tsapartments.com/services.php" class="tm-banner-link">Learn More</a>	
+					</div>
+			      <img src="/elements/images/iphone-518101_1920.jpg" alt="Image" draggable="false">
+			    </li>
+			    <li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;" class="flex-active-slide">
+				    <div class="tm-banner-inner editContent">
+						<h1 class="tm-banner-title">Luxurious <span class="tm-yellow-text">Living</span> At</h1>
+						<p class="tm-banner-subtitle">Affordable Price</p>
+						<a href="http://www.tsapartments.com/services.php" class="tm-banner-link">Learn More</a>	
+					</div>
+			      <img src="/elements/images/nikon-515883_1920.jpg" alt="Image" draggable="false">
+			    </li>
+			  </ul>
+			<ul class="flex-direction-nav"><li class="flex-nav-prev"><a class="flex-prev" href="#">Previous</a></li><li class="flex-nav-next"><a class="flex-next" href="#">Next</a></li></ul></div>	
+		</section>
+    	
+    
+    </div><!-- /#page -->
+
+
+    <!-- Load JS here for greater of flexslider good =============================-->    
+    <script src="/elements/js/jquery.js"></script>	
+	<script>
+		
+		$(window).load(function() {	  		
+			//	For images only
+	    $('.flexslider').flexslider({
+		    controlNav: false
+	    });
+  	});
+	</script>	
+</body>
+</html>

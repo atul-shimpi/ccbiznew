@@ -1,0 +1,17 @@
+/* CSS Resets */ 
+ul,p {
+	margin: 0; 
+	padding: 0;
+}
+h1,h2,h3 {
+	margin: 0;
+	padding: 0;
+}
+h1,h2,h3,a,p { font-family: 'Open Sans', sans-serif; }
+a:hover,
+a:focus {
+	text-decoration: none;
+}
+
+/* Header & Nav */
+body { overflow-x: hidden; }

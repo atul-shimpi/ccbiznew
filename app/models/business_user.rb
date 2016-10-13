@@ -5,6 +5,7 @@ class BusinessUser < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 # Setup accessible (or protected) attributes for your model
    has_many :shops
+   has_many :subscriptions
    mount_uploader :avatar, AvatarUploader
 
   def full_name

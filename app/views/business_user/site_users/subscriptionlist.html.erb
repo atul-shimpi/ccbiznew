@@ -1,0 +1,42 @@
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Users Details</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <!-- /.row -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">        
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+          <div class="panel-body col-lg-6">
+            <div class="row">
+              <div class="col-lg-12">
+                <%= form_for @siteuser, url: business_shop_site_users_action(@siteuser, params[:action]),:html => { :class => '' , multipart: true  } do |f| %>
+                  <div class="field">
+                    <% for role in @subscriptions %>
+                        <div>
+                            <%= check_box_tag "site_user[subscription_ids][]", role.id, @siteuser.subscriptions.include?(role) %>
+                            <%= role.name %>
+                        </div>
+                    <% end %>
+                </div>
+
+
+                  <div><%= f.submit nil, :class => 'btn btn-primary' %></div>
+                <% end %>
+              </div>
+            </div>
+          </div>          
+          <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+      </div>
+      <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+</div>
+<!-- /#page-wrapper -->

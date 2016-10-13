@@ -1,0 +1,20 @@
+<div class="form-group">
+  <%= f.label field.name %> <br>
+  <%= f.text_field field.name, :class => 'text_field date form-control', :id => "#{field.id}-date-display" %>
+  <a href="#" class="btn small calendar" id="event-<%=field.id%>-date" data-date-format="yyyy-mm-dd" data-date=""></a>
+</div>
+<script type="text/javascript">
+jQuery( document ).ready(function( $ ) {
+	$('#event-<%= field.id%>-date')
+	    .datepicker()
+	    .on('changeDate', function(ev){	        
+	            
+	            endDate = new Date(ev.date);
+	            $('#<%= field.id%>-date-display').val($('#event-<%= field.id%>-date').data('date'));
+	        
+	        $('#event-<%= field.id%>-date').datepicker('hide');
+	    });
+});
+</script>
+ 
+      

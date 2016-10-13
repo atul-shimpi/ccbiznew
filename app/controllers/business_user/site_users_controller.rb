@@ -23,7 +23,22 @@ class BusinessUser::SiteUsersController < ApplicationController
   def edit
     @siteuser = SiteUser.find(params[:id])
   end
+  def properties
 
+    @siteuser = SiteUser.find(params[:id])    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @siteuser }
+    end
+  end
+  def subscriptionlist    
+    @siteuser = SiteUser.find(params[:id])    
+    @subscriptions = current_business_user.subscriptions.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @siteuser }
+    end
+  end
   def create
     @siteuser = SiteUser.new(siteuser_params)
 
@@ -38,9 +53,8 @@ class BusinessUser::SiteUsersController < ApplicationController
     end
   end
 
-  def update
-    @siteuser = SiteUser.find(params[:id])
-
+  def update    
+    @siteuser = SiteUser.find(params[:id])    
     respond_to do |format|
       if @siteuser.update_attributes(siteuser_params)
         format.html { redirect_to business_user_site_users_path, notice: 'Business website was successfully updated.' }
@@ -54,7 +68,11 @@ class BusinessUser::SiteUsersController < ApplicationController
 
   def destroy
     @siteuser = SiteUser.find(params[:id])
-    @siteuser.destroy
+    payment = Payment.where("site_user_id":params[:id])
+    
+    @siteuser.payments.delete(payment)
+
+    @siteuser.destroy 
 
     respond_to do |format|
       format.html { redirect_to business_user_site_users_path }
@@ -64,7 +82,9 @@ class BusinessUser::SiteUsersController < ApplicationController
 
   private  
   def siteuser_params
-    params.require(:site_user).permit(:email, :shop_id, :password, :password_confirmation)
+    params.require(:site_user).permit(:email, :shop_id, :password, :password_confirmation, { subscription_ids:[] }).tap do |whitelisted|
+      whitelisted[:properties] = params[:site_user][:properties]
+    end 
   end
   
 end

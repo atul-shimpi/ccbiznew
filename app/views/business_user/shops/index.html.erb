@@ -43,7 +43,8 @@
                   <td>
 
                <a href="<%= business_user_pages_path(:shop_id => shop) %>" class="btn btn-primary btn-mini">Pages</a>
-          
+                  <%= link_to "User Properties",
+                    business_user_shopuserfields_path(:shop_id => shop), :class => 'btn btn-primary btn-mini' %>
                   <%= link_to "Add Images",
                     business_user_shop_images_path(:shop_id => shop), :class => 'btn btn-primary btn-mini' %>
                     <%= link_to "Edit",

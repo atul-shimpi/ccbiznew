@@ -1,4 +1,5 @@
 module ApplicationHelper
+  require 'GalleryPresenter'
 	def nav_path_for_shop
 	if business_user_signed_in?
   	   business_user_shops_path
@@ -26,7 +27,7 @@ module ApplicationHelper
     end
   end
   def nav_path_for_profile
-    if business_user_signed_in?
+    if business_user_signed_in?      
       business_user_business_user_path(current_business_user)
     elsif admin_signed_in?
       
@@ -86,10 +87,37 @@ module ApplicationHelper
       
       
       @menu += "<li>"+@url+@submenuelement+"</li>"
-      binding.pry
+      
       @url = ""
     end
     @menu += "</ul>";
     return @menu.html_safe
+  end
+  def link_to_add_fields(name, f, association)
+    new_object = f.object.send(association).klass.new
+    id = new_object.object_id
+    fields = f.fields_for(association, new_object, child_index: id) do |builder|
+      render(association.to_s.singularize+"_fields", f: builder)
+    end 
+    link_to(name, '#', class: "add_fields", data: {id:id, fields: fields.gsub("\n", "")})
+  end
+  def content(c)
+    Shortcode.register_presenter(MenuPresenter)
+
+    Shortcode.process(c)
+    #parser = Shortcode::Parser.new
+    #transformer = Shortcode::Transformer.new
+    #parsed_hash = parser.parse(c)
+    #render('business_user/elements/menubuilder')
+    #transformer.apply(parsed_hash)
+    
+  end
+
+  def content_html(c)
+    raw content(c)
+  end
+  def run_test(test_name)
+    #computation stuff
+    render :partial => test_name
   end
 end

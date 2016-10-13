@@ -228,6 +228,8 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
 		@userfiles = current_site_user.userfiles.all    
+		@payments = Payment.where("site_user_id":current_site_user.id)
+		
     	render :template => "templates/files", :layout => "#{@shop.template}"		
 	end
 	#Dyanamic Pages
@@ -239,14 +241,31 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
 		@seodetails = @shop.seodetails.where("id = ?",params[:id]) rescue nil
-				
-		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
-		render :template => "templates/pageshow", :layout => "#{@shop.template}"
+		if !@seodetails[0].htmldata.nil? and !@seodetails[0].htmldata.blank?
+			if !@seodetails[0].htmldata["pages"].nil? and !@seodetails[0].htmldata["pages"].blank?
+				@page_blocks = JSON.parse(@seodetails[0].htmldata)["pages"]["index"]["blocks"]		
+				# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
+				render :template => "templates/pageshow", :layout => "page"
+			else
+				render :template => "templates/about_us", :layout => "#{@shop.template}"
+			end
+		else
+			render :template => "templates/about_us", :layout => "#{@shop.template}"
+		end		
 	end
 	def contact_params
 	    params.require(:contact).permit(:contactname, :contactemail, :contactnumber, :contactinfo, :shoprating, :shop_id)
 	end
-
+	def updatepayment
+		subdomain = request.subdomain.split(".").last
+		if subdomain.blank? || subdomain =='www'			
+			@shop = Shop.find_by_domain(request.host)	
+		else
+			@shop = Shop.find_by_subdomain(subdomain)	
+		end		
+		@payment = current_site_user.payments.new
+    	render :template => "Site_User/paymentupdate", :layout => "#{@shop.template}"		
+	end
 
 	def sports_1
 		render :layout => false

@@ -1,0 +1,9 @@
+<div class="form-group">
+  
+  <% if current_site_user.properties["#{field.name}"] == "1" %>
+  	<%= f.label field.name %> Yes
+  <% else %>
+  	<%= f.label field.name %> No	
+  <% end %>
+
+</div>

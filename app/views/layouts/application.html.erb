@@ -90,6 +90,15 @@
 						<a href="<%= nav_path_for_siteuser %>">Users</a>
 					</li>
 					
+					<% if business_user_signed_in? %>
+					<li>
+						<a href="<%= business_user_subscriptions_path %>">Subscriptions</a>
+					</li>
+					<li>
+						<a href="<%= business_user_payments_path %>">Payments</a>
+					</li>
+					<% end %>
+					
 					<% if admin_signed_in? %>
 					<li>
 						<a href="<%= nav_path_for_single_shop %>">Single Business website</a>

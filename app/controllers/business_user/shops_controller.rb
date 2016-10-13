@@ -76,7 +76,9 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
   end
 
   def update
+    
     @shop = current_business_user.shops.find(params[:id])         
+    
     if params[:shop][:shoptype] == "1" && @shop.storeid.nil?
       
       if current_business_user.storeuserid.nil? || current_business_user.storeuserid == 0
@@ -107,7 +109,8 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
         end  
       end
     else
-      respond_to do |format|      
+      respond_to do |format|     
+      
         if @shop.update_attributes(shop_params)
           if params[:removebg]                    
             @shop.remove_backgroundimage!
@@ -144,8 +147,8 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
 
   private
 
-  def shop_params
-    params.require(:shop).permit(:name, :phone, :address, :info, :homecontent, :user_id, :avatar,:backgroundimage, :removebg, :category_id, :template, :subdomain, :domain, :city, :state, :country, :zip, :facebook, :linkedin, :google, :twitter, :shoptype, :latitude, :longitude, :backgroundimage_cache, :addressname, :buildingname, :blockno, :gallerytype, :loginenabled, :headerbg, :footerbg)
+  def shop_params    
+    params.require(:shop).permit(:name, :phone, :address, :info, :homecontent, :user_id, :avatar,:backgroundimage, :removebg, :category_id, :template, :subdomain, :domain, :city, :state, :country, :zip, :facebook, :linkedin, :google, :twitter, :shoptype, :latitude, :longitude, :backgroundimage_cache, :addressname, :buildingname, :blockno, :gallerytype, :loginenabled, :headerbg, :footerbg , fields_attributes:[:field_type, :name, :required, :_destroy, :shop_id, :id])
   end
 
   def user_creation_process

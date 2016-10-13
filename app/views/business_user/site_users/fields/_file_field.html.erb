@@ -1,0 +1,18 @@
+<div class="form-group">    
+    
+<div id="imageUploadForm" action="/business_user/pages/imageupload">
+                    
+    <label>Upload image: (<%= field.name%>)</label>
+
+    <div class="form-group">
+        <div class="fileinput fileinput-new" data-provides="fileinput">            
+            <div>                
+                <%= f.hidden_field field.name %>
+                <input type="file" name="hidden_<%= field.name%>" id="hidden_<%= field.name%>">
+                <a href="#" id="uploadfilenow" class="btn btn-primary btn-sm btn-embossed fileinput-exists" data-dismiss="fileinput"><span class="fui-trash"></span>&nbsp;&nbsp;Upload</a>
+            </div>
+        </div>
+    </div>
+                    
+</div>
+</div>

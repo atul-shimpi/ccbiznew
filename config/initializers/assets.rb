@@ -37,6 +37,28 @@ Rails.application.config.assets.version = '1.0'
   Rails.application.config.assets.precompile += %w( carousel.css)#, bootstrap-theme.min.css,  )
   Rails.application.config.assets.precompile += %w( bootstrap.min.js)#, bootstrap-theme.min.css,  )
   Rails.application.config.assets.precompile += %w( tinymce/plugins/uploadimage/plugin.js tinymce/plugins/uploadimage/langs/en.js )
+  Rails.application.config.assets.precompile += %w( create.css)#, bootstrap-theme.min.css,  )
+  Rails.application.config.assets.precompile += %w( edit_project.css)#, bootstrap-theme.min.css,  )
+  Rails.application.config.assets.precompile += %w( activate_project.css)#, bootstrap-theme.min.css,  )
+
+
+  Rails.application.config.assets.precompile += %w(htmlbuilder/flat-ui-pro.css)
+  Rails.application.config.assets.precompile += %w(htmlbuilder/style.css)
+  Rails.application.config.assets.precompile += %w(htmlbuilder/builder.css)
+  Rails.application.config.assets.precompile += %w(htmlbuilder/spectrum.css)
+  Rails.application.config.assets.precompile += %w(htmlbuilder/chosen.css)
+  Rails.application.config.assets.precompile += %w(htmlbuilder/builder.js)
+  Rails.application.config.assets.precompile += %w(htmlbuilder/builder1.js)
+
+  Rails.application.config.assets.precompile += %w(htmlbuilder/jquery.min.js)
+  Rails.application.config.assets.precompile += %w(htmlbuilder/jquery-ui.min.js)
+
+  Rails.application.config.assets.precompile += %w(htmlbuilder/flat-ui-pro.min.js)
+  Rails.application.config.assets.precompile += %w(htmlbuilder/chosen.min.js)
+  Rails.application.config.assets.precompile += %w(htmlbuilder/jquery.zoomer.js)
+  Rails.application.config.assets.precompile += %w(htmlbuilder/spectrum.js)
+  Rails.application.config.assets.precompile += %w(htmlbuilder/ace/ace.js)
+
 end
 # Rails.application.config.assets.precompile += %w( application.scss )
 

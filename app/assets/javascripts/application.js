@@ -38,5 +38,6 @@
 //= require jquery.jcrop
 //= require main
 //= require bootstrap-colorpicker
-//= require_tree .
+//= require business_user/shopuserfields
+
        

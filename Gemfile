@@ -29,10 +29,12 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
 gem 'devise'
 gem 'carrierwave'
 gem 'carrierwave-crop'
 gem 'carrierwave-aws'
+gem 'aws-sdk', '~> 2'
 
 gem 'rmagick', '~> 2.15', '>= 2.15.2'
 #gem 'jcrop-rails-v2'
@@ -44,6 +46,7 @@ gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 gem 'ratyrate'
 gem "impressionist"
 gem 'memcached_store'
+gem 'shortcode'
 # gem 'subdomain-fu', :git => "git://github.com/mbleigh/subdomain-fu.git"
 # gem 'sass-rails', '~> 5.0'
 
@@ -58,6 +61,8 @@ gem 'memcached_store'
 #sendgrid integration
 gem 'sendgrid'
 gem 'bootstrap_colorpicker_rails'
+gem "wicked_pdf"
+gem 'wkhtmltopdf-binary'
 group :production do
   gem 'rails_12factor'
 end

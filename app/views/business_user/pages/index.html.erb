@@ -34,6 +34,8 @@
                   <td><%= seo.pagealias %></td>                  
                   <td>
                     <%= link_to "Edit", {:controller => "pages", :action => "edit", :id => seo.id, :shop_id => seo.shop_id} , :class => 'btn btn-primary btn-mini'%>
+                    <%= link_to "Clone Page", "/business_user/pages/clone/#{seo.shop_id}/#{seo.id}" , :class => 'btn btn-primary btn-mini'%>
+                    <%= link_to "Page Builder", "/business_user/pages/design/#{seo.shop_id}/#{seo.id}" , :class => 'btn btn-primary btn-mini'%>
 
                     <%= link_to "Delete",
                     {:controller => "pages", :action => "destroy",:id => seo.id, :shop_id => seo.shop_id},
