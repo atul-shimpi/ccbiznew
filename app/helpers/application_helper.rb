@@ -1,5 +1,5 @@
 module ApplicationHelper
-  require 'MenuPresenter'
+  require 'GalleryPresenter'
 	def nav_path_for_shop
 	if business_user_signed_in?
   	   business_user_shops_path
@@ -102,7 +102,7 @@ module ApplicationHelper
     link_to(name, '#', class: "add_fields", data: {id:id, fields: fields.gsub("\n", "")})
   end
   def content(c)
-    Shortcode.register_presenter(MenuPresenter)
+    Shortcode.register_presenter(GalleryPresenter)
 
     Shortcode.process(c)
     #parser = Shortcode::Parser.new

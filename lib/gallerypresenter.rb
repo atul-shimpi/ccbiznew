@@ -1,4 +1,4 @@
-class MenuPresenter  
+class GalleryPresenter  
   
   def self.for
     :menu
