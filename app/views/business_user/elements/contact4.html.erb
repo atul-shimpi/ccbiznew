@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Slide Show</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/elements/css/build.css" rel="stylesheet">
+    <link href="/elements/css/bootstrap.css" rel="stylesheet">
+    <link href="/elements/css/reset.css" rel="stylesheet">
+    <link href="/elements/css/contact-form.css" rel="stylesheet">
+    
+    <link rel="shortcut icon" href="/elements/images/favicon.ico">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="bodyPaddingLess">
+    
+    <div id="page" class="page">    
+        <!-- Header -->
+        <!-- gray bg -->    
+    <!-- gray bg -->    
+   <section class="section-padding-bottom">
+        <div class="container">
+            <div class="row">
+                <!-- contact form -->
+                <form action="http://www.tsapartments.com/sent_email.php" method="post" class="tm-contact-form ng-pristine ng-valid">
+                    <div class="col-lg-6 col-md-6">
+                        <div id="google-map"></div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 tm-contact-form-input">
+                        <div class="form-group">
+                            <input type="text" id="contact_name" name="name" class="form-control" placeholder="NAME">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="contact_email" name="email" class="form-control" placeholder="EMAIL">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="contact_subject" name="subject" class="form-control" placeholder="SUBJECT">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="contact_message" name="message" class="form-control" rows="6" placeholder="MESSAGE"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="tm-submit-btn" type="submit" name="submit">Submit now</button> 
+                        </div>               
+                    </div>
+                </form>
+            </div>          
+        </div>
+    </section>
+    </div>
+
+
+    <!-- Load JS here for greater contactform good =============================-->
+    <script type="text/javascript" charset="UTF-8" src="/elements/js/common.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/elements/js/map.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/elements/js/util.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/elements/js/onion.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/elements/js/stats.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/elements/js/controls.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/elements/js/marker.js"></script>
+    <script>
+        /* Google map
+        ------------------------------------------------*/
+        var map = '';
+        var center;
+
+        function initialize() {
+            var mapOptions = {
+                zoom: 14,
+                center: new google.maps.LatLng(18.583742, 73.782050),
+                scrollwheel: false
+            };
+        
+            map = new google.maps.Map(document.getElementById('google-map'),  mapOptions);
+
+            google.maps.event.addDomListener(map, 'idle', function() {
+              calculateCenter();
+            });
+        
+            google.maps.event.addDomListener(window, 'resize', function() {
+              map.setCenter(center);
+            });
+        }
+
+        function calculateCenter() {
+            center = map.getCenter();
+        }
+
+        function loadGoogleMap(){
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' + 'callback=initialize';
+            document.body.appendChild(script);
+        }
+    
+        // DOM is ready
+        $(function() {
+        // Google Map
+        loadGoogleMap();
+      });
+    </script>
+</body>
+</html>

@@ -277,32 +277,39 @@
             Canvas loading on/off
         */
         canvasLoading: function (value) {
+            var canvasobjects = document.getElementsByClassName('frameWrapper');
+            //console.log(canvasobjects)
+            
+                //console.log(canvasobjects[i].querySelectorAll('#canvasOverlay').length); 
+            
+            
+            
+                if ( value === 'on' && document.getElementById('frameWrapper').querySelectorAll('#canvasOverlay').length === 0 ) {
 
-            if ( value === 'on' && document.getElementById('frameWrapper').querySelectorAll('#canvasOverlay').length === 0 ) {
+                    var overlay = document.createElement('DIV');
 
-                var overlay = document.createElement('DIV');
+                    overlay.style.display = 'flex';
+                    $(overlay).hide();
+                    overlay.id = 'canvasOverlay';
 
-                overlay.style.display = 'flex';
-                $(overlay).hide();
-                overlay.id = 'canvasOverlay';
+                    overlay.innerHTML = '<div class="loader"><span>{</span><span>}</span></div>';
 
-                overlay.innerHTML = '<div class="loader"><span>{</span><span>}</span></div>';
+                    document.getElementById('frameWrapper').appendChild(overlay);
 
-                document.getElementById('frameWrapper').appendChild(overlay);
+                    $('#canvasOverlay').fadeIn(500);
 
-                $('#canvasOverlay').fadeIn(500);
+                } else if ( value === 'off' && document.getElementById('frameWrapper').querySelectorAll('#canvasOverlay').length === 1 ) {
 
-            } else if ( value === 'off' && document.getElementById('frameWrapper').querySelectorAll('#canvasOverlay').length === 1 ) {
+                    if ( site.loaded() ) {
 
-                if ( site.loaded() ) {
+                        $('#canvasOverlay').fadeOut(500, function () {
+                            this.remove();
+                        });
 
-                    $('#canvasOverlay').fadeOut(500, function () {
-                        this.remove();
-                    });
+                    }
 
                 }
-
-            }
+            
 
         }
         
@@ -702,7 +709,7 @@
                 }
             
             }
-            
+            console.log("script loaded")  
             console.log(this.scripts);
             
         };
@@ -2228,7 +2235,8 @@
         '.frameCover': [],
         '.editContent': ['content', 'color', 'font-size', 'background-color', 'font-family'],
         'a.btn, button.btn': ['border-radius', 'font-size', 'background-color'],
-        '#pricing_table2 .pricing2 .bottom li': ['content']
+        '#pricing_table2 .pricing2 .bottom li': ['content'],
+        '.navbar' : ['background-color', 'padding-top', 'padding-bottom']
     };
     
     module.exports.editableItemOptions = {

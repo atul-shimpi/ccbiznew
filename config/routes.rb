@@ -60,7 +60,7 @@ Rails.application.routes.draw do
   get '/business_user/templatelist' => "business_user/business_users#templatelist"
 
   get '/business_user/pages/design/:shop_id/:page_id' => "business_user/pages#design"
-
+  get '/business_user/pages/clone/:shop_id/:page_id' => "business_user/pages#clone"
   
 
   post '/business_user/pages/designupdate' => "business_user/pages#designupdate"
@@ -119,6 +119,12 @@ Rails.application.routes.draw do
   match '/', to: 'home#index', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
   root 'home#index'
   
+  ### Routes for HTML Builder Elements (Please add block routes here only)###
+
+  get "/business_user/elements/:page" => "business_user/elements#show"
+  
+  ### Routes for HTML Builder Elements (END) ###
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

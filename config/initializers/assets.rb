@@ -48,6 +48,7 @@ Rails.application.config.assets.version = '1.0'
   Rails.application.config.assets.precompile += %w(htmlbuilder/spectrum.css)
   Rails.application.config.assets.precompile += %w(htmlbuilder/chosen.css)
   Rails.application.config.assets.precompile += %w(htmlbuilder/builder.js)
+  Rails.application.config.assets.precompile += %w(htmlbuilder/builder1.js)
 
   Rails.application.config.assets.precompile += %w(htmlbuilder/jquery.min.js)
   Rails.application.config.assets.precompile += %w(htmlbuilder/jquery-ui.min.js)

@@ -20,9 +20,14 @@ class BusinessUser::PagesController < ApplicationController
       format.json { render json: @shop_seo }
     end
   end
-  def show
+  def show    
+    
     @shop_seo = Seodetail.find(params[:id])
-    render :json => @shop_seo.htmldata.as_json
+    if !@shop_seo.htmldata.nil?
+      render :json => @shop_seo.htmldata.as_json
+    else
+      render :json => "{}".as_json
+    end
   end
 
   def edit
@@ -50,7 +55,24 @@ class BusinessUser::PagesController < ApplicationController
       end
     end
   end
-
+  def clone
+    @existing_post = Seodetail.find(params[:page_id])
+    #create new object with attributes of existing record 
+    @shop_seo = Seodetail.new(@existing_post.attributes) 
+    @shop_seo.id = ""
+    @shop_seo.pagename = "Copy Of "+@existing_post.pagename
+    @shop_seo.pagealias = "Copy Of "+@existing_post.pagealias
+    respond_to do |format|
+      if @shop_seo.save        
+        format.html { redirect_to business_user_pages_path(:shop_id => @shop.id), notice: 'Page was successfully created.' }
+        format.json { render json: @shop_seo, status: :created, location: @shop_seo }
+      else
+         
+        format.html { redirect_to business_user_pages_path(:shop_id => @shop.id), errors: 'Something went wrong please try again'  }
+        format.json { render json: @shop_seo.errors, status: :unprocessable_entity }
+      end
+    end
+  end
   def update
     
     @shop_seo = Seodetail.find(params[:id])

@@ -1,4 +1,5 @@
 module ApplicationHelper
+  require 'GalleryPresenter'
 	def nav_path_for_shop
 	if business_user_signed_in?
   	   business_user_shops_path
@@ -99,5 +100,24 @@ module ApplicationHelper
       render(association.to_s.singularize+"_fields", f: builder)
     end 
     link_to(name, '#', class: "add_fields", data: {id:id, fields: fields.gsub("\n", "")})
+  end
+  def content(c)
+    Shortcode.register_presenter(MenuPresenter)
+
+    Shortcode.process(c)
+    #parser = Shortcode::Parser.new
+    #transformer = Shortcode::Transformer.new
+    #parsed_hash = parser.parse(c)
+    #render('business_user/elements/menubuilder')
+    #transformer.apply(parsed_hash)
+    
+  end
+
+  def content_html(c)
+    raw content(c)
+  end
+  def run_test(test_name)
+    #computation stuff
+    render :partial => test_name
   end
 end
