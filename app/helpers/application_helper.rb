@@ -1,5 +1,5 @@
 module ApplicationHelper
-  require 'MenuPresenter'
+  #include Presenters::MenuPresenter
 	def nav_path_for_shop
 	if business_user_signed_in?
   	   business_user_shops_path
