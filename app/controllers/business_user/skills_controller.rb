@@ -1,4 +1,4 @@
-class BusinessUser::SkillsController < ApplicationController
+class BusinessUser::SkillsController < BusinessUser::BaseController
   before_action :get_auction
 	def index    
     @skills = @auction.skills.all

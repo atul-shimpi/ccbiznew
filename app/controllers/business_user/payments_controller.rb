@@ -1,4 +1,4 @@
-class BusinessUser::PaymentsController < ApplicationController
+class BusinessUser::PaymentsController < BusinessUser::BaseController
   before_filter :authenticate_business_user!
   
 

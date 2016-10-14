@@ -1,2 +1,2 @@
-class BusinessUser::TeamownersController < ApplicationController
+class BusinessUser::TeamownersController < BusinessUser::BaseController
 end

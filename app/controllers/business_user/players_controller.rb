@@ -1,4 +1,4 @@
-class BusinessUser::PlayersController < ApplicationController
+class BusinessUser::PlayersController < BusinessUser::BaseController
   before_action :get_auction
 	def index    
     @players = @auction.players
