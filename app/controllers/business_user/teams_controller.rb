@@ -1,4 +1,4 @@
-class BusinessUser::TeamsController < ApplicationController
+class BusinessUser::TeamsController < BusinessUser::BaseController
 	before_action :get_auction
 	def new
     @team = Team.new    

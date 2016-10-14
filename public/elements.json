@@ -60,7 +60,7 @@
     	{"url":"/elements/contact1.html","height":691, "thumbnail":"/elements/images/thumbs/contact1.png"},
     	{"url":"/elements/contact2.html","height":477, "thumbnail":"/elements/images/thumbs/contact2.png"},
         {"url":"/business_user/elements/contact3","height":477, "thumbnail":"/elements/images/contact1.png"},
-        {"url":"/business_user/elements/contact4","height":477, "thumbnail":"/elements/images/contact2.png"}
+        {"url":"/business_user/elements/contact4","height":477, "thumbnail":"/elements/images/contact2.png", "sandbox":true}
     ],
     "Footers":[
     	{"url":"/elements/footer1.html","height":294, "thumbnail":"/elements/images/thumbs/footer1.png"},

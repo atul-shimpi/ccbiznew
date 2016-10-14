@@ -1,4 +1,4 @@
-class BusinessUser::AuctionsController < ApplicationController
+class BusinessUser::AuctionsController < BusinessUser::BaseController
 	def index
     @shops_ids = current_business_user.shops.all.map{ |shop|
       [shop.id]

@@ -1,4 +1,4 @@
-class BusinessUser::FilesController < ApplicationController
+class BusinessUser::FilesController < BusinessUser::BaseController
 	before_action :get_site_user
 	def index		
     @userfiles = @site_user.userfiles.all    

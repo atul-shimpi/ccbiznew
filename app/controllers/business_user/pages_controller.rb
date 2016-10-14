@@ -1,4 +1,4 @@
-class BusinessUser::PagesController < ApplicationController
+class BusinessUser::PagesController < BusinessUser::BaseController
   before_action :get_shop, except: [:designupdate, :show, :imageupload]
   protect_from_forgery except: [:designupdate, :imageupload]
 

@@ -1,4 +1,4 @@
-class BusinessUser::SubscriptionsController < ApplicationController
+class BusinessUser::SubscriptionsController < BusinessUser::BaseController
   before_filter :authenticate_business_user!
   # GET /subscriptions
   # GET /subscriptions.json

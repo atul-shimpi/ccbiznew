@@ -1,4 +1,4 @@
-class BusinessUser::ShopuserfieldsController < ApplicationController
+class BusinessUser::ShopuserfieldsController < BusinessUser::BaseController
   before_action :get_shop
 
   def index
