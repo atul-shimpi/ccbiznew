@@ -27,7 +27,8 @@
 	        <div class="container">
 	            <div class="row">
 	                <!-- contact form -->
-	                <form action="/contact_us" method="post" class="tm-contact-form ng-pristine ng-valid">
+	                <form action="/contact_us" method="post" accept-charset="UTF-8" class="tm-contact-form ng-pristine ng-valid">
+	                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 	                    <div class="col-lg-6 col-md-6">
 	                        <div id="google-map"></div>
 	                    </div>
@@ -49,6 +50,7 @@
 	                            <button class="tm-submit-btn" type="submit" name="submit">Submit now</button> 
 	                        </div>               
 	                    </div>
+
 	                </form>
 	            </div>          
 	        </div>

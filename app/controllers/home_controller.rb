@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 	require 'open-uri'
 	impressionist :actions=>[:auction]
-
+	protect_from_forgery except: [:update_contact_us]
 	def  home
 		render :layout => false		
 	end
@@ -61,10 +61,12 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
 		@contact = Contact.new(contact_params)
-
+	
 	    respond_to do |format|
 	      if @contact.save
-	        format.html { redirect_to contact_us_path, notice: 'Contact info was posted successfully.'}
+	      	
+	     
+	        format.html { redirect_to request.env['HTTP_REFERER'], notice: 'Contact info was posted successfully.'}
 	        format.json { render json: @contact, status: :created, location: @contact }
 	      else
 	        format.html { render action: "new" }
