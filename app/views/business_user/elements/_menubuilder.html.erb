@@ -19,14 +19,14 @@
 		if @submenu.present? 
 		@attr = 'class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"'	
 	%>
-	<li class="dropdown <%= active_class(@current_page, category.id) %>">
+	<li class="dropdown ">
 <% else %>
-	<li class="big-bold <%= active_class(@current_page, category.id) %>">
+	<li class="big-bold ">
 <% end %>
 	<% if category.extrapage %>
-		<a <%= "#{@attr}" %> href='/page/<%=category.id%>/<%=category.pagename%>'><span><%=category.pagename%></span></a>
+		<a <%= "#{@attr}" %> class="<%= active_class(additional_attributes[:pageid], category.id) %>" href='/page/<%=category.id%>/<%=category.pagename%>'><span><%=category.pagename%></span></a>
 	<% else %>	            		
-		<a <%= "#{@attr}"%> href='/page/<%=category.id%>/<%=category.pagename%>' ><span><%=category.pagename%></span></a>
+		<a <%= "#{@attr}"%> class="<%= active_class(additional_attributes[:pageid], category.id) %>" href='/page/<%=category.id%>/<%=category.pagename%>' ><span><%=category.pagename%></span></a>
 	<% end %>	            
     
       <% if @submenu.present? %>
@@ -36,11 +36,22 @@
        
       <% end %>
     </li>
+    
 
   <% end %>
 	<% end %>
 	
 	
+
+    <% if @shop.loginenabled %>
+		<li>
+	    <% if !additional_attributes[:current_site_user] %>
+	    <a href="#" data-toggle="modal" data-target="#myModal"><span>Login</span></a>
+	    <% else %>
+	    	<span><%= link_to "#{"Log Out"}".html_safe, destroy_site_user_session_path, :method=>'delete' %></span>
+	    <% end %>
+		</li>
+	<% end %>
 	</ul>
 <!--
 	<ul class="nav navbar-nav">		      	

@@ -103,8 +103,8 @@ module ApplicationHelper
   end
   def content(c)
     Shortcode.register_presenter(MenuPresenter)
-
-    Shortcode.process(c)
+    
+    Shortcode.process(c, { current_site_user: current_site_user, pageid:params[:id] })
     #parser = Shortcode::Parser.new
     #transformer = Shortcode::Transformer.new
     #parsed_hash = parser.parse(c)
@@ -122,11 +122,12 @@ module ApplicationHelper
   end
   def active_class(request, link_path)
     
+    'active' if request == link_path.to_s
 
     #current_page?(link_path) ? "active" : ""
   end
   def is_siteuser
-    binding.pry    
+   # binding.pry    
     return current_site_user
   end
 end
