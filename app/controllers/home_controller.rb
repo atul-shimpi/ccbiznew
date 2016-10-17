@@ -14,18 +14,20 @@ class HomeController < ApplicationController
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
-		@homepage = Seodetail.where('shop_id = ? and ishomepage = ?', @shop.id, 1)		
-		if !@homepage.empty?
-			redirect_to "/page/"+@homepage[0].id.to_s+"/"+@homepage[0].pagename.to_s
-		else
-			@seodetails = @shop.seodetails.where("pagename = 'home'") rescue nil
+
+		@seodetails = @shop.seodetails.where("pagename = 'home'") rescue nil
 			
-			if !@shop.blank?
-	    		render :template => "templates/#{@shop.template}", :layout => "#{@shop.template}"
+		if !@shop.blank?
+			@homepage = Seodetail.where('shop_id = ? and ishomepage = ?', @shop.id, 1)		
+			if !@homepage.empty?
+				redirect_to "/page/"+@homepage[0].id.to_s+"/"+@homepage[0].pagename.to_s
 			else
-				redirect_to home_path
-			end
+				render :template => "templates/#{@shop.template}", :layout => "#{@shop.template}"	
+			end    		
+		else
+			redirect_to home_path
 		end
+		
 	end
 	
 	def about_us
