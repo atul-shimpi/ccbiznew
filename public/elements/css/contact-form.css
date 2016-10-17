@@ -132,3 +132,28 @@
 	padding: 0 10px;
 }
 .tm-social-icon:hover {	color: #E8BA0F; }
+
+@media screen and (max-width: 1199px) {
+	.tm-contact-box-1 {	padding: 30px; }
+	.contact-image { max-width: 450px; }
+	.contact-text {	max-width: 400px; }
+	.slider-title {
+		margin-bottom: 15px; 
+	}
+	.slider-subtitle { 
+		margin-bottom: 20px;	
+	}
+	.slider-description {
+		margin-bottom: 20px;
+		line-height: 1.3;
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.contact-text {
+		margin-left: 0;
+		margin-top: 50px;
+		max-width: 100%;
+	}
+	.tm-contact-form-input { margin-top: 50px; }
+}

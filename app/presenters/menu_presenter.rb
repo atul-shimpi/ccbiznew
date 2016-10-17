@@ -1,5 +1,6 @@
 class MenuPresenter  
-  
+  require 'open-uri'
+
   def self.for
     :menu
   end
@@ -17,11 +18,12 @@ class MenuPresenter
       
     view.class_eval do
       include ApplicationHelper
-
+      include HomeHelper
     end
     
-    @shop = current_shop
-    view.render partial: "business_user/elements/menubuilder", locals: {:shop=>@shop}, :layout => false
+    @shop = current_shop      
+    
+    view.render partial: "business_user/elements/menubuilder", locals: {:shop=>@shop, :additional_attributes => @additional_attributes}, :layout => false
     #renderpartial @content
   end
 
@@ -36,5 +38,7 @@ class MenuPresenter
     
     run_test(partialname)
   end
-  
+  def h
+    ActionController::Base.helpers
+  end
 end
