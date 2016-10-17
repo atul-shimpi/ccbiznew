@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
   before_action :get_shop
   before_filter :set_current_account
+  
   def after_sign_in_path_for(resource)
    
     if business_user_signed_in?

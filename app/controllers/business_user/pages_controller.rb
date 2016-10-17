@@ -36,6 +36,9 @@ class BusinessUser::PagesController < BusinessUser::BaseController
 
   def create
     params[:seodetail][:htmldata] = "{}"    
+    if seodetail_params[:ishomepage] == '1'
+      Seodetail.where('shop_id = ?', @shop.id).update_all(ishomepage: 0)
+    end
     @shop_seo = Seodetail.new(seodetail_params)
     if seodetail_params[:pagename] == "other"
       @shop_seo.pagename = params[:otherpage]
@@ -73,9 +76,12 @@ class BusinessUser::PagesController < BusinessUser::BaseController
       end
     end
   end
-  def update
-    
+  def update        
     @shop_seo = Seodetail.find(params[:id])
+    if seodetail_params[:ishomepage] == '1'      
+      Seodetail.where('shop_id = ?', @shop.id).update_all(ishomepage: 0)
+    end
+    
     if seodetail_params[:pagename] == "other"
       @shop_seo.pagename = params[:otherpage]
       @shop_seo.extrapage = true
@@ -152,6 +158,6 @@ class BusinessUser::PagesController < BusinessUser::BaseController
     @shop = Shop.find(params[:shop_id])
   end
   def seodetail_params
-    params.require(:seodetail).permit(:shop_id, :title, :metakeywords, :metadescription, :pagename, :pagealias, :parentpage, :pagecontent, :headerbg, :footerbg, :htmldata)
+    params.require(:seodetail).permit(:shop_id, :title, :metakeywords, :metadescription, :pagename, :pagealias, :parentpage, :pagecontent, :headerbg, :footerbg, :htmldata,:ishomepage,:isinmenu)
   end  
 end

@@ -120,4 +120,13 @@ module ApplicationHelper
     #computation stuff
     render :partial => test_name
   end
+  def active_class(request, link_path)
+    
+
+    #current_page?(link_path) ? "active" : ""
+  end
+  def is_siteuser
+    binding.pry    
+    return current_site_user
+  end
 end

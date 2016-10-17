@@ -2,6 +2,7 @@ class HomeController < ApplicationController
 	require 'open-uri'
 	impressionist :actions=>[:auction]
 	protect_from_forgery except: [:update_contact_us]
+	helper_method :get_current_page
 	def  home
 		render :layout => false		
 	end
@@ -13,13 +14,17 @@ class HomeController < ApplicationController
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
-		
-		@seodetails = @shop.seodetails.where("pagename = 'home'") rescue nil
-		
-		if !@shop.blank?
-    		render :template => "templates/#{@shop.template}", :layout => "#{@shop.template}"
+		@homepage = Seodetail.where('shop_id = ? and ishomepage = ?', @shop.id, 1)		
+		if !@homepage.empty?
+			redirect_to "/page/"+@homepage[0].id.to_s+"/"+@homepage[0].pagename.to_s
 		else
-			redirect_to home_path
+			@seodetails = @shop.seodetails.where("pagename = 'home'") rescue nil
+			
+			if !@shop.blank?
+	    		render :template => "templates/#{@shop.template}", :layout => "#{@shop.template}"
+			else
+				redirect_to home_path
+			end
 		end
 	end
 	
@@ -321,4 +326,9 @@ class HomeController < ApplicationController
 	def footwear_1
 		render :layout => false
 	end
+	public
+	    def get_current_page
+	    	binding.pry
+	      @current_page ||= params[:id]
+	    end
 end

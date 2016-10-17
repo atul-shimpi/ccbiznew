@@ -12,16 +12,16 @@
 	<li><a href="/gallery"><span><%= get_page_name(@shop.id,'gallery',"Gallery") %></span></a></li>
 <% end %>
 
-<% @shop.seodetails.where("parentpage IS ? ", nil ).order("extrapage asc").each do |category| %>
+<% @shop.seodetails.where("parentpage IS ? and isinmenu = ? ", nil, 1).order("extrapage asc").each do |category| %>
 	<% @submenu = Seodetail.where("parentpage = ?", category.id) %>
 <% if category.parentpage.blank? %>
 	<% 
 		if @submenu.present? 
 		@attr = 'class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"'	
 	%>
-	<li class="dropdown">
+	<li class="dropdown <%= active_class(@current_page, category.id) %>">
 <% else %>
-	<li class="big-bold">
+	<li class="big-bold <%= active_class(@current_page, category.id) %>">
 <% end %>
 	<% if category.extrapage %>
 		<a <%= "#{@attr}" %> href='/page/<%=category.id%>/<%=category.pagename%>'><span><%=category.pagename%></span></a>
@@ -31,11 +31,12 @@
     
       <% if @submenu.present? %>
 
-        <%= render partial: 'layouts/mainmenu', locals: {subcategories: @submenu} %>
+        <%= render partial: 'business_user/elements/mainmenu', locals: {subcategories: @submenu} %>
       
        
       <% end %>
     </li>
+
   <% end %>
 	<% end %>
 	

@@ -25,6 +25,16 @@
 	      <%= f.collection_select(:parentpage, @shop.seodetails.all, :id, :pagename, {:prompt => 'Select'}, {:class => 'form-control'}) %>
 	    </div>
 	    <div class="form-group">
+	      <%= f.label :is_home_page, :class => 'control-label' %><br>	      
+      	  <%= f.radio_button :ishomepage, '1' %> Yes <br>
+      	  <%= f.radio_button :ishomepage, '0' %> No <br>	      
+	  	</div>
+	  	<div class="form-group">
+	      <%= f.label :is_in_menubar, :class => 'control-label' %><br>	      
+      	  <%= f.radio_button :isinmenu, '1' %> Yes <br>
+      	  <%= f.radio_button :isinmenu, '0' %> No <br>	      
+	  	</div>
+	    <!--<div class="form-group">
 	      <%= f.label :Page_Content, :class => 'control-label' %>
 	      <%= f.text_area :pagecontent, :class => 'text_field form-control tinymce', :rows => 10 %>
 	  	</div>
@@ -44,7 +54,7 @@
 	      <span class="input-group-addon"><i></i></span>
 	      <span class="trigger" data-for="seodetail_footerbg">Clear</span>
 	      </div>
-	    </div>
+	    </div>-->
 
 	    <%= f.submit "Add", :class => 'btn btn-primary' %>
 	    
