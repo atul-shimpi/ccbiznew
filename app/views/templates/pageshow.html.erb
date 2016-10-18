@@ -1,9 +1,19 @@
-<% @page_blocks.each_with_index do |block, index| %>
-  
-	  <% block.each_with_index do |blockdetails, index| %>
-	  	
+<% if @seodetails[0].isglobalheader != 0 %>
+	<% @header_blocks.each_with_index do |block, index| %>	  
+	  <% block.each_with_index do |blockdetails, index| %>		  	
 	  	<%= content_html blockdetails["frames_content"].to_s.html_safe %>
 	  <% end %>
-  
-
+	<% end %>
+<% end %>
+<% @page_blocks.each_with_index do |block, index| %>  
+  <% block.each_with_index do |blockdetails, index| %>	  	
+  	<%= content_html blockdetails["frames_content"].to_s.html_safe %>
+  <% end %>
+<% end %>
+<% if @seodetails[0].isglobalfooter != 0 %>
+	<% @footer_blocks.each_with_index do |block, index| %>	  
+	  <% block.each_with_index do |blockdetails, index| %>	  	
+	  	<%= content_html blockdetails["frames_content"].to_s.html_safe %>
+	  <% end %>
+	<% end %>
 <% end %>

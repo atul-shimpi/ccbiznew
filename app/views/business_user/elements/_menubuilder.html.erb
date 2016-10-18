@@ -48,7 +48,7 @@
 	    <% if !additional_attributes[:current_site_user] %>
 	    <a href="#" data-toggle="modal" data-target="#myModal"><span>Login</span></a>
 	    <% else %>
-	    	<span><%= link_to "#{"Log Out"}".html_safe, destroy_site_user_session_path, :method=>'delete' %></span>
+	    	<span><%= link_to "#{"Log Out"}".html_safe, "/site_users/sign_out", :method=>'delete' %></span>
 	    <% end %>
 		</li>
 	<% end %>

@@ -17,7 +17,14 @@ class FilesController < ApplicationController
 
   def new
     @userfile = current_site_user.userfiles.new
-    render :template => "templates/newfiles", :layout => "#{@shop.template}"
+    if !@shop.headerhtml["pages"].nil? and !@shop.headerhtml["pages"].blank?
+      @header_blocks = JSON.parse(@shop.headerhtml)["pages"]["index"]["blocks"]   
+    end
+    if !@shop.footerhtml["pages"].nil? and !@shop.footerhtml["pages"].blank?
+      @footer_blocks = JSON.parse(@shop.footerhtml)["pages"]["index"]["blocks"]
+    end
+    render :template => "templates/newfiles", :layout => "modulepage"  
+    #render :template => "templates/newfiles", :layout => "#{@shop.template}"
   end
 
   def edit
@@ -25,7 +32,8 @@ class FilesController < ApplicationController
   end
 
   def create    
-    @userfile = current_site_user.userfiles.new(files_params)        
+    @userfile = current_site_user.userfiles.new(files_params)     
+    binding.pry   
     respond_to do |format|      
       if @userfile.save                
         format.html {           

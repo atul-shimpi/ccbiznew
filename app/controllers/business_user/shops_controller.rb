@@ -1,5 +1,6 @@
 class BusinessUser::ShopsController < BusinessUser::BaseController
   require 'net/http'
+  protect_from_forgery except: [:updatelayout]
 	def index
     @shops = current_business_user.shops.all
 
@@ -141,10 +142,46 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
       format.json { head :no_content }
     end
   end
+  def design
+    @shop = Shop.find(params[:shop_id])    
+    
+  end
+  def shopheader
+    @shop = Shop.find(params[:shop_id])    
+    render :layout => false
+  end
+  def shopfooter
+    @shop = Shop.find(params[:shop_id])    
+    render :layout => false
+  end
+  def getlayout
+    @shop = Shop.find(params[:shop_id])   
+    if params['type'] == "header" 
+      @content = @shop.headerhtml
+    else 
+      @content = @shop.footerhtml
+    end
+    if !@content.nil?
+      render :json => @content.as_json
+    else
+      render :json => "{}".as_json
+    end
+  end
+  def updatelayout
 
-
-
-
+    if !params['data'].blank?      
+      @shop = Shop.find(params['data']['shop_id'])
+      if params['type'] == "header"
+        @shop['headerhtml'] = params['data'].to_json
+      else
+        @shop['footerhtml'] = params['data'].to_json
+      end  
+      @shop.save
+      
+      render :nothing => true 
+      
+    end
+  end
   private
 
   def shop_params    

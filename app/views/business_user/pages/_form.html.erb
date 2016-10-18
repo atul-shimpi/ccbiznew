@@ -34,6 +34,16 @@
       	  <%= f.radio_button :isinmenu, '1' %> Yes <br>
       	  <%= f.radio_button :isinmenu, '0' %> No <br>	      
 	  	</div>
+	  	<div class="form-group">
+	      <%= f.label :is_global_header, :class => 'control-label' %><br>	      
+      	  <%= f.radio_button :isglobalheader, '1' %> Yes <br>
+      	  <%= f.radio_button :isglobalheader, '0' %> No <br>	      
+	  	</div>
+	  	<div class="form-group">
+	      <%= f.label :is_global_footer, :class => 'control-label' %><br>	      
+      	  <%= f.radio_button :isglobalfooter, '1' %> Yes <br>
+      	  <%= f.radio_button :isglobalfooter, '0' %> No <br>	      
+	  	</div>
 	    <!--<div class="form-group">
 	      <%= f.label :Page_Content, :class => 'control-label' %>
 	      <%= f.text_area :pagecontent, :class => 'text_field form-control tinymce', :rows => 10 %>

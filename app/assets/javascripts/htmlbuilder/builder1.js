@@ -277,14 +277,14 @@
             Canvas loading on/off
         */
         canvasLoading: function (value) {
-            var canvasobjects = document.getElementsByClassName('frameWrapper1');
+            var canvasobjects = document.getElementsByClassName('frameWrapper');
             //console.log(canvasobjects)
             
                 //console.log(canvasobjects[i].querySelectorAll('#canvasOverlay').length); 
             
             
             
-                if ( value === 'on' && document.getElementById('frameWrapper1').querySelectorAll('#canvasOverlay').length === 0 ) {
+                if ( value === 'on' && document.getElementById('frameWrapper').querySelectorAll('#canvasOverlay').length === 0 ) {
 
                     var overlay = document.createElement('DIV');
 
@@ -294,11 +294,11 @@
 
                     overlay.innerHTML = '<div class="loader"><span>{</span><span>}</span></div>';
 
-                    document.getElementById('frameWrapper1').appendChild(overlay);
+                    document.getElementById('frameWrapper').appendChild(overlay);
 
                     $('#canvasOverlay').fadeIn(500);
 
-                } else if ( value === 'off' && document.getElementById('frameWrapper1').querySelectorAll('#canvasOverlay').length === 1 ) {
+                } else if ( value === 'off' && document.getElementById('frameWrapper').querySelectorAll('#canvasOverlay').length === 1 ) {
 
                     if ( site.loaded() ) {
 
@@ -1648,7 +1648,7 @@
         buttonSave: document.getElementById('savePage'),
         
         messageStart: document.getElementById('start'),
-        divFrameWrapper: document.getElementById('frameWrapper1'),
+        divFrameWrapper: document.getElementById('frameWrapper'),
         
         skeleton: document.getElementById('skeleton'),
 
@@ -1661,7 +1661,7 @@
         init: function() {
 
 
-            $.getJSON("/business_user/pages/"+$("#pageid").val(), function (data) {
+            $.getJSON("/business_user/shops/getlayout/"+$("#typeid").val()+"/"+$("#shopid").val(), function (data) {
                 
                
                 if( data.pages !== undefined ) {
@@ -1825,7 +1825,7 @@
             });
             
             $.ajax({
-                url: '/business_user/pages/designupdate',
+                url: '/business_user/shops/layoutupdate/'+$("#typeid").val(),
                 method: 'POST',
                 data: {data: theSite},
                 dataType: "json"

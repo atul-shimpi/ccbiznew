@@ -238,8 +238,14 @@ class HomeController < ApplicationController
 		end
 		@userfiles = current_site_user.userfiles.all    
 		@payments = Payment.where("site_user_id":current_site_user.id)
-		
-    	render :template => "templates/files", :layout => "#{@shop.template}"		
+		if !@shop.headerhtml["pages"].nil? and !@shop.headerhtml["pages"].blank?
+			@header_blocks = JSON.parse(@shop.headerhtml)["pages"]["index"]["blocks"]		
+		end
+		if !@shop.footerhtml["pages"].nil? and !@shop.footerhtml["pages"].blank?
+			@footer_blocks = JSON.parse(@shop.footerhtml)["pages"]["index"]["blocks"]
+		end
+		#render :template => "templates/modulepages", :layout => "page"
+    	render :template => "templates/files", :layout => "modulepage"		
 	end
 	#Dyanamic Pages
 	def pageshow
@@ -252,6 +258,12 @@ class HomeController < ApplicationController
 		@seodetails = @shop.seodetails.where("id = ?",params[:id]) rescue nil
 		if !@seodetails[0].htmldata.nil? and !@seodetails[0].htmldata.blank?
 			if !@seodetails[0].htmldata["pages"].nil? and !@seodetails[0].htmldata["pages"].blank?
+				if !@shop.headerhtml["pages"].nil? and !@shop.headerhtml["pages"].blank?
+					@header_blocks = JSON.parse(@shop.headerhtml)["pages"]["index"]["blocks"]		
+				end
+				if !@shop.footerhtml["pages"].nil? and !@shop.footerhtml["pages"].blank?
+					@footer_blocks = JSON.parse(@shop.footerhtml)["pages"]["index"]["blocks"]
+				end
 				@page_blocks = JSON.parse(@seodetails[0].htmldata)["pages"]["index"]["blocks"]		
 				# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 				render :template => "templates/pageshow", :layout => "page"
@@ -273,7 +285,14 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end		
 		@payment = current_site_user.payments.new
-    	render :template => "Site_User/paymentupdate", :layout => "#{@shop.template}"		
+		if !@shop.headerhtml["pages"].nil? and !@shop.headerhtml["pages"].blank?
+			@header_blocks = JSON.parse(@shop.headerhtml)["pages"]["index"]["blocks"]		
+		end
+		if !@shop.footerhtml["pages"].nil? and !@shop.footerhtml["pages"].blank?
+			@footer_blocks = JSON.parse(@shop.footerhtml)["pages"]["index"]["blocks"]
+		end
+		render :template => "Site_User/paymentupdate", :layout => "modulepage"		
+    	#render :template => "Site_User/paymentupdate", :layout => "#{@shop.template}"		
 	end
 
 	def sports_1
