@@ -1,6 +1,6 @@
 class MenuPresenter  
   require 'open-uri'
-
+  
   def self.for
     :menu
   end
@@ -19,6 +19,9 @@ class MenuPresenter
     view.class_eval do
       include ApplicationHelper
       include HomeHelper
+      
+      include ActionView::Helpers::UrlHelper
+      include Rails.application.routes.url_helpers
     end
     
     @shop = current_shop      

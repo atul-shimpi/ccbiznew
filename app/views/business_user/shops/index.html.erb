@@ -58,7 +58,7 @@
                     <%= link_to "Store Login",
                     "http://#{shop.subdomain}.#{Rails.application.secrets.store_url}/spree/api/v1/login/sign_in?user[email]=#{current_business_user.email}&user[password]=reset123", :class => 'btn btn-primary btn-mini' %>
                     <% end %>
-                    
+                    <%= link_to "Shop Layout", "/business_user/shops/design/#{shop.id}" , :class => 'btn btn-primary btn-mini'%>
 
 
                   </td>

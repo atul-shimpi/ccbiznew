@@ -71,7 +71,11 @@ Rails.application.routes.draw do
   get '/business_user/players/:id/playeredit' => "business_user/players#playeredit"  
   get '/business_user/pages/design/:shop_id/:page_id' => "business_user/pages#design"
   get '/payment_reciept/:payment_id/:public_token' => "business_user/receipts#public_show"
-
+  get '/business_user/shops/design/:shop_id' => "business_user/shops#design"
+  get '/business_user/shops/header/:shop_id' => "business_user/shops#shopheader"
+  get '/business_user/shops/footer/:shop_id' => "business_user/shops#shopfooter"
+  get '/business_user/shops/getlayout/:type/:shop_id' => "business_user/shops#getlayout"
+  post '/business_user/shops/layoutupdate/:type' => "business_user/shops#updatelayout"
   # You can have the root of your site routed with "root"  
   get 'aboutus' => "home#about_us"
   get 'userdashboard' => "home#dashboard"

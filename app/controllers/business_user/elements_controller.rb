@@ -3,7 +3,13 @@ class BusinessUser::ElementsController < ApplicationController
 	def show
 		
 		@shop = Shop.find(Rails.application.routes.recognize_path(URI(request.referer).path)[:shop_id])
-		@page = Seodetail.find(Rails.application.routes.recognize_path(URI(request.referer).path)[:page_id])
+		
+		if !Rails.application.routes.recognize_path(URI(request.referer).path)[:page_id].nil?
+			@page = Seodetail.find(Rails.application.routes.recognize_path(URI(request.referer).path)[:page_id])
+		else
+			@page = nil
+		end
+
 
 		#@shop = Shop.find(1)
 		#@page = Seodetail.find(22)
