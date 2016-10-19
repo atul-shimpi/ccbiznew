@@ -1,6 +1,7 @@
 class MenuPresenter  
   require 'open-uri'
-  
+  include Rails.application.routes.url_helpers
+
   def self.for
     :menu
   end
@@ -13,8 +14,9 @@ class MenuPresenter
   end
  
   def content    
-    
-    view = ActionView::Base.new(ActionController::Base.view_paths, {}, ActionController::Base.new)
+    view_paths = Rails::Application::Configuration.new(Rails.root).paths["app/views"]
+    view = ActionView::Base.new view_paths
+    #view = ActionView::Base.new(ActionController::Base.view_paths, {}, ActionController::Base.new)
       
     view.class_eval do
       include ApplicationHelper
@@ -22,6 +24,7 @@ class MenuPresenter
       
       include ActionView::Helpers::UrlHelper
       include Rails.application.routes.url_helpers
+
     end
     
     @shop = current_shop      
