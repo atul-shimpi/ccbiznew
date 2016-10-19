@@ -79,7 +79,7 @@ class BusinessUser::PagesController < BusinessUser::BaseController
   def update        
     @shop_seo = Seodetail.find(params[:id])
     if seodetail_params[:ishomepage] == '1'      
-      Seodetail.where('shop_id = ?', @shop.id).update_all(ishomepage: 0)
+      Seodetail.where('shop_id = ? and id != ?', @shop.id, params[:id] ).update_all(ishomepage: 0)
     end
     
     if seodetail_params[:pagename] == "other"
