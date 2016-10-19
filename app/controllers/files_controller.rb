@@ -3,7 +3,18 @@ class FilesController < ApplicationController
 	def index		
 
     @userfiles = current_site_user.userfiles.all    
-    render :template => "templates/files", :layout => "#{@shop.template}"
+    if !@shop.headerhtml.nil? and !@shop.headerhtml.blank?
+      if !@shop.headerhtml["pages"].nil? and !@shop.headerhtml["pages"].blank?
+        @header_blocks = JSON.parse(@shop.headerhtml)["pages"]["index"]["blocks"]   
+      end
+    end
+    if !@shop.footerhtml.nil? and !@shop.footerhtml.blank?
+      if !@shop.footerhtml["pages"].nil? and !@shop.footerhtml["pages"].blank?
+        @footer_blocks = JSON.parse(@shop.footerhtml)["pages"]["index"]["blocks"]
+      end
+    end
+    render :template => "templates/files", :layout => "modulepage"  
+    #render :template => "templates/files", :layout => "#{@shop.template}"
   end
 
   def show
@@ -17,11 +28,15 @@ class FilesController < ApplicationController
 
   def new
     @userfile = current_site_user.userfiles.new
-    if !@shop.headerhtml["pages"].nil? and !@shop.headerhtml["pages"].blank?
-      @header_blocks = JSON.parse(@shop.headerhtml)["pages"]["index"]["blocks"]   
+    if !@shop.headerhtml.nil? and !@shop.headerhtml.blank?
+      if !@shop.headerhtml["pages"].nil? and !@shop.headerhtml["pages"].blank?
+        @header_blocks = JSON.parse(@shop.headerhtml)["pages"]["index"]["blocks"]   
+      end
     end
-    if !@shop.footerhtml["pages"].nil? and !@shop.footerhtml["pages"].blank?
-      @footer_blocks = JSON.parse(@shop.footerhtml)["pages"]["index"]["blocks"]
+    if !@shop.footerhtml.nil? and !@shop.footerhtml.blank?
+      if !@shop.footerhtml["pages"].nil? and !@shop.footerhtml["pages"].blank?
+        @footer_blocks = JSON.parse(@shop.footerhtml)["pages"]["index"]["blocks"]
+      end
     end
     render :template => "templates/newfiles", :layout => "modulepage"  
     #render :template => "templates/newfiles", :layout => "#{@shop.template}"
@@ -32,8 +47,7 @@ class FilesController < ApplicationController
   end
 
   def create    
-    @userfile = current_site_user.userfiles.new(files_params)     
-    binding.pry   
+    @userfile = current_site_user.userfiles.new(files_params)         
     respond_to do |format|      
       if @userfile.save                
         format.html {           
@@ -61,7 +75,7 @@ class FilesController < ApplicationController
 
   def download
   	
-  	@model = Userfile.find(params[:id])    
+  	@model = Userfile.find(params[:id])        
     data = open(@model.filename_url) 
 
     send_data data.read, filename: @model.filename_identifier, type: @model.filename.content_type, disposition: 'attachment', stream: 'true'    

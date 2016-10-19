@@ -44,11 +44,19 @@
 	
 
     <% if @shop.loginenabled %>
-		<li>
+		<li class="dropdown">
 	    <% if !additional_attributes[:current_site_user] %>
-	    <a href="#" data-toggle="modal" data-target="#myModal"><span>Login</span></a>
-	    <% else %>
-	    	<span><%= link_to "#{"Log Out"}".html_safe, "/site_users/sign_out", :method=>'delete' %></span>
+	    <a ><span>Login</span></a>
+	    <% else %>	
+	    	<a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" href="#" data-toggle="modal" data-target="#myModal"><span>Account</span></a>
+	    	<ul class="dropdown-menu multi-level">
+	    		<li class="top-clear">
+		    		<span><%= link_to "Dashboard", "userdashboard", :method => :get %></span>
+		    	</li>
+	    		<li class="top-clear">
+		    		<span><%= link_to "Sign out", destroy_site_user_session_path, :method => :delete %></span>
+		    	</li>
+	    	</ul>
 	    <% end %>
 		</li>
 	<% end %>
