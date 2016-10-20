@@ -58,5 +58,10 @@
     <%= javascript_include_tag 'htmlbuilder/ace/ace' %>    
     
     <%= render :partial => "home/login_modal", locals: {} %>
+    <script type="text/javascript">
+    $('.mobile-menu-icon').click(function(){
+        $('.tm-nav').toggleClass('show');
+    });
+</script>
 </body>
 </html>
