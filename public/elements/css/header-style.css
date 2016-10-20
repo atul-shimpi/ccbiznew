@@ -38,7 +38,12 @@
 	background: #FCDD44;
 	color: #000;
 }
-
+.modal .modal-backdrop{
+	z-index:99;
+}
+.modal .modal-dialog{
+	z-index:999;
+}
 @media screen and (max-width: 767px) {
 	.tm-nav.show {
 		opacity: 1;
