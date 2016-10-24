@@ -11,7 +11,7 @@
     <% end %>
     
     	
-    		<a <%= "#{@attr}" %> href='/page/<%=sub.id%>/<%=sub.pagename%>'><span><%=sub.pagename%></span></a>
+    		<a <%= "#{@attr}" %> href='/<%=sub.pagename%>'><span><%=sub.pagename.downcase%></span></a>
     	
   		<% if @submenu.present? %>
     		<%= render partial: 'layouts/mainmenu', locals: {subcategories: @submenu} %>

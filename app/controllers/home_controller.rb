@@ -20,17 +20,38 @@ class HomeController < ApplicationController
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
-
+		
 		@seodetails = @shop.seodetails.where("pagename = 'home'") rescue nil
 			
 		if !@shop.blank?
 			@homepage = Seodetail.where('shop_id = ? and ishomepage = ?', @shop.id, 1)		
 			if !@homepage.empty?
-				redirect_to "/page/"+@homepage[0].id.to_s+"/"+@homepage[0].pagename.to_s
+				@seodetails = @shop.seodetails.where("id = ?",@homepage[0].id) rescue nil				
+				if !@seodetails[0].htmldata.nil? and !@seodetails[0].htmldata.blank?
+					if !@seodetails[0].htmldata["pages"].nil? and !@seodetails[0].htmldata["pages"].blank?
+						if !@shop.headerhtml.nil? and !@shop.headerhtml.blank?
+							if !@shop.headerhtml["pages"].nil? and !@shop.headerhtml["pages"].blank?
+								@header_blocks = JSON.parse(@shop.headerhtml)["pages"]["index"]["blocks"]		
+							end
+						end
+						if !@shop.footerhtml.nil? and !@shop.footerhtml.blank?
+							if !@shop.footerhtml["pages"].nil? and !@shop.footerhtml["pages"].blank?
+								@footer_blocks = JSON.parse(@shop.footerhtml)["pages"]["index"]["blocks"]
+							end
+						end
+						@page_blocks = JSON.parse(@seodetails[0].htmldata)["pages"]["index"]["blocks"]		
+						# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
+						render :template => "templates/pageshow", :layout => "page"
+					else
+						render :template => "templates/about_us", :layout => "#{@shop.template}"
+					end
+				else
+					render :template => "templates/about_us", :layout => "#{@shop.template}"
+				end
 			else
 				render :template => "templates/#{@shop.template}", :layout => "#{@shop.template}"	
 			end    		
-		else
+		else			
 			redirect_to home_path
 		end
 		
@@ -155,7 +176,19 @@ class HomeController < ApplicationController
 		@seodetails = @shop.seodetails.where("pagename = 'events'") rescue nil
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.events.blank?
-			render :template => "templates/events", :layout => "#{@shop.template}"
+			if !@shop.headerhtml.nil? and !@shop.headerhtml.blank?
+				if !@shop.headerhtml["pages"].nil? and !@shop.headerhtml["pages"].blank?
+					@header_blocks = JSON.parse(@shop.headerhtml)["pages"]["index"]["blocks"]		
+				end
+			end
+			if !@shop.footerhtml.nil? and !@shop.footerhtml.blank?
+				if !@shop.footerhtml["pages"].nil? and !@shop.footerhtml["pages"].blank?
+					@footer_blocks = JSON.parse(@shop.footerhtml)["pages"]["index"]["blocks"]
+				end
+			end
+			#render :template => "templates/modulepages", :layout => "page"
+	    	render :template => "templates/events", :layout => "modulepage"	
+			#render :template => "templates/events", :layout => "#{@shop.template}"
 		else
 			redirect_to root_path
 		end
@@ -317,7 +350,7 @@ class HomeController < ApplicationController
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
-		@seodetails = @shop.seodetails.where("id = ?",params[:id]) rescue nil
+		@seodetails = @shop.seodetails.where("lower(pagename) = ?",params[:slug]) rescue nil		
 		if !@seodetails[0].htmldata.nil? and !@seodetails[0].htmldata.blank?
 			if !@seodetails[0].htmldata["pages"].nil? and !@seodetails[0].htmldata["pages"].blank?
 				if !@shop.headerhtml.nil? and !@shop.headerhtml.blank?
