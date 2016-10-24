@@ -57,6 +57,9 @@
 }
 .flexslider.flexslider-banner .slides > li {
 	text-align: center;
+	max-height: 77vh;
+	height: 100%;
+	overflow: hidden;
 }
 .flexslider.flexslider-banner .flex-direction-nav a:before {
 	color: #FCDD44;

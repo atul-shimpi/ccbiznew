@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     elsif admin_signed_in?
       admin_shops_path
     elsif site_user_signed_in?
-     userdashboard_path
+     user_dashboard_path
     end
   end
 

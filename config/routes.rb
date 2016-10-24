@@ -78,7 +78,7 @@ Rails.application.routes.draw do
   post '/business_user/shops/layoutupdate/:type' => "business_user/shops#updatelayout"
   # You can have the root of your site routed with "root"  
   get 'aboutus' => "home#about_us"
-  get 'userdashboard' => "home#dashboard"
+  get 'user/dashboard' => "home#dashboard"
   get 'contactus' => "home#contact_us"
   post 'contact_us' => "home#update_contact_us"
   get 'gallery' => "home#gallery"
@@ -110,7 +110,7 @@ Rails.application.routes.draw do
   get 'sitemap.xml' => "home#sitemap", :format => "xml", :as => :sitemap
   get 'robots.txt' => "home#robots", :format => "txt", :as => :robots
   
-  get 'page/:id/:pagename' => "home#pageshow"
+  get ':slug' => "home#pageshow"
 
   get 'create' => "home#create"
   get 'edit_project' => "home#edit_project"

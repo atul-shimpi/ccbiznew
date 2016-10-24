@@ -24,9 +24,9 @@
 	<li class="big-bold ">
 <% end %>
 	<% if category.extrapage %>
-		<a <%= "#{@attr}" %> class="<%= active_class(additional_attributes[:pageid], category.id) %>" href='/page/<%=category.id%>/<%=category.pagename%>'><span><%=category.pagename%></span></a>
+		<a <%= "#{@attr}" %> class="<%= active_class(additional_attributes[:pageid], category.id) %>" href='/<%=category.pagename.downcase%>'><span><%=category.pagename%></span></a>
 	<% else %>	            		
-		<a <%= "#{@attr}"%> class="<%= active_class(additional_attributes[:pageid], category.id) %>" href='/page/<%=category.id%>/<%=category.pagename%>' ><span><%=category.pagename%></span></a>
+		<a <%= "#{@attr}"%> class="<%= active_class(additional_attributes[:pageid], category.id) %>" href='/<%=category.pagename.downcase%>' ><span><%=category.pagename%></span></a>
 	<% end %>	            
     
       <% if @submenu.present? %>
