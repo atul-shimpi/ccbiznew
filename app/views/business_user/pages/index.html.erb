@@ -21,7 +21,7 @@
                 <tr>
                   <th>Page</th>
                   <th>Shop/Website</th>
-                  <th>Page Name</th>                  
+                  <th>URl</th>                  
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -31,7 +31,13 @@
                 <tr>
                   <td><%= seo.pagename %></td>
                   <td><%= seo.shop.name %></td>
-                  <td><%= seo.pagealias %></td>                  
+                  <td>
+                    <% if !@shop.domain.blank? || !@shop.domain.nil? %>
+                      <%= "http://"+@shop.domain+"/#{seo.slug.downcase}" %>
+                    <% else %>                    
+                      <%= "http://"+@shop.subdomain+".ccbizon.com/#{seo.slug.downcase}" %>
+                    <% end %>
+                  </td>
                   <td>
                     <%= link_to "Edit", {:controller => "pages", :action => "edit", :id => seo.id, :shop_id => seo.shop_id} , :class => 'btn btn-primary btn-mini'%>
                     <%= link_to "Clone Page", "/business_user/pages/clone/#{seo.shop_id}/#{seo.id}" , :class => 'btn btn-primary btn-mini'%>
@@ -45,7 +51,8 @@
                     
                   </td>
                   
-                </td>
+                </tr>
+
             <% end %>
           <% end %>
           </div>
