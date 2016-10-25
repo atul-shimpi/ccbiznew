@@ -27,9 +27,15 @@ class MenuPresenter
 
     end
     
-    @shop = current_shop      
-    
-    view.render partial: "business_user/elements/menubuilder", locals: {:shop=>@shop, :additional_attributes => @additional_attributes}, :layout => false
+    @shop = current_shop     
+    if !@additional_attributes[:pageid].blank?
+      @page = Seodetail.find_by_slug(@additional_attributes[:pageid]) 
+    else  
+      @page = Seodetail.where('shop_id = ? and ishomepage = ?', @shop.id, 1)  
+      @page =  @page[0]
+    end
+
+    view.render partial: "business_user/elements/menubuilder", locals: {:shop=>@shop, :additional_attributes => @additional_attributes, :page=>@page}, :layout => false
     #renderpartial @content
   end
 

@@ -350,7 +350,7 @@ class HomeController < ApplicationController
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
-		@seodetails = @shop.seodetails.where("lower(pagename) = ?",params[:slug]) rescue nil		
+		@seodetails = @shop.seodetails.where("lower(slug) = ?",params[:slug]) rescue nil		
 		if !@seodetails[0].htmldata.nil? and !@seodetails[0].htmldata.blank?
 			if !@seodetails[0].htmldata["pages"].nil? and !@seodetails[0].htmldata["pages"].blank?
 				if !@shop.headerhtml.nil? and !@shop.headerhtml.blank?

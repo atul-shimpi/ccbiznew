@@ -1,16 +1,7 @@
 <% @shop = shop%> 
 <ul>	
 
-<% if !@shop.events.blank? %>		        
-<li><a href="/shopevents"><span><%= get_page_name(@shop.id,'events',"Events") %></span></a></li>
-<% end %>
-<% if !@shop.auction.blank? %>		        
-<li><a href="/auction"><span><%= get_page_name(@shop.id,'auction',"Live auction update") %></span></a></li>
-<li><a href="/teams"><span><%= get_page_name(@shop.id,'team',"Teams") %></span></a></li>
-<% end %>
-<% if !@shop.shop_images.blank? %>
-	<li><a href="/gallery"><span><%= get_page_name(@shop.id,'gallery',"Gallery") %></span></a></li>
-<% end %>
+
 
 <% @shop.seodetails.where("parentpage IS ? and isinmenu = ? ", nil, 1).order("extrapage asc").each do |category| %>
 	<% @submenu = Seodetail.where("parentpage = ?", category.id) %>
@@ -23,10 +14,10 @@
 <% else %>
 	<li class="big-bold ">
 <% end %>
-	<% if category.extrapage %>
-		<a <%= "#{@attr}" %> class="<%= active_class(additional_attributes[:pageid], category.id) %>" href='/<%=category.pagename.downcase%>'><span><%=category.pagealias%></span></a>
+	<% if category.ishomepage==1 %>
+		<a <%= "#{@attr}" %> class="<%= active_class(page.id, category.id) %>" href='/'><span><%=category.pagealias%></span></a>
 	<% else %>	            		
-		<a <%= "#{@attr}"%> class="<%= active_class(additional_attributes[:pageid], category.id) %>" href='/<%=category.pagename.downcase%>' ><span><%=category.pagealias%></span></a>
+		<a <%= "#{@attr}"%> class="<%= active_class(page.id, category.id) %>" href='/<%=category.slug.downcase%>' ><span><%=category.pagealias%></span></a>
 	<% end %>	            
     
       <% if @submenu.present? %>
@@ -41,7 +32,16 @@
   <% end %>
 	<% end %>
 	
-	
+	<% if !@shop.events.blank? %>		        
+<li><a href="/shopevents"><span><%= get_page_name(@shop.id,'events',"Events") %></span></a></li>
+<% end %>
+<% if !@shop.auction.blank? %>		        
+<li><a href="/auction"><span><%= get_page_name(@shop.id,'auction',"Live auction update") %></span></a></li>
+<li><a href="/teams"><span><%= get_page_name(@shop.id,'team',"Teams") %></span></a></li>
+<% end %>
+<% if !@shop.shop_images.blank? %>
+	<li><a href="/gallery"><span><%= get_page_name(@shop.id,'gallery',"Gallery") %></span></a></li>
+<% end %>
 
     <% if @shop.loginenabled %>
 		<li class="dropdown">
