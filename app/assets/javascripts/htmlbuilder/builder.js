@@ -3005,11 +3005,14 @@
 
                 document.getElementById('detailTabs').style.display = 'none';
                 styleeditor.buttonSaveChanges.style.display = 'none';
-
+                $("#frameWrapper").css("left","auto");
+                
             } else {
 
                 document.getElementById('detailTabs').style.display = 'block';
                 styleeditor.buttonSaveChanges.style.display = 'block';
+                $("#frameWrapper").css("left","300px");
+                
 
             }
 
@@ -3914,7 +3917,7 @@
             }
 
             if( $('#styleEditor').css('left') === '0px' ) {
-
+                $("#frameWrapper").css("left","auto");
                 styleeditor.toggleSidePanel('close');
 
             }
