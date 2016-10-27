@@ -32,10 +32,12 @@
                   <td><%= seo.pagename %></td>
                   <td><%= seo.shop.name %></td>
                   <td>
-                    <% if !@shop.domain.blank? || !@shop.domain.nil? %>
-                      <%= "http://"+@shop.domain+"/#{seo.slug.downcase}" %>
-                    <% else %>                    
-                      <%= "http://"+@shop.subdomain+".ccbizon.com/#{seo.slug.downcase}" %>
+                    <% if !seo.slug.blank? || !seo.slug.nil? %>
+                      <% if !@shop.domain.blank? || !@shop.domain.nil? %>
+                        <%= "http://"+@shop.domain+"/#{seo.slug.downcase}" %>
+                      <% else %>                    
+                        <%= "http://"+@shop.subdomain+".ccbizon.com/#{seo.slug.downcase}" %>
+                      <% end %>
                     <% end %>
                   </td>
                   <td>
