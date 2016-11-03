@@ -334,7 +334,8 @@ class HomeController < ApplicationController
 			if !@shop.footerhtml["pages"].nil? and !@shop.footerhtml["pages"].blank?
 				@footer_blocks = JSON.parse(@shop.footerhtml)["pages"]["index"]["blocks"]
 			end
-		end
+		end		
+		
 		#render :template => "templates/modulepages", :layout => "page"
     	render :template => "templates/files", :layout => "modulepage"		
 	end
@@ -455,8 +456,7 @@ class HomeController < ApplicationController
 		render :layout => false
 	end
 	public
-	    def get_current_page
-	    	binding.pry
+	    def get_current_page	    	
 	      @current_page ||= params[:id]
 	    end
 end

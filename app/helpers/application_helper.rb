@@ -104,7 +104,12 @@ module ApplicationHelper
   def content(c)
     Shortcode.register_presenter(MenuPresenter)
     
-    Shortcode.process(c, { current_site_user: current_site_user, pageid:params[:slug] })
+    path = Rails.application.routes.recognize_path(request.env['PATH_INFO'])
+    
+    if path[:action] == "dashboard" || path[:action] == "updatepayment" || path[:controller] == "files"    
+      custompageid = "00001"
+    end
+    Shortcode.process(c, { current_site_user: current_site_user, pageid:params[:slug], custompageid:custompageid })
     #parser = Shortcode::Parser.new
     #transformer = Shortcode::Transformer.new
     #parsed_hash = parser.parse(c)
@@ -120,9 +125,10 @@ module ApplicationHelper
     #computation stuff
     render :partial => test_name
   end
-  def active_class(request, link_path)
-    
-    'active' if request.to_s == link_path.to_s
+  def active_class(request, link_path)    
+    if !request.nil?
+      'active' if request.to_s == link_path.to_s
+    end
 
     #current_page?(link_path) ? "active" : ""
   end

@@ -47,8 +47,8 @@
 		<li class="dropdown">
 	    <% if !additional_attributes[:current_site_user] %>
 	    <a href="#" data-toggle="modal" data-target="#myModal"><span>Login</span></a>
-	    <% else %>	
-	    	<a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" href="#" data-toggle="modal" data-target="#myModal"><span>Account</span></a>
+	    <% else %>		    	
+	    	<a data-toggle="dropdown" data-hover="dropdown" href="#" class="<%= active_class(additional_attributes[:custompageid], '00001') %>"><span>Account</span></a>
 	    	<ul class="dropdown-menu multi-level">
 	    		<li class="top-clear">
 		    		<span><%= link_to "Dashboard", "userdashboard", :method => :get %></span>
