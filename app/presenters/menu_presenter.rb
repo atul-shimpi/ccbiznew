@@ -31,8 +31,13 @@ class MenuPresenter
     if !@additional_attributes[:pageid].blank?
       @page = Seodetail.find_by_slug(@additional_attributes[:pageid]) 
     else  
-      @page = Seodetail.where('shop_id = ? and ishomepage = ?', @shop.id, 1)  
-      @page =  @page[0]
+      if @additional_attributes[:custompageid].blank? || @additional_attributes[:custompageid].nil?
+        @page = Seodetail.where('shop_id = ? and ishomepage = ?', @shop.id, 1)  
+        @page =  @page[0]
+      else
+        @page = Seodetail.new
+        @page.id = nil
+      end
     end
 
     view.render partial: "business_user/elements/menubuilder", locals: {:shop=>@shop, :additional_attributes => @additional_attributes, :page=>@page}, :layout => false
