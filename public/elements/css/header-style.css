@@ -19,9 +19,12 @@
 .mobile-menu-icon { display: none; }
 .tm-nav {
 	display: block;
-	overflow: hidden;
+	
 }
-.tm-nav li {
+.tm-nav ul{
+	margin: 0px;
+}
+.tm-nav > ul > li {
 	list-style: none;
 	float: left;
 }

@@ -158,6 +158,6 @@ class BusinessUser::PagesController < BusinessUser::BaseController
     @shop = Shop.find(params[:shop_id])
   end
   def seodetail_params
-    params.require(:seodetail).permit(:shop_id, :title, :metakeywords, :metadescription, :pagename, :pagealias, :parentpage, :pagecontent, :headerbg, :footerbg, :htmldata,:ishomepage,:isinmenu,:isglobalheader,:isglobalfooter)
+    params.require(:seodetail).permit(:shop_id, :title, :metakeywords, :metadescription, :pagename, :pagealias, :parentpage, :pagecontent, :headerbg, :footerbg, :htmldata,:ishomepage,:isinmenu,:isglobalheader,:isglobalfooter,:pageorder)
   end  
 end
