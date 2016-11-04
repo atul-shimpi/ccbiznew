@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :site_users
+  devise_for :site_users, controllers: {sessions: "sessions"}
   devise_for :admins
   devise_for :business_users
   get 'dashboard/index'
-
+  devise_scope :user do
+    get '/site_users/sign_out' => 'devise/sessions#destroy'
+  end
   devise_for :users
   resources :dashboard
   resources :shops
