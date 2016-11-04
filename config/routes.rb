@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     resources :users
   end
   
-  
+  #devise_for :site_users, :controllers => {:registrations => "registrations"}
   post '/tinymce_assets' => 'tinymce_assets#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

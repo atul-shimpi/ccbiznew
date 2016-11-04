@@ -18,7 +18,8 @@
 	    <div class="form-group">
 	      <%= f.label :page_name, :class => 'control-label' %> 
 	      <%= f.text_field :pagename, :class => 'text_field form-control', :placeholder => 'Enter text' %>
-	    </div>   
+	    </div> 
+
 	   
 	    <div class="form-group">
 	      <%= f.label :parentpage %><br />
@@ -44,6 +45,10 @@
       	  <%= f.radio_button :isglobalfooter, '1' %> Yes <br>
       	  <%= f.radio_button :isglobalfooter, '0' %> No <br>	      
 	  	</div>
+	  	<div class="form-group">
+	      <%= f.label :page_order, :class => 'control-label' %> 
+	      <%= f.number_field :pageorder, :class => 'text_field form-control', :placeholder => 'Enter Number' %>
+	    </div>   
 	    <!--<div class="form-group">
 	      <%= f.label :Page_Content, :class => 'control-label' %>
 	      <%= f.text_area :pagecontent, :class => 'text_field form-control tinymce', :rows => 10 %>
