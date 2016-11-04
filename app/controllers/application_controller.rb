@@ -30,7 +30,14 @@ class ApplicationController < ActionController::Base
     end
 
   end
- 
+  def failure
+    case resource_or_scope   
+      when :site_user, SiteUser
+        root_path
+      else
+        super
+    end
+  end  
 
     def can_administer?      
       business_user_signed_in?
