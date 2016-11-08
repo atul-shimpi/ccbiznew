@@ -3,7 +3,7 @@
   	<% @submenu = Seodetail.where("parentpage = ? ", sub.id) %>
   	<% 
   		if @submenu.present? 
-  		@attr = 'class="dropdown-toggle" data-toggle="dropdown"'	
+  		#@attr = 'class="dropdown-toggle" data-toggle="dropdown"'	
   	%>
     	<li class="dropdown">
     <% else %>
