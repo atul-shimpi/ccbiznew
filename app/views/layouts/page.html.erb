@@ -29,7 +29,7 @@
     <link href="/elements/css/contact-form.css" rel="stylesheet">
     <%= stylesheet_link_tag    'bootstrap.min'%>
     <link href="/elements/css/services.css" rel="stylesheet">
-    
+    <link href="/elements/css/alertify.core.css" rel="stylesheet" id="toggleCSS">
     <%= javascript_include_tag 'htmlbuilder/jquery.min' %>
     <%= javascript_include_tag 'htmlbuilder/jquery-ui.min' %>
     <link rel="shortcut icon" href="images/favicon.png">
@@ -45,6 +45,7 @@
     <![endif]-->
 </head>
 <body>  
+
 <%= yield %>
     
     <!-- Load JS here for greater good =============================-->
@@ -57,11 +58,16 @@
     <%= javascript_include_tag 'htmlbuilder/spectrum' %>
     <%= javascript_include_tag 'htmlbuilder/ace/ace' %>    
     
+    
+    
     <%= render :partial => "home/login_modal", locals: {} %>
+    <%= render :partial => "layouts/notifications" %>
+   
     <script type="text/javascript">
-    $('.mobile-menu-icon').click(function(){
-        $('.tm-nav').toggleClass('show');
-    });
-</script>
+        $('.mobile-menu-icon').click(function(){
+            $('.tm-nav').toggleClass('show');
+        });
+        
+    </script>
 </body>
 </html>

@@ -112,7 +112,7 @@ class HomeController < ApplicationController
 	      if @contact.save
 	      	
 	     
-	        format.html { redirect_to request.env['HTTP_REFERER'], notice: 'Contact info was posted successfully.'}
+	        format.html { redirect_to request.env['HTTP_REFERER'], notice: 'Thank you for contacting us will get back to you soon'}
 	        format.json { render json: @contact, status: :created, location: @contact }
 	      else
 	        format.html { render action: "new" }

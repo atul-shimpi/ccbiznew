@@ -1,0 +1,17 @@
+<script type="text/javascript" src="/elements/js/alertify.min.js"></script>
+<% if flash[:notice] %>
+  <script type="text/javascript">
+    $( document ).ready(function() {
+      alertify.success("<%= flash[:notice] %>");
+      return false;
+    });
+  </script>
+<% end %>
+<% if flash[:error] %>
+  <script type="text/javascript">
+    $( document ).ready(function() {
+      alertify.error("<%= flash[:error] %>");
+      return false;
+    });
+  </script>
+<% end %>
