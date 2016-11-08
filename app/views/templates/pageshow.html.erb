@@ -8,7 +8,8 @@
 	<% end %>
 <% end %>
 <% @page_blocks.each_with_index do |block, index| %>  
-  <% block.each_with_index do |blockdetails, index| %>	  	
+  <% block.each_with_index do |blockdetails, index| %>	  
+  		
   	<%= content_html blockdetails["frames_content"].to_s.html_safe %>
   <% end %>
 <% end %>
