@@ -13,10 +13,13 @@ class SessionsController < Devise::SessionsController
       sign_in(resource_name, resource)
       flash[:notice] = "Login Successful"
       yield resource if block_given?
-      respond_with resource, location: after_sign_in_path_for(resource)
+      return render :json => {:success => true}
+      redirect_to "/user/dashboard"
+      #respond_with resource, location: after_sign_in_path_for(resource)
     else
-      flash[:error] = "Incorrect email or password"
-      redirect_to request.referrer || root_path
+      #flash[:error] = "Incorrect email or password"
+      return render :json => {:success => false, :error => "Incorrect email or password"}
+      #redirect_to request.referrer || root_path
       # Authentication fails, redirect the user to the root page     
     end
     

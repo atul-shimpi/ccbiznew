@@ -6,7 +6,8 @@
         <h3 class="modal-title text-center" id="myModalLabel">Login</h3>
       </div>
       <div class="modal-body">
-      	<form method="post" accept-charset="UTF-8" action="/site_users/sign_in" id="new_site_user" class="newform form-horizontal">	
+      	
+      	<form method="post" accept-charset="UTF-8" action="/site_users/sign_in" id="new_site_user" class="newform form-horizontal"  data-remote="true">	
       		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
             <fieldset>
               <div class="form-group">
