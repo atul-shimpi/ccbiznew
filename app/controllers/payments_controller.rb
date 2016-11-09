@@ -10,7 +10,7 @@ class PaymentsController < ApplicationController
     @payment.site_user_id = current_site_user.id
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to(userdashboard_path, notice: "Payment recorded successfully")} 
+        format.html { redirect_to( user_dashboard_path , notice: "Payment recorded successfully")} 
       else
         format.html { redirect_to(user_updatepayment_path, notice: "Please Try Once Again")} 
       end
