@@ -62,7 +62,33 @@
     
     <%= render :partial => "home/login_modal", locals: {} %>
     <%= render :partial => "layouts/notifications" %>
-   
+   <script type="text/javascript">
+    $(document).ready(function() {
+        $( "#new_site_user" ).submit(function( event ) {
+        
+            var str = $("#new_site_user").serialize();
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr("action"),
+                data: str,
+                dataType: 'json',
+                success: function(data) {
+                    
+                    if(data.success){
+                        //
+                        window.location = "/user/dashboard"
+                    }else{
+                        alertify.error(data.error);
+                    }
+                    
+                }        
+            });
+           
+            event.preventDefault();
+        });
+        
+    });
+</script>
     <script type="text/javascript">
         $('.mobile-menu-icon').click(function(){
             $('.tm-nav').toggleClass('show');

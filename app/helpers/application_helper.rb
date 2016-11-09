@@ -136,4 +136,15 @@ module ApplicationHelper
    # binding.pry    
     return current_site_user
   end
+  def resource_name
+    :site_user
+  end
+
+  def resource
+    @resource ||= SiteUser.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:site_user]
+  end
 end
