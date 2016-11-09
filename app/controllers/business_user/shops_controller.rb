@@ -110,8 +110,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
         end  
       end
     else
-      respond_to do |format|     
-      
+      respond_to do |format|            
         if @shop.update_attributes(shop_params)
           if params[:removebg]                    
             @shop.remove_backgroundimage!

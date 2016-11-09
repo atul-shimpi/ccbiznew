@@ -2,7 +2,7 @@
 	<%= f.select :field_type, %w[text_field check_box date_field text_area file_field] %>
 	<%= f.text_field :name, placeholder: "field_name" %>
 	<%= f.check_box :required %> <%= f.label :required %>
-	<%= f.hidden_field :_destroy %>
-	<%= f.hidden_field :shop_id, :value => @shop.id %>
+	<%= f.hidden_field :_destroy %>	
 	<%= link_to "[remove]", "#", class: "remove_fields" %>
+	<%= f.hidden_field :shop_id, :value => @shop.id %>
 </fieldset>
