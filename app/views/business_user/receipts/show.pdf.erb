@@ -10,6 +10,15 @@
       <h1>Payment receipt</h1> 
       <p>
         Account billed: <%= @payment.site_user.email %>
+        <%= form_for @payment.site_user, url: business_shop_site_users_action(@payment.site_user, params[:action]),:html => { :class => '' , multipart: true  } do |f| %>
+          <%= f.fields_for :properties, OpenStruct.new(@payment.site_user.properties) do |builder| %>
+
+            <% @payment.site_user.shop.fields.where("isreceipt = true").each do |field| %>
+
+              <%= render :partial => "userdetails/fields/#{field.field_type}", locals:{field: field, f:builder, current_site_user: @payment.site_user}, :formats => [:html] %>
+            <% end %>
+          <% end %>                 
+        <% end %> 
       </p>
 
       <table id="payment-information" class="table table-striped" width="100%">

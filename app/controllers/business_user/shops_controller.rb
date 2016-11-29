@@ -184,7 +184,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
   private
 
   def shop_params    
-    params.require(:shop).permit(:name, :phone, :address, :info, :homecontent, :user_id, :avatar,:backgroundimage, :removebg, :category_id, :template, :subdomain, :domain, :city, :state, :country, :zip, :facebook, :linkedin, :google, :twitter, :shoptype, :latitude, :longitude, :backgroundimage_cache, :addressname, :buildingname, :blockno, :gallerytype, :loginenabled, :headerbg, :footerbg , fields_attributes:[:field_type, :name, :required, :_destroy, :shop_id, :id])
+    params.require(:shop).permit(:name, :phone, :address, :info, :homecontent, :user_id, :avatar,:backgroundimage, :removebg, :category_id, :template, :subdomain, :domain, :city, :state, :country, :zip, :facebook, :linkedin, :google, :twitter, :shoptype, :latitude, :longitude, :backgroundimage_cache, :addressname, :buildingname, :blockno, :gallerytype, :loginenabled, :headerbg, :footerbg , fields_attributes:[:field_type, :name, :required, :_destroy, :shop_id, :id, :isreceipt])
   end
 
   def user_creation_process
