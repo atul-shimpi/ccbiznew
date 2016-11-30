@@ -98,11 +98,11 @@ class FilesController < ApplicationController
   end
   def get_shop    
   	subdomain = request.subdomain.split(".").last		
-		if subdomain.blank? || subdomain =='www'  
+		if subdomain.blank? || subdomain =='www'        
       if subdomain.nil?
-        @shop = Shop.find_by_domain('www.'+request.host)  
-      else
         @shop = Shop.find_by_domain(request.host) 
+      else
+        @shop = Shop.find_by_domain(request.domain) 
       end   
       
     else

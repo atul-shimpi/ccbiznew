@@ -10,11 +10,11 @@ class HomeController < ApplicationController
 
 		subdomain = request.subdomain.split(".").last		
 		
-		if subdomain.blank? || subdomain =='www'	
+		if subdomain.blank? || subdomain =='www'				
 			if subdomain.nil?
-				@shop = Shop.find_by_domain('www.'+request.host)	
-			else
 				@shop = Shop.find_by_domain(request.host)	
+			else
+				@shop = Shop.find_by_domain(request.domain)	
 			end		
 			
 		else
@@ -59,11 +59,11 @@ class HomeController < ApplicationController
 	
 	def about_us
 		subdomain = request.subdomain.split(".").last
-		if subdomain.blank? || subdomain =='www'			
+		if subdomain.blank? || subdomain =='www'				
 			if subdomain.nil?
-				@shop = Shop.find_by_domain('www.'+request.host)	
-			else
 				@shop = Shop.find_by_domain(request.host)	
+			else
+				@shop = Shop.find_by_domain(request.domain)	
 			end	
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
@@ -80,11 +80,11 @@ class HomeController < ApplicationController
 	def contact_us
 
 		subdomain = request.subdomain.split(".").last
-		if subdomain.blank? || subdomain =='www'			
+		if subdomain.blank? || subdomain =='www'				
 			if subdomain.nil?
-				@shop = Shop.find_by_domain('www.'+request.host)	
-			else
 				@shop = Shop.find_by_domain(request.host)	
+			else
+				@shop = Shop.find_by_domain(request.domain)	
 			end	
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
@@ -97,12 +97,12 @@ class HomeController < ApplicationController
 	def update_contact_us		
 		
 		subdomain = request.subdomain.split(".").last
-		if subdomain.blank? || subdomain =='www'			
+		if subdomain.blank? || subdomain =='www'				
 			if subdomain.nil?
-				@shop = Shop.find_by_domain('www.'+request.host)	
-			else
 				@shop = Shop.find_by_domain(request.host)	
-			end	
+			else
+				@shop = Shop.find_by_domain(request.domain)	
+			end		
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
@@ -127,11 +127,11 @@ class HomeController < ApplicationController
 
 	def gallery
 		subdomain = request.subdomain.split(".").last
-		if subdomain.blank? || subdomain =='www'			
+		if subdomain.blank? || subdomain =='www'				
 			if subdomain.nil?
-				@shop = Shop.find_by_domain('www.'+request.host)	
-			else
 				@shop = Shop.find_by_domain(request.host)	
+			else
+				@shop = Shop.find_by_domain(request.domain)	
 			end	
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
@@ -149,11 +149,11 @@ class HomeController < ApplicationController
 
 	def donation
 		subdomain = request.subdomain.split(".").last
-		if subdomain.blank? || subdomain =='www'			
+		if subdomain.blank? || subdomain =='www'				
 			if subdomain.nil?
-				@shop = Shop.find_by_domain('www.'+request.host)	
-			else
 				@shop = Shop.find_by_domain(request.host)	
+			else
+				@shop = Shop.find_by_domain(request.domain)	
 			end	
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
@@ -164,11 +164,11 @@ class HomeController < ApplicationController
 	end
 	def shop_events
 		subdomain = request.subdomain.split(".").last
-		if subdomain.blank? || subdomain =='www'			
+		if subdomain.blank? || subdomain =='www'				
 			if subdomain.nil?
-				@shop = Shop.find_by_domain('www.'+request.host)	
-			else
 				@shop = Shop.find_by_domain(request.host)	
+			else
+				@shop = Shop.find_by_domain(request.domain)	
 			end	
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
@@ -207,11 +207,11 @@ class HomeController < ApplicationController
 	end
 	def auction
 		subdomain = request.subdomain.split(".").last
-		if subdomain.blank? || subdomain =='www'			
+		if subdomain.blank? || subdomain =='www'				
 			if subdomain.nil?
-				@shop = Shop.find_by_domain('www.'+request.host)	
-			else
 				@shop = Shop.find_by_domain(request.host)	
+			else
+				@shop = Shop.find_by_domain(request.domain)	
 			end	
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
@@ -230,11 +230,11 @@ class HomeController < ApplicationController
 	end
 	def compare_teams
 		subdomain = request.subdomain.split(".").last
-		if subdomain.blank? || subdomain =='www'			
+		if subdomain.blank? || subdomain =='www'				
 			if subdomain.nil?
-				@shop = Shop.find_by_domain('www.'+request.host)	
-			else
 				@shop = Shop.find_by_domain(request.host)	
+			else
+				@shop = Shop.find_by_domain(request.domain)	
 			end	
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
@@ -252,11 +252,11 @@ class HomeController < ApplicationController
 
 	def player
 		subdomain = request.subdomain.split(".").last
-		if subdomain.blank? || subdomain =='www'			
+		if subdomain.blank? || subdomain =='www'				
 			if subdomain.nil?
-				@shop = Shop.find_by_domain('www.'+request.host)	
-			else
 				@shop = Shop.find_by_domain(request.host)	
+			else
+				@shop = Shop.find_by_domain(request.domain)	
 			end	
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
@@ -273,11 +273,11 @@ class HomeController < ApplicationController
 	end
 	def teams
 		subdomain = request.subdomain.split(".").last
-		if subdomain.blank? || subdomain =='www'			
+		if subdomain.blank? || subdomain =='www'				
 			if subdomain.nil?
-				@shop = Shop.find_by_domain('www.'+request.host)	
-			else
 				@shop = Shop.find_by_domain(request.host)	
+			else
+				@shop = Shop.find_by_domain(request.domain)	
 			end	
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
@@ -292,11 +292,11 @@ class HomeController < ApplicationController
 	end
 	def team
 		subdomain = request.subdomain.split(".").last
-		if subdomain.blank? || subdomain =='www'			
+		if subdomain.blank? || subdomain =='www'				
 			if subdomain.nil?
-				@shop = Shop.find_by_domain('www.'+request.host)	
-			else
 				@shop = Shop.find_by_domain(request.host)	
+			else
+				@shop = Shop.find_by_domain(request.domain)	
 			end	
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
@@ -314,11 +314,11 @@ class HomeController < ApplicationController
 	# User Section
 	def dashboard
 		subdomain = request.subdomain.split(".").last
-		if subdomain.blank? || subdomain =='www'			
+		if subdomain.blank? || subdomain =='www'				
 			if subdomain.nil?
-				@shop = Shop.find_by_domain('www.'+request.host)	
-			else
 				@shop = Shop.find_by_domain(request.host)	
+			else
+				@shop = Shop.find_by_domain(request.domain)	
 			end	
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
@@ -342,11 +342,11 @@ class HomeController < ApplicationController
 	#Dyanamic Pages
 	def pageshow
 		subdomain = request.subdomain.split(".").last
-		if subdomain.blank? || subdomain =='www'			
+		if subdomain.blank? || subdomain =='www'				
 			if subdomain.nil?
-				@shop = Shop.find_by_domain('www.'+request.host)	
-			else
 				@shop = Shop.find_by_domain(request.host)	
+			else
+				@shop = Shop.find_by_domain(request.domain)	
 			end	
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
@@ -379,11 +379,11 @@ class HomeController < ApplicationController
 	end
 	def updatepayment
 		subdomain = request.subdomain.split(".").last
-		if subdomain.blank? || subdomain =='www'			
+		if subdomain.blank? || subdomain =='www'				
 			if subdomain.nil?
-				@shop = Shop.find_by_domain('www.'+request.host)	
-			else
 				@shop = Shop.find_by_domain(request.host)	
+			else
+				@shop = Shop.find_by_domain(request.domain)	
 			end	
 		else
 			@shop = Shop.find_by_subdomain(subdomain)	
