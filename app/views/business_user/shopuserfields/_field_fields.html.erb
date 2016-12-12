@@ -3,6 +3,7 @@
 	<%= f.text_field :name, placeholder: "field_name" %>
 	<%= f.check_box :required %> <%= f.label :required %>
 	<%= f.check_box :isreceipt %> <%= f.label :include_in_receipt %>	
+	<%= f.check_box :isintable %> <%= f.label :include_in_listing %>	
 	<%= f.hidden_field :_destroy %>	
 	<%= link_to "[remove]", "#", class: "remove_fields" %>
 	<%= f.hidden_field :shop_id, :value => @shop.id %>

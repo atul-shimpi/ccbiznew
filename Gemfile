@@ -18,7 +18,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-
+gem 'fancybox2-rails', '~> 0.2.8'
 # Bootstrap Datetime picker
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'

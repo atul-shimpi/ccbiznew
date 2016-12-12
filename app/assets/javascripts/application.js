@@ -39,5 +39,6 @@
 //= require main
 //= require bootstrap-colorpicker
 //= require business_user/shopuserfields
+//= require fancybox
 
        
