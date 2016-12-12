@@ -1,7 +1,7 @@
 .tm-gray-bg { background-color: #E5E5E5; }
 .tm-header {
 	/*background: #000000;*/
-	height: 80px;
+	height: 100%;
 	position: relative;
 	z-index: 100;
 }
@@ -28,7 +28,7 @@
 .tm-nav li a {
 	color: #838383;
 	display: block;
-	padding: 45px 34px 15px 34px;
+	padding: 45px 34px;
 	text-transform: uppercase;
 	transition: all 0.3s ease;
 }

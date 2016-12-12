@@ -14,22 +14,24 @@
           
         </div>
         <!-- /.panel-heading -->
-        <div class="panel-body">
+        <div class="panel-body payments-dashboard">
           <div class="dataTable_wrapper">           
-            <%= form_tag(business_user_payments_path, :method => "get") do %>
+            <%= form_tag(business_user_payments_path, :method => "get", :class => "flexbox") do %>
               
-              <div class="date">
-                <input type="text" name="search[fromdate]" id="search[fromdate]" placeholder="From Date">
+              <div class="date mr20 form-group">
+                <input type="text" class="form-control" name="search[fromdate]" id="search[fromdate]" placeholder="From Date">
               </div>
-              <div class="date">
-                <input type="text" name="search[todate]" id="search[todate]" placeholder="To Date">
+              <div class="date mr20 form-group">
+                <input type="text" class="form-control" name="search[todate]" id="search[todate]" placeholder="To Date">
               </div>
-              <select name="search[status]" id="search[status]">
-                <option value="">Select</option>
-                <option value="1">Approve</option>
-                <option value="2">Rejected</option>
-                <option value="3">Notified</option>
-              </select>              
+              <div class="form-group mr20">
+                <select name="search[status]" class="form-control" id="search[status]">
+                  <option value="">Select</option>
+                  <option value="1">Approve</option>
+                  <option value="2">Rejected</option>
+                  <option value="3">Notified</option>
+                </select> 
+              </div>             
               <%= submit_tag "Search", :name => nil %>
             <% end %>
             <% if @payments.present? %>

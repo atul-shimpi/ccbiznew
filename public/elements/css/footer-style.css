@@ -1,5 +1,13 @@
 /* Footer */
-.tm-black-bg { background-color: #000; }
+.tm-black-bg { 
+	background-color: #000; 
+}
+.footer-ts {
+	width: 100%;
+  position: absolute; 
+  bottom: 0; 
+  left: 0;
+}
 .tm-copyright-text {
 	color: white;
 	text-align: center;
