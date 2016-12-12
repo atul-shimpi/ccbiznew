@@ -32,6 +32,7 @@
 		                  <th>Reference Number</th>		                  
 		                  <th>Amount</th>
 		                  <th>Description</th>
+		                  <th>Date</th>
 		                </tr>
 		              </thead>
 		              <tbody>
@@ -41,6 +42,7 @@
 		                      <td><%= payment.payment_transaction_token %></td>
 		                      <td><%= number_to_currency payment.amount, unit: "Rs " %></td>
 		                      <td><%= payment.description %></td>
+		                      <td><%= payment.created_at.strftime("%d/%m/%Y") %></td>
 		                    </tr>
 		                  <% end %>
 		                <% end %>
@@ -48,7 +50,7 @@
 		            </table>
 		          </div>
 		          <p class="about_content">
-					<%= link_to "New Files", new_file_path %>
+					<%= link_to "Upload Document", new_file_path %>
 				</p>  
 				       
 				<div class="dataTable_wrapper">

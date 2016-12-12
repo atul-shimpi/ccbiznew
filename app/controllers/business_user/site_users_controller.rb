@@ -1,6 +1,6 @@
 class BusinessUser::SiteUsersController < BusinessUser::BaseController
 	#before_action :get_shop
-
+  protect_from_forgery except: [:show]
 	def index
 		@shops_ids = current_business_user.shops.all.map{ |shop|
       [shop.id]

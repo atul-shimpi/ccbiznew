@@ -153,9 +153,24 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
     @shop = Shop.find(params[:shop_id])    
     render :layout => false
   end
+
+  def shoprecieptheader
+    @shop = Shop.find(params[:shop_id])    
+    render :layout => false
+  end
+
+  def shoprecieptfooter
+    @shop = Shop.find(params[:shop_id])    
+    render :layout => false
+  end
+
   def getlayout
     @shop = Shop.find(params[:shop_id])   
-    if params['type'] == "header" 
+    if params['type'] == "rheader" 
+      @content = @shop.recieptheaderhtml
+    elsif params['type'] == "rfooter"   
+      @content = @shop.recieptfooterhtml
+    elsif params['type'] == "header" 
       @content = @shop.headerhtml
     else 
       @content = @shop.footerhtml
@@ -166,11 +181,14 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
       render :json => "{}".as_json
     end
   end
-  def updatelayout
-
+  def updatelayout    
     if !params['data'].blank?      
       @shop = Shop.find(params['data']['shop_id'])
-      if params['type'] == "header"
+      if params['type'] == "rheader"
+        @shop['recieptheaderhtml'] = params['data'].to_json
+      elsif params['type'] == "rfooter"
+        @shop['recieptfooterhtml'] = params['data'].to_json
+      elsif params['type'] == "header"
         @shop['headerhtml'] = params['data'].to_json
       else
         @shop['footerhtml'] = params['data'].to_json
@@ -184,7 +202,7 @@ class BusinessUser::ShopsController < BusinessUser::BaseController
   private
 
   def shop_params    
-    params.require(:shop).permit(:name, :phone, :address, :info, :homecontent, :user_id, :avatar,:backgroundimage, :removebg, :category_id, :template, :subdomain, :domain, :city, :state, :country, :zip, :facebook, :linkedin, :google, :twitter, :shoptype, :latitude, :longitude, :backgroundimage_cache, :addressname, :buildingname, :blockno, :gallerytype, :loginenabled, :headerbg, :footerbg , fields_attributes:[:field_type, :name, :required, :_destroy, :shop_id, :id, :isreceipt])
+    params.require(:shop).permit(:name, :phone, :address, :info, :homecontent, :user_id, :avatar,:backgroundimage, :removebg, :category_id, :template, :subdomain, :domain, :city, :state, :country, :zip, :facebook, :linkedin, :google, :twitter, :shoptype, :latitude, :longitude, :backgroundimage_cache, :addressname, :buildingname, :blockno, :gallerytype, :loginenabled, :headerbg, :footerbg , fields_attributes:[:field_type, :name, :required, :_destroy, :shop_id, :id, :isreceipt, :isintable])
   end
 
   def user_creation_process

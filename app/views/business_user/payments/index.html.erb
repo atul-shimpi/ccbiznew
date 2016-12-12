@@ -16,26 +16,66 @@
         <!-- /.panel-heading -->
         <div class="panel-body">
           <div class="dataTable_wrapper">           
-
+            <%= form_tag(business_user_payments_path, :method => "get") do %>
+              
+              <div class="date">
+                <input type="text" name="search[fromdate]" id="search[fromdate]" placeholder="From Date">
+              </div>
+              <div class="date">
+                <input type="text" name="search[todate]" id="search[todate]" placeholder="To Date">
+              </div>
+              <select name="search[status]" id="search[status]">
+                <option value="">Select</option>
+                <option value="1">Approve</option>
+                <option value="2">Rejected</option>
+                <option value="3">Notified</option>
+              </select>              
+              <%= submit_tag "Search", :name => nil %>
+            <% end %>
             <% if @payments.present? %>
 
               <table id="latest-payments" class="table table-striped">
                 <thead>
                   <tr>
                     <th> User Email </th>
+                    
+                    <%= form_for @payments.first.site_user, url: business_shop_site_users_action(@payments.first.site_user, params[:action]),:html => { :class => '' , multipart: true  } do |f| %>
+                      <%= f.fields_for :properties, OpenStruct.new(@payments.first.site_user.properties) do |builder| %>
+                        <% @payments.first.site_user.shop.fields.where("isintable = true").each do |field| %>
+                          <th><%= field.name %></th>                      
+                        <% end %>
+                      <% end %>                 
+                    <% end %> 
                     <th> Amount</th>
-                    <th> Created at</th>
+                    <th> Date</th>
+                    <th>Update Status</th>
                     <th> </th>
                   </tr>
 
                   <tbody>
                     <% @payments.each do |payment| %>        
                       <tr id="payment-<%= payment.id %>">
-                        <td class="customer-email"><%= payment.site_user.email %></td>
+                        <td class="customer-email"><%= payment.site_user.email %></td>                        
+                        <%= form_for payment.site_user, url: business_shop_site_users_action(payment.site_user, params[:action]),:html => { :class => '' , multipart: true  } do |f| %>
+                          <%= f.fields_for :properties, OpenStruct.new(payment.site_user.properties) do |builder| %>
+                            <% payment.site_user.shop.fields.where("isintable = true").each do |field| %>
+                              <td>
+                                <%= payment.site_user.properties["#{field.name}"] %>
+                              </td>  
+                            <% end %>
+                          <% end %>                 
+                        <% end %>   
                         <td class="amount"><%= number_to_currency(payment.amount, unit: "Rs ") %></td>
-                        <td class="created_at"><%= distance_of_time_in_words_to_now(payment.created_at) %></td>
-                        <td class="view_receipt"><%= link_to "View Receipt", business_user_receipt_path(payment, :format => 'pdf') %></td>
-                      </tr>
+                        <td class="created_at"><%= payment.created_at.strftime("%d/%m/%Y") %></td>
+                        <td>
+                          <%= form_for payment,url:'/business_user/payments/update' ,:html => { :class => '' , multipart: true  } do |f| %>
+                            <%= f.hidden_field :id %>
+                            <%= f.select :status, [['Approve', 1], ['Rejected', 2], ['Notification', 3]], {:prompt => 'Update Status'}, :onChange=>"openstatusdetailsform(#{payment.id}, this.value)" %>
+                          <% end %>
+                        </td>
+                        <td class="view_receipt"><%= link_to "View Receipt", business_user_receipt_path(payment, :format => 'pdf') %> / <%= link_to "Send Receipt", "/business_user/receipts/sendmail/#{payment.id}" %></td>
+
+                      </tr>                      
                     <% end %>  
                   </tbody>
                 </thead>
@@ -55,7 +95,12 @@
   </div>
 </div>
 <!-- /#page-wrapper -->
-
+<script type="text/javascript">
+  function openstatusdetailsform(paymentid, status)
+  {    
+    window.location.href = "/business_user/payments/getdetails/"+paymentid+"/"+status
+  }
+</script>
 
 
 

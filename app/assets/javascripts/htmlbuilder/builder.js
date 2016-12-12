@@ -559,9 +559,9 @@
             page.blocks = [];
                     
             //process the blocks
-                    
+                   
             for( var x = 0; x < this.blocks.length; x++ ) {
-                        
+               
                 var block = {};
                         
                 if( this.blocks[x].sandbox ) {
@@ -571,8 +571,10 @@
                     block.frames_loaderFunction = this.blocks[x].sandbox_loader;
                             
                 } else {
-                                                        
+                                           
+                    //console.log(this.blocks[x].frameDocument.documentElement.querySelector( '#page' ).outerHTML )             
                     block.frames_content = this.blocks[x].frameDocument.documentElement.querySelector( '#page' ).outerHTML;
+
                     block.frames_sandbox = false;
                     block.frames_loaderFunction = '';
                             
@@ -1862,7 +1864,7 @@
             preps the site data before sending it to the server
         */
         prepForSave: function(template) {
-            
+            console.log("site prepsave")
             this.sitePagesReadyForServer = {};
             
             if( template ) {//saving template, only the activePage is needed

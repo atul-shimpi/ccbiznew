@@ -1,0 +1,44 @@
+<div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Update Payment Details</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <!-- /.row -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          
+          
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+          <%= form_for @paymentnotification, url:'/business_user/payments/update' ,:html => { :class => '' , multipart: true  } do |f| %>
+            <%= f.hidden_field :payment_id, :value => @payment.id %>
+            <fieldset>
+		      <div class="form-group">
+		       <%= f.label :description, :class => 'control-label' %><span class="asterix">*</span>
+		       <%= f.text_area :description, :class => 'text_field form-control', :placeholder => 'Enter text', :required => '' %>
+		      </div>
+		      <input type="hidden" value="<%= params[:status] %>" name="payment_status" id="payment_status">
+		      <%= f.submit "Update", :class => 'btn btn-primary' %>
+		    </fieldset>  
+            
+          <% end %>
+          <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+      </div>
+      <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+</div>
+<!-- /#page-wrapper -->
+
+
+
+
+
