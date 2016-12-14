@@ -24,8 +24,8 @@
 				        <% end %>		
 		          	</div>
 		          </div>
-		          <div class="update_pay_btn">
-		          	<%= link_to "Update Payment Details", "/user/updatepayment" %>
+		          <div>
+		          	<%= link_to "Update Payment Details", "/user/updatepayment", class: 'update_pay_btn' %>
 	          	</div>
 		          <div class="dataTable_wrapper">
 		            <table class="table table-striped table-bordered table-hover dataTables-example" id="dataTables-example">
@@ -52,7 +52,7 @@
 		            </table>
 		          </div>
 		          <p class="about_content">
-								<div class="upload_doc_btn"><%= link_to "Upload Document", new_file_path %></div>
+								<div><%= link_to "Upload Document", new_file_path, class: 'upload_doc_btn' %></div>
 							</p>  
 				       
 				<div class="dataTable_wrapper">
