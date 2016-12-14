@@ -159,3 +159,30 @@ header .navbar-white a {
 	height: 100%;
 	background: none;
 }
+.update_pay_btn {
+	padding: 10px;
+	display: inline-block;
+	border-radius: 2px;
+	border: 0;
+	margin: 0 10px 20px 0;
+	background: #2a6496;
+	font-size: 15px;
+	line-height: 15px;
+	color: white;
+	width: auto;
+	height: auto;
+	box-sizing: content-box;
+}
+.upload_doc_btn {
+	padding: 10px;
+	display: inline-block;
+	border-radius: 2px;
+	border: 0;
+	background: #2a6496;
+	font-size: 15px;
+	line-height: 15px;
+	color: white;
+	width: auto;
+	height: auto;
+	box-sizing: content-box;
+}
