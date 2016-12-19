@@ -615,6 +615,9 @@ hr { border-top: 1px solid #111010; }
 	    display: block;
 	    padding: 20px 30px 20px;
 	}
+	.tm-nav .dropdown-menu li a {
+		color: #838383;
+	}
 	.mobile-menu-icon {
 	    display: block;
 	    cursor: pointer;
