@@ -172,6 +172,8 @@ header .navbar-white a {
 	width: auto;
 	height: auto;
 	box-sizing: content-box;
+	font-style: italic;
+  text-decoration: underline;
 }
 .upload_doc_btn {
 	padding: 10px;
@@ -185,4 +187,6 @@ header .navbar-white a {
 	width: auto;
 	height: auto;
 	box-sizing: content-box;
+	font-style: italic;
+  text-decoration: underline;
 }

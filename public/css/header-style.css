@@ -5,7 +5,10 @@
 	position: relative;
 	z-index: 100;
 }
-.tm-site-name-container { padding-top: 20px; }
+.tm-site-name-container { 
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
 .tm-site-name {
 	color: #FCDD44;
 	font-size: 27px;
@@ -16,10 +19,12 @@
 .tm-site-name:focus {
 	color: #FF720B;
 }
+.tm-site-name img {
+	max-width: 128px;
+}
 .mobile-menu-icon { display: none; }
 .tm-nav {
 	display: block;
-	overflow: hidden;
 }
 .tm-nav li {
 	list-style: none;
@@ -28,7 +33,7 @@
 .tm-nav li a {
 	color: #838383;
 	display: block;
-	padding: 45px 34px;
+	padding: 30px 34px;
 	text-transform: uppercase;
 	transition: all 0.3s ease;
 }
