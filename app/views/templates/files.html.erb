@@ -48,7 +48,11 @@
 		                      <td><%= number_to_currency payment.amount, unit: "Rs " %></td>
 		                      <td><%= payment.description %></td>
 		                      <td><%= payment.created_at.strftime("%d/%m/%Y") %></td>
-		                      <td><%= @status[payment.status] %></td>
+		                      <td>
+		                      	<% if !payment.status.nil? %>
+		                      		<%= @status[payment.status] %>
+		                      	<% end %>		                      		
+		                      </td>
 		                      <td>
 		                      	<% if payment.status=="1" %>
 
