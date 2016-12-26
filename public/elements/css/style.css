@@ -190,3 +190,7 @@ header .navbar-white a {
 	font-style: italic;
   text-decoration: underline;
 }
+.update_pay_btn:hover,
+.upload_doc_btn:hover {
+    color: #fff;
+}
