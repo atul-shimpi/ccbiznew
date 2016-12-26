@@ -35,9 +35,12 @@
 		                  <th>Amount</th>
 		                  <th>Description</th>
 		                  <th>Date</th>
+		                  <th>Status</th>
+		                  <th></th>
 		                </tr>
 		              </thead>
 		              <tbody>
+		              	<% @status = ['-', 'Approve', 'Rejected', 'Notified' ] %>
 		                <% if !@payments.blank?%>
 		                  <% @payments.each do |payment| %>
 		                    <tr>
@@ -45,6 +48,14 @@
 		                      <td><%= number_to_currency payment.amount, unit: "Rs " %></td>
 		                      <td><%= payment.description %></td>
 		                      <td><%= payment.created_at.strftime("%d/%m/%Y") %></td>
+		                      <td><%= @status[payment.status] %></td>
+		                      <td>
+		                      	<% if payment.status==1 %>
+		                      		
+		                      		<%= link_to "View/Download Receipt", "/payment_reciept/#{payment.id}/#{payment.public_token}", target: "_blank" %>
+		                      		
+		                      	<% end %>
+		                      </td>
 		                    </tr>
 		                  <% end %>
 		                <% end %>
