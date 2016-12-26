@@ -40,7 +40,7 @@
 		                </tr>
 		              </thead>
 		              <tbody>
-		              	<% @status = ['-', 'Approve', 'Rejected', 'Notified' ] %>
+		              	<% @status = ['-', 'Approved', 'Rejected', 'Notified' ] %>
 		                <% if !@payments.blank?%>
 		                  <% @payments.each do |payment| %>
 		                    <tr>
@@ -51,7 +51,7 @@
 		                      <td><%= @status[payment.status] %></td>
 		                      <td>
 		                      	<% if payment.status==1 %>
-		                      		
+
 		                      		<%= link_to "View/Download Receipt", "/payment_reciept/#{payment.id}/#{payment.public_token}", target: "_blank" %>
 		                      		
 		                      	<% end %>
