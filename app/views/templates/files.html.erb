@@ -50,7 +50,7 @@
 		                      <td><%= payment.created_at.strftime("%d/%m/%Y") %></td>
 		                      <td><%= @status[payment.status] %></td>
 		                      <td>
-		                      	<% if payment.status==1 %>
+		                      	<% if payment.status=="1" %>
 
 		                      		<%= link_to "View/Download Receipt", "/payment_reciept/#{payment.id}/#{payment.public_token}", target: "_blank" %>
 		                      		
