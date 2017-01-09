@@ -133,6 +133,15 @@
 }
 .tm-social-icon:hover {	color: #E8BA0F; }
 
+@media screen and (max-width: 768px) {
+	.flexslider.flexslider-banner .slides img {
+    width: auto;
+    max-height: 576px;
+    height: 100%;
+    min-height: 396px;
+	}
+}
+ 
 @media screen and (max-width: 1199px) {
 	.tm-contact-box-1 {	padding: 30px; }
 	.contact-image { max-width: 450px; }
