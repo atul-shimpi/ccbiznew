@@ -5,6 +5,8 @@
     <title>Slide Show</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="/jquery-ui.css">
+    <link rel="stylesheet" href="/style.css">
     <link href="/elements/css/build.css" rel="stylesheet">
     <link href="/elements/css/bootstrap.css" rel="stylesheet">
     <link href="/elements/css/header-style.css" rel="stylesheet">
@@ -16,6 +18,11 @@
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+    .resizable:hover {
+    background-color: yellow;
+}
+    </style>
 </head>
 <body>
     
@@ -24,11 +31,11 @@
         <div class="tm-header ng-scope" ng-controller="NavController">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-md-4 col-sm-3 tm-site-name-container">
-                        <a href="/" class="tm-site-name"><img src="/images/logo2.jpg" alt="Tulip Service Apartments" class="img-responsive"></a>    
+                    <div class="col-lg-6 col-md-4 col-sm-3 tm-site-name-container draggable resizable">
+                        <img src="/images/logo2.jpg" alt="Tulip Service Apartments" style='height: 30%; width: 30%; object-fit: contain' class="img-responsive draggable resizable">    
                     </div>
                     
-                    <div class="col-lg-6 col-md-8 col-sm-9">
+                    <div class="col-lg-6 col-md-8 col-sm-9 resizable draggable">
                         <div class="mobile-menu-icon">
                             <i class="fa fa-bars"></i>
                         </div>
@@ -45,6 +52,16 @@
 
     <!-- Load JS here for greater good =============================-->
     <script src="/elements/js/build/build.min.js"></script>
-   
+   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( ".resizable" ).resizable();
+  } );
+
+  $( function() {
+        $( ".draggable" ).draggable();
+    } );
+  </script>
 </body>
 </html>
