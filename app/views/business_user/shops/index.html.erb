@@ -33,11 +33,11 @@
                   <td><%= link_to shop.name, business_user_shop_path(subdomain: shop.subdomain, id: shop.id) %></td>
                   <td><%= shop.phone %></td>
                   <td><%= shop.address %></td>
-                  <%= %>
-                  <td><a href=<%= "http://#{shop.subdomain}.ccbizon.com"%> target="_blank"><%= "#{shop.subdomain}.ccbizon.com" %></a>
-                  <% if !shop.domain.blank? %>
-                      <br>
-                      <a href=<%= "http://#{shop.domain}"%> target="_blank"><%= "#{shop.domain}"%></a>
+                  <td>
+                    <% if !shop.domain.blank? %>
+                      <a href=<%= "http://#{shop.subdomain}.#{shop.domain}"%> target="_blank"><%= "#{shop.subdomain}.#{shop.domain}"%></a>
+                    <% else %>
+                      <a href=<%= "http://#{shop.subdomain}.ccbizon.com"%> target="_blank"><%= "#{shop.subdomain}.ccbizon.com" %></a>
                     <% end %>
                   </td>
                   <td>
