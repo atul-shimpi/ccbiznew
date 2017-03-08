@@ -19,10 +19,10 @@
             <%= form_tag(business_user_payments_path, :method => "get", :class => "flexbox") do %>
               
               <div class="date mr20 form-group">
-                <input type="text" class="form-control" name="search[fromdate]" id="search[fromdate]" placeholder="From Date">
+                <input type="text" class="form-control" name="search[fromdate]" id="fromdate" placeholder="From Date">
               </div>
               <div class="date mr20 form-group">
-                <input type="text" class="form-control" name="search[todate]" id="search[todate]" placeholder="To Date">
+                <input type="text" class="form-control" name="search[todate]" id="todate" placeholder="To Date">
               </div>
               <div class="form-group mr20">
                 <select name="search[status]" class="form-control" id="search[status]">
@@ -102,6 +102,10 @@
   {    
     window.location.href = "/business_user/payments/getdetails/"+paymentid+"/"+status
   }
+  $(function () {
+    $('#fromdate').datepicker();
+    $('#todate').datepicker();
+  });
 </script>
 
 
