@@ -201,7 +201,7 @@ class HomeController < ApplicationController
 			if @shop.template.present?
 				render :template => "templates/events", :layout => "#{@shop.template}"
 			else
-				render :template => "templates/events", :layout => "page"
+				render :template => "templates/events", :layout => "modulepage"
 	    end
 		else
 			redirect_to root_path
@@ -435,7 +435,7 @@ class HomeController < ApplicationController
 		if @shop.template.present?
 			render :template => "Site_User/paymentupdate", :layout => "#{@shop.template}"
 		else
-			render :template => "Site_User/paymentupdate", :layout => "page"
+			render :template => "Site_User/paymentupdate", :layout => "modulepage"
 		end
 	end
 
