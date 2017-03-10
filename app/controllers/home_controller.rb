@@ -71,14 +71,17 @@ class HomeController < ApplicationController
 		
 		@seodetails = @shop.seodetails.where("pagename = 'about'") rescue nil
 		if !@shop.info.blank?
-			render :template => "templates/about_us", :layout => "#{@shop.template}"
+			if @shop.template.present?
+				render :template => "templates/about_us", :layout => "#{@shop.template}"
+			else
+				render :template => "templates/about_us", :layout => "page"
+			end
 		else
 			redirect_to root_path			
 		end
 	end
 
 	def contact_us
-
 		subdomain = request.subdomain.split(".").last
 		if subdomain.blank? || subdomain =='www'				
 			if subdomain.nil?
@@ -92,10 +95,14 @@ class HomeController < ApplicationController
 		@seodetails = @shop.seodetails.where("pagename = 'contact'") rescue nil
 		@contact = Contact.new  
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
-		render :template => "templates/contact_us", :layout => "#{@shop.template}"
+		if @shop.template.present?
+			render :template => "templates/contact_us", :layout => "#{@shop.template}"
+		else
+			render :template => "templates/contact_us", :layout => "page"
+		end
 	end
+
 	def update_contact_us		
-		
 		subdomain = request.subdomain.split(".").last
 		if subdomain.blank? || subdomain =='www'				
 			if subdomain.nil?
@@ -110,8 +117,6 @@ class HomeController < ApplicationController
 	
 	    respond_to do |format|
 	      if @contact.save
-	      	
-	     
 	        format.html { redirect_to request.env['HTTP_REFERER'], notice: 'Thank you for contacting us will get back to you soon'}
 	        format.json { render json: @contact, status: :created, location: @contact }
 	      else
@@ -119,10 +124,7 @@ class HomeController < ApplicationController
 	        format.json { render json: @contact.errors, status: :unprocessable_entity }
 	      end
 	    end
-		
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
-		
-		
 	end
 
 	def gallery
@@ -141,7 +143,11 @@ class HomeController < ApplicationController
 		@images = @shop.shop_images.where("imagetype = 1")
 		
 		if !@shop.shop_images.blank?
-			render :template => "templates/gallery", :layout => "#{@shop.template}"
+			if @shop.template.present?
+				render :template => "templates/gallery", :layout => "#{@shop.template}"
+			else
+				render :template => "templates/gallery", :layout => "page"
+			end
 		else
 			redirect_to root_path
 		end
@@ -160,8 +166,13 @@ class HomeController < ApplicationController
 		end
 		@seodetails = @shop.seodetails.where("pagename = 'donation'") rescue nil
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
-		render :template => "templates/donation", :layout => "#{@shop.template}"
+		if @shop.template.present?
+			render :template => "templates/donation", :layout => "#{@shop.template}"
+		else
+			render :template => "templates/donation", :layout => "page"
+		end
 	end
+
 	def shop_events
 		subdomain = request.subdomain.split(".").last
 		if subdomain.blank? || subdomain =='www'				
@@ -187,24 +198,29 @@ class HomeController < ApplicationController
 				end
 			end
 			#render :template => "templates/modulepages", :layout => "page"
-	    	render :template => "templates/events", :layout => "modulepage"	
-			#render :template => "templates/events", :layout => "#{@shop.template}"
+			if @shop.template.present?
+				render :template => "templates/events", :layout => "#{@shop.template}"
+			else
+				render :template => "templates/events", :layout => "page"
+	    end
 		else
 			redirect_to root_path
 		end
 	end
+
 	def sitemap
 		respond_to do |format|
-	      format.xml
-	    end
+      format.xml
+    end
 	end
-	def robots
 
+	def robots
 		@site = request.host_with_port
 		respond_to do |format|
-	      format.text
-	    end
+      format.text
+    end
 	end
+
 	def auction
 		subdomain = request.subdomain.split(".").last
 		if subdomain.blank? || subdomain =='www'				
@@ -217,17 +233,16 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
 		@seodetails = @shop.seodetails.where("pagename = 'auction'") rescue nil
-		
-		
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
 			@players = @shop.auction.players.not_in_team
 			impressionist(@shop.auction)
-			render :template => "templates/auction", :layout => "#{@shop.template}"
+			render :template => "templates/auction", :layout => "page"
 		else
 			redirect_to root_path
 		end
 	end
+
 	def compare_teams
 		subdomain = request.subdomain.split(".").last
 		if subdomain.blank? || subdomain =='www'				
@@ -240,11 +255,14 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
 		@seodetails = @shop.seodetails.where("pagename = 'team'") rescue nil
-		
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
 			@players = Player.not_in_team
-			render :template => "templates/compare_teams", :layout => "#{@shop.template}"
+			if @shop.template.present?
+				render :template => "templates/compare_teams", :layout => "#{@shop.template}"
+			else
+				render :template => "templates/compare_teams", :layout => "page"
+			end
 		else
 			redirect_to root_path
 		end
@@ -262,15 +280,19 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
 		@seodetails = @shop.seodetails.where("pagename = 'player'") rescue nil
-		
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
 			@player = Player.find(params[:id])
-			render :template => "templates/player", :layout => "#{@shop.template}"
+			if @shop.template.present?
+				render :template => "templates/player", :layout => "#{@shop.template}"
+			else
+				render :template => "templates/player", :layout => "page"
+			end
 		else
 			redirect_to root_path
 		end
 	end
+
 	def teams
 		subdomain = request.subdomain.split(".").last
 		if subdomain.blank? || subdomain =='www'				
@@ -285,11 +307,16 @@ class HomeController < ApplicationController
 		@seodetails = @shop.seodetails.where("pagename = 'team'") rescue nil
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
-			render :template => "templates/teams", :layout => "#{@shop.template}"
+			if @shop.template.present?
+				render :template => "templates/teams", :layout => "#{@shop.template}"
+			else
+				render :template => "templates/teams", :layout => "page"
+			end
 		else
 			redirect_to root_path
 		end
 	end
+
 	def team
 		subdomain = request.subdomain.split(".").last
 		if subdomain.blank? || subdomain =='www'				
@@ -302,15 +329,19 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
 		@seodetails = @shop.seodetails.where("pagename = 'team'") rescue nil
-		
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
 			@team = Team.find(params[:id])
-			render :template => "templates/team", :layout => "#{@shop.template}"
+			if @shop.template.present?
+				render :template => "templates/team", :layout => "#{@shop.template}"
+			else
+				render :template => "templates/team", :layout => "page"
+			end
 		else
 			redirect_to root_path
 		end
 	end
+
 	# User Section
 	def dashboard
 		subdomain = request.subdomain.split(".").last
@@ -335,10 +366,10 @@ class HomeController < ApplicationController
 				@footer_blocks = JSON.parse(@shop.footerhtml)["pages"]["index"]["blocks"]
 			end
 		end		
-		
 		#render :template => "templates/modulepages", :layout => "page"
-    	render :template => "templates/files", :layout => "modulepage"		
+    render :template => "templates/files", :layout => "modulepage"
 	end
+
 	#Dyanamic Pages
 	def pageshow
 		subdomain = request.subdomain.split(".").last
@@ -374,9 +405,11 @@ class HomeController < ApplicationController
 			render :template => "templates/about_us", :layout => "#{@shop.template}"
 		end		
 	end
+
 	def contact_params
 	    params.require(:contact).permit(:contactname, :contactemail, :contactnumber, :contactinfo, :shoprating, :shop_id)
 	end
+
 	def updatepayment
 		subdomain = request.subdomain.split(".").last
 		if subdomain.blank? || subdomain =='www'				
@@ -399,64 +432,84 @@ class HomeController < ApplicationController
 				@footer_blocks = JSON.parse(@shop.footerhtml)["pages"]["index"]["blocks"]
 			end
 		end
-		render :template => "Site_User/paymentupdate", :layout => "modulepage"		
-    	#render :template => "Site_User/paymentupdate", :layout => "#{@shop.template}"		
+		if @shop.template.present?
+			render :template => "Site_User/paymentupdate", :layout => "#{@shop.template}"
+		else
+			render :template => "Site_User/paymentupdate", :layout => "page"
+		end
 	end
 
 	def sports_1
 		render :layout => false
-
 	end
+
 	def sports_2
 		render :layout => false
 	end
+
 	def education_1
 		render :layout => false
 	end
+
 	def education_2
 		render :layout => false
 	end
+
 	def education_3
 		render :layout => false
 	end
+
 	def health_1
 		render :layout => false
 	end
+
 	def entertainment_1
 		render :layout => false
 	end
+
 	def entertainment_2
 		render :layout => false
 	end
+
 	def entertainment_3
 		render :layout => false
 	end
+
 	def food_1
 		render :layout => false
 	end
+
 	def food_2
 		render :layout => false
 	end
+
 	def clothes_1
 		render :layout => false
 	end
+
 	def clothes_2
 		render :layout => false
 	end
+
 	def social_1
 		render :layout => false
 	end
+
 	def social_2
 		render :layout => false
 	end
+
 	def social_3
 		render :layout => false
 	end
+
 	def footwear_1
 		render :layout => false
 	end
+
 	public
-	    def get_current_page	    	
-	      @current_page ||= params[:id]
-	    end
+
+  def get_current_page
+    @current_page ||= params[:id]
+  end
 end
