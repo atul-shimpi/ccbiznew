@@ -197,12 +197,7 @@ class HomeController < ApplicationController
 					@footer_blocks = JSON.parse(@shop.footerhtml)["pages"]["index"]["blocks"]
 				end
 			end
-			#render :template => "templates/modulepages", :layout => "page"
-			if @shop.template.present?
-				render :template => "templates/events", :layout => "#{@shop.template}"
-			else
-				render :template => "templates/events", :layout => "modulepage"
-	    end
+			render :template => "templates/events", :layout => "modulepage"
 		else
 			redirect_to root_path
 		end
@@ -432,11 +427,7 @@ class HomeController < ApplicationController
 				@footer_blocks = JSON.parse(@shop.footerhtml)["pages"]["index"]["blocks"]
 			end
 		end
-		if @shop.template.present?
-			render :template => "Site_User/paymentupdate", :layout => "#{@shop.template}"
-		else
-			render :template => "Site_User/paymentupdate", :layout => "modulepage"
-		end
+		render :template => "Site_User/paymentupdate", :layout => "modulepage"
 	end
 
 	def sports_1
