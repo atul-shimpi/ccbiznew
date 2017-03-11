@@ -1,0 +1,21 @@
+<% if @seodetails[0].isglobalheader != 0 %>
+	<% if !@header_blocks.nil? %>
+	<% @header_blocks.each_with_index do |block, index| %>	  
+	  <% block.each_with_index do |blockdetails, index| %>		  	
+	  	<%= content_html blockdetails["frames_content"].to_s.html_safe %>
+	  <% end %>
+	<% end %>
+	<% end %>
+<% end %>
+
+<%= render partial: @custom_page %>
+
+<% if @seodetails[0].isglobalfooter != 0 %>
+	<% if !@footer_blocks.nil? %>
+	<% @footer_blocks.each_with_index do |block, index| %>	  
+	  <% block.each_with_index do |blockdetails, index| %>	  	
+	  	<%= content_html blockdetails["frames_content"].to_s.html_safe %>
+	  <% end %>
+	<% end %>
+	<% end %>
+<% end %>

@@ -1,13 +1,16 @@
 class HomeController < ApplicationController
 	require 'open-uri'
+
 	impressionist :actions=>[:auction]
 	protect_from_forgery except: [:update_contact_us]
 	helper_method :get_current_page
+
 	def  home
 		render :layout => false		
 	end
-	def index		
 
+	def index		
+		binding.pry
 		subdomain = request.subdomain.split(".").last		
 		
 		if subdomain.blank? || subdomain =='www'				
@@ -114,7 +117,6 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
 		@contact = Contact.new(contact_params)
-	
 	    respond_to do |format|
 	      if @contact.save
 	        format.html { redirect_to request.env['HTTP_REFERER'], notice: 'Thank you for contacting us will get back to you soon'}
@@ -124,7 +126,6 @@ class HomeController < ApplicationController
 	        format.json { render json: @contact.errors, status: :unprocessable_entity }
 	      end
 	    end
-		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 	end
 
 	def gallery
@@ -143,11 +144,12 @@ class HomeController < ApplicationController
 		@images = @shop.shop_images.where("imagetype = 1")
 		
 		if !@shop.shop_images.blank?
-			if @shop.template.present?
-				render :template => "templates/gallery", :layout => "#{@shop.template}"
-			else
-				render :template => "templates/gallery", :layout => "page"
-			end
+			custom_render_template("templates/gallery")
+			# if @shop.template.present?
+			# 	render :template => "templates/gallery", :layout => "#{@shop.template}"
+			# else
+			# 	render :template => "templates/gallery", :layout => "page"
+			# end
 		else
 			redirect_to root_path
 		end
@@ -165,12 +167,12 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
 		@seodetails = @shop.seodetails.where("pagename = 'donation'") rescue nil
-		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
-		if @shop.template.present?
-			render :template => "templates/donation", :layout => "#{@shop.template}"
-		else
-			render :template => "templates/donation", :layout => "page"
-		end
+		custom_render_template("templates/donation")
+		# if @shop.template.present?
+		# 	render :template => "templates/donation", :layout => "#{@shop.template}"
+		# else
+		# 	render :template => "templates/donation", :layout => "page"
+		# end
 	end
 
 	def shop_events
@@ -228,11 +230,10 @@ class HomeController < ApplicationController
 			@shop = Shop.find_by_subdomain(subdomain)	
 		end
 		@seodetails = @shop.seodetails.where("pagename = 'auction'") rescue nil
-		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
 			@players = @shop.auction.players.not_in_team
 			impressionist(@shop.auction)
-			render :template => "templates/auction", :layout => "page"
+			custom_render_template("templates/auction")
 		else
 			redirect_to root_path
 		end
@@ -253,11 +254,7 @@ class HomeController < ApplicationController
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
 			@players = Player.not_in_team
-			if @shop.template.present?
-				render :template => "templates/compare_teams", :layout => "#{@shop.template}"
-			else
-				render :template => "templates/compare_teams", :layout => "page"
-			end
+			custom_render_template("templates/compare_teams")
 		else
 			redirect_to root_path
 		end
@@ -278,11 +275,7 @@ class HomeController < ApplicationController
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
 			@player = Player.find(params[:id])
-			if @shop.template.present?
-				render :template => "templates/player", :layout => "#{@shop.template}"
-			else
-				render :template => "templates/player", :layout => "page"
-			end
+			custom_render_template("templates/player")
 		else
 			redirect_to root_path
 		end
@@ -302,11 +295,7 @@ class HomeController < ApplicationController
 		@seodetails = @shop.seodetails.where("pagename = 'team'") rescue nil
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
-			if @shop.template.present?
-				render :template => "templates/teams", :layout => "#{@shop.template}"
-			else
-				render :template => "templates/teams", :layout => "page"
-			end
+			custom_render_template("templates/teams")
 		else
 			redirect_to root_path
 		end
@@ -327,11 +316,7 @@ class HomeController < ApplicationController
 		# @location = Geocoder.coordinates("#{@shop.address}, #{@shop.city}, #{@shop.state}, #{@shop.country}, #{@shop.zip}")
 		if !@shop.auction.blank?
 			@team = Team.find(params[:id])
-			if @shop.template.present?
-				render :template => "templates/team", :layout => "#{@shop.template}"
-			else
-				render :template => "templates/team", :layout => "page"
-			end
+			custom_render_template("templates/team")
 		else
 			redirect_to root_path
 		end
@@ -502,5 +487,39 @@ class HomeController < ApplicationController
 
   def get_current_page
     @current_page ||= params[:id]
+  end
+
+  def custom_render_template(page)
+  	@custom_page = page
+  	if !@shop.blank?
+			@homepage = Seodetail.where('shop_id = ?', @shop.id)
+			if !@homepage.empty?
+				@seodetails = @shop.seodetails.where("id = ?",@homepage[0].id) rescue nil				
+				if !@seodetails[0].htmldata.nil? and !@seodetails[0].htmldata.blank?
+					if !@seodetails[0].htmldata["pages"].nil? and !@seodetails[0].htmldata["pages"].blank?
+						if !@shop.headerhtml.nil? and !@shop.headerhtml.blank?
+							if !@shop.headerhtml["pages"].nil? and !@shop.headerhtml["pages"].blank?
+								@header_blocks = JSON.parse(@shop.headerhtml)["pages"]["index"]["blocks"]		
+							end
+						end
+						if !@shop.footerhtml.nil? and !@shop.footerhtml.blank?
+							if !@shop.footerhtml["pages"].nil? and !@shop.footerhtml["pages"].blank?
+								@footer_blocks = JSON.parse(@shop.footerhtml)["pages"]["index"]["blocks"]
+							end
+						end
+						@page_blocks = JSON.parse(@seodetails[0].htmldata)["pages"]["index"]["blocks"]		
+						render :template => "templates/custom_page", :layout => "page"
+					else
+						render :template => "templates/about_us", :layout => "#{@shop.template}"
+					end
+				else
+					render :template => "templates/about_us", :layout => "#{@shop.template}"
+				end
+			else
+				render :template => "templates/#{@shop.template}", :layout => "#{@shop.template}"	
+			end    		
+		else			
+			redirect_to home_path
+		end
   end
 end
