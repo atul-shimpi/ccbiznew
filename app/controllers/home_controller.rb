@@ -10,7 +10,6 @@ class HomeController < ApplicationController
 	end
 
 	def index		
-		binding.pry
 		subdomain = request.subdomain.split(".").last		
 		
 		if subdomain.blank? || subdomain =='www'				
