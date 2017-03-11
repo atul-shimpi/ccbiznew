@@ -71,6 +71,11 @@ class BusinessUser::PlayersController < BusinessUser::BaseController
     respond_to do |format|
       if @player.baseprice < player_params[:auctionprice].to_f
         if @team.points > player_params[:auctionprice].to_f
+          if @player.team.present?
+            old_team = @player.team
+            return_price = old_team.points + @player.auctionprice.to_f
+            old_team.update_attribute(:points, return_price)
+          end
           if @player.update_attributes(player_params)
             @newprice =  @team.points - player_params[:auctionprice].to_f
             @team.update_attribute(:points, @newprice)            
@@ -93,8 +98,27 @@ class BusinessUser::PlayersController < BusinessUser::BaseController
     end
   end
 
+  def no_auction
+    @player = Player.find(params[:id])
+    old_team = @player.team
+    return_price = old_team.points + @player.auctionprice.to_f
+    old_team.update_attribute(:points, return_price)
+
+    if @player.update_attribute(:team_id, nil)
+      respond_to do |format|
+        format.html { redirect_to business_user_players_path(:auction_id => @auction.id), notice: 'Player successfully un-assigned.' }
+        format.json { head :no_content }
+      end
+    end
+  end
+
   def destroy
     @player = Player.find(params[:id])
+    if @player.team.present?
+      old_team = @player.team
+      return_price = old_team.points + @player.auctionprice.to_f
+      old_team.update_attribute(:points, return_price)
+    end
     @player.destroy
 
     respond_to do |format|
@@ -104,6 +128,7 @@ class BusinessUser::PlayersController < BusinessUser::BaseController
   end
 
   private
+
   def get_auction    
     @auction = Auction.find(params[:auction_id])
   end
