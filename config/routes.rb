@@ -70,7 +70,8 @@ Rails.application.routes.draw do
 
   post '/business_user/cropimage' => "business_user/shop_images#crop"  
   post '/business_user/teamplayers/:id' => "business_user/players#teamupdate"  
-  get '/business_user/players/:id/playeredit' => "business_user/players#playeredit"  
+  get '/business_user/players/:id/playeredit' => "business_user/players#playeredit"
+  get '/business_user/players/:id/no_auction' => "business_user/players#no_auction"  
   get '/business_user/pages/design/:shop_id/:page_id' => "business_user/pages#design"
   get '/payment_reciept/:payment_id/:public_token' => "business_user/receipts#public_show"
   get '/business_user/shops/design/:shop_id' => "business_user/shops#design"
