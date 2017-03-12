@@ -4,35 +4,37 @@
 
 
 <% @shop.seodetails.where("parentpage IS ? and isinmenu = ? ", nil, 1).order("pageorder asc").each do |category| %>
-	<% @submenu = Seodetail.where("parentpage = ?", category.id) %>
+<% @submenu = Seodetail.where("parentpage = ?", category.id) %>
 <% if category.parentpage.blank? %>
-	<% 
-		if @submenu.present? 
-		#@attr = 'class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"'	
-	%>
-	<li class="dropdown ">
+<% 
+	if @submenu.present? 
+	#@attr = 'class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"'	
+%>
+<li class="dropdown ">
 <% else %>
-	<li class="big-bold ">
+<li class="big-bold ">
 <% end %>
-	<% if category.ishomepage==1 %>
-		<a <%= "#{@attr}" %> class="<%= active_class(page.id, category.id) %>" href='/'><span><%=category.pagealias%></span></a>
-	<% else %>	            		
+<% if category.ishomepage==1 %>
+	<a <%= "#{@attr}" %> class="<%= active_class(page.id, category.id) %>" href='/'><span><%=category.pagealias%></span></a>
+<% else %>
+  <% unless category.slug.downcase == 'contact-us' %>	            		
 		<a <%= "#{@attr}"%> class="<%= active_class(page.id, category.id) %>" href='/<%=category.slug.downcase%>' ><span><%=category.pagealias%></span></a>
-	<% end %>	            
-    
-      <% if @submenu.present? %>
-
-        <%= render partial: 'business_user/elements/mainmenu', locals: {subcategories: @submenu} %>
-      
-       
-      <% end %>
-    </li>
-    
-
-  <% end %>
 	<% end %>
-	
-	<% if !@shop.events.blank? %>		        
+<% end %>	            
+  
+    <% if @submenu.present? %>
+
+      <%= render partial: 'business_user/elements/mainmenu', locals: {subcategories: @submenu} %>
+    
+     
+    <% end %>
+  </li>
+  
+
+<% end %>
+<% end %>
+
+<% if !@shop.events.blank? %>		        
 <li><a href="/shopevents"><span><%= get_page_name(@shop.id,'events',"Events") %></span></a></li>
 <% end %>
 <% if !@shop.auction.blank? %>		        
@@ -40,49 +42,54 @@
 <li><a href="/teams"><span><%= get_page_name(@shop.id,'team',"Teams") %></span></a></li>
 <% end %>
 <% if !@shop.shop_images.blank? %>
-	<li><a href="/gallery"><span><%= get_page_name(@shop.id,'gallery',"Gallery") %></span></a></li>
+<li><a href="/gallery"><span><%= get_page_name(@shop.id,'gallery',"Gallery") %></span></a></li>
 <% end %>
 
-    <% if @shop.loginenabled %>
-		<li class="dropdown">
-	    <% if !additional_attributes[:current_site_user] %>
-	    <a href="#" data-toggle="modal" data-target="#myModal"><span>Login</span></a>
-	    <% else %>		    	
-	    	<a data-toggle="dropdown" data-hover="dropdown" href="#" class="<%= active_class(additional_attributes[:custompageid], '00001') %>"><span>Account</span></a>
-	    	<ul class="dropdown-menu multi-level">
-	    		<li class="top-clear">
-		    		<span><%= link_to "Dashboard", "/user/dashboard", :method => :get %></span>
-		    	</li>
-	    		<li class="top-clear">	    			
-		    		<span><%= link_to "Sign out", destroy_site_user_session_path, :method => 'delete' %></span>
-		    	</li>
-	    	</ul>
-	    <% end %>
-		</li>
+  <% if @shop.loginenabled %>
+	<li class="dropdown">
+    <% if !additional_attributes[:current_site_user] %>
+    <a href="#" data-toggle="modal" data-target="#myModal"><span>Login</span></a>
+    <% else %>		    	
+    	<a data-toggle="dropdown" data-hover="dropdown" href="#" class="<%= active_class(additional_attributes[:custompageid], '00001') %>"><span>Account</span></a>
+    	<ul class="dropdown-menu multi-level">
+    		<li class="top-clear">
+	    		<span><%= link_to "Dashboard", "/user/dashboard", :method => :get %></span>
+	    	</li>
+    		<li class="top-clear">	    			
+	    		<span><%= link_to "Sign out", destroy_site_user_session_path, :method => 'delete' %></span>
+	    	</li>
+    	</ul>
+    <% end %>
+	</li>
+<% end %>
+<% @shop.seodetails.where("parentpage IS ? and isinmenu = ? ", nil, 1).order("pageorder asc").each do |category| %>
+	<% if category.slug.downcase == 'contact-us' %>	            		
+		<li class="big-bold "><a <%= "#{@attr}"%> class="<%= active_class(page.id, category.id) %>" href='/<%=category.slug.downcase%>' ><span><%=category.pagealias%></span></a></li>
 	<% end %>
-	</ul>
+<% end %>	
+</ul>
 <!--
-	<ul class="nav navbar-nav">		      	
-		        <li class=""><a href="/"><span>< %= get_page_name(@shop.id,'home', "Home") %></span></a></li>
-		        < % if !@shop.info.blank? %>
-		        <li><a href="/aboutus"><span>< %= get_page_name(@shop.id,'about',"About Us") %></span></a></li>
-		        < % end %>
-		        < % if !@shop.events.blank? %>		        
-		        <li><a href="/shopevents"><span>< %= get_page_name(@shop.id,'events',"Events") %></span></a></li>
-		        < % end %>
-		        < % if !@shop.auction.blank? %>		        
-		        <li><a href="/auction"><span>< %= get_page_name(@shop.id,'auction',"Live auction update") %></span></a></li>
-		        <li><a href="/teams"><span>< %= get_page_name(@shop.id,'team',"Teams") %></span></a></li>
-		        < % end %>
-		        < % if !@shop.shop_images.blank? %>
-		        	<li><a href="/gallery"><span>< %= get_page_name(@shop.id,'gallery',"Gallery") %></span></a></li>
-		        < % end %>
-		        <li><a href="/contactus"><span> < %= get_page_name(@shop.id,'contact',"Contact Us") %></span></a></li>
-		        <li>
-		        < % if !current_site_user %>
-		        <a href="/site_users/sign_in"><span>Login</span></a>
-		        < % else %>
-		        	<span>< %= link_to "#{"Log Out"}".html_safe, destroy_site_user_session_path, :method=>'delete' %></span>
-		        < % end %>
-		        </li>
-		      </ul>-->
+<ul class="nav navbar-nav">		      	
+	        <li class=""><a href="/"><span>< %= get_page_name(@shop.id,'home', "Home") %></span></a></li>
+	        < % if !@shop.info.blank? %>
+	        <li><a href="/aboutus"><span>< %= get_page_name(@shop.id,'about',"About Us") %></span></a></li>
+	        < % end %>
+	        < % if !@shop.events.blank? %>		        
+	        <li><a href="/shopevents"><span>< %= get_page_name(@shop.id,'events',"Events") %></span></a></li>
+	        < % end %>
+	        < % if !@shop.auction.blank? %>		        
+	        <li><a href="/auction"><span>< %= get_page_name(@shop.id,'auction',"Live auction update") %></span></a></li>
+	        <li><a href="/teams"><span>< %= get_page_name(@shop.id,'team',"Teams") %></span></a></li>
+	        < % end %>
+	        < % if !@shop.shop_images.blank? %>
+	        	<li><a href="/gallery"><span>< %= get_page_name(@shop.id,'gallery',"Gallery") %></span></a></li>
+	        < % end %>
+	        <li><a href="/contactus"><span> < %= get_page_name(@shop.id,'contact',"Contact Us") %></span></a></li>
+	        <li>
+	        < % if !current_site_user %>
+	        <a href="/site_users/sign_in"><span>Login</span></a>
+	        < % else %>
+	        	<span>< %= link_to "#{"Log Out"}".html_safe, destroy_site_user_session_path, :method=>'delete' %></span>
+	        < % end %>
+	        </li>
+	      </ul>-->
