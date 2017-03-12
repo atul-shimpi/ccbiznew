@@ -7,11 +7,10 @@
 	<% end %>
 	<% end %>
 <% end %>
-
-<%= render partial: @custom_page %>
-<input id = "custom_slug" type="hidden" value= "<%= @custom_page.remove('templates') %>">
-<div class="push"></div>
-
+<div class="row" id="custom_page_content">
+	<%= render partial: @custom_page %>
+	<input id = "custom_slug" type="hidden" value= "<%= @custom_page.remove('templates') %>">
+</div>
 <footer>
 	<% if @seodetails[0].isglobalfooter != 0 %>
 		<% if !@footer_blocks.nil? %>
@@ -25,8 +24,12 @@
 </footer>
 
 <style type="text/css">
+    #custom_page_content{
+    	min-height: 460px;
+    }
 	footer {
-	 position:fixed;
+	 margin-top: 10px;
+	 position:relative;
 	 bottom:0;
 	 left:0;
 	 width: 100%;
@@ -34,6 +37,10 @@
 </style>
 
 <script type="text/javascript">
+    var url = window.location.href;
 	$('a').removeClass("active");
 	$("a[href$='"+$('#custom_slug').val()+"']").addClass("active");
+	if (~url.indexOf("lpl")){
+		$('.tm-copyright-text').html("Copyright © 2017 Lohana Premier League | Designed by <a rel='nofollow' href='#' target='_blank'>jalaram-techsolutions.com</a>");
+	}
 </script>
