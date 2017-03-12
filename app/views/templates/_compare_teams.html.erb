@@ -3,7 +3,16 @@
 <div class="container main-content auction_page compare_teams">
   <div class="row">
     <div class="auction_container col-lg-12 clearfix">
+    	<div class="col-lg-4 col-sm-12 col-md-4">
       <h3>Teams</h3>
+      </div>
+      <div class="col-lg-8 col-sm-12 col-md-8">
+	      <h4>Live Auction Technical Partner Jalaram Tech Solution Pune India.</h4>
+	      <small>Create Your Free Websites Via: <a href="www.ccbizon.com">www.ccbizon.com</a> <br/>Contact: Sidharth Lakhani Cell: +91-9823292221 & +91-8839597702</small>
+      </div>
+      <div class="col-lg-12 col-sm-12 col-md-12">
+      <hr />
+      </div>
       <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 auction_players_list">
       <% if !@shop.auction.teams.blank?%>
         <% @shop.auction.teams.each_with_index do |team, index| %>
@@ -31,7 +40,7 @@
 		                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 					                <p><b><%= link_to player.name, "player/"+player.id.to_s %></b>
 					                <br/>
-					                <small>Sold For: <%= player.baseprice.to_s %></small></p>
+					                <small>Sold For: <%= player.auctionprice.to_s %></small></p>
 					              </div>
 			              	</td>
 				      			</tr>
