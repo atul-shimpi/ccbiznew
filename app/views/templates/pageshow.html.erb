@@ -7,18 +7,45 @@
 	<% end %>
 	<% end %>
 <% end %>
-<% @page_blocks.each_with_index do |block, index| %>  
-  <% block.each_with_index do |blockdetails, index| %>	  
-  		
-  	<%= content_html blockdetails["frames_content"].to_s.html_safe %>
-  <% end %>
-<% end %>
-<% if @seodetails[0].isglobalfooter != 0 %>
-	<% if !@footer_blocks.nil? %>
-	<% @footer_blocks.each_with_index do |block, index| %>	  
-	  <% block.each_with_index do |blockdetails, index| %>	  	
+<div class="row" id="custom_page_content">
+	<% @page_blocks.each_with_index do |block, index| %>  
+	  <% block.each_with_index do |blockdetails, index| %>	  
+	  		
 	  	<%= content_html blockdetails["frames_content"].to_s.html_safe %>
 	  <% end %>
 	<% end %>
+</div>
+<footer>
+	<% if @seodetails[0].isglobalfooter != 0 %>
+		<% if !@footer_blocks.nil? %>
+		<% @footer_blocks.each_with_index do |block, index| %>	  
+		  <% block.each_with_index do |blockdetails, index| %>	  	
+		  	<%= content_html blockdetails["frames_content"].to_s.html_safe %>
+		  <% end %>
+		<% end %>
+		<% end %>
 	<% end %>
-<% end %>
+</footer>
+
+
+<style type="text/css">
+    #custom_page_content{
+    	min-height: 460px;
+    }
+	footer {
+	 margin-top: 10px;
+	 position:relative;
+	 bottom:0;
+	 left:0;
+	 width: 100%;
+	}
+</style>
+
+<script type="text/javascript">
+    var url = window.location.href;
+	$('a').removeClass("active");
+	$("a[href$='"+$('#custom_slug').val()+"']").addClass("active");
+	if (~url.indexOf("lpl")){
+		$('.tm-copyright-text').html("Copyright © 2017 Lohana Premier League | Designed by <a rel='nofollow' href='#' target='_blank'>jalaram-techsolutions.com</a>");
+	}
+</script>
