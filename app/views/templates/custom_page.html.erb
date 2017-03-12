@@ -1,6 +1,6 @@
 <% if @seodetails[0].isglobalheader != 0 %>
 	<% if !@header_blocks.nil? %>
-	<% @header_blocks.each_with_index do |block, index| %>	  
+	<% @header_blocks.each_with_index do |block, index| %>
 	  <% block.each_with_index do |blockdetails, index| %>		  	
 	  	<%= content_html blockdetails["frames_content"].to_s.html_safe %>
 	  <% end %>
@@ -9,6 +9,7 @@
 <% end %>
 
 <%= render partial: @custom_page %>
+<input id = "custom_slug" type="hidden" value= "<%= @custom_page.remove('templates') %>">
 <div class="push"></div>
 
 <footer>
@@ -30,3 +31,8 @@
 	  width: 100%;
 	}
 </style>
+
+<script type="text/javascript">
+	$('a').removeClass("active");
+	$("a[href$='"+$('#custom_slug').val()+"']").addClass("active");
+</script>
