@@ -8,10 +8,10 @@
       <% if !@shop.auction.teams.blank?%>
         <% @shop.auction.teams.each_with_index do |team, index| %>
           <div class="col-lg-3 teams_columns">
-			      <table>
+			      <table class="table">
 			      	<thead>
 			      		<tr>
-			      			<th><%= team.name%></th>
+			      			<th><%= team.name%><br/><small>Current Balance: <%= team.points %></small></th>
 			      		</tr>
 			      	</thead>
 			      	<tbody>
@@ -29,7 +29,9 @@
 		                      <%end%>
 		                    </div>
 		                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-					                <p><b><%= link_to player.name, "player/"+player.id.to_s %></b></p>
+					                <p><b><%= link_to player.name, "player/"+player.id.to_s %></b>
+					                <br/>
+					                <small>Sold For: <%= player.baseprice.to_s %></small></p>
 					              </div>
 			              	</td>
 				      			</tr>
